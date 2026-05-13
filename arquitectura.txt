@@ -1,7 +1,9 @@
 /SquatGym-TPI
 │
-├── index.html                 # Pantalla de Selección de Rol (Login simulado)
-│
+├── index.html                 # NUEVA: Landing Page (Información general, historia y servicios)
+├── login.html                 # RE-UBICADA: Selección de Rol (Antes era index.html)│
+|
+|
 ├── /assets                    # Estilos y lógica compartida [cite: 184]
 │   ├── /css                   # Estilo HexaCode (Teal #004D40) [cite: 185, 214]
 │   └── /img                   # Logos de SquatGym y la UTN-FRRe [cite: 103, 104]
