@@ -1,1 +1,3 @@
- quiero que me envies un html completo de inicio a fin y que mantenga la misma consistencia que esta en el diseño ""
+podrias hacer que el dashboard.html de profesor sea consistente con el diseño de editar-planes.html
+
+podes hacer que cuando todo "" en dashboard.html de profesor me vaya a la pagina "", osea linkearme

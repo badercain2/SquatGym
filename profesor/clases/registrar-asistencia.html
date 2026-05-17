@@ -166,8 +166,8 @@ min-height:0;
 overflow:hidden;
 display:flex;
 flex-direction:column;
-padding:32px;
-gap:24px;
+padding:20px 28px;
+gap:16px;
 }
 .content-wrapper{
 display:flex;
@@ -179,8 +179,8 @@ flex:1;
 display:flex;
 justify-content:space-between;
 align-items:flex-start;
-gap:24px;
-margin-bottom:24px;
+gap:16px;
+margin-bottom:8px;
 }
 .page-title{
 font-size:clamp(1.8rem,3vw,2.8rem);
@@ -629,7 +629,7 @@ Gestión de Clases
 <main class="main-content custom-scrollbar">
 <div class="content-wrapper">
 <div class="top-section">
-<div class="flex flex-col gap-3">
+<div class="flex flex-col gap-2">
 <button class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group w-fit">
 <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">
 arrow_back
@@ -650,12 +650,12 @@ Asistencia
 <span class="text-sm font-black text-slate-500 uppercase tracking-[0.2em]">
 Clase:
 </span>
-<span class="px-5 py-2 bg-primary/10 text-primary text-xs font-black uppercase tracking-[0.2em] rounded-xl border border-primary/20">
+<span class="px-4 py-1.5 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.2em] rounded-xl border border-primary/20">
 HIIT ADVANCED PERFORMANCE
 </span>
 </div>
 </div>
-<button onclick="toggleModal(true)" class="bg-primary hover:bg-primary-dim text-white flex items-center justify-center px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-primary/20 active:scale-95 text-center group shrink-0 self-end">
+<button onclick="toggleModal(true)" class="bg-primary hover:bg-primary-dim text-white flex items-center justify-center px-6 py-2.5 rounded-xl font-bold transition-all shadow-lg shadow-primary/20 active:scale-95 text-center group shrink-0 self-end">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-xl">how_to_reg</span>
 <span class="text-sm headline leading-tight">Finalizar<br>Registro</span>
@@ -666,10 +666,10 @@ HIIT ADVANCED PERFORMANCE
 <div class="flex flex-col h-full overflow-hidden" style="padding:16px;">
 <div class="flex flex-col gap-2 mb-2 shrink-0">
 <div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full">
-<h2 class="text-2xl font-bold tracking-tight headline text-on-surface">Listado de Alumnos</h2>
+<h2 class="text-lg font-bold tracking-tight headline text-on-surface">Listado de Alumnos</h2>
 <div class="relative w-full md:w-72">
 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-<input class="w-full pl-10 pr-4 py-2.5 bg-slate-100/50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm font-medium" id="hybrid-search" placeholder="Buscar por Nombre o DNI..." type="text">
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100/50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm font-medium" id="hybrid-search" placeholder="Buscar por Nombre o DNI..." type="text">
 </div>
 </div>
 </div>
@@ -692,19 +692,19 @@ Marcar Ausente
 </table>
 </div>
 <div class="shrink-0 pt-3 border-t border-primary/10 flex items-center justify-between">
-<p class="uppercase tracking-[0.2em] text-slate-400 text-xs font-black">
+<p class="uppercase tracking-[0.2em] text-slate-400 text-[10px] font-black">
 Mostrando
 <span class="text-primary" id="range-text">1-12</span>
 de
 <span id="total-text">32</span>
 alumnos
 </p>
-<div class="flex items-center gap-2">
-<button id="prev-btn" class="w-9 h-9 rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition flex items-center justify-center">
+<div class="flex items-center gap-1">
+<button id="prev-btn" class="w-8 h-8 rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition flex items-center justify-center">
 <span class="material-symbols-outlined text-sm">chevron_left</span>
 </button>
-<div id="page-numbers" class="flex items-center gap-2"></div>
-<button id="next-btn" class="w-9 h-9 rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition flex items-center justify-center">
+<div id="page-numbers" class="flex items-center gap-1"></div>
+<button id="next-btn" class="w-8 h-8 rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition flex items-center justify-center">
 <span class="material-symbols-outlined text-sm">chevron_right</span>
 </button>
 </div>
@@ -820,7 +820,7 @@ function renderTable(){
         row.className = 'student-row';
 
         row.innerHTML = `
-            <td class="px-6 py-4">
+            <td class="px-6 py-3">
                 <div class="flex items-center gap-3 justify-center">
                     <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-black text-xs font-headline shrink-0">
                         ${student.id}
@@ -832,11 +832,11 @@ function renderTable(){
                 </div>
             </td>
 
-            <td class="px-6 py-4 text-center text-sm font-semibold text-slate-500 tracking-wide">
+            <td class="px-6 py-3 text-center text-sm font-semibold text-slate-500 tracking-wide">
                 ${student.dni}
             </td>
 
-            <td class="px-6 py-4 text-center">
+            <td class="px-6 py-3 text-center">
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input
                         type="checkbox"
@@ -898,7 +898,7 @@ function renderPagination(){
         if(i === '...'){
             const span = document.createElement('span');
 
-            span.className = 'w-9 h-9 flex items-center justify-center text-slate-400 font-black text-sm';
+            span.className = 'w-8 h-8 flex items-center justify-center text-slate-400 font-black text-xs';
 
             span.textContent = '...';
 
@@ -912,8 +912,8 @@ function renderPagination(){
         btn.textContent = i;
 
         btn.className = i === currentPage
-            ? 'w-9 h-9 rounded-lg bg-primary text-white font-black shadow-lg shadow-primary/30 text-sm'
-            : 'w-9 h-9 rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition font-black text-sm';
+            ? 'w-8 h-8 rounded-lg bg-primary text-white font-black shadow-lg shadow-primary/30 text-xs'
+            : 'w-8 h-8 rounded-lg border border-slate-200 hover:border-primary hover:text-primary transition font-black text-xs';
 
         btn.onclick = () => {
             currentPage = i;

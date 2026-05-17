@@ -1,0 +1,830 @@
+<!DOCTYPE html><html class="light" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Squat Gym - Catálogo Maestro de Ejercicios</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#e5e9e9",
+                        "surface": "#f5f7f7",
+                        "on-primary-container": "#00574f",
+                        "on-surface-variant": "#595c5c",
+                        "on-error": "#ffefee",
+                        "tertiary-fixed": "#27bcff",
+                        "outline-variant": "#abadae",
+                        "surface-bright": "#f5f7f7",
+                        "on-primary": "#bffff5",
+                        "secondary-fixed": "#22f2f3",
+                        "secondary": "#006667",
+                        "on-tertiary-fixed-variant": "#003e58",
+                        "on-secondary": "#bbffff",
+                        "surface-dim": "#d0d5d6",
+                        "on-secondary-fixed": "#004142",
+                        "error-container": "#fb5151",
+                        "error": "#b31b25",
+                        "inverse-on-surface": "#9b9d9e",
+                        "on-secondary-container": "#005656",
+                        "tertiary-fixed-dim": "#00aeef",
+                        "surface-container-low": "#eef1f1",
+                        "primary-dim": "#005a52",
+                        "on-tertiary-container": "#00344b",
+                        "on-primary-fixed": "#00423c",
+                        "on-tertiary-fixed": "#001a28",
+                        "surface-variant": "#d9dede",
+                        "primary-container": "#56f1e0",
+                        "surface-tint": "#00675f",
+                        "primary": "#00675f",
+                        "tertiary-container": "#27bcff",
+                        "on-secondary-fixed-variant": "#006061",
+                        "secondary-fixed-dim": "#00e3e4",
+                        "on-surface": "#2c2f30",
+                        "on-background": "#2c2f30",
+                        "background": "#f5f7f7",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#747778",
+                        "secondary-dim": "#00595a",
+                        "inverse-surface": "#0b0f0f",
+                        "on-error-container": "#570008",
+                        "surface-container-high": "#dfe3e3",
+                        "secondary-container": "#22f2f3",
+                        "inverse-primary": "#56f1e0",
+                        "error-dim": "#9f0519",
+                        "primary-fixed": "#56f1e0",
+                        "on-tertiary": "#e8f4ff",
+                        "surface-container-highest": "#d9dede",
+                        "primary-fixed-dim": "#43e2d2",
+                        "tertiary-dim": "#005578",
+                        "on-primary-fixed-variant": "#006159",
+                        "tertiary": "#006289"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Lexend"],
+                        "display": ["Lexend"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"],
+                        "lexend": ["Lexend"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        h1, h2, h3, h4, h5, h6, .headline, .font-lexend, .font-headline, .font-display {
+            font-family: 'Lexend', sans-serif;
+        }
+        .card-premium {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -4px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bg-mesh {
+            background-color: #f8fafa;
+            background-image: radial-gradient(at 0% 0%, hsla(174, 100%, 95%, 1) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, hsla(180, 100%, 96%, 1) 0, transparent 50%);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Modal specific styles */
+        .modal-active {
+            overflow: hidden;
+        }
+        .modal-active main, .modal-active nav, .modal-active footer {
+            filter: blur(8px);
+            pointer-events: none;
+        }
+        #modal-container {
+            display: none;
+        }
+        #modal-container.active {
+            display: flex;
+        }
+        
+        .sidebar-transition {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+        }
+        .sidebar-collapsed {
+            transform: translateX(-100%);
+            pointer-events: none;
+            opacity: 0;
+        }
+        .nav-link.active {
+            background-color: #00675f !important;
+            color: white !important;
+            transition: none !important;
+        }
+        .nav-link.active .material-symbols-outlined {
+            color: white !important;
+        }
+        #notification-dropdown.hidden {
+            display: none;
+        }
+        #notification-dropdown {
+            animation: slideInDown 0.2s ease-out;
+        }
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased bg-mesh text-on-surface h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full relative">
+<!-- Header Component -->
+<header class="shrink-0 w-full z-50 border-b border-outline-variant/30 h-20" style="background-color: #005a52;">
+<div class="max-w-[1240px] mx-auto w-full h-full flex justify-between items-center px-8">
+<div class="flex items-center">
+<button class="mr-4 text-white hover:bg-white/10 p-2 rounded-full transition-colors flex items-center justify-center shrink-0" id="sidebar-toggle">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<div class="font-black tracking-tighter font-lexend text-white text-3xl cursor-pointer" onclick="window.location.href='{{DATA:SCREEN:SCREEN_8}}'">Squat Gym</div>
+</div>
+<div class="flex items-center gap-4 text-white">
+<div class="relative">
+<button class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all group hover:bg-white/10 text-white" id="notification-bell">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-error text-white font-bold flex items-center justify-center rounded-full border border-white shadow-sm h-4 text-[9px]" style="top: -2px; right: -2px;">4</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+</div>
+<div class="flex flex-col">
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Stock bajo: Proteína Whey</p>
+<p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-sm">event_busy</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
+<p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Nuevo socio: Juan Pérez</p>
+<p class="text-[10px] text-on-surface-variant">Suscripción Plan Premium</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
+<p class="text-[10px] text-on-surface-variant">Vencimiento en 2 días</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
+<button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: #00675f; color: white;">
+<span class="">Ver todas</span>
+<span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full transition-all hover:bg-white/10 text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col pt-6 pb-4 sidebar-transition sidebar-collapsed fixed top-20 left-0 bottom-0 z-[40] shadow-2xl" id="sidebar">
+<nav class="flex-1 flex flex-col gap-2 px-4 overflow-y-auto w-64">
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="{{DATA:SCREEN:SCREEN_8}}">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="nav-text font-lexend tracking-tight">Inicio</span>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Clases</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">calendar_view_week</span>
+<span class="nav-text font-medium text-sm">Ver Cronograma</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group active" href="{{DATA:SCREEN:SCREEN_12}}">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">fitness_center</span>
+<span class="nav-text font-medium text-sm">Catálogo Ejercicios</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">assignment</span>
+<span class="nav-text font-medium text-sm">Planificaciones</span>
+</a>
+</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
+<span class="material-symbols-outlined text-error transition-colors" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span class="nav-text font-lexend font-medium text-sm">Cerrar Sesión</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col px-8 py-6 max-w-[1240px] mx-auto w-full h-full gap-6 transition-all duration-300">
+<!-- Back Button & Page Header -->
+<div class="shrink-0 mb-2">
+<button class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group mb-4" onclick="window.location.href='{{DATA:SCREEN:SCREEN_8}}'">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-xs font-bold uppercase tracking-widest font-headline">Volver a gestión</span>
+</button>
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="flex flex-col">
+<h1 class="text-5xl font-black tracking-tighter text-on-surface font-lexend flex flex-col gap-2">
+<span class="">Catálogo Maestro de</span>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Ejercicios</span>
+</h1>
+</div>
+</div>
+</div>
+<!-- Layout Container -->
+<div class="flex-grow flex flex-col min-h-0 bg-white/70 backdrop-blur-md rounded-2xl border-2 border-primary/20 card-premium overflow-hidden">
+<div class="shrink-0 px-8 py-5 border-b-2 border-primary/10 flex justify-between items-center bg-white/95 z-20">
+<h2 class="text-xl font-black tracking-tight text-on-surface font-lexend">Listado de Ejercicios</h2>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center group focus-within:ring-2 focus-within:ring-primary/20 rounded-xl transition-all duration-200" id="search-container">
+<span class="material-symbols-outlined absolute left-3 text-slate-400 text-lg group-focus-within:text-primary transition-colors">search</span>
+<input class="bg-white/80 border-2 border-primary/10 rounded-xl py-2 pl-10 pr-4 text-xs font-bold font-lexend text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all w-64" id="exercise-search" placeholder="Filtrar por nombre..." type="text">
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest font-lexend hover:bg-secondary transition-all shadow-md shadow-primary/10 hover:shadow-primary/30 active:scale-95" id="btn-add-exercise">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                            Agregar Ejercicio
+                        </button>
+</div>
+</div>
+<div class="flex-grow overflow-y-auto no-scrollbar relative">
+<table class="w-full text-left border-collapse" id="exercise-table">
+<thead class="sticky top-0 bg-white/95 backdrop-blur-md z-10 shadow-sm">
+<tr>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 border-primary/10">Nombre del Ejercicio</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 border-primary/10 text-center">Duración (Min)</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 text-center border-primary/10">Series</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 text-center border-primary/10">Intensidad</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 text-center border-primary/10">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y-2 divide-primary/10" id="table-body"><tr class="hover:bg-primary/5 transition-colors group/row">
+                        <td class="px-8 py-6"><span class="font-bold text-on-surface text-sm font-lexend">Abdominales</span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">10 <span class="text-[10px] text-[#747778] font-bold uppercase tracking-wider ml-1">MIN</span></span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">3</span></td>
+                        <td class="px-8 py-6 text-center"><span class="text-[10px] font-black uppercase tracking-wider text-green-500">baja</span></td>
+                        <td class="px-8 py-6">
+                            <div class="flex items-center justify-center gap-6">
+                                <button class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg border border-primary/20 transition-all duration-300 btn-edit" data-name="Abdominales">
+                                    <span class="material-symbols-outlined text-xl">edit</span>
+                                </button>
+                                <button class="w-10 h-10 flex items-center justify-center bg-error/5 text-error hover:bg-error hover:text-white rounded-lg border border-error/20 transition-all duration-300 btn-delete" data-name="Abdominales">
+                                    <span class="material-symbols-outlined text-xl">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr><tr class="hover:bg-primary/5 transition-colors group/row">
+                        <td class="px-8 py-6"><span class="font-bold text-on-surface text-sm font-lexend">Burpees</span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">15 <span class="text-[10px] text-[#747778] font-bold uppercase tracking-wider ml-1">MIN</span></span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">4</span></td>
+                        <td class="px-8 py-6 text-center"><span class="text-[10px] font-black uppercase tracking-wider text-red-500">alta</span></td>
+                        <td class="px-8 py-6">
+                            <div class="flex items-center justify-center gap-6">
+                                <button class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg border border-primary/20 transition-all duration-300 btn-edit" data-name="Burpees">
+                                    <span class="material-symbols-outlined text-xl">edit</span>
+                                </button>
+                                <button class="w-10 h-10 flex items-center justify-center bg-error/5 text-error hover:bg-error hover:text-white rounded-lg border border-error/20 transition-all duration-300 btn-delete" data-name="Burpees">
+                                    <span class="material-symbols-outlined text-xl">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr><tr class="hover:bg-primary/5 transition-colors group/row">
+                        <td class="px-8 py-6"><span class="font-bold text-on-surface text-sm font-lexend">Curl de Bíceps</span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">10 <span class="text-[10px] text-[#747778] font-bold uppercase tracking-wider ml-1">MIN</span></span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">3</span></td>
+                        <td class="px-8 py-6 text-center"><span class="text-[10px] font-black uppercase tracking-wider text-green-500">baja</span></td>
+                        <td class="px-8 py-6">
+                            <div class="flex items-center justify-center gap-6">
+                                <button class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg border border-primary/20 transition-all duration-300 btn-edit" data-name="Curl de Bíceps">
+                                    <span class="material-symbols-outlined text-xl">edit</span>
+                                </button>
+                                <button class="w-10 h-10 flex items-center justify-center bg-error/5 text-error hover:bg-error hover:text-white rounded-lg border border-error/20 transition-all duration-300 btn-delete" data-name="Curl de Bíceps">
+                                    <span class="material-symbols-outlined text-xl">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr><tr class="hover:bg-primary/5 transition-colors group/row">
+                        <td class="px-8 py-6"><span class="font-bold text-on-surface text-sm font-lexend">Curl Femoral</span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">10 <span class="text-[10px] text-[#747778] font-bold uppercase tracking-wider ml-1">MIN</span></span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">3</span></td>
+                        <td class="px-8 py-6 text-center"><span class="text-[10px] font-black uppercase tracking-wider text-orange-500">media</span></td>
+                        <td class="px-8 py-6">
+                            <div class="flex items-center justify-center gap-6">
+                                <button class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg border border-primary/20 transition-all duration-300 btn-edit" data-name="Curl Femoral">
+                                    <span class="material-symbols-outlined text-xl">edit</span>
+                                </button>
+                                <button class="w-10 h-10 flex items-center justify-center bg-error/5 text-error hover:bg-error hover:text-white rounded-lg border border-error/20 transition-all duration-300 btn-delete" data-name="Curl Femoral">
+                                    <span class="material-symbols-outlined text-xl">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr><tr class="hover:bg-primary/5 transition-colors group/row">
+                        <td class="px-8 py-6"><span class="font-bold text-on-surface text-sm font-lexend">Dominadas</span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">10 <span class="text-[10px] text-[#747778] font-bold uppercase tracking-wider ml-1">MIN</span></span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">3</span></td>
+                        <td class="px-8 py-6 text-center"><span class="text-[10px] font-black uppercase tracking-wider text-red-500">alta</span></td>
+                        <td class="px-8 py-6">
+                            <div class="flex items-center justify-center gap-6">
+                                <button class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg border border-primary/20 transition-all duration-300 btn-edit" data-name="Dominadas">
+                                    <span class="material-symbols-outlined text-xl">edit</span>
+                                </button>
+                                <button class="w-10 h-10 flex items-center justify-center bg-error/5 text-error hover:bg-error hover:text-white rounded-lg border border-error/20 transition-all duration-300 btn-delete" data-name="Dominadas">
+                                    <span class="material-symbols-outlined text-xl">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr><tr class="hover:bg-primary/5 transition-colors group/row">
+                        <td class="px-8 py-6"><span class="font-bold text-on-surface text-sm font-lexend">Elevación de talones</span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">12 <span class="text-[10px] text-[#747778] font-bold uppercase tracking-wider ml-1">MIN</span></span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">4</span></td>
+                        <td class="px-8 py-6 text-center"><span class="text-[10px] font-black uppercase tracking-wider text-green-500">baja</span></td>
+                        <td class="px-8 py-6">
+                            <div class="flex items-center justify-center gap-6">
+                                <button class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg border border-primary/20 transition-all duration-300 btn-edit" data-name="Elevación de talones">
+                                    <span class="material-symbols-outlined text-xl">edit</span>
+                                </button>
+                                <button class="w-10 h-10 flex items-center justify-center bg-error/5 text-error hover:bg-error hover:text-white rounded-lg border border-error/20 transition-all duration-300 btn-delete" data-name="Elevación de talones">
+                                    <span class="material-symbols-outlined text-xl">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr></tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="shrink-0 px-8 py-5 border-t-2 border-primary/10 flex items-center justify-between bg-white/95 z-20">
+<p class="uppercase tracking-widest text-slate-400 text-[10px] font-black" id="pagination-info">Mostrando <span class="text-primary">1-6</span> de 28 ejercicios</p>
+<div class="flex items-center gap-2" id="pagination-controls">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:pointer-events-none" disabled="" id="prev-page">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<div class="flex gap-2" id="page-numbers"><button class="page-btn w-10 h-10 flex items-center justify-center rounded-xl font-black text-xs headline transition-all duration-200 cursor-pointer active:scale-95 bg-primary text-white ring-4 ring-primary/10 shadow-lg shadow-primary/20">1</button><button class="page-btn w-10 h-10 flex items-center justify-center rounded-xl font-black text-xs headline transition-all duration-200 cursor-pointer active:scale-95 border border-primary/10 text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5">2</button><button class="page-btn w-10 h-10 flex items-center justify-center rounded-xl font-black text-xs headline transition-all duration-200 cursor-pointer active:scale-95 border border-primary/10 text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5">3</button><button class="page-btn w-10 h-10 flex items-center justify-center rounded-xl font-black text-xs headline transition-all duration-200 cursor-pointer active:scale-95 border border-primary/10 text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5">4</button><button class="page-btn w-10 h-10 flex items-center justify-center rounded-xl font-black text-xs headline transition-all duration-200 cursor-pointer active:scale-95 border border-primary/10 text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5">5</button></div>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:pointer-events-none" id="next-page">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="shrink-0 bg-white/50 backdrop-blur-sm w-full py-6 border-t border-outline-variant/30 mt-auto" style="background-color: #00675f;"><div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1280px] mx-auto w-full gap-4"><div class="flex flex-col items-center md:items-start"><div class="text-lg font-black text-white font-lexend mb-1 cursor-pointer" onclick="window.location.href='{{DATA:SCREEN:SCREEN_8}}'">Squat Gym</div><p class="text-white/60 text-[9px] font-bold uppercase tracking-widest">© 2026 SQUAT GYM</p></div><div class="flex space-x-8"><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Ayuda</a><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Privacidad</a><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Contacto</a></div></div></footer>
+<!-- Modals -->
+<div class="fixed inset-0 z-[100] items-center justify-center bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300" id="modal-container">
+<!-- Modify Modal Content -->
+<div class="hidden bg-white rounded-3xl w-[500px] shadow-2xl border-2 border-primary/10 overflow-hidden animate-in zoom-in-95 duration-200" id="modify-modal">
+<div class="px-8 py-6 border-b border-slate-100 flex items-center justify-between bg-primary/5">
+<h3 class="text-2xl font-black tracking-tight text-on-surface font-lexend" id="modal-title">Modificar Ejercicio</h3>
+<button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/80 transition-all text-slate-400 hover:text-red-500 btn-close-modal">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="p-8 space-y-6" id="exercise-form">
+<div class="space-y-2">
+<label class="block text-[10px] font-black uppercase tracking-widest text-primary font-lexend">Nombre del Ejercicio</label>
+<input class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-3 text-sm font-bold font-lexend text-on-surface focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all" id="input-name" required="" type="text">
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block text-[10px] font-black uppercase tracking-widest text-primary font-lexend">Duración (Min)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">timer</span>
+<input class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl pl-10 pr-4 py-3 text-sm font-bold font-lexend text-on-surface focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all" id="input-duration" min="0" required="" type="number">
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-[10px] font-black uppercase tracking-widest text-primary font-lexend">Series</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">reorder</span>
+<input class="w-full bg-slate-50 border-2 border-slate-100 rounded-xl pl-10 pr-4 py-3 text-sm font-bold font-lexend text-on-surface focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all" id="input-series" min="0" required="" type="number">
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<label class="block text-[10px] font-black uppercase tracking-widest text-primary font-lexend">Intensidad</label>
+<div class="grid grid-cols-3 gap-3">
+<label class="cursor-pointer">
+<input class="sr-only peer input-intensity" name="intensity" type="radio" value="baja">
+<div class="flex items-center justify-center py-2.5 rounded-xl border-2 border-slate-100 text-[10px] font-black uppercase tracking-widest text-slate-400 peer-checked:border-primary peer-checked:text-primary peer-checked:bg-primary/5 transition-all font-lexend">Baja</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer input-intensity" name="intensity" type="radio" value="media">
+<div class="flex items-center justify-center py-2.5 rounded-xl border-2 border-slate-100 text-[10px] font-black uppercase tracking-widest text-slate-400 peer-checked:border-orange-500 peer-checked:text-orange-600 peer-checked:bg-orange-50 transition-all font-lexend">Media</div>
+</label>
+<label class="cursor-pointer">
+<input class="sr-only peer input-intensity" name="intensity" type="radio" value="alta">
+<div class="flex items-center justify-center py-2.5 rounded-xl border-2 border-slate-100 text-[10px] font-black uppercase tracking-widest text-slate-400 peer-checked:border-red-500 peer-checked:text-red-600 peer-checked:bg-red-50 transition-all font-lexend">Alta</div>
+</label>
+</div>
+</div>
+<div class="pt-6 flex gap-4">
+<button class="flex-1 px-6 py-4 rounded-xl font-black text-xs uppercase tracking-widest font-lexend text-slate-500 bg-slate-100 hover:bg-slate-200 transition-all active:scale-95 btn-close-modal" type="button">Cancelar</button>
+<button class="flex-1 px-6 py-4 rounded-xl font-black text-xs uppercase tracking-widest font-lexend text-white bg-primary hover:bg-secondary shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-50 disabled:pointer-events-none" disabled="" id="submit-btn" type="button">Guardar Cambios</button>
+</div>
+</form>
+</div>
+<!-- Delete Modal Content -->
+<div class="hidden w-full max-w-md bg-white rounded-3xl border-2 border-primary/10 shadow-2xl shadow-primary/20 overflow-hidden transform scale-100 transition-all animate-in zoom-in-95 duration-200" id="delete-modal">
+<div class="p-10 flex flex-col items-center text-center">
+<div class="w-20 h-20 bg-red-50 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-red-500 text-5xl font-light">warning</span>
+</div>
+<h3 class="text-2xl font-black tracking-tight text-on-surface font-lexend mb-4">¿Confirmar eliminación?</h3>
+<p class="text-slate-500 font-medium text-base mb-10 leading-relaxed">
+                    ¿Estás seguro de que deseas dar de baja este ejercicio? Esta acción no se puede deshacer.
+                </p>
+<div class="flex gap-4 w-full">
+<button class="flex-1 px-6 py-4 rounded-xl border-2 border-slate-100 font-black text-xs uppercase tracking-widest font-lexend text-slate-500 hover:bg-slate-50 hover:border-slate-200 transition-all active:scale-95 btn-close-modal">Cancelar</button>
+<button class="flex-1 px-6 py-4 rounded-xl bg-red-600 font-black text-xs uppercase tracking-widest font-lexend text-white shadow-lg shadow-red-200 hover:bg-red-700 hover:shadow-red-300 transition-all active:scale-95" id="btn-confirm-delete">Eliminar</button>
+</div>
+</div>
+<div class="h-2 w-full bg-gradient-to-r from-primary to-secondary opacity-50"></div>
+</div>
+</div>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Database of Exercises
+            const exercises = [
+                { name: "Abdominales", duration: 10, series: 3, intensity: "baja" },
+                { name: "Burpees", duration: 15, series: 4, intensity: "alta" },
+                { name: "Curl de Bíceps", duration: 10, series: 3, intensity: "baja" },
+                { name: "Curl Femoral", duration: 10, series: 3, intensity: "media" },
+                { name: "Dominadas", duration: 10, series: 3, intensity: "alta" },
+                { name: "Elevación de talones", duration: 12, series: 4, intensity: "baja" },
+                { name: "Elevaciones Laterales", duration: 8, series: 3, intensity: "baja" },
+                { name: "Encogimientos de Hombros", duration: 10, series: 4, intensity: "baja" },
+                { name: "Estocadas", duration: 12, series: 3, intensity: "media" },
+                { name: "Extensiones de Cuádriceps", duration: 10, series: 3, intensity: "media" },
+                { name: "Flexiones de Brazos", duration: 10, series: 3, intensity: "media" },
+                { name: "Fondos en Paralelas", duration: 12, series: 3, intensity: "alta" },
+                { name: "HIIT Cardio", duration: 20, series: 1, intensity: "alta" },
+                { name: "Jalón al Pecho", duration: 15, series: 4, intensity: "media" },
+                { name: "Kettlebell Swings", duration: 15, series: 4, intensity: "alta" },
+                { name: "Lunges", duration: 12, series: 3, intensity: "media" },
+                { name: "Martillo", duration: 10, series: 3, intensity: "baja" },
+                { name: "Mountain Climbers", duration: 10, series: 3, intensity: "media" },
+                { name: "Natación Estática", duration: 15, series: 3, intensity: "media" },
+                { name: "Peso Muerto", duration: 20, series: 5, intensity: "alta" },
+                { name: "Peso Muerto Rumano", duration: 15, series: 4, intensity: "alta" },
+                { name: "Plancha abdominal", duration: 5, series: 3, intensity: "baja" },
+                { name: "Plancha Lateral", duration: 5, series: 3, intensity: "baja" },
+                { name: "Press de Banca", duration: 15, series: 4, intensity: "media" },
+                { name: "Puente de Glúteo", duration: 10, series: 4, intensity: "baja" },
+                { name: "Quads Extension", duration: 10, series: 3, intensity: "media" },
+                { name: "Remo con Barra", duration: 15, series: 4, intensity: "alta" },
+                { name: "Sentadillas con Barra", duration: 12, series: 4, intensity: "alta" }
+            ];
+
+            let filteredExercises = [...exercises];
+            let currentPage = 1;
+            const itemsPerPage = 6;
+            let currentEditingExercise = null;
+            let itemToDelete = null;
+
+            const tableBody = document.getElementById('table-body');
+            const searchInput = document.getElementById('exercise-search');
+            const form = document.getElementById('exercise-form');
+            const submitBtn = document.getElementById('submit-btn');
+
+            const getIntensityColor = (intensity) => {
+                switch(intensity) {
+                    case 'alta': return 'text-red-500';
+                    case 'media': return 'text-orange-500';
+                    case 'baja': return 'text-green-500';
+                    default: return 'text-slate-500';
+                }
+            };
+
+            function populateTable() {
+                exercises.sort((a, b) => a.name.localeCompare(b.name));
+                filterExercises();
+            }
+
+            function filterExercises() {
+                const term = searchInput.value.toLowerCase();
+                if (term === '') {
+                    filteredExercises = [...exercises];
+                } else {
+                    filteredExercises = exercises.filter(ex => ex.name.toLowerCase().includes(term));
+                }
+                currentPage = 1;
+                renderTable();
+            }
+
+            function renderTable() {
+                tableBody.innerHTML = '';
+                const startIdx = (currentPage - 1) * itemsPerPage;
+                const endIdx = startIdx + itemsPerPage;
+                const pageItems = filteredExercises.slice(startIdx, endIdx);
+
+                pageItems.forEach((ex) => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'hover:bg-primary/5 transition-colors group/row';
+                    tr.innerHTML = `
+                        <td class="px-8 py-6"><span class="font-bold text-on-surface text-sm font-lexend">${ex.name}</span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">${ex.duration} <span class="text-[10px] text-[#747778] font-bold uppercase tracking-wider ml-1">MIN</span></span></td>
+                        <td class="px-8 py-6 text-center"><span class="font-black text-on-surface font-lexend text-base">${ex.series}</span></td>
+                        <td class="px-8 py-6 text-center"><span class="text-[10px] font-black uppercase tracking-wider ${getIntensityColor(ex.intensity)}">${ex.intensity}</span></td>
+                        <td class="px-8 py-6">
+                            <div class="flex items-center justify-center gap-6">
+                                <button class="w-10 h-10 flex items-center justify-center bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg border border-primary/20 transition-all duration-300 btn-edit" data-name="${ex.name.replace(/"/g, '&quot;')}">
+                                    <span class="material-symbols-outlined text-xl">edit</span>
+                                </button>
+                                <button class="w-10 h-10 flex items-center justify-center bg-error/5 text-error hover:bg-error hover:text-white rounded-lg border border-error/20 transition-all duration-300 btn-delete" data-name="${ex.name.replace(/"/g, '&quot;')}">
+                                    <span class="material-symbols-outlined text-xl">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+
+                document.querySelectorAll('.btn-edit').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const name = e.currentTarget.getAttribute('data-name');
+                        const ex = exercises.find(e => e.name === name);
+                        if (ex) openModifyModal(ex.name, ex.duration, ex.series, ex.intensity);
+                    });
+                });
+
+                document.querySelectorAll('.btn-delete').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const name = e.currentTarget.getAttribute('data-name');
+                        openDeleteModal(name);
+                    });
+                });
+
+                updatePagination();
+                document.querySelector('.flex-grow.overflow-y-auto').scrollTop = 0;
+            }
+
+            function updatePagination() {
+                const totalPages = Math.max(1, Math.ceil(filteredExercises.length / itemsPerPage));
+                if (currentPage > totalPages) currentPage = totalPages;
+
+                const pageNumbersContainer = document.getElementById('page-numbers');
+                pageNumbersContainer.innerHTML = '';
+                for (let i = 1; i <= totalPages; i++) {
+                    const btn = document.createElement('button');
+                    btn.className = `page-btn w-10 h-10 flex items-center justify-center rounded-xl font-black text-xs headline transition-all duration-200 cursor-pointer active:scale-95 ${i === currentPage ? 'bg-primary text-white ring-4 ring-primary/10 shadow-lg shadow-primary/20' : 'border border-primary/10 text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5'}`;
+                    btn.innerText = i;
+                    btn.addEventListener('click', () => {
+                        currentPage = i;
+                        renderTable();
+                    });
+                    pageNumbersContainer.appendChild(btn);
+                }
+
+                document.getElementById('prev-page').disabled = currentPage === 1;
+                document.getElementById('next-page').disabled = currentPage === totalPages;
+
+                const start = filteredExercises.length === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
+                const end = Math.min(currentPage * itemsPerPage, filteredExercises.length);
+                document.getElementById('pagination-info').innerHTML = `Mostrando <span class="text-primary">${start}-${end}</span> de ${filteredExercises.length} ejercicios`;
+            }
+
+            document.getElementById('prev-page').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderTable();
+                }
+            });
+
+            document.getElementById('next-page').addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredExercises.length / itemsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderTable();
+                }
+            });
+
+            searchInput.addEventListener('input', () => {
+                filterExercises();
+            });
+
+            // Modal Functions
+            function openModifyModal(name, duration, series, intensity) {
+                currentEditingExercise = name === '' ? null : name;
+                const modalTitle = document.getElementById('modal-title');
+                
+                if (name === '') {
+                    modalTitle.innerText = 'Agregar Ejercicio';
+                    document.getElementById('input-name').value = '';
+                    document.getElementById('input-duration').value = '';
+                    document.getElementById('input-series').value = '';
+                    document.querySelectorAll('.input-intensity').forEach(radio => radio.checked = false);
+                } else {
+                    modalTitle.innerText = 'Modificar Ejercicio';
+                    document.getElementById('input-name').value = name;
+                    document.getElementById('input-duration').value = duration;
+                    document.getElementById('input-series').value = series;
+                    const radioIntensity = document.querySelector(`.input-intensity[value="${intensity.toLowerCase()}"]`);
+                    if (radioIntensity) radioIntensity.checked = true;
+                }
+                
+                validateForm();
+                document.body.classList.add('modal-active');
+                document.getElementById('modal-container').classList.add('active');
+                document.getElementById('modify-modal').classList.remove('hidden');
+                document.getElementById('delete-modal').classList.add('hidden');
+            }
+
+            function openDeleteModal(name) {
+                itemToDelete = name;
+                document.body.classList.add('modal-active');
+                document.getElementById('modal-container').classList.add('active');
+                document.getElementById('delete-modal').classList.remove('hidden');
+                document.getElementById('modify-modal').classList.add('hidden');
+            }
+
+            function closeModal() {
+                document.body.classList.remove('modal-active');
+                document.getElementById('modal-container').classList.remove('active');
+                document.getElementById('modify-modal').classList.add('hidden');
+                document.getElementById('delete-modal').classList.add('hidden');
+            }
+
+            document.querySelectorAll('.btn-close-modal').forEach(btn => {
+                btn.addEventListener('click', closeModal);
+            });
+
+            document.getElementById('btn-add-exercise').addEventListener('click', () => {
+                openModifyModal('', '', '', '');
+            });
+
+            document.getElementById('btn-confirm-delete').addEventListener('click', () => {
+                if (itemToDelete) {
+                    const index = exercises.findIndex(ex => ex.name === itemToDelete);
+                    if (index !== -1) {
+                        exercises.splice(index, 1);
+                        filterExercises();
+                    }
+                }
+                closeModal();
+            });
+
+            // Form Validation
+            function validateForm() {
+                const name = document.getElementById('input-name').value.trim();
+                const durationInput = document.getElementById('input-duration');
+                const seriesInput = document.getElementById('input-series');
+                
+                // Prevent negative inputs visually
+                if (durationInput.value !== '' && parseInt(durationInput.value) < 0) durationInput.value = 0;
+                if (seriesInput.value !== '' && parseInt(seriesInput.value) < 0) seriesInput.value = 0;
+
+                const duration = durationInput.value;
+                const series = seriesInput.value;
+                const intensity = document.querySelector('.input-intensity:checked');
+                
+                if (name && duration !== '' && parseInt(duration) >= 0 && series !== '' && parseInt(series) >= 0 && intensity) {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
+            }
+
+            document.getElementById('input-name').addEventListener('input', validateForm);
+            document.getElementById('input-duration').addEventListener('input', validateForm);
+            document.getElementById('input-series').addEventListener('input', validateForm);
+            document.querySelectorAll('.input-intensity').forEach(radio => {
+                radio.addEventListener('change', validateForm);
+            });
+
+            // Handle Form Submit (Save)
+            submitBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('input-name').value.trim();
+                const duration = parseInt(document.getElementById('input-duration').value, 10);
+                const series = parseInt(document.getElementById('input-series').value, 10);
+                const intensity = document.querySelector('.input-intensity:checked').value;
+
+                if (currentEditingExercise) {
+                    const index = exercises.findIndex(ex => ex.name === currentEditingExercise);
+                    if (index !== -1) {
+                        exercises[index] = { name, duration, series, intensity };
+                    }
+                } else {
+                    exercises.push({ name, duration, series, intensity });
+                }
+
+                populateTable();
+                closeModal();
+            });
+
+            // Handle clicks outside modal to close
+            document.getElementById('modal-container').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('modal-container')) {
+                    closeModal();
+                }
+            });
+
+            // Sidebar and navigation scripts
+            const sidebarToggle = document.getElementById('sidebar-toggle');
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', () => {
+                    const sidebar = document.getElementById('sidebar');
+                    sidebar.classList.toggle('sidebar-collapsed');
+                    const icon = document.querySelector('#sidebar-toggle span');
+                    icon.innerText = sidebar.classList.contains('sidebar-collapsed') ? 'menu' : 'menu_open';
+                });
+            }
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    document.querySelectorAll('.nav-link').forEach(el => {
+                        el.classList.remove('active', 'bg-primary', 'text-white');
+                        el.classList.add('text-on-surface');
+                        const icon = el.querySelector('.material-symbols-outlined');
+                        if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+                    });
+                    e.currentTarget.classList.add('active', 'bg-primary', 'text-white');
+                    e.currentTarget.classList.remove('text-on-surface');
+                    const activeIcon = e.currentTarget.querySelector('.material-symbols-outlined');
+                    if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+                });
+            });
+
+            const notificationBell = document.getElementById('notification-bell');
+            if (notificationBell) {
+                notificationBell.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = document.getElementById('notification-dropdown');
+                    dropdown.classList.toggle('hidden');
+                });
+            }
+
+            window.addEventListener('click', function(e) {
+                const dropdown = document.getElementById('notification-dropdown');
+                const bell = document.getElementById('notification-bell');
+                if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+
+            const searchContainer = document.getElementById('search-container');
+            searchInput.addEventListener('focus', () => searchContainer.classList.add('scale-105'));
+            searchInput.addEventListener('blur', () => searchContainer.classList.remove('scale-105'));
+
+            // Initial render
+            populateTable();
+        });
+    </script>
+
+
+
+
+
+
+</body></html>
