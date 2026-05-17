@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Squat Gym - Profesor Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                primary: {
+                    DEFAULT: '#00675f',
+                    dim: '#00544d',
+                    container: '#e0f1ef'
+                },
+                "surface-container": "#e5e9e9",
+                "surface": "#f5f7f7",
+                "on-surface-variant": "#595c5c",
+                "outline-variant": "#abadae",
+                "error": "#b31b25",
+                "surface-container-lowest": "#ffffff",
+                "surface-container-low": "#eef1f1",
+                "on-surface": "#2c2f30",
+                "secondary": "#1d6961",
+                "tertiary": "#004967",
+            },
+            fontFamily: {
+                headline: ["Lexend"],
+                display: ["Lexend"],
+                body: ["Manrope"],
+            }
+        }
+    }
+}
+</script>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    min-width:1366px;
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Manrope',sans-serif;
+    background:#f7faf8;
+    color:#2c2f30;
+}
+
+h1,h2,h3,h4,.headline,.font-lexend{
+    font-family:'Lexend',sans-serif;
+}
+
+.material-symbols-outlined{
+    font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
+}
+
+.bg-mesh{
+    background-color:#f8fafa;
+    background-image:
+    radial-gradient(at 0% 0%, hsla(174,100%,95%,1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(180,100%,96%,1) 0, transparent 50%);
+}
+
+.app-shell{
+    width:100%;
+    max-width:1920px;
+    margin:0 auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+.desktop-wrapper{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    flex:1;
+    min-height:0;
+    overflow:hidden;
+}
+
+.sidebar{
+    width:280px;
+    background:#fff;
+    border-right:1px solid rgba(171,173,174,.25);
+    display:flex;
+    flex-direction:column;
+    transition:all .3s ease;
+    overflow:hidden;
+}
+
+.sidebar.collapsed{
+    width:0;
+    opacity:0;
+    border-right:none;
+}
+
+.sidebar-inner{
+    width:280px;
+    height:100%;
+    padding:24px 16px 18px;
+    display:flex;
+    flex-direction:column;
+}
+
+.main-content{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.main-scroll{
+    flex:1;
+    overflow:auto;
+    padding:32px;
+}
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:minmax(320px,370px) minmax(0,1fr);
+    gap:32px;
+    align-items:start;
+    min-height:0;
+}
+
+.left-panel{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    position:sticky;
+    top:0;
+}
+
+.right-panel{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+}
+
+.class-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
+    overflow:auto;
+    padding-right:4px;
+}
+
+.card-premium{
+    box-shadow:0 4px 20px rgba(44,47,48,.04);
+    transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+
+.card-premium:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 24px -10px rgba(0,103,95,.15);
+}
+
+.nav-link.active{
+    background:#00675f!important;
+    color:#fff!important;
+}
+
+.nav-link.active .material-symbols-outlined{
+    color:#fff!important;
+    font-variation-settings:'FILL' 1;
+}
+
+.notification-dropdown{
+    animation:slideInDown .2s ease-out;
+}
+
+@keyframes slideInDown{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media (max-width:1600px){
+    .dashboard-grid{
+        grid-template-columns:320px 1fr;
+    }
+
+    .class-grid{
+        grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+}
+
+@media (max-width:1440px){
+    .main-scroll{
+        padding:24px;
+    }
+
+    .dashboard-grid{
+        gap:24px;
+    }
+
+    .class-grid{
+        gap:20px;
+    }
+}
+
+@media (max-width:1366px){
+    .dashboard-grid{
+        grid-template-columns:300px 1fr;
+    }
+
+    .class-grid{
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    }
+}
+</style>
+</head>
+
+<body class="bg-mesh antialiased selection:bg-primary/20 selection:text-primary">
+
+<div class="app-shell">
+
+<header class="h-20 shrink-0 border-b border-outline-variant/30 bg-primary-dim">
+    <div class="w-full h-full px-8 flex items-center justify-between">
+
+        <div class="flex items-center gap-4">
+            <button id="sidebar-toggle" class="w-11 h-11 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition">
+                <span class="material-symbols-outlined text-[28px]">menu</span>
+            </button>
+
+            <div class="font-black tracking-tighter font-lexend text-white text-3xl">
+                Squat Gym
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4 text-white">
+
+            <div class="relative">
+                <button id="notification-bell" class="relative w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition">
+                    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications</span>
+
+                    <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-error border border-white text-[10px] font-bold flex items-center justify-center">
+                        4
+                    </span>
+                </button>
+
+                <div id="notification-dropdown" class="notification-dropdown hidden absolute right-0 mt-3 w-80 bg-white rounded-2xl shadow-2xl border border-outline-variant/30 overflow-hidden z-50">
+
+                    <div class="p-4 bg-surface-container-low border-b border-outline-variant/20 flex items-center justify-between">
+                        <h3 class="font-headline font-bold text-sm">
+                            Notificaciones
+                        </h3>
+
+                        <span class="text-[10px] font-black uppercase tracking-widest text-primary">
+                            4 Nuevas
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col">
+
+                        <div class="p-4 border-b border-outline-variant/10 hover:bg-surface-container-low transition">
+                            <div class="flex gap-3">
+                                <div class="w-9 h-9 rounded-full bg-error/10 text-error flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-sm">inventory_2</span>
+                                </div>
+
+                                <div>
+                                    <p class="text-xs font-bold">
+                                        Stock bajo: Proteína Whey
+                                    </p>
+
+                                    <p class="text-[11px] text-on-surface-variant">
+                                        Quedan menos de 5 unidades
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 border-b border-outline-variant/10 hover:bg-surface-container-low transition">
+                            <div class="flex gap-3">
+                                <div class="w-9 h-9 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-sm">event_busy</span>
+                                </div>
+
+                                <div>
+                                    <p class="text-xs font-bold">
+                                        Clase cancelada: Crossfit
+                                    </p>
+
+                                    <p class="text-[11px] text-on-surface-variant">
+                                        Instructor no disponible hoy
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-4 border-b border-outline-variant/10 hover:bg-surface-container-low transition">
+                            <div class="flex gap-3">
+                                <div class="w-9 h-9 rounded-full bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-sm">person_add</span>
+                                </div>
+
+                                <div>
+                                    <p class="text-xs font-bold">
+                                        Nuevo socio: Juan Pérez
+                                    </p>
+
+                                    <p class="text-[11px] text-on-surface-variant">
+                                        Suscripción Plan Premium
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="p-4 border-t border-outline-variant/20">
+                        <button class="w-full py-3 rounded-xl bg-primary text-white text-xs font-black uppercase tracking-widest hover:bg-primary-dim transition">
+                            Ver todas
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-white/10 transition">
+                <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">account_circle</span>
+            </button>
+
+        </div>
+
+    </div>
+</header>
+
+<div class="desktop-wrapper">
+
+    <aside id="sidebar" class="sidebar">
+
+        <div class="sidebar-inner">
+
+            <nav class="flex-1 flex flex-col gap-2 overflow-y-auto">
+
+                <a href="#" class="nav-link active flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="font-lexend tracking-tight">
+                        Inicio
+                    </span>
+                </a>
+
+                <div class="mt-3 flex flex-col gap-1">
+
+                    <div class="px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend">
+                        Gestión de Clases
+                    </div>
+
+                    <a href="#" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-low transition-all">
+                        <span class="material-symbols-outlined">calendar_view_week</span>
+                        <span class="text-sm font-medium">
+                            Ver Cronograma
+                        </span>
+                    </a>
+
+                    <a href="#" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-low transition-all">
+                        <span class="material-symbols-outlined">fitness_center</span>
+                        <span class="text-sm font-medium">
+                            Catálogo Ejercicios
+                        </span>
+                    </a>
+
+                    <a href="#" class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface-container-low transition-all">
+                        <span class="material-symbols-outlined">assignment</span>
+                        <span class="text-sm font-medium">
+                            Planificaciones
+                        </span>
+                    </a>
+
+                </div>
+
+                <a href="#" class="mt-auto nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-error hover:bg-error/10 transition-all">
+                    <span class="material-symbols-outlined text-error">
+                        logout
+                    </span>
+
+                    <span class="font-medium text-sm">
+                        Cerrar Sesión
+                    </span>
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <div class="main-scroll">
+
+            <header class="mb-8">
+
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-extrabold uppercase tracking-widest mb-5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+                    Panel de Instructor
+                </div>
+
+                <h1 class="text-6xl font-black tracking-tighter leading-[0.9] mb-5 headline">
+                    Bienvenido,
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                        Profesor
+                    </span>
+                </h1>
+
+                <p class="text-on-surface-variant max-w-3xl text-base leading-relaxed font-medium">
+                    Aquí tienes el resumen de tus actividades y clases asignadas para hoy.
+                </p>
+
+            </header>
+
+            <section class="dashboard-grid">
+
+                <div class="left-panel">
+
+                    <div class="bg-white p-8 rounded-3xl border-2 border-primary/30 shadow-xl shadow-primary/10 relative overflow-hidden">
+
+                        <div class="absolute top-0 right-0 w-40 h-40 rounded-full bg-primary/5 -mr-20 -mt-20"></div>
+
+                        <div class="relative z-10 text-center flex flex-col items-center">
+
+                            <h3 class="text-[10px] uppercase tracking-[0.25em] text-primary/60 font-black mb-6">
+                                Próximo Entrenamiento
+                            </h3>
+
+                            <div class="flex items-end gap-2 mb-7">
+                                <span class="text-7xl font-black text-primary leading-none tracking-tighter headline">
+                                    10:30
+                                </span>
+
+                                <span class="text-xl font-bold text-on-surface-variant mb-2">
+                                    AM
+                                </span>
+                            </div>
+
+                            <h2 class="font-headline text-3xl font-black leading-tight mb-6">
+                                HIIT Advanced Performance
+                            </h2>
+
+                            <div class="flex items-center gap-3 text-on-surface-variant font-bold text-sm">
+                                <span class="material-symbols-outlined text-primary">
+                                    group
+                                </span>
+                                22 Inscritos
+                            </div>
+
+                            <button class="mt-8 w-full max-w-[220px] py-3.5 px-5 rounded-xl bg-primary text-white font-black text-[11px] uppercase tracking-[0.2em] hover:bg-primary-dim transition-all hover:shadow-lg hover:shadow-primary/25">
+                                Registrar Asistencia
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bg-primary/5 border border-primary/10 rounded-3xl p-6">
+
+                        <div class="flex items-center justify-between mb-5">
+                            <h3 class="font-headline text-xl font-black">
+                                Resumen Diario
+                            </h3>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+
+                            <div class="bg-white rounded-2xl border border-white/60 p-5 shadow-sm">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="material-symbols-outlined text-primary text-sm">
+                                        event_available
+                                    </span>
+
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
+                                        Clases
+                                    </span>
+                                </div>
+
+                                <div class="text-4xl font-black text-primary headline">
+                                    6
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl border border-white/60 p-5 shadow-sm">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <span class="material-symbols-outlined text-primary text-sm">
+                                        groups
+                                    </span>
+
+                                    <span class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">
+                                        Alumnos
+                                    </span>
+                                </div>
+
+                                <div class="text-4xl font-black text-primary headline">
+                                    100
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="right-panel">
+
+                    <div class="flex items-center justify-between gap-8 mb-8">
+
+                        <div>
+                            <h2 class="font-headline text-4xl font-black tracking-tight">
+                                Clases Asignadas
+                            </h2>
+                        </div>
+
+                        <div class="relative w-full max-w-sm shrink-0">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg">
+                                search
+                            </span>
+
+                            <input
+                                id="class-search"
+                                type="text"
+                                placeholder="Buscar clase..."
+                                class="w-full h-12 pl-12 pr-4 bg-white border border-slate-200 rounded-2xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                            >
+                        </div>
+
+                    </div>
+
+                    <div id="class-grid" class="class-grid"></div>
+
+                    <div class="mt-8 flex items-center justify-between">
+
+                        <p class="results-summary text-[11px] font-black uppercase tracking-widest text-slate-400">
+                            Mostrando <span class="text-primary">1-3</span> de 6 clases
+                        </p>
+
+                        <div class="flex items-center gap-3">
+
+                            <button id="prev-page" class="w-11 h-11 rounded-xl border border-primary/10 flex items-center justify-center text-slate-400">
+                                <span class="material-symbols-outlined">
+                                    chevron_left
+                                </span>
+                            </button>
+
+                            <div class="flex gap-2">
+                                <button class="pagination-btn w-11 h-11 rounded-xl bg-primary text-white font-black shadow-lg shadow-primary/20">
+                                    1
+                                </button>
+
+                                <button class="pagination-btn w-11 h-11 rounded-xl border border-primary/10 text-slate-500 font-black hover:border-primary hover:text-primary transition">
+                                    2
+                                </button>
+                            </div>
+
+                            <button id="next-page" class="w-11 h-11 rounded-xl border border-primary/10 flex items-center justify-center text-slate-500 hover:border-primary hover:text-primary transition">
+                                <span class="material-symbols-outlined">
+                                    chevron_right
+                                </span>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+<footer class="shrink-0 bg-primary py-6 border-t border-white/10">
+    <div class="px-12 flex items-center justify-between">
+
+        <div>
+            <div class="text-xl font-black text-white font-lexend mb-1">
+                Squat Gym
+            </div>
+
+            <p class="text-white/60 text-[10px] font-black uppercase tracking-[0.25em]">
+                © 2026 SQUAT GYM
+            </p>
+        </div>
+
+        <div class="flex items-center gap-10">
+            <a href="#" class="text-white/80 hover:text-white text-[12px] font-bold transition">
+                Ayuda
+            </a>
+
+            <a href="#" class="text-white/80 hover:text-white text-[12px] font-bold transition">
+                Privacidad
+            </a>
+
+            <a href="#" class="text-white/80 hover:text-white text-[12px] font-bold transition">
+                Contacto
+            </a>
+        </div>
+
+    </div>
+</footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const classData = [
+        {
+            id: 4,
+            name: "Body Pump",
+            inscritos: 21,
+            desc: "Entrenamiento de resistencia de cuerpo completo con barras y discos.",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfqZY1mt4K1uqG6nDwsW81eFflsNYjhSivQusMa5Cxb9utoommuKmiHslEB97Ol2mx93X41Zbs-De4M1rA0TKhvopOuaxk6q6leDfOReY-LFUB5Lsn2MkO706X40efymTFqzhwRnHdCeYvZMUZaBlcELOC0INvYF6qrma2Z2SufYH_edUchM7FHz8qphUKulP1zDijKwJ-TIe--DsnzsNYyXSp5o7_3cv3ggol6hiHvV7JxhfUm2oGdj1bGJUEpYABI4J2EjpQnMPu"
+        },
+        {
+            id: 6,
+            name: "Boxeo",
+            inscritos: 18,
+            desc: "Clase de boxeo intensivo para mejorar fuerza, velocidad y coordinación.",
+            img: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+        },
+        {
+            id: 2,
+            name: "Cardio",
+            inscritos: 22,
+            desc: "Intervalos explosivos diseñados para maximizar la quema calórica y mejorar la resistencia.",
+            img: "https://lh3.googleusercontent.com/aida/ADBb0uiI2o2txQ0svqFrFbQG0ZDbTQxCyZlZdxZ5-3K7ffuoT1UZyrWQLkrel0alZhWYwdJ44flCDYxEjtLs2e32Cxqnr84_37jT4nfg2ozLFKWdwujfmQMw2Mp8TRleJnCYiFslVng88nxcg7EmGJkpGmFs0k_YxdHyW2v91q1Ixm0BrEmO36T-RDX4VkaIs0DOzD7dwzTN9VOdocES5WFkOjgF5F4-s_rn86FGl0FyYgepDO4yURkYCfEKC1eg"
+        },
+        {
+            id: 1,
+            name: "Crossfit Pro",
+            inscritos: 18,
+            desc: "Entrenamiento funcional de alta intensidad para atletas que buscan superar sus límites.",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7-ci3deHTF4r36w5yBzJwyAIniJzbk8wYBl7gIFPFwnkdwbcY2op-ERJk_DzJbVCmd2_8ALOj4un3SdTaabuToI8eKswGG1wq1wpEyb9BuXy2u1l90XZJWYylDKZNv4HtFyxFkiroKmauM4lGdxc0cVhm4Gah3hjqf7RQMaovfkiI7gmnZy3ArY3aKzY1RX-SUNs553e4lBoQFhJ_86zqPHuUkn0oZA9OYOgBQCwdTu2-K_Q5LxsOdhU4vfOlShGWBQfYBeLaBiF"
+        },
+        {
+            id: 5,
+            name: "Pilates",
+            inscritos: 15,
+            desc: "Control central y alineación postural en máquinas especializadas.",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCntRM6aD9P2PkxEFE-MpldV_nOYzTKU8Osr5iufgnFonsF0x1UAJmxMmY12P1_IcmoDnSmGDWyhezW92yDMA9WyaPA14A-UCHaa8GWig4iRRnLpxBNJhULvKQRADoQmiOtdRJiNrlOUdieA8KKmJjqellmtqd2RimvVlo71Mwk76kNdMPYFE4EnHL0dkIdWwMNu0SU2gS6YgClVvqSmXc63PgR22Y6rjd8ZJzhTy3uqFgT8-c4Ir8kTnkQbSfhpw7Ns_hi5LF1jZ7q"
+        },
+        {
+            id: 3,
+            name: "Zumba Gold",
+            inscritos: 25,
+            desc: "Clase de baile energizante con ritmos latinos adaptada para todos los niveles de condición física.",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCaj_d032tYNtni_dKh_h_aUsOZsXu0JzhwHZtHRwPxpfv60bZG-Ebe819DlitkVub2ZDHt04ckbzCK6_fg_zojJXLUvW4vKlFVH_dcCNQ7koW-3hM5fHpBjkOyQLvmgr86QyES6G3qBazQX9l8IKHWdcpVkomknPfY3fJ2QzKpRxNQtRxBqysyyVdW82gbZOKKjvIYFRzj-ZiNjFXPgOsh4Aznc_AhGxRwLhb_BluUbAz88OgiXMfUobnLUXQqWU7irJHC4CELqrDr"
+        }
+    ];
+
+    classData.sort((a,b) => a.name.localeCompare(b.name));
+
+    const grid = document.getElementById('class-grid');
+    const searchInput = document.getElementById('class-search');
+    const pageButtons = document.querySelectorAll('.pagination-btn');
+    const prevBtn = document.getElementById('prev-page');
+    const nextBtn = document.getElementById('next-page');
+    const resultsText = document.querySelector('.results-summary');
+
+    let currentPage = 1;
+    const itemsPerPage = 3;
+    let filteredData = [...classData];
+
+    function renderClasses(page){
+
+        grid.innerHTML = '';
+
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+
+        const pageItems = filteredData.slice(start, end);
+
+        pageItems.forEach(cls => {
+
+            const card = document.createElement('div');
+
+            card.className = 'bg-white rounded-3xl overflow-hidden border border-primary/10 flex flex-col card-premium';
+
+            card.innerHTML = `
+                <div class="h-52 overflow-hidden">
+                    <img
+                        src="${cls.img}"
+                        alt="${cls.name}"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                    >
+                </div>
+
+                <div class="p-6 flex flex-col flex-1">
+
+                    <h4 class="font-headline text-2xl font-black mb-4 leading-tight">
+                        ${cls.name}
+                    </h4>
+
+                    <div class="mb-5">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/5 border border-primary/10 text-primary">
+                            <span class="material-symbols-outlined text-sm">
+                                group
+                            </span>
+
+                            <span class="text-[10px] font-black uppercase tracking-widest">
+                                ${cls.inscritos} Inscritos
+                            </span>
+                        </div>
+                    </div>
+
+                    <p class="text-on-surface-variant text-[14px] leading-relaxed mb-8 flex-1">
+                        ${cls.desc}
+                    </p>
+
+                    <button class="w-full h-11 rounded-xl bg-primary text-white text-[10px] font-black uppercase tracking-[0.2em] hover:bg-primary-dim transition-all hover:shadow-lg hover:shadow-primary/20">
+                        Detalles Alumnos
+                    </button>
+
+                </div>
+            `;
+
+            grid.appendChild(card);
+        });
+
+        const totalItems = filteredData.length;
+        const displayEnd = Math.min(end,totalItems);
+
+        resultsText.innerHTML =
+            `Mostrando <span class="text-primary">${totalItems > 0 ? start + 1 : 0}-${displayEnd}</span> de ${totalItems} clases`;
+
+        updatePaginationUI();
+    }
+
+    function updatePaginationUI(){
+
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+        pageButtons.forEach(btn => {
+
+            const pageVal = parseInt(btn.innerText);
+
+            if(pageVal === currentPage){
+                btn.className = 'pagination-btn w-11 h-11 rounded-xl bg-primary text-white font-black shadow-lg shadow-primary/20';
+            }else{
+                btn.className = 'pagination-btn w-11 h-11 rounded-xl border border-primary/10 text-slate-500 font-black hover:border-primary hover:text-primary transition';
+            }
+        });
+
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage >= totalPages;
+    }
+
+    searchInput.addEventListener('input', e => {
+
+        const term = e.target.value.toLowerCase().trim();
+
+        filteredData = classData.filter(cls =>
+            cls.name.toLowerCase().includes(term)
+        );
+
+        currentPage = 1;
+
+        renderClasses(currentPage);
+    });
+
+    pageButtons.forEach(btn => {
+
+        btn.addEventListener('click', () => {
+
+            currentPage = parseInt(btn.innerText);
+
+            renderClasses(currentPage);
+        });
+    });
+
+    prevBtn.addEventListener('click', () => {
+
+        if(currentPage > 1){
+            currentPage--;
+            renderClasses(currentPage);
+        }
+    });
+
+    nextBtn.addEventListener('click', () => {
+
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+        if(currentPage < totalPages){
+            currentPage++;
+            renderClasses(currentPage);
+        }
+    });
+
+    renderClasses(1);
+
+    const sidebar = document.getElementById('sidebar');
+
+    document.getElementById('sidebar-toggle').addEventListener('click', () => {
+
+        sidebar.classList.toggle('collapsed');
+
+        const icon = document.querySelector('#sidebar-toggle span');
+
+        icon.textContent = sidebar.classList.contains('collapsed')
+            ? 'menu'
+            : 'menu_open';
+    });
+
+    const bell = document.getElementById('notification-bell');
+    const dropdown = document.getElementById('notification-dropdown');
+
+    bell.addEventListener('click', e => {
+        e.stopPropagation();
+        dropdown.classList.toggle('hidden');
+    });
+
+    window.addEventListener('click', e => {
+
+        if(
+            !dropdown.contains(e.target)
+            &&
+            !bell.contains(e.target)
+        ){
+            dropdown.classList.add('hidden');
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

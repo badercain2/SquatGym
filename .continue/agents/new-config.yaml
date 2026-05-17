@@ -1,0 +1,16 @@
+name: My Config
+version: 1.0.0
+schema: v1
+
+models:
+  - name: Nemotron Free
+    provider: openrouter
+    model: nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+    apiBase: https://openrouter.ai/api/v1
+    apiKey: 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
+
+  - name: DeepSeek Free
+    provider: openrouter
+    model: deepseek/deepseek-chat-v3-0324:free
+    apiBase: https://openrouter.ai/api/v1
+    apiKey: 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

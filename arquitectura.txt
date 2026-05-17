@@ -31,7 +31,7 @@
         └── monitoreo-cupos.html # Balance de Sede 1 vs Sede 2 [cite: 163, 202]
 
 
-
+Pedile que sea responsive solamente
 
 
 

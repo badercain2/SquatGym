@@ -1,0 +1,621 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Squat Gym | Cronograma Semanal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script content="const selectedDate = { day: '27', month: 'Mayo', year: '2026' };" id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffefee",
+                        "surface-variant": "#d9dede",
+                        "secondary-fixed-dim": "#00e3e4",
+                        "error-dim": "#9f0519",
+                        "tertiary-dim": "#005578",
+                        "surface-dim": "#d0d5d6",
+                        "outline-variant": "#abadae",
+                        "surface": "#f5f7f7",
+                        "on-primary-container": "#00574f",
+                        "surface-container": "#e5e9e9",
+                        "surface-bright": "#f5f7f7",
+                        "primary-dim": "#005a52",
+                        "error": "#b31b25",
+                        "surface-tint": "#00675f",
+                        "on-tertiary-fixed": "#001a28",
+                        "primary-container": "#56f1e0",
+                        "primary-fixed-dim": "#43e2d2",
+                        "on-tertiary-container": "#00344b",
+                        "tertiary-fixed-dim": "#00aeef",
+                        "on-surface": "#2c2f30",
+                        "inverse-primary": "#56f1e0",
+                        "on-tertiary-fixed-variant": "#003e58",
+                        "inverse-on-surface": "#9b9d9e",
+                        "on-secondary-fixed-variant": "#006061",
+                        "tertiary-container": "#27bcff",
+                        "on-tertiary": "#e8f4ff",
+                        "on-surface-variant": "#595c5c",
+                        "secondary-dim": "#00595a",
+                        "on-secondary-fixed": "#004142",
+                        "secondary": "#006667",
+                        "error-container": "#fb5151",
+                        "primary": "#00675f",
+                        "primary-fixed": "#56f1e0",
+                        "on-secondary": "#bbffff",
+                        "outline": "#747778",
+                        "surface-container-highest": "#d9dede",
+                        "secondary-container": "#22f2f3",
+                        "inverse-surface": "#0b0f0f",
+                        "surface-container-low": "#eef1f1",
+                        "on-secondary-container": "#005656",
+                        "tertiary-fixed": "#27bcff",
+                        "on-primary-fixed-variant": "#006159",
+                        "background": "#f5f7f7",
+                        "surface-container-high": "#dfe3e3",
+                        "secondary-fixed": "#22f2f3",
+                        "on-background": "#2c2f30",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#00423c",
+                        "on-error-container": "#570008",
+                        "on-primary": "#bffff5",
+                        "tertiary": "#006289"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Lexend"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"],
+                        "lexend": ["Lexend"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #00675f;
+            border-radius: 10px;
+            border: 2px solid #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #00423c;
+        }
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2300675f'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.25em;
+            padding-right: 2.5rem !important;
+        }
+        .sidebar-transition {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s, border 0.3s;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .sidebar-collapsed {
+            transform: translateX(-100%);
+            pointer-events: none;
+            opacity: 0;
+        }
+        .nav-link.active {
+            background-color: #00675f !important;
+            color: white !important;
+            transition: none !important;
+        }
+        .nav-link.active .material-symbols-outlined {
+            color: white !important;
+        }
+        #notification-dropdown.hidden {
+            display: none;
+        }
+        #notification-dropdown {
+            animation: slideInDown 0.2s ease-out;
+        }
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<style>
+    .bg-mesh {
+        background-color: #f0f9ff;
+        background-image: radial-gradient(at 0% 0%, hsla(199, 100%, 95%, 1) 0, transparent 50%), 
+                          radial-gradient(at 100% 0%, hsla(187, 100%, 96%, 1) 0, transparent 50%);
+    }
+</style></head>
+<body class="font-body text-on-surface h-screen flex flex-col overflow-hidden w-full relative bg-mesh">
+<!-- Header Component -->
+<header class="shrink-0 w-full z-50 border-b border-outline-variant/30 h-20" style="background-color: #005a52;"><div class="max-w-[1240px] mx-auto w-full h-full flex justify-between items-center px-8">
+<div class="flex items-center">
+<button class="mr-4 text-white hover:bg-white/10 p-2 rounded-full transition-colors flex items-center justify-center shrink-0" id="sidebar-toggle">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<div class="font-black tracking-tighter font-lexend text-white text-3xl">Squat Gym</div>
+</div>
+<div class="flex items-center gap-4 text-white">
+<div class="relative">
+<button class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all group hover:bg-white/10 text-white" id="notification-bell" onclick="toggleNotifications()">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-error text-[11px] text-white font-bold flex items-center justify-center rounded-full border border-white shadow-sm w-4 h-4 text-[9px]" style="top: -2px; right: -2px;">4</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+</div>
+<div class="flex flex-col">
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Stock bajo: Proteína Whey</p>
+<p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-sm">event_busy</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
+<p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Nuevo socio: Juan Pérez</p>
+<p class="text-[10px] text-on-surface-variant">Suscripción Plan Premium</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
+<p class="text-[10px] text-on-surface-variant">Vencimiento en 2 días</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
+<button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: #00675f; color: white;">
+<span class="">Ver todas</span>
+<span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full transition-all hover:bg-white/10 text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div></header>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- Sidebar -->
+<aside class="w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col pt-6 pb-4 sidebar-collapsed fixed top-20 left-0 bottom-20 z-[40] shadow-2xl transition-all duration-300 ease-in-out" id="sidebar">
+<nav class="flex-1 flex flex-col gap-2 px-4 overflow-y-auto w-64"><a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl active font-medium transition-all" href="#" onclick="setActive(this)"> <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span> <span class="nav-text font-lexend tracking-tight">Inicio</span> </a> <div class="flex flex-col gap-1 mt-2"><div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Clases</div><a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">calendar_view_week</span><span class="nav-text font-medium text-sm">Ver Cronograma</span></a><a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">fitness_center</span><span class="nav-text font-medium text-sm">Catálogo Ejercicios</span></a><a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">assignment</span><span class="nav-text font-medium text-sm">Planificaciones</span></a></div> <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#" onclick="setActive(this)"> <span class="material-symbols-outlined text-error transition-colors" style="font-variation-settings: 'FILL' 0;">logout</span> <span class="nav-text font-lexend font-medium text-sm">Cerrar Sesión</span> </a></nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col px-8 py-6 max-w-[1280px] mx-auto w-full overflow-y-auto transition-all duration-300">
+<!-- Action Header -->
+<div class="mb-6 shrink-0 flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 group cursor-pointer w-fit mb-2">
+<span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-primary transition-colors">arrow_back</span>
+<span class="font-label text-[10px] font-bold uppercase tracking-wider text-on-surface-variant group-hover:text-primary transition-colors">Volver a Gestión</span>
+</div>
+<h1 class="font-headline text-5xl font-black tracking-tight text-[#1c1c1c]"><span>Cronograma</span> <span class="text-primary">Semanal</span></h1>
+</div>
+<div class="bg-primary/10 px-4 py-2 rounded-xl border border-primary/20 h-fit mb-1">
+<span class="font-label text-xs font-black text-primary uppercase tracking-widest" id="current-day-badge">Hoy: Miércoles 27 de Mayo</span>
+</div>
+</div>
+<!-- Filter and Date Navigation Bar -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant/10 p-4 mb-6 flex flex-col md:flex-row items-center gap-4 shrink-0">
+<!-- Left Side: Month and Week Selectors -->
+<div class="flex items-center bg-surface-container-low/50 rounded-xl p-1 gap-2"><!-- Single Date Picker Trigger -->
+<div class="relative group" tabindex="0">
+<button class="flex items-center gap-3 px-6 py-2.5 hover:bg-surface-container-high/50 transition-colors rounded-lg cursor-pointer group">
+<span class="material-symbols-outlined text-primary text-xl">calendar_today</span>
+<div class="flex flex-col items-start">
+<span class="font-label text-[10px] font-black text-primary/60 uppercase tracking-widest leading-none mb-0.5">Seleccionar Fecha</span>
+<span class="font-headline text-sm font-bold text-primary uppercase tracking-wider" id="selected-full-date">27 DE MAYO, 2026</span>
+</div>
+<span class="material-symbols-outlined text-primary text-lg transition-transform group-focus-within:rotate-180 ml-2">expand_more</span>
+</button>
+<!-- Full Monthly Calendar Dropdown -->
+<div class="dropdown-content absolute top-full left-0 mt-2 w-72 bg-white shadow-2xl rounded-2xl border border-outline-variant/20 z-[70] overflow-hidden hidden group-focus-within:block transition-all">
+<div class="p-4 bg-primary/5 border-b border-outline-variant/10 flex justify-between items-center">
+<button class="p-2 hover:bg-primary/10 rounded-full transition-all cursor-pointer flex items-center justify-center" id="prev-month">
+<span class="material-symbols-outlined text-primary text-xl">chevron_left</span>
+</button>
+<span class="font-headline font-bold text-primary text-sm uppercase tracking-widest flex-1 text-center select-none" id="calendar-month-year">Mayo 2026</span>
+<button class="p-2 hover:bg-primary/10 rounded-full transition-all cursor-pointer flex items-center justify-center" id="next-month">
+<span class="material-symbols-outlined text-primary text-xl">chevron_right</span>
+</button>
+</div>
+<div class="p-4">
+<div class="grid grid-cols-7 gap-1 mb-2">
+<span class="text-[9px] font-bold text-center text-outline-variant uppercase">Lu</span>
+<span class="text-[9px] font-bold text-center text-outline-variant uppercase">Ma</span>
+<span class="text-[9px] font-bold text-center text-outline-variant uppercase">Mi</span>
+<span class="text-[9px] font-bold text-center text-outline-variant uppercase">Ju</span>
+<span class="text-[9px] font-bold text-center text-outline-variant uppercase">Vi</span>
+<span class="text-[9px] font-bold text-center text-outline-variant uppercase">Sa</span>
+<span class="text-[9px] font-bold text-center text-outline-variant uppercase">Do</span>
+</div>
+<div class="grid grid-cols-7 gap-1" id="calendar-days-container">
+<!-- Days will be dynamically rendered here -->
+</div>
+</div>
+</div>
+</div></div>
+<!-- Right Side: Date Picker -->
+</div>
+<!-- Schedule Grid Structure -->
+<div class="bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.06)] overflow-hidden border border-outline-variant/10 flex flex-col flex-grow">
+<!-- Header Row - Fixed -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] border-b border-outline-variant/10 shrink-0 pr-[8px]">
+<div class="h-16 flex items-center justify-center bg-surface-container-low border-r border-outline-variant/10">
+<span class="material-symbols-outlined text-primary">schedule</span>
+</div>
+<div class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">LUN</span>
+<span class="font-headline font-bold">25</span>
+</div>
+<div class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">MAR</span>
+<span class="font-headline font-bold">26</span>
+</div>
+<div class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10 bg-primary/5">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline text-primary font-bold">MIÉ</span>
+<span class="font-headline font-bold text-primary">27</span>
+</div>
+<div class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">JUE</span>
+<span class="font-headline font-bold">28</span>
+</div>
+<div class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">VIE</span>
+<span class="font-headline font-bold">29</span>
+</div>
+<div class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">SÁB</span>
+<span class="font-headline font-bold">30</span>
+</div>
+<div class="h-16 flex flex-col items-center justify-center">
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">DOM</span>
+<span class="font-headline font-bold">31</span>
+</div>
+</div>
+<!-- Time Slots & Content - Scrollable -->
+<div class="relative custom-scrollbar overflow-y-auto flex-grow">
+<!-- Grid Background Lines -->
+<div class="absolute inset-0 grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] pointer-events-none min-h-full">
+<div class="border-r border-outline-variant/10 bg-surface-container-low/30"></div>
+<div class="border-r border-outline-variant/10"></div>
+<div class="border-r border-outline-variant/10"></div>
+<div class="border-r border-outline-variant/10"></div>
+<div class="border-r border-outline-variant/10"></div>
+<div class="border-r border-outline-variant/10"></div>
+<div class="border-r border-outline-variant/10"></div>
+<div></div>
+</div>
+<!-- Hours Rows (07:00 to 22:00) -->
+<div class="relative">
+<!-- Row 07:00 -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white">
+<span class="font-label text-xs font-bold text-outline">07:00</span>
+</div>
+<div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<!-- Row 08:00 -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white">
+<span class="font-label text-xs font-bold text-outline">08:00</span>
+</div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Crossfit - Alex</span><span class="text-[10px] opacity-80">08:00 - 09:00</span></div></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Crossfit - Alex</span><span class="text-[10px] opacity-80">08:00 - 09:00</span></div></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">HIIT - Alex</span><span class="text-[10px] opacity-80">08:00 - 09:00</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Crossfit - Alex</span><span class="text-[10px] opacity-80">08:00 - 09:00</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"></div>
+</div>
+<!-- Row 09:00 -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white">
+<span class="font-label text-xs font-bold text-outline">09:00</span>
+</div>
+<div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<!-- Row 10:00 -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white">
+<span class="font-label text-xs font-bold text-outline">10:00</span>
+</div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">HIIT - Alex</span><span class="text-[10px] opacity-80">10:00 - 11:00</span></div></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Advanced Lifting - Alex</span><span class="text-[10px] opacity-80">10:00 - 11:00</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Boxeo - Alex</span><span class="text-[10px] opacity-80">10:00 - 11:00</span></div></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Zumba - Alex</span><span class="text-[10px] opacity-80">10:00 - 11:00</span></div></div>
+<div class="p-2"><div class="bg-secondary text-on-secondary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-secondary/20"><span class="font-headline text-xs font-bold leading-tight">Zumba - Alex</span><span class="text-[10px] opacity-80">10:00 - 11:00</span></div></div>
+<div class="p-2"></div>
+</div>
+<!-- Row 11:00 -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white">
+<span class="font-label text-xs font-bold text-outline">11:00</span>
+</div>
+<div class="p-2"></div><div class="p-2"></div><div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Boxeo - Alex</span><span class="text-[10px] opacity-80">11:00 - 12:00</span></div></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<!-- Row 12:00 (Active) -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white">
+<span class="font-label text-xs font-bold text-outline">12:00</span>
+</div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Yoga - Alex</span><span class="text-[10px] opacity-80">12:00 - 13:00</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">HIIT - Alex</span><span class="text-[10px] opacity-80">12:00 - 13:00</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Yoga - Alex</span><span class="text-[10px] opacity-80">12:00 - 13:00</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"></div>
+</div>
+<!-- Row 13:00 to 22:00 omitted for brevity in minimal diff principle, assuming remaining rows exist but are empty -->
+<!-- Row 14:00 Example from source -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white">
+<span class="font-label text-xs font-bold text-outline">14:00</span>
+</div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Mobility - Alex</span><span class="text-[10px] opacity-80">14:00 - 15:00</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Mobility - Alex</span><span class="text-[10px] opacity-80">14:00 - 15:00</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Personal Training - Alex</span><span class="text-[10px] opacity-80">14:00 - 15:30</span></div></div>
+<div class="p-2"></div>
+<div class="p-2"></div>
+</div>
+<!-- Adding remaining placeholders for rows 15-22 to ensure scroll remains functional -->
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">15:00</span></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">16:00</span></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">17:00</span></div><div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Crossfit - Alex</span><span class="text-[10px] opacity-80">18:00 - 19:00</span></div></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">18:00</span></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">HIIT - Alex</span><span class="text-[10px] opacity-80">19:00 - 20:00</span></div></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">19:00</span></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Boxeo - Alex</span><span class="text-[10px] opacity-80">20:00 - 21:00</span></div></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">20:00</span></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Zumba - Alex</span><span class="text-[10px] opacity-80">21:00 - 22:00</span></div></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">21:00</span></div><div class="p-2"></div><div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">Crossfit - Alex</span><span class="text-[10px] opacity-80">22:00 - 23:00</span></div></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div>
+<div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px]">
+<div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">22:00</span></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div>
+</div><div class="grid grid-cols-[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[100px] border-b border-outline-variant/10"><div class="flex items-start justify-center pt-4 border-r border-outline-variant/10 sticky left-0 z-10 bg-white"><span class="font-label text-xs font-bold text-outline">23:00</span></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"><div class="bg-primary text-on-primary p-3 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-primary/20"><span class="font-headline text-xs font-bold leading-tight">HIIT - Alex</span><span class="text-[10px] opacity-80">23:00 - 00:00</span></div></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div><div class="p-2"></div></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer Component from SCREEN_128 -->
+<footer class="shrink-0 bg-white/50 backdrop-blur-sm w-full py-6 border-t border-outline-variant/30 mt-auto" style="background-color: #005a52;">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1280px] mx-auto w-full gap-4"><div class="flex flex-col items-center md:items-start">
+<div class="text-lg font-black text-white font-headline mb-1">Squat Gym</div>
+<p class="text-white/60 text-[9px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
+</div>
+<div class="flex space-x-8">
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Ayuda</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Privacidad</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Contacto</a>
+</div></div>
+</footer>
+<script>
+    document.getElementById('sidebar-toggle').addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('sidebar-collapsed');
+        const icon = document.querySelector('#sidebar-toggle span');
+        icon.innerText = sidebar.classList.contains('sidebar-collapsed') ? 'menu' : 'menu_open';
+    });
+
+    function setActive(element) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active', 'bg-primary', 'text-white');
+            link.classList.add('text-on-surface');
+            const icon = link.querySelector('.material-symbols-outlined');
+            if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+        });
+        element.classList.add('active', 'bg-primary', 'text-white');
+        element.classList.remove('text-on-surface');
+        const activeIcon = element.querySelector('.material-symbols-outlined');
+        if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+    }
+
+    function toggleNotifications() {
+        const dropdown = document.getElementById('notification-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('notification-dropdown');
+        const bell = document.getElementById('notification-bell');
+        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+</script>
+<script content="const selectedDate = { day: '27', month: 'Mayo', year: '2026' };">
+    (function() {
+        const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        const weekDays = ['DOM', 'LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB'];
+        
+        // 1. Initial State: 27 de Mayo, 2026
+        let selectedDate = new Date(2026, 4, 27); // Month is 0-indexed
+        let viewDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+
+        const fullDateDisplay = document.getElementById('selected-full-date');
+        const calendarMonthYear = document.getElementById('calendar-month-year');
+        const gridHeaders = document.querySelectorAll('.grid.grid-cols-\\[100px_1fr_1fr_1fr_1fr_1fr_1fr_1fr\\]:first-child > div:not(:first-child)');
+
+        function getDaysInMonth(year, month) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        function updateUI() {
+            // 2. Update visible text in date selector
+            const day = selectedDate.getDate();
+            const monthName = months[selectedDate.getMonth()].toUpperCase();
+            const year = selectedDate.getFullYear();
+            fullDateDisplay.textContent = `${day} DE ${monthName}, ${year}`;
+
+            // Update Calendar Header
+            calendarMonthYear.textContent = `${months[viewDate.getMonth()]} ${viewDate.getFullYear()}`;
+
+            updateCalendarDays();
+            updateGridHeaders();
+        }
+
+        function updateCalendarDays() {
+            const daysContainer = document.getElementById('calendar-days-container');
+            if(daysContainer) {
+                daysContainer.innerHTML = '';
+                const year = viewDate.getFullYear();
+                const month = viewDate.getMonth();
+                const daysInMonth = getDaysInMonth(year, month);
+                const firstDay = new Date(year, month, 1).getDay(); // 0 is Sunday
+                
+                // Adjust for Monday start (as in UI, Lu Ma Mi Ju Vi Sa Do)
+                let startOffset = firstDay === 0 ? 6 : firstDay - 1;
+                
+                for(let i=0; i<startOffset; i++) {
+                    const span = document.createElement('span');
+                    span.className = "h-9 w-9";
+                    daysContainer.appendChild(span);
+                }
+                
+                for(let day=1; day<=daysInMonth; day++) {
+                    const btn = document.createElement('button');
+                    btn.className = "h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn";
+                    btn.setAttribute('data-day', day);
+                    btn.textContent = day;
+                    
+                    const isSelected = 
+                        selectedDate.getDate() === day && 
+                        selectedDate.getMonth() === month && 
+                        selectedDate.getFullYear() === year;
+
+                    if (isSelected) {
+                        btn.classList.add('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/30');
+                        btn.classList.remove('text-on-surface');
+                    }
+                    
+                    btn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        // Validate date to prevent invalid dates like Feb 31st when changing months with high day selected
+                        let safeDay = day;
+                        const maxDays = getDaysInMonth(year, month);
+                        if (safeDay > maxDays) safeDay = maxDays;
+                        
+                        selectedDate = new Date(year, month, safeDay);
+                        updateUI();
+                        // Close dropdown
+                        this.closest('.relative.group').blur();
+                    });
+                    
+                    daysContainer.appendChild(btn);
+                }
+            }
+        }
+
+        function updateGridHeaders() {
+            // 5. Sync weekly grid headers
+            // Calculate the Monday of the week for the selected date
+            const dayOfWeek = selectedDate.getDay(); // 0 is Sun
+            const diff = selectedDate.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); // Adjust to Monday
+            const monday = new Date(selectedDate);
+            monday.setDate(diff);
+
+            gridHeaders.forEach((header, index) => {
+                const currentDay = new Date(monday);
+                currentDay.setDate(monday.getDate() + index);
+                
+                const dayLabel = header.querySelector('.font-label');
+                const dateLabel = header.querySelector('.font-headline');
+                
+                if (dateLabel) dateLabel.textContent = currentDay.getDate();
+                
+                // Highlight selected day in grid header if it matches
+                if (currentDay.toDateString() === selectedDate.toDateString()) {
+                    header.classList.add('bg-primary/5');
+                    if (dayLabel) dayLabel.classList.add('text-primary', 'font-bold');
+                    if (dateLabel) dateLabel.classList.add('text-primary');
+                } else {
+                    header.classList.remove('bg-primary/5');
+                    if (dayLabel) {
+                        dayLabel.classList.remove('text-primary', 'font-bold');
+                        dayLabel.classList.add('text-outline');
+                    }
+                    if (dateLabel) dateLabel.classList.remove('text-primary');
+                }
+            });
+        }
+
+        // Navigation Logic
+        document.getElementById('prev-month').addEventListener('click', (e) => {
+            e.stopPropagation();
+            viewDate.setMonth(viewDate.getMonth() - 1);
+            updateUI();
+        });
+
+        document.getElementById('next-month').addEventListener('click', (e) => {
+            e.stopPropagation();
+            viewDate.setMonth(viewDate.getMonth() + 1);
+            updateUI();
+        });
+
+        // Initial Run
+        updateUI();
+    })();
+    </script>
+</body></html>

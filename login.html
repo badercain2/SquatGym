@@ -221,6 +221,10 @@ function validateLogin(event) {
     // Redirigir al dashboard de secretaría
     window.location.href = 'secretaria/dashboard.html';
     return false;
+  } else if (usuario === 'profesor' && password === '12345678') {
+    // Redirigir al dashboard de profesor
+    window.location.href = 'profesor/dashboard.html';
+    return false;
   } else {
     // Mostrar mensaje de error
     alert('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.');

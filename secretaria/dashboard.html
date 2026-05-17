@@ -147,6 +147,24 @@
         padding-right: 0 !important;
         border-right-width: 0px !important;
     }
+    
+    /* Sidebar floating over content */
+    @media (min-width: 768px) {
+        #sidebar {
+            width: 16rem !important;
+            border-right-width: 1px !important;
+            position: fixed;
+            z-index: 50;
+            transform: translateX(0);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #sidebar.sidebar-collapsed {
+            transform: translateX(-100%);
+        }
+        #sidebar:not(.sidebar-collapsed) {
+            transform: translateX(0);
+        }
+    }
     .nav-link.active {
         background-color: #00675f !important;
         color: white !important;
@@ -158,10 +176,10 @@
     
     /* Sidebar margin adjustment for desktop */
     @media (min-width: 768px) {
-        .sidebar-open + #main-content {
+        #sidebar:not(.sidebar-collapsed) + #main-content {
             margin-left: 16rem !important;
         }
-        .sidebar-collapsed + #main-content {
+        #sidebar.sidebar-collapsed + #main-content {
             margin-left: 0 !important;
         }
     }
@@ -169,7 +187,7 @@
 <body class="bg-mesh text-on-surface min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden w-full relative">
 <!-- Header Component -->
 <header class="shrink-0 w-full z-50 border-b border-outline-variant/30 flex justify-between items-center px-4 md:px-8 max-w-full h-16 md:h-20" style="background-color: #005a52;"><button class="mr-4 text-white hover:bg-white/10 p-2 rounded-full transition-colors flex items-center justify-center shrink-0" id="sidebar-toggle">
-<span class="material-symbols-outlined text-[28px]">menu_open</span>
+<span class="material-symbols-outlined text-[28px]">menu</span>
 </button>
 <div class="font-bold tracking-tighter font-lexend text-xl md:text-3xl text-white">Squat Gym</div>
 <div class="flex items-center gap-2 text-white">
@@ -184,7 +202,7 @@
 </header>
 <div class="flex flex-1 overflow-hidden">
 <!-- Sidebar -->
-<aside class="fixed left-0 top-16 md:top-20 h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col pt-6 pb-4 sidebar-transition transform -translate-x-full md:translate-x-0 md:sidebar-open z-40" id="sidebar">
+<aside class="fixed left-0 top-16 md:top-20 h-[calc(100vh-4rem)] md:h-[calc(100vh-5rem)] w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col pt-6 pb-4 sidebar-transition transform -translate-x-full md:translate-x-0 md:sidebar-collapsed z-40" id="sidebar">
 <nav class="flex-1 flex flex-col gap-2 px-4 overflow-y-auto w-64">
 <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all text-on-surface" href="#" onclick="setActive(this)">
 <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 0;">home</span>
@@ -644,132 +662,30 @@
 </div></div>
 </footer>
 <script>
-    function addTask() {
-        // Open modal instead of prompt
-        const modal = document.getElementById('task-modal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+    // Initialize sidebar as collapsed on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.getElementById('sidebar');
+        const icon = document.querySelector('#sidebar-toggle span');
         
-        // Focus on input
-        setTimeout(() => {
-            document.getElementById('new-task-input').focus();
-        }, 100);
-    }
+        // Ensure sidebar starts collapsed
+        sidebar.classList.add('sidebar-collapsed');
+        sidebar.classList.remove('sidebar-open');
+        icon.innerText = 'menu';
+    });
 
-    function closeTaskModal() {
-        const modal = document.getElementById('task-modal');
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        
-        // Clear input
-        document.getElementById('new-task-input').value = '';
-    }
-
-    function saveNewTask() {
-        const taskInput = document.getElementById('new-task-input');
-        const taskText = taskInput.value.trim();
-        
-        if (taskText === '') {
-            // Highlight input if empty
-            taskInput.classList.add('border-error');
-            taskInput.focus();
-            return;
-        }
-        
-        const taskList = document.getElementById('task-list');
-        const taskId = 'task-' + Date.now();
-        
-        const taskHtml = `
-            <div id="${taskId}" class="group flex items-center justify-between bg-surface-container-low rounded-lg p-2 hover:bg-surface-container transition-colors border border-transparent hover:border-outline-variant/30 animate-in fade-in slide-in-from-top-1">
-                <label class="flex items-center gap-3 cursor-pointer flex-1">
-                    <div class="relative flex items-center justify-center w-5 h-5">
-                        <input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox">
-                        <span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span>
-                    </div>
-                    <span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors flex-1 line-clamp-1">${taskText}</span>
-                </label>
-                <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button onclick="editTask('${taskId}')" class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-md hover:bg-white">
-                        <span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
-                    </button>
-                    <button onclick="deleteTask('${taskId}')" class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-md hover:bg-white">
-                        <span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
-                    </button>
-                </div>
-            </div>`;
-        
-        taskList.insertAdjacentHTML('beforeend', taskHtml);
-        
-        // Close modal and clear input
-        closeTaskModal();
-    }
-
-    function editTask(id) {
-        const taskElement = document.getElementById(id);
-        const textSpan = taskElement.querySelector('.task-text');
-        const currentText = textSpan.innerText;
-        const newText = prompt('Editar tarea:', currentText);
-        
-        if (newText && newText.trim() !== '') {
-            textSpan.innerText = newText;
-        }
-    }
-
-    function deleteTask(id) {
-        const taskElement = document.getElementById(id);
-        if (confirm('¿Estás seguro de que deseas eliminar esta tarea?')) {
-            taskElement.classList.add('opacity-0', 'transition-opacity', 'duration-300');
-            setTimeout(() => taskElement.remove(), 300);
-        }
-    }
-</script><script>
+    // Sidebar toggle functionality
     document.getElementById('sidebar-toggle').addEventListener('click', () => {
         const sidebar = document.getElementById('sidebar');
         const icon = document.querySelector('#sidebar-toggle span');
         
-        // Toggle sidebar visibility and classes
-        if (window.innerWidth >= 768) {
-            // Desktop: toggle collapsed state
-            sidebar.classList.toggle('sidebar-collapsed');
-            sidebar.classList.toggle('sidebar-open');
-            
-            // Update icon
-            if (sidebar.classList.contains('sidebar-collapsed')) {
-                icon.innerText = 'menu';
-            } else {
-                icon.innerText = 'menu_open';
-            }
+        // Toggle sidebar state
+        sidebar.classList.toggle('sidebar-collapsed');
+        
+        // Update icon
+        if (sidebar.classList.contains('sidebar-collapsed')) {
+            icon.innerText = 'menu';
         } else {
-            // Mobile: toggle visibility
-            sidebar.classList.toggle('-translate-x-full');
-            
-            // Update icon
-            if (sidebar.classList.contains('-translate-x-full')) {
-                icon.innerText = 'menu';
-            } else {
-                icon.innerText = 'menu_open';
-            }
-        }
-    });
-
-    // Close modal when clicking outside
-    document.addEventListener('click', (e) => {
-        const modal = document.getElementById('task-modal');
-        if (modal && !modal.classList.contains('hidden') && 
-            !modal.contains(e.target) && 
-            !e.target.closest('#sidebar-toggle') &&
-            !e.target.closest('[onclick*="addTask"]')) {
-            closeTaskModal();
-        }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            const modal = document.getElementById('task-modal');
-            if (modal && !modal.classList.contains('hidden')) {
-                closeTaskModal();
-            }
+            icon.innerText = 'menu_open';
         }
     });
 
@@ -781,8 +697,9 @@
         if (window.innerWidth < 768 && 
             !sidebar.contains(e.target) && 
             !toggle.contains(e.target) &&
-            !sidebar.classList.contains('-translate-x-full')) {
-            sidebar.classList.add('-translate-x-full');
+            !sidebar.classList.contains('sidebar-collapsed')) {
+            sidebar.classList.add('sidebar-collapsed');
+            sidebar.classList.remove('sidebar-open');
             document.querySelector('#sidebar-toggle span').innerText = 'menu';
         }
     });
