@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="mt-auto flex justify-center">
-                                <a class="w-full group/btn flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-primary text-white font-bold text-[8px] uppercase tracking-widest transition-all duration-300 hover:bg-primary-dim hover:shadow-lg hover:shadow-primary/25 active:scale-[0.97]" href="#" onclick="window.location.href='clases/detalles-alumnos.html'">
+                                <a class="w-full group/btn flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-primary text-white font-bold text-[8px] uppercase tracking-widest transition-all duration-300 hover:bg-primary-dim hover:shadow-lg hover:shadow-primary/25 active:scale-[0.97]" href="#" onclick="window.location.href='clases/Alumnos-inscriptos.html'">
                                     <span class="material-symbols-outlined text-sm">person_search</span>
                                     <span>Detalles Alumnos</span>
                                 </a>
@@ -282,23 +282,49 @@ h1,h2,h3,h4,.headline{
 
 .main-grid{
   display:grid;
-  grid-template-columns:auto 1fr;
+  grid-template-columns:1fr;
   min-height:0;
   overflow:hidden;
+  position:relative;
 }
 
 .sidebar{
+  position:fixed;
+  top:0;
+  left:0;
   width:var(--sidebar-width);
+  height:100vh;
   background:#ffffff;
   border-right:1px solid rgba(171,173,174,.3);
   overflow:hidden;
   transition:all .3s cubic-bezier(.4,0,.2,1);
   box-shadow:0 10px 30px rgba(0,0,0,.05);
+  z-index:80;
+  transform:translateX(-100%);
+  visibility:hidden;
+  opacity:0;
 }
 
-.sidebar-collapsed{
-  width:0;
-  border-right:none;
+.sidebar-visible{
+  transform:translateX(0);
+  visibility:visible;
+  opacity:1;
+}
+
+.sidebar-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.3);
+  backdrop-filter:blur(4px);
+  z-index:70;
+  opacity:0;
+  visibility:hidden;
+  transition:all .3s ease;
+}
+
+.sidebar-backdrop.show{
+  opacity:1;
+  visibility:visible;
 }
 
 .sidebar-inner{
@@ -806,7 +832,7 @@ h1,h2,h3,h4,.headline{
         </div>
       </div>
 
-      <button class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10">
+      <button class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" onclick="window.location.href='clases/Mi-perfil.html'">
         <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">account_circle</span>
       </button>
 
@@ -817,9 +843,21 @@ h1,h2,h3,h4,.headline{
 
 <div class="main-grid">
 
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
   <aside class="sidebar" id="sidebar">
 
     <div class="sidebar-inner custom-scrollbar">
+      
+      <div class="flex items-center justify-between mb-6 px-2">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">fitness_center</span>
+          <span class="font-black text-on-surface headline tracking-tight">Menú</span>
+        </div>
+        <button class="w-8 h-8 rounded-full hover:bg-slate-100 transition flex items-center justify-center text-slate-400 hover:text-on-surface" id="sidebar-close">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+      </div>
 
       <nav class="flex flex-col h-full gap-2">
 
@@ -834,12 +872,12 @@ h1,h2,h3,h4,.headline{
             Gestión de Clases
           </div>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="clases/cronograma-semanal.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="clases/Cronograma-semanal.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
             <span class="font-medium text-sm">Ver Cronograma</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="clases/catalogo-maestro-ejercicios.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="clases/Catalogo-maestro-de-ejercicios.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">fitness_center</span>
             <span class="font-medium text-sm">Catálogo Ejercicios</span>
           </a>
@@ -892,7 +930,7 @@ h1,h2,h3,h4,.headline{
               <span class="material-symbols-outlined text-primary text-base">group</span> 22 Inscritos
             </p>
           </div>
-          <button class="ml-2 flex items-center justify-center gap-1.5 py-2 px-4 rounded-2xl bg-primary text-white transition-all duration-300 hover:bg-primary-dim hover:shadow-lg hover:shadow-primary/25 active:scale-[0.97]" title="Registrar Asistencia" onclick="window.location.href='clases/registrar-asistencia.html'">
+          <button class="ml-2 flex items-center justify-center gap-1.5 py-2 px-4 rounded-2xl bg-primary text-white transition-all duration-300 hover:bg-primary-dim hover:shadow-lg hover:shadow-primary/25 active:scale-[0.97]" title="Registrar Asistencia" onclick="window.location.href='clases/registro-de-asistencia.html'">
             <span class="material-symbols-outlined text-base">how_to_reg</span>
             <span class="text-[8px] font-bold uppercase tracking-widest">Registrar Asistencia</span>
           </button>
@@ -966,13 +1004,23 @@ h1,h2,h3,h4,.headline{
 <script>
     document.getElementById('sidebar-toggle').addEventListener('click', () => {
       const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('sidebar-collapsed');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      sidebar.classList.toggle('sidebar-visible');
+      backdrop.classList.toggle('show');
+    });
 
-      const icon = document.querySelector('#sidebar-toggle span');
+    document.getElementById('sidebar-close').addEventListener('click', () => {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      sidebar.classList.remove('sidebar-visible');
+      backdrop.classList.remove('show');
+    });
 
-      icon.innerText = sidebar.classList.contains('sidebar-collapsed')
-        ? 'menu'
-        : 'menu_open';
+    document.getElementById('sidebar-backdrop').addEventListener('click', () => {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      sidebar.classList.remove('sidebar-visible');
+      backdrop.classList.remove('show');
     });
 
     function toggleNotifications() {

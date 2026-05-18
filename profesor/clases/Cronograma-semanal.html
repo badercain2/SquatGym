@@ -231,11 +231,11 @@
 <!-- Action Header -->
 <div class="mb-6 shrink-0 flex flex-col md:flex-row md:items-end justify-between gap-4">
 <div>
-<div class="flex items-center gap-2 group cursor-pointer w-fit mb-2">
+<a class="flex items-center gap-2 group cursor-pointer w-fit mb-2 hover:opacity-80 transition-opacity" href="{{DATA:SCREEN:SCREEN_8}}">
 <span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-primary transition-colors">arrow_back</span>
 <span class="font-label text-[10px] font-bold uppercase tracking-wider text-on-surface-variant group-hover:text-primary transition-colors">Volver a Gestión</span>
-</div>
-<h1 class="font-headline text-5xl font-black tracking-tight text-[#1c1c1c]"><span>Cronograma</span> <span class="text-primary">Semanal</span></h1>
+</a>
+<h1 class="font-headline text-5xl font-black tracking-tight text-[#1c1c1c]"><span class="">Cronograma</span> <span class="text-primary">Semanal</span></h1>
 </div>
 <div class="bg-primary/10 px-4 py-2 rounded-xl border border-primary/20 h-fit mb-1">
 <span class="font-label text-xs font-black text-primary uppercase tracking-widest" id="current-day-badge">Hoy: Miércoles 27 de Mayo</span>
@@ -275,9 +275,7 @@
 <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Sa</span>
 <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Do</span>
 </div>
-<div class="grid grid-cols-7 gap-1" id="calendar-days-container">
-<!-- Days will be dynamically rendered here -->
-</div>
+<div class="grid grid-cols-7 gap-1" id="calendar-days-container"><span class="h-9 w-9"></span><span class="h-9 w-9"></span><span class="h-9 w-9"></span><span class="h-9 w-9"></span><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="1">1</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="2">2</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="3">3</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="4">4</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="5">5</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="6">6</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="7">7</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="8">8</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="9">9</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="10">10</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="11">11</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="12">12</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="13">13</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="14">14</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="15">15</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="16">16</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="17">17</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="18">18</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="19">19</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="20">20</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="21">21</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="22">22</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="23">23</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="24">24</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="25">25</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="26">26</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn bg-primary text-white shadow-lg shadow-primary/30" data-day="27">27</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="28">28</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="29">29</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="30">30</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="31">31</button></div>
 </div>
 </div>
 </div></div>
@@ -439,17 +437,11 @@
 </main>
 </div>
 <!-- Footer Component from SCREEN_128 -->
-<footer class="shrink-0 bg-white/50 backdrop-blur-sm w-full py-6 border-t border-outline-variant/30 mt-auto" style="background-color: #005a52;">
-<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1280px] mx-auto w-full gap-4"><div class="flex flex-col items-center md:items-start">
+<footer class="shrink-0 bg-white/50 backdrop-blur-sm w-full py-6 border-t border-outline-variant/30 mt-auto" style="background-color: rgb(0, 103, 95);"><div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1280px] mx-auto w-full gap-4"><div class="flex flex-col items-center md:items-start">
 <div class="text-lg font-black text-white font-headline mb-1">Squat Gym</div>
-<p class="text-white/60 text-[9px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
+<p class="text-white/60 text-[9px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM</p>
 </div>
-<div class="flex space-x-8">
-<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Ayuda</a>
-<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Privacidad</a>
-<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Contacto</a>
-</div></div>
-</footer>
+<div class="flex space-x-8"><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Ayud a</a><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Privacida d</a><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Contact o</a></div></div></footer>
 <script>
     document.getElementById('sidebar-toggle').addEventListener('click', () => {
         const sidebar = document.getElementById('sidebar');
@@ -618,4 +610,7 @@
         updateUI();
     })();
     </script>
+
+
+
 </body></html>
