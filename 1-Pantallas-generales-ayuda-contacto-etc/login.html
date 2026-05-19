@@ -243,6 +243,11 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
               </label>
               <a class="text-sm font-bold text-primary hover:text-primary-dim transition-colors" href="#">¿Olvidaste tu contraseña?</a>
             </div>
+
+            <div id="mensaje-error" class="hidden p-3 rounded bg-error-container text-on-error-container text-xs font-bold text-center border border-error">
+              Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.
+            </div>
+
             <button class="w-full bg-primary text-on-primary font-bold py-5 rounded shadow-xl shadow-primary/20 hover:bg-primary-dim hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center space-x-3 group overflow-hidden relative" type="submit">
               <span class="relative z-10 font-headline tracking-widest uppercase text-sm">Iniciar Sesión</span>
               <span class="relative z-10 material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
@@ -293,6 +298,11 @@ function validateLogin(event) {
   event.preventDefault();
   const usuario = document.getElementById('usuario').value;
   const password = document.getElementById('password').value;
+  const errorDiv = document.getElementById('mensaje-error');
+
+  // Ocultamos el error al intentar nuevamente
+  errorDiv.classList.add('hidden');
+
   if (usuario === 'secretaria' && password === '12345678') {
     window.location.href = '../secretaria/dashboard.html';
     return false;
@@ -300,10 +310,19 @@ function validateLogin(event) {
     window.location.href = '../profesor/dashboard-profesor.html';
     return false;
   } else {
-    alert('Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.');
+    // Si las credenciales son incorrectas, mostramos el div rojo
+    errorDiv.classList.remove('hidden');
     return false;
   }
 }
+
+// MEJORA: Ocultar el mensaje de error si el usuario empieza a escribir de nuevo
+document.getElementById('usuario').addEventListener('input', function() {
+  document.getElementById('mensaje-error').classList.add('hidden');
+});
+document.getElementById('password').addEventListener('input', function() {
+  document.getElementById('mensaje-error').classList.add('hidden');
+});
 </script>
 
 </body>
