@@ -36,60 +36,84 @@
 ----------------------------------------------------------------------------------------------------------------
 arquitectura actual 
 
-6 PAGINA SQUADGYM
-│   ├── 1-Pantallas-generales-ayuda-contacto-etc
-│   │   ├── Ayuda.html
-│   │   ├── Contacto.html
-│   │   ├── login.html
-│   │   └── Privacidad.html
-│   ├── Administrador
-│   │   └── dashboard.html
-│   ├── arquitectura.txt
-│   ├── assets
-│   │   ├── css
-│   │   │   ├── algo.txt
-│   │   │   └── consistency.css
-│   │   └── img
-│   │       └── algo.txt
-│   ├── encargado
-│   │   ├── clases
-│   │   │   ├── monitoreo-cupos.html
-│   │   │   └── profesores.html
-│   │   ├── dashboard.html
-│   │   └── kiosko
-│   │       ├── 2-inventario.html
-│   │       ├── 3-reposicion.html
-│   │       ├── 4-auditoria.html
-│   │       └── 5-novedades.html
-│   ├── index.html
-│   ├── pedirle esto por pagina.txt
-│   ├── profesor
-│   │   ├── clases
-│   │   │   ├── Alumnos-inscriptos.html
-│   │   │   ├── Catalogo-maestro-de-ejercicios.html
-│   │   │   ├── contactos.html
-│   │   │   ├── Cronograma-semanal.html
-│   │   │   ├── Editor-de-planes.html
-│   │   │   ├── Mi-perfil.html
-│   │   │   ├── Planificacion-de-clase-crear.html
-│   │   │   ├── Planificacion-de-clase-modificar.html
-│   │   │   ├── politicas-privacidad.html
-│   │   │   ├── preguntas-frecuentes.html
-│   │   │   ├── registro-de-asistencia.html
-│   │   │   ├── Resumen-de-planificacion-de-clase.html
-│   │   │   └── resumen-planificacion-de-clase.html
-│   │   └── dashboard-profesor.html
-│   ├── README.md
-│   └── secretaria
-│       ├── clases
-│       │   ├── asistencia.html
-│       │   └── cronograma.html
-│       ├── dashboard.html
-│       └── kiosko
-│           ├── 1-apertura.html
-│           ├── 3-venta.html
-│           ├── 4-stock.html
-│           └── 5-novedades.html
+SQUADGYM/
+│
+├── 🌐 index.html
+├── 📘 README.md
+├── 🏗 arquitectura.txt
+├── 📝 pedirle esto por pagina.txt
+│
+├── 🎨 assets/
+│   │
+│   ├── css/
+│   │   ├── consistency.css
+│   │   └── algo.txt
+│   │
+│   └── img/
+│       └── algo.txt
+│
+├── 🔐 1-Pantallas-generales-ayuda-contacto-etc/
+│   ├── login.html
+│   ├── Ayuda.html
+│   ├── Contacto.html
+│   └── Privacidad.html
+│
+├── 👨‍💼 Administrador/
+│   └── dashboard.html
+│
+├── 👨‍🏫 Profesor/
+│   │
+│   ├── dashboard-profesor.html
+│   │
+│   └── clases/
+│       ├── Alumnos-inscriptos.html
+│       ├── Catalogo-maestro-de-ejercicios.html
+│       ├── contactos.html
+│       ├── Cronograma-semanal.html
+│       ├── Editor-de-planes.html
+│       ├── Mi-perfil.html
+│       ├── Planificacion-de-clase-crear.html
+│       ├── Planificacion-de-clase-modificar.html
+│       ├── Resumen-de-planificacion-de-clase.html
+│       ├── resumen-planificacion-de-clase.html
+│       ├── registro-de-asistencia.html
+│       ├── preguntas-frecuentes.html
+│       └── politicas-privacidad.html
+│
+├── 🧑‍💼 Secretaria/
+│   │
+│   ├── dashboard.html
+│   │
+│   ├── clases/
+│   │   ├── asistencia.html
+│   │   └── cronograma.html
+│   │
+│   └── kiosko/
+│       ├── 1-apertura.html
+│       ├── 3-venta.html
+│       ├── 4-stock.html
+│       └── 5-novedades.html
+│
+├── 🧑‍🔧 Encargado/
+│   │
+│   ├── dashboard.html
+│   │
+│   ├── clases/
+│   │   ├── monitoreo-cupos.html
+│   │   └── profesores.html
+│   │
+│   └── kiosko/
+│       ├── 2-inventario.html
+│       ├── 3-reposicion.html
+│       ├── 4-auditoria.html
+│       └── 5-novedades.html
+│
+└── ✅ Organización General
+    ├── assets/        → estilos globales e imágenes
+    ├── dashboards/    → paneles según rol
+    ├── clases/        → gestión académica/gimnasio
+    ├── kiosko/        → ventas, stock y auditoría
+    └── generales/     → login, ayuda, privacidad y contacto
 
 
 

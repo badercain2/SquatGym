@@ -1,0 +1,13 @@
+2. Netlify (vía CLI)
+
+Netlify es un gigante del hosting de sitios estáticos y ofrece una experiencia de terminal de primer nivel.
+
+    Cómo funciona: Puedes instalar netlify-cli en tu entorno local.
+
+    Despliegue: Ejecutando netlify deploy en el directorio de tu proyecto, los archivos se suben a producción.
+
+    Ventaja: Si el proyecto crece en complejidad, puedes aprovechar sus configuraciones avanzadas, redirecciones o funciones de servidor.
+
+Integración Directa con Git
+
+Si tu proyecto ya está versionado, estas plataformas te permiten automatizar el despliegue cada vez que haces un push al repositorio.
