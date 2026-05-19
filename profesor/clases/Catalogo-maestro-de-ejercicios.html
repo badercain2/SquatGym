@@ -398,11 +398,17 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
           <table class="w-full text-left border-collapse" id="exercise-table">
             <thead class="sticky top-0 bg-white/95 backdrop-blur-md z-10 shadow-sm">
               <tr>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 border-primary/10">Nombre del Ejercicio</th>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 border-primary/10 text-center">Duración (Min)</th>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 text-center border-primary/10">Series</th>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 text-center border-primary/10">Intensidad</th>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-lexend border-b-2 text-center border-primary/10">Acciones</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 sortable-header cursor-pointer" data-sort="name">
+                    <div class="flex items-center gap-1">Nombre <span class="material-symbols-outlined text-[16px] sort-icon">unfold_more</span></div>
+                </th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 text-center sortable-header cursor-pointer" data-sort="duration">
+                    <div class="flex items-center justify-center gap-1">Duración <span class="material-symbols-outlined text-[16px] sort-icon">unfold_more</span></div>
+                </th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 text-center sortable-header cursor-pointer" data-sort="series">
+                    <div class="flex items-center justify-center gap-1">Series <span class="material-symbols-outlined text-[16px] sort-icon">unfold_more</span></div>
+                </th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 text-center border-primary/10">Intensidad</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 text-center border-primary/10">Acciones</th>
               </tr>
             </thead>
             <tbody class="divide-y-2 divide-primary/10" id="table-body"></tbody>
@@ -588,6 +594,8 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         ];
 
         let filteredExercises = [...exercises];
+        let currentSortColumn = null;
+        let currentSortDirection = null;
         let currentPage = 1;
         const itemsPerPage = 6;
         let currentEditingExercise = null;
@@ -633,10 +641,18 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
                 const tr = document.createElement('tr');
                 tr.className = 'hover:bg-primary/5 transition-colors group/row';
                 tr.innerHTML = `
-                    <td class="px-6 py-5"><span class="font-bold text-on-surface text-sm font-lexend">${ex.name}</span></td>
-                    <td class="px-6 py-5 text-center"><span class="font-black text-on-surface font-lexend text-base">${ex.duration} <span class="text-[10px] text-[#747778] font-bold uppercase tracking-wider ml-1">MIN</span></span></td>
-                    <td class="px-6 py-5 text-center"><span class="font-black text-on-surface font-lexend text-base">${ex.series}</span></td>
-                    <td class="px-6 py-5 text-center"><span class="text-[10px] font-black uppercase tracking-wider ${getIntensityColor(ex.intensity)}">${ex.intensity}</span></td>
+                    <td class="px-6 py-5">
+                        <span class="font-bold text-on-surface text-sm font-lexend">${ex.name}</span>
+                    </td>
+                    <td class="px-6 py-5 text-center">
+                        <span class="font-black text-on-surface font-lexend text-base tabular-nums">${ex.duration}</span>
+                    </td>
+                    <td class="px-6 py-5 text-center">
+                        <span class="font-black text-on-surface font-lexend text-base tabular-nums">${ex.series}</span>
+                    </td>
+                    <td class="px-6 py-5 text-center">
+                        <span class="text-[10px] font-black uppercase tracking-wider ${getIntensityColor(ex.intensity)}">${ex.intensity}</span>
+                    </td>
                     <td class="px-6 py-5">
                         <div class="flex items-center justify-center gap-4">
                             <button class="w-9 h-9 flex items-center justify-center bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg border border-primary/20 transition-all duration-300 btn-edit" data-name="${ex.name.replace(/"/g, '&quot;')}">
