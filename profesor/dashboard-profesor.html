@@ -3,8 +3,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Squat Gym - Profesor Dashboard</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
     tailwind.config = {
         darkMode: "class",
@@ -82,17 +82,16 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         let classData = [
-                { id: 4, name: "Body Pump", inscritos: 21, dias: "Lun, Mié, Vie", turnos: "3 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfqZY1mt4K1uqG6nDwsW81eFflsNYjhSivQusMa5Cxb9utoommuKmiHslEB97Ol2mx93X41Zbs-De4M1rA0TKhvopOuaxk6q6leDfOReY-LFUB5Lsn2MkO706X40efymTFqzhwRnHdCeYvZMUZaBlcELOC0INvYF6qrma2Z2SufYH_edUchM7FHz8qphUKulP1zDijKwJ-TIe--DsnzsNYyXSp5o7_3cv3ggol6hiHvV7JxhfUm2oGdj1bGJUEpYABI4J2EjpQnMPu" },
-                { id: 6, name: "Boxeo", inscritos: 18, dias: "Mar, Jue", turnos: "2 turnos", img: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" },
-                { id: 2, name: "Cardio", inscritos: 22, dias: "Lun a Vie", turnos: "4 turnos", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&auto=format&fit=crop&q=80" },
-                { id: 1, name: "Crossfit Pro", inscritos: 18, dias: "Sáb, Dom", turnos: "1 turno", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7-ci3deHTF4r36w5yBzJwyAIniJzbk8wYBl7gIFPFwnkdwbcY2op-ERJk_DzJbVCmd2_8ALOj4un3SdTaabuToI8eKswGG1wq1wpEyb9BuXy2u1l90XZJWYylDKZNv4HtFyxFkiroKmauM4lGdxc0cVhm4Gah3hjqf7RQMaovfkiI7gmnZy3ArY3aKzY1RX-S-UNs553e4lBoQFhJ_86zqPHuUkn0oZA9OYOgBQCwdTu2-K_Q5LxsOdhU4vfOlShGWBQfYBeLaBiF" },
-                { id: 7, name: "Functional Training", inscritos: 15, dias: "Lun, Mié", turnos: "2 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCk23j36pcBnP7acxjsNrJ0fQbVU2k--WBRPhyPVXLVboypsoKWZf9W-Tw5astXiyuva24hCCMtwowsVsOEjARYg5_QmEDPKLsJMhVafDehzOBfvSrirbNGsj8PxEvTGThvwiLMF-sJeSffla0dIfVrse9Y0caaVGHLXpvoSqz-ZPu3EfGMRxnPJbHbXvOxE9CEsWzzz00r7cxgkXGY3lG-vO9ksxLE_D03tYAn9yUchvCS5qWEjv2azcqErx6ZoMmuTyjljR96tsk" },
-                { id: 5, name: "Pilates", inscritos: 12, dias: "Mar, Jue", turnos: "3 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDb5xvSNGNLLKjyCw2glLJSwHpJFo5yhToJob3zFIyRuHpy1U_NViDZyC-4HFuiNDhhr8VUHDOVZluvpzEGRBkrZIAprovz9FX33lAoEOE-raCQcF-9pS_aHI_9cWfJy4TfZ8FAOsK0qSmA9IbomoOUwu79K4N0-kMZMJqRVki8CNZwXkBsIthRMLqRHF-98veZF-l6-I20lorAFtndEjg4RSJjwdzqMLTUaqUS4R8kSdb9JTj_10y3JBnYqd2d9asCy-aS2fEJ2YI" },
-                { id: 8, name: "Spinning", inscritos: 25, dias: "Lun a Vie", turnos: "5 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDwqoUN5zxBmza3mjKHpS9Rk6RNwVDtkQEY9fzypwiEOmauJcIHUv9al5SRxJeA0V5hMQOvUNMsd1b0vxR_Ylm7oJ4IQaNGCRIwFISo34Vm6hnJ9VlvV6huO0aOm9JqB909iFWyd-IPydrJYdlephJkmVVg5D8LGMncNRueYRRnzjEJNMcfu66Oj1LFpwbwHYaxeCVO-x2t_iMnheB0XvPx20-jdxfSOGnkUtPHYjV-F1eNCPr0kVMyW6m4uAF91OQ84Cp-KJguKFs" },
-                { id: 3, name: "Zumba Gold", inscritos: 20, dias: "Sáb, Dom", turnos: "1 turno", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQGnQN9J1qhrGxbCeRHLgLw1eWkpKVpkpC29oe3GR9J7uuleNjccdAx8ScL9IJro5Kd5d6rvQWQpgxjZ-c3ah70B8D0PxRp5Kqg3p8l3IrVLgFdgDGIBfVQ0czTfHxEW1XuttP0f6iQgWLqbmJAf0RdM4JkQGpMeAuMu-bQ6GGny3UGtvxEuNxTVNMOmcC_1cr4A2Pprykr_Gwms4tkeEFlPrpW2ny9fEtleGiQ8QLaDEoy0_LK93kP0ZT8gaF6UEZrYeq0lputds" }
-            ];
+            { id: 4, name: "Body Pump", inscritos: 21, capacidad: 30, dias: "Lun, Mié, Vie", turnos: "3 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfqZY1mt4K1uqG6nDwsW81eFflsNYjhSivQusMa5Cxb9utoommuKmiHslEB97Ol2mx93X41Zbs-De4M1rA0TKhvopOuaxk6q6leDfOReY-LFUB5Lsn2MkO706X40efymTFqzhwRnHdCeYvZMUZaBlcELOC0INvYF6qrma2Z2SufYH_edUchM7FHz8qphUKulP1zDijKwJ-TIe--DsnzsNYyXSp5o7_3cv3ggol6hiHvV7JxhfUm2oGdj1bGJUEpYABI4J2EjpQnMPu" },
+            { id: 6, name: "Boxeo", inscritos: 18, capacidad: 35, dias: "Mar, Jue", turnos: "2 turnos", img: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" },
+            { id: 2, name: "Cardio", inscritos: 22, capacidad: 40, dias: "Lun a Vie", turnos: "4 turnos", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&auto=format&fit=crop&q=80" },
+            { id: 1, name: "Crossfit Pro", inscritos: 18, capacidad: 30, dias: "Sáb, Dom", turnos: "1 turno", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7-ci3deHTF4r36w5yBzJwyAIniJzbk8wYBl7gIFPFwnkdwbcY2op-ERJk_DzJbVCmd2_8ALOj4un3SdTaabuToI8eKswGG1wq1wpEyb9BuXy2u1l90XZJWYylDKZNv4HtFyxFkiroKmauM4lGdxc0cVhm4Gah3hjqf7RQMaovfkiI7gmnZy3ArY3aKzY1RX-S-UNs553e4lBoQFhJ_86zqPHuUkn0oZA9OYOgBQCwdTu2-K_Q5LxsOdhU4vfOlShGWBQfYBeLaBiF" },
+            { id: 7, name: "Functional Training", inscritos: 15, capacidad: 35, dias: "Lun, Mié", turnos: "2 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCk23j36pcBnP7acxjsNrJ0fQbVU2k--WBRPhyPVXLVboypsoKWZf9W-Tw5astXiyuva24hCCMtwowsVsOEjARYg5_QmEDPKLsJMhVafDehzOBfvSrirbNGsj8PxEvTGThvwiLMF-sJeSffla0dIfVrse9Y0caaVGHLXpvoSqz-ZPu3EfGMRxnPJbHbXvOxE9CEsWzzz00r7cxgkXGY3lG-vO9ksxLE_D03tYAn9yUchvCS5qWEjv2azcqErx6ZoMmuTyjljR96tsk" },
+            { id: 5, name: "Pilates", inscritos: 12, capacidad: 32, dias: "Mar, Jue", turnos: "3 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDb5xvSNGNLLKjyCw2glLJSwHpJFo5yhToJob3zFIyRuHpy1U_NViDZyC-4HFuiNDhhr8VUHDOVZluvpzEGRBkrZIAprovz9FX33lAoEOE-raCQcF-9pS_aHI_9cWfJy4TfZ8FAOsK0qSmA9IbomoOUwu79K4N0-kMZMJqRVki8CNZwXkBsIthRMLqRHF-98veZF-l6-I20lorAFtndEjg4RSJjwdzqMLTUaqUS4R8kSdb9JTj_10y3JBnYqd2d9asCy-aS2fEJ2YI" },
+            { id: 8, name: "Spinning", inscritos: 25, capacidad: 35, dias: "Lun a Vie", turnos: "5 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDwqoUN5zxBmza3mjKHpS9Rk6RNwVDtkQEY9fzypwiEOmauJcIHUv9al5SRxJeA0V5hMQOvUNMsd1b0vxR_Ylm7oJ4IQaNGCRIwFISo34Vm6hnJ9VlvV6huO0aOm9JqB909iFWyd-IPydrJYdlephJkmVVg5D8LGMncNRueYRRnzjEJNMcfu66Oj1LFpwbwHYaxeCVO-x2t_iMnheB0XvPx20-jdxfSOGnkUtPHYjV-F1eNCPr0kVMyW6m4uAF91OQ84Cp-KJguKFs" },
+            { id: 3, name: "Zumba Gold", inscritos: 20, capacidad: 40, dias: "Sáb, Dom", turnos: "1 turno", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQGnQN9J1qhrGxbCeRHLgLw1eWkpKVpkpC29oe3GR9J7uuleNjccdAx8ScL9IJro5Kd5d6rvQWQpgxjZ-c3ah70B8D0PxRp5Kqg3p8l3IrVLgFdgDGIBfVQ0czTfHxEW1XuttP0f6iQgWLqbmJAf0RdM4JkQGpMeAuMu-bQ6GGny3UGtvxEuNxTVNMOmcC_1cr4A2Pprykr_Gwms4tkeEFlPrpW2ny9fEtleGiQ8QLaDEoy0_LK93kP0ZT8gaF6UEZrYeq0lputds" }
+        ];
 
-            // Ensure data is sorted alphabetically by name
             classData.sort((a, b) => a.name.localeCompare(b.name));
 
             const grid = document.getElementById('class-grid');
@@ -114,33 +113,56 @@
 
                 pageItems.forEach(cls => {
                     const card = document.createElement('div');
-                    card.className = "bg-white rounded-2xl overflow-hidden border border-primary/10 flex flex-col card-premium";
+                    // Mejorado: Transición suave y bordes minimalistas limpios
+                    card.className = "bg-white rounded-2xl overflow-hidden border border-slate-100 flex flex-col card-premium hover:-translate-y-1 transition-all duration-300";
                     card.setAttribute('data-class-name', cls.name);
+
+                    // Calculamos el porcentaje de ocupación
+                    const porcentajeOcupacion = Math.round((cls.inscritos / cls.capacidad) * 100);
+
+                    // Modificación de plantilla: Reestructuración de espacios, badge integrado en imagen y botón secundario legible.
                     card.innerHTML = `
                         <div class="h-32 relative overflow-hidden shrink-0">
-                            <img alt="${cls.name}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" src="${cls.img}"/>
+                            <img alt="${cls.name}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 brightness-[0.95]" src="${cls.img}"/>
                         </div>
-                        <div class="p-4 flex-grow flex flex-col">
-                            <h4 class="font-headline text-lg font-bold leading-tight mb-2">${cls.name}</h4>
-                            <div class="flex items-center gap-2 mb-3">
-                                <div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary/5 border border-primary/10 text-primary">
-                                    <span class="material-symbols-outlined text-xs">group</span>
-                                    <span class="text-[8px] font-extrabold uppercase tracking-wider">${cls.inscritos} Inscritos</span>
+                        
+                        <div class="p-5 flex-grow flex flex-col justify-between bg-gradient-to-b from-white to-slate-50/80">
+                            <div>
+                                <h4 class="font-headline text-xl lg:text-2xl font-black text-on-surface leading-tight mb-3">${cls.name}</h4>
+                                
+                                <div class="mb-5">
+                                    <div class="flex justify-between items-end mb-1.5">
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
+                                            <span class="material-symbols-outlined text-[14px]">group</span> Ocupación
+                                        </span>
+                                        <span class="text-xs font-black text-primary">${cls.inscritos} <span class="text-slate-400 font-medium text-[10px]">/ ${cls.capacidad}</span></span>
+                                    </div>
+                                    <div class="w-full bg-slate-200/60 rounded-full h-1.5 overflow-hidden shadow-inner">
+                                        <div class="bg-primary h-1.5 rounded-full transition-all duration-1000 ease-out relative" style="width: ${porcentajeOcupacion}%">
+                                            <div class="absolute top-0 right-0 bottom-0 w-4 bg-white/30 blur-[2px]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-3 mb-5 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+                                    <div class="flex items-center gap-3 text-on-surface-variant text-xs font-semibold">
+                                        <div class="w-7 h-7 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
+                                            <span class="material-symbols-outlined text-[15px] text-primary">calendar_month</span>
+                                        </div>
+                                        <span><span class="text-slate-400 font-medium">Días:</span> <span class="text-on-surface font-bold text-sm">${cls.dias}</span></span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-on-surface-variant text-xs font-semibold">
+                                        <div class="w-7 h-7 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
+                                            <span class="material-symbols-outlined text-[15px] text-primary">schedule</span>
+                                        </div>
+                                        <span><span class="text-slate-400 font-medium">Turnos:</span> <span class="text-on-surface font-bold text-sm">${cls.turnos}</span></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col gap-2 mb-3 py-1">
-                                <div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
-                                    <span class="material-symbols-outlined text-base text-primary">calendar_month</span>
-                                    <span><strong class="text-on-surface text-sm">Días:</strong> ${cls.dias}</span>
-                                </div>
-                                <div class="flex items-center gap-2 text-on-surface-variant text-sm font-medium">
-                                    <span class="material-symbols-outlined text-base text-primary">schedule</span>
-                                    <span><strong class="text-on-surface text-sm">Turnos:</strong> ${cls.turnos}</span>
-                                </div>
-                            </div>
-                            <div class="mt-auto flex justify-center">
-                                <a class="w-full group/btn flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-primary text-white font-bold text-[8px] uppercase tracking-widest transition-all duration-300 hover:bg-primary-dim hover:shadow-lg hover:shadow-primary/25 active:scale-[0.97]" href="#" onclick="window.location.href='clases/Alumnos-inscriptos.html'">
-                                    <span class="material-symbols-outlined text-sm">person_search</span>
+                            
+                            <div class="mt-auto">
+                                <a class="w-full group/btn flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-primary/20 bg-white text-primary font-extrabold text-xs uppercase tracking-wider transition-all duration-200 hover:bg-primary hover:text-white hover:border-primary hover:shadow-md active:scale-[0.97]" href="#" onclick="window.location.href='clases/Alumnos-inscriptos.html'">
+                                    <span class="material-symbols-outlined text-sm transition-transform group-hover/btn:translate-x-0.5">person_search</span>
                                     <span>Detalles Alumnos</span>
                                 </a>
                             </div>
@@ -258,8 +280,8 @@ h1,h2,h3,h4,.headline{
 
 .card-premium{
   box-shadow:
-    0 10px 30px -5px rgba(0,0,0,.04),
-    0 4px 12px -4px rgba(0,0,0,.02);
+    0 10px 30px -5px rgba(0,0,0,.03),
+    0 4px 12px -4px rgba(0,0,0,.01);
   transition:all .3s cubic-bezier(.4,0,.2,1);
 }
 
@@ -354,7 +376,7 @@ h1,h2,h3,h4,.headline{
 .top-section{
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
+  align-items:center;
   gap:16px;
   margin-bottom:12px;
 }
@@ -438,8 +460,6 @@ h1,h2,h3,h4,.headline{
     transform:translateY(0);
   }
 }
-
-/* ===== Dashboard-specific styles ===== */
 
 .dash-card:hover {
     transform: translateY(-4px);
@@ -601,6 +621,7 @@ h1,h2,h3,h4,.headline{
   .top-section {
     flex-direction: column;
     gap: 10px;
+    align-items: flex-start;
   }
 
   .page-title {
@@ -733,7 +754,7 @@ h1,h2,h3,h4,.headline{
     font-size: 7px !important;
   }
 }
-    </style>
+</style>
 </head>
 <body class="bg-mesh antialiased selection:bg-primary-container selection:text-on-primary-container">
 
@@ -904,7 +925,6 @@ h1,h2,h3,h4,.headline{
 
     <div class="content-wrapper">
 
-      <!-- Top section: Welcome + next class info -->
       <div class="top-section">
 
         <div>
@@ -930,20 +950,19 @@ h1,h2,h3,h4,.headline{
               <span class="material-symbols-outlined text-primary text-base">group</span> 22 Inscritos
             </p>
           </div>
-          <button class="ml-2 flex items-center justify-center gap-1.5 py-2 px-4 rounded-2xl bg-primary text-white transition-all duration-300 hover:bg-primary-dim hover:shadow-lg hover:shadow-primary/25 active:scale-[0.97]" title="Registrar Asistencia" onclick="window.location.href='clases/registro-de-asistencia.html'">
-            <span class="material-symbols-outlined text-base">how_to_reg</span>
-            <span class="text-[8px] font-bold uppercase tracking-widest">Registrar Asistencia</span>
+          <button class="ml-2 flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-primary text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-primary-dim hover:shadow-xl hover:shadow-primary/20 active:scale-[0.97]" title="Registrar Asistencia" onclick="window.location.href='clases/registro-de-asistencia.html'">
+            <span class="material-symbols-outlined text-sm">how_to_reg</span>
+            <span>Registrar Asistencia</span>
           </button>
         </div>
 
       </div>
 
-      <!-- Class grid section -->
       <div class="table-card card-premium">
 
         <div class="flex flex-col h-full p-4 md:p-6 overflow-hidden">
 
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shrink-0 mb-3">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shrink-0 mb-4">
             <h2 class="text-xl font-bold tracking-tight headline text-on-surface">Clases Asignadas</h2>
             <div class="relative w-full sm:w-64">
               <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
@@ -951,12 +970,9 @@ h1,h2,h3,h4,.headline{
             </div>
           </div>
 
-          <!-- Grid managed by script -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 overflow-y-auto flex-grow pb-2 custom-scrollbar" id="class-grid">
-            <!-- Script populates this -->
-          </div>
+            </div>
 
-          <!-- Pagination -->
           <div class="shrink-0 pt-3 mt-auto border-t border-primary/10 flex items-center justify-between">
             <span class="results-summary text-[9px] font-black text-slate-400 uppercase tracking-widest headline">Mostrando <span class="text-primary">1-4</span> de 8 clases</span>
             <div class="flex items-center gap-2" id="pagination-numbers">
