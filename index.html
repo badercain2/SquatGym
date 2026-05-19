@@ -4,8 +4,8 @@
 <title>SQUAT GYM | Landing Page</title>
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
 tailwind.config = {
@@ -181,7 +181,7 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
 <header class="header shrink-0">
   <div class="h-full max-w-[1880px] mx-auto px-8 flex items-center justify-between">
     <a href="index.html" class="text-white font-black tracking-tighter text-3xl headline no-underline">Squat Gym</a>
-    <a href="1-Pantallas-generales-ayuda-contacto-etc/login.html" class="text-white/80 hover:text-white text-[11px] font-bold transition-colors no-underline">Acceder</a>
+    <a href="1-Pantallas-generales-ayuda-contacto-etc/login.html" class="text-white/80 hover:text-white text-[12px] font-bold transition-colors no-underline bg-white/10 px-4 py-2 rounded-md hover:bg-white/20">Acceder al Sistema</a>
   </div>
 </header>
 
@@ -190,7 +190,6 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
   <main class="main-content">
     <div class="content-wrapper">
 
-      <!-- Hero Section -->
       <section class="relative h-[360px] flex items-center overflow-hidden bg-surface shrink-0">
         <div class="absolute inset-0 z-0">
           <img alt="Equipamiento de Gimnasio Profesional" class="w-full h-full object-cover brightness-[0.4]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9_8XAq08yoLDPSK1XrKDXuhuenLgY5tNtEauLSFKMh5yhZ0yFSQiNUeosA1mRXynZqr3agV2omu4Qsac3KQ3ESprifnYVVRCBpdsH2r0ZPlwI7mr6lihIBNB1J7AYSjGMYh5ffTF8BknogDv1RAaT1pk0ldQkKg6l4Jv5ilQZgLr25k0bcD87DWAqlVVMMTxBp3vvubGLta6y-edeOLYSCCLn-wouUh0uZKcLzw2vzcfi_HUKZkQJ2th7CxBw2nc5XLxl4tMSpmRg">
@@ -206,8 +205,8 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
               <span class="font-bold text-primary">¿Por qué Squat Gym?</span> Porque elevamos tu potencial físico en un entorno diseñado para la precisión tecnológica y entrenamiento de élite.
             </p>
             <div class="flex flex-col md:flex-row gap-4">
-              <button onclick="window.location.href='1-Pantallas-generales-ayuda-contacto-etc/login.html'" class="bg-primary text-on-primary px-8 py-3 rounded-md font-bold text-sm hover:bg-primary-dim transition-all active:scale-95 shadow-lg">
-                Acceder al Portal
+              <button onclick="window.location.href='#ofrecemos'" class="bg-primary text-on-primary px-8 py-3 rounded-md font-bold text-sm hover:bg-primary-dim transition-all active:scale-95 shadow-lg">
+                Conocé las instalaciones
               </button>
             </div>
           </div>
@@ -228,79 +227,86 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         </div>
       </section>
 
-      <!-- Value Proposition & Services Grid -->
-      <section class="flex-grow px-4 md:px-8 lg:px-12 py-4 md:py-6 lg:py-8 bg-surface-container-low/30">
+      <section id="ofrecemos" class="flex-grow px-4 md:px-8 lg:px-12 py-4 md:py-6 lg:py-8 bg-surface-container-low/30">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 h-full">
-          <div class="col-span-1 flex flex-col justify-center">
+          
+          <div class="col-span-1 flex flex-col justify-center h-full">
             <div class="bg-white p-4 md:p-6 rounded-xl kinetic-shadow h-full flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 cursor-default">
-              <div class="mb-4">
+              <div class="mb-6 h-[50px]">
                 <h2 class="text-lg md:text-xl font-black text-primary mb-1">Evolución Dirigida</h2>
-                <p class="text-[11px] text-on-surface-variant leading-tight">Nuestra metodología integra los pilares del alto rendimiento.</p>
+                <p class="text-[12px] font-medium text-gray-600 leading-tight">Nuestra metodología integra los pilares del alto rendimiento.</p>
               </div>
-              <div class="space-y-4 flex-grow flex flex-col justify-around">
-                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default">
-                  <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-full h-fit">architecture</span>
-                  <div><h4 class="font-bold text-sm">Precisión Técnica</h4><p class="text-on-surface-variant text-[11px] leading-tight">Biomecánica avanzada para resultados sin lesiones.</p></div>
+              <div class="space-y-6 flex-grow flex flex-col justify-around">
+                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default items-center">
+                  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 text-[28px] rounded-full h-fit flex-shrink-0">architecture</span>
+                  <div><h4 class="font-bold text-sm">Precisión Técnica</h4><p class="text-gray-600 font-medium text-[12px] leading-tight mt-0.5">Biomecánica avanzada para resultados sin lesiones.</p></div>
                 </div>
-                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default">
-                  <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-full h-fit">groups</span>
-                  <div><h4 class="font-bold text-sm">Comunidad de Élite</h4><p class="text-on-surface-variant text-[11px] leading-tight">Entrena rodeado de ambición y disciplina real.</p></div>
+                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default items-center">
+                  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 text-[28px] rounded-full h-fit flex-shrink-0">groups</span>
+                  <div><h4 class="font-bold text-sm">Comunidad de Élite</h4><p class="text-gray-600 font-medium text-[12px] leading-tight mt-0.5">Entrena rodeado de ambición y disciplina real.</p></div>
                 </div>
-                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default">
-                  <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-full h-fit">bolt</span>
-                  <div><h4 class="font-bold text-sm">Ambiente Energizado</h4><p class="text-on-surface-variant text-[11px] leading-tight">Acústica y diseño para máximo foco cognitivo.</p></div>
+                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default items-center">
+                  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 text-[28px] rounded-full h-fit flex-shrink-0">bolt</span>
+                  <div><h4 class="font-bold text-sm">Ambiente Energizado</h4><p class="text-gray-600 font-medium text-[12px] leading-tight mt-0.5">Acústica y diseño para máximo foco cognitivo.</p></div>
                 </div>
-                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default">
-                  <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-full h-fit">query_stats</span>
-                  <div><h4 class="font-bold text-sm">Evaluación de Progreso</h4><p class="text-on-surface-variant text-[11px] leading-tight">Testeos periódicos de rendimiento para ajustar tu plan.</p></div>
+                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default items-center">
+                  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 text-[28px] rounded-full h-fit flex-shrink-0">query_stats</span>
+                  <div><h4 class="font-bold text-sm">Evaluación de Progreso</h4><p class="text-gray-600 font-medium text-[12px] leading-tight mt-0.5">Testeos periódicos de rendimiento para ajustar tu plan.</p></div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-span-1 flex flex-col justify-center">
+
+          <div class="col-span-1 flex flex-col justify-center h-full">
             <div class="bg-white p-4 md:p-6 rounded-xl kinetic-shadow h-full flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 cursor-default">
-              <h3 class="text-lg md:text-xl font-black text-primary mb-5">Lo que ofrecemos</h3>
-              <div class="space-y-5 flex-grow flex flex-col justify-around">
-                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default">
-                  <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-full h-fit">fitness_center</span>
-                  <div><h4 class="font-bold text-sm">Variedad de Clases</h4><p class="text-on-surface-variant text-[11px] leading-tight">HIIT, Powerlifting y Yoga restaurativo adaptado a cada nivel.</p></div>
+              <div class="mb-6 h-[50px] flex flex-col justify-end pb-1">
+                <h3 class="text-lg md:text-xl font-black text-primary">Lo que ofrecemos</h3>
+              </div>
+              <div class="space-y-6 flex-grow flex flex-col justify-around">
+                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default items-center">
+                  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 text-[28px] rounded-full h-fit flex-shrink-0">fitness_center</span>
+                  <div><h4 class="font-bold text-sm">Variedad de Clases</h4><p class="text-gray-600 font-medium text-[12px] leading-tight mt-0.5">HIIT, Powerlifting y Yoga restaurativo adaptado a cada nivel.</p></div>
                 </div>
-                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default">
-                  <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-full h-fit">workspace_premium</span>
-                  <div><h4 class="font-bold text-sm">Profesorado Elite</h4><p class="text-on-surface-variant text-[11px] leading-tight">Sesiones dirigidas por profesionales enfocados en técnica perfecta.</p></div>
+                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default items-center">
+                  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 text-[28px] rounded-full h-fit flex-shrink-0">workspace_premium</span>
+                  <div><h4 class="font-bold text-sm">Profesorado Elite</h4><p class="text-gray-600 font-medium text-[12px] leading-tight mt-0.5">Sesiones dirigidas por profesionales enfocados en técnica.</p></div>
                 </div>
-                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default">
-                  <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-full h-fit">monitoring</span>
-                  <div><h4 class="font-bold text-sm">Seguimiento Digital</h4><p class="text-on-surface-variant text-[11px] leading-tight">Monitorea tu progreso real a través de nuestro portal exclusivo.</p></div>
+                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default items-center">
+                  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 text-[28px] rounded-full h-fit flex-shrink-0">monitoring</span>
+                  <div><h4 class="font-bold text-sm">Seguimiento Digital</h4><p class="text-gray-600 font-medium text-[12px] leading-tight mt-0.5">Monitorea tu progreso real a través de nuestro portal exclusivo.</p></div>
                 </div>
-                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default">
-                  <span class="material-symbols-outlined text-primary bg-primary/10 p-2.5 rounded-full h-fit">nutrition</span>
-                  <div><h4 class="font-bold text-sm">Planes Nutricionales</h4><p class="text-on-surface-variant text-[11px] leading-tight">Asesoramiento experto para potenciar tus resultados desde adentro.</p></div>
+                <div class="flex gap-4 transition-all duration-200 hover:scale-[1.02] hover:bg-primary/[0.02] rounded-lg p-1 -m-1 cursor-default items-center">
+                  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 text-[28px] rounded-full h-fit flex-shrink-0">nutrition</span>
+                  <div><h4 class="font-bold text-sm">Planes Nutricionales</h4><p class="text-gray-600 font-medium text-[12px] leading-tight mt-0.5">Asesoramiento experto para potenciar tus resultados.</p></div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-span-1 flex flex-col justify-center">
+
+          <div class="col-span-1 flex flex-col justify-center h-full">
             <div class="bg-white/50 border border-outline-variant/10 rounded-xl p-6 h-full flex flex-col">
-              <h3 class="text-base md:text-lg font-extrabold mb-6 tracking-tight flex items-center gap-2">
-                <span class="material-symbols-outlined text-primary text-xl">schedule</span> HORARIOS OPERATIVOS
-              </h3>
-              <div class="space-y-4 flex-grow">
-                <div class="flex justify-between items-center p-3 bg-white rounded-lg border-l-4 border-primary shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md cursor-default">
-                  <div><p class="text-[9px] font-bold text-primary tracking-widest uppercase">Lunes a Viernes</p><p class="text-lg font-headline font-bold">05:00 — 23:00</p></div>
+              <div class="mb-6 h-[50px] flex items-end pb-1">
+                <h3 class="text-base md:text-lg font-extrabold tracking-tight flex items-center gap-2 m-0">
+                  <span class="material-symbols-outlined text-primary text-[28px]">schedule</span> HORARIOS OPERATIVOS
+                </h3>
+              </div>
+              <div class="space-y-6 flex-grow">
+                <div class="flex justify-between items-center p-4 bg-white rounded-lg border-l-4 border-primary shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md cursor-default">
+                  <div><p class="text-[10px] font-bold text-primary tracking-widest uppercase mb-1">Lunes a Viernes</p><p class="text-xl font-headline font-bold">05:00 — 23:00</p></div>
                 </div>
-                <div class="flex justify-between items-center p-3 bg-white rounded-lg border-l-4 border-teal-500 shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md cursor-default">
-                  <div><p class="text-[9px] font-bold text-teal-500 tracking-widest uppercase">Sábados</p><p class="text-lg font-headline font-bold">08:00 — 20:00</p></div>
+                <div class="flex justify-between items-center p-4 bg-white rounded-lg border-l-4 border-teal-500 shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md cursor-default">
+                  <div><p class="text-[10px] font-bold text-teal-500 tracking-widest uppercase mb-1">Sábados</p><p class="text-xl font-headline font-bold">08:00 — 20:00</p></div>
                 </div>
-                <div class="flex justify-between items-center p-3 bg-white rounded-lg border-l-4 border-zinc-400 shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md cursor-default">
-                  <div><p class="text-[9px] font-bold text-zinc-400 tracking-widest uppercase">Domingos</p><p class="text-lg font-headline font-bold">09:00 — 14:00</p></div>
+                <div class="flex justify-between items-center p-4 bg-white rounded-lg border-l-4 border-zinc-400 shadow-sm transition-all duration-200 hover:scale-[1.03] hover:shadow-md cursor-default">
+                  <div><p class="text-[10px] font-bold text-zinc-400 tracking-widest uppercase mb-1">Domingos</p><p class="text-xl font-headline font-bold">09:00 — 14:00</p></div>
                 </div>
               </div>
-              <div class="mt-6 flex items-center gap-2 text-[10px] font-medium text-on-surface-variant">
-                <span class="material-symbols-outlined text-[14px]">location_on</span> Distrito Central, Edificio Kinetic P4
+              <div class="mt-6 flex items-center gap-2 text-[11px] font-semibold text-gray-600">
+                <span class="material-symbols-outlined text-[16px]">location_on</span> Distrito Central, Edificio Kinetic P4
               </div>
             </div>
           </div>
+
         </div>
       </section>
 

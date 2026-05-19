@@ -2,8 +2,8 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Squat Gym - Login</title>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;800;900&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
 tailwind.config = {
@@ -212,23 +212,26 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
             <p class="text-on-surface-variant font-medium">Introduce tus credenciales para acceder al sistema de gestión.</p>
           </div>
           <form action="#" class="space-y-8" method="POST" onsubmit="return validateLogin(event)">
+            
             <div class="space-y-2 group">
-              <label class="block text-xs font-black uppercase tracking-widest text-on-surface-variant group-focus-within:text-primary transition-colors" for="usuario">Usuario</label>
+              <label class="block text-sm font-extrabold uppercase tracking-wider text-on-surface-variant group-focus-within:text-primary transition-colors" for="usuario">Usuario</label>
               <div class="relative">
-                <span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline transition-colors group-focus-within:text-primary">person</span>
-                <input class="block w-full pl-8 py-3 bg-transparent border-0 border-b-2 border-outline/30 focus:border-primary focus:ring-0 transition-all text-on-surface font-semibold placeholder:text-outline-variant/40" id="usuario" name="usuario" placeholder="ej. admin_squat" required type="text">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline transition-colors group-focus-within:text-primary">person</span>
+                <input class="block w-full pl-10 pr-4 py-3.5 bg-[#F3F4F6] border border-transparent rounded-lg focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all text-on-surface font-semibold placeholder:text-outline-variant/60" id="usuario" name="usuario" placeholder="ej. admin_squat" required type="text">
               </div>
             </div>
+            
             <div class="space-y-2 group">
-              <label class="block text-xs font-black uppercase tracking-widest text-on-surface-variant group-focus-within:text-primary transition-colors" for="password">Contraseña</label>
+              <label class="block text-sm font-extrabold uppercase tracking-wider text-on-surface-variant group-focus-within:text-primary transition-colors" for="password">Contraseña</label>
               <div class="relative">
-                <span class="absolute left-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline transition-colors group-focus-within:text-primary">lock</span>
-                <input class="block w-full pl-8 py-3 bg-transparent border-0 border-b-2 border-outline/30 focus:border-primary focus:ring-0 transition-all text-on-surface font-semibold placeholder:text-outline-variant/40" id="password" name="password" placeholder="••••••••" required type="password">
-                <button class="absolute right-0 top-1/2 -translate-y-1/2 text-outline-variant hover:text-on-surface transition-colors p-2" id="toggle-password" onclick="togglePasswordVisibility()" type="button">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline transition-colors group-focus-within:text-primary">lock</span>
+                <input class="block w-full pl-10 pr-12 py-3.5 bg-[#F3F4F6] border border-transparent rounded-lg focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/20 transition-all text-on-surface font-semibold placeholder:text-outline-variant/60" id="password" name="password" placeholder="••••••••" required type="password">
+                <button class="absolute right-2 top-1/2 -translate-y-1/2 text-outline-variant hover:text-on-surface transition-colors p-2" id="toggle-password" onclick="togglePasswordVisibility()" type="button">
                   <span class="material-symbols-outlined text-xl">visibility</span>
                 </button>
               </div>
             </div>
+
             <div class="flex items-center justify-between pt-2">
               <label class="flex items-center space-x-3 cursor-pointer group">
                 <div class="relative flex items-center">
@@ -241,18 +244,19 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
               <a class="text-sm font-bold text-primary hover:text-primary-dim transition-colors" href="#">¿Olvidaste tu contraseña?</a>
             </div>
 
-            <div id="mensaje-error" class="hidden p-3 rounded bg-error-container text-on-error-container text-xs font-bold text-center border border-error">
+            <div id="mensaje-error" class="hidden p-3.5 rounded-lg bg-[#FEE2E2] text-[#991B1B] text-sm font-bold text-center border border-[#FCA5A5] shadow-sm">
               Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.
             </div>
 
-            <button class="w-full bg-primary text-on-primary font-bold py-5 rounded shadow-xl shadow-primary/20 hover:bg-primary-dim hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center space-x-3 group overflow-hidden relative" type="submit">
+            <button class="w-full bg-primary text-on-primary font-bold py-5 rounded-lg shadow-xl shadow-primary/20 hover:bg-primary-dim hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center space-x-3 group overflow-hidden relative" type="submit">
               <span class="relative z-10 font-headline tracking-widest uppercase text-sm">Iniciar Sesión</span>
               <span class="relative z-10 material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </button>
           </form>
+          
           <div class="mt-12 pt-8 border-t border-outline/10 text-center">
-            <p class="text-xs font-bold text-on-surface-variant uppercase tracking-tighter">
-              ¿Problemas para acceder? <a class="text-primary hover:underline ml-1" href="../1-Pantallas-generales-ayuda-contacto-etc/Contacto.html">Contactar con soporte técnico</a>
+            <p class="text-sm font-medium text-on-surface-variant">
+              ¿Problemas para acceder? <a class="text-primary font-extrabold hover:underline ml-1" href="../1-Pantallas-generales-ayuda-contacto-etc/Contacto.html">Contactar con soporte técnico</a>
             </p>
           </div>
         </div>
@@ -313,7 +317,7 @@ function validateLogin(event) {
   }
 }
 
-// MEJORA: Ocultar el mensaje de error si el usuario empieza a escribir de nuevo
+// Ocultar el mensaje de error si el usuario empieza a escribir de nuevo
 document.getElementById('usuario').addEventListener('input', function() {
   document.getElementById('mensaje-error').classList.add('hidden');
 });
