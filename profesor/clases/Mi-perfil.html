@@ -375,17 +375,17 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         <div class="lg:col-span-4 space-y-6">
           <div class="bg-surface-container-lowest rounded-2xl shadow-[0_4px_20px_rgba(44,47,48,0.04)] border border-primary/10 p-6 flex flex-col items-center text-center">
             <div class="w-48 flex justify-end mb-2">
-              <button class="w-8 h-8 bg-error rounded-full border-2 border-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-90 transition-transform hidden" id="delete-photo-btn-new" title="Eliminar foto" type="button">
+              <button class="w-8 h-8 bg-error rounded-full border-2 border-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-90 transition-transform" id="delete-photo-btn-new" title="Eliminar foto" type="button">
                 <span class="material-symbols-outlined text-white text-[18px]">delete</span>
               </button>
             </div>
             <div class="relative w-48 h-48 group flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/50 rounded-full bg-surface-bright/50 hover:bg-surface-variant/20 hover:border-primary/50 transition-all cursor-pointer" id="upload-container">
-              <div class="flex flex-col items-center gap-2 pointer-events-none">
+              <div class="flex flex-col items-center gap-2 pointer-events-none hidden">
                 <span class="material-symbols-outlined text-4xl text-on-surface-variant/50 group-hover:text-primary/70 transition-colors">cloud_upload</span>
                 <p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/70 group-hover:text-primary/70 transition-colors">SUBIR FOTO</p>
               </div>
               <input accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer" id="profile-image-upload" type="file">
-              <img alt="Previsualización del perfil" class="absolute inset-0 w-full h-full object-cover rounded-full hidden" id="profile-preview-img" src="">
+              <img alt="Previsualización del perfil" class="absolute inset-0 w-full h-full object-cover rounded-full" id="profile-preview-img" src="../../assets/img/young-adult-doing-indoor-sport-gym(1).jpg">
             </div>
             <h2 class="font-headline font-bold mb-1 text-2xl text-primary">Axel Martínez</h2>
             <span class="text-[10px] uppercase tracking-widest font-extrabold text-black bg-surface-container-highest/50 px-3 py-1 rounded-full mb-6 inline-block text-[14px] px-6 py-2">PROFESOR</span>
