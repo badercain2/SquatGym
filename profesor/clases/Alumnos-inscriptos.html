@@ -208,6 +208,13 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
   animation:slideInDown .2s ease-out;
 }
 #notification-dropdown.hidden{ display:none; }
+
+/* NUEVO: Tabular nums para alinear números de DNI verticalmente */
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* Efecto Hover sobre los headers ordenables */
+.sortable-header:hover { background-color: rgba(0, 90, 82, 0.05); }
+
 @keyframes slideInDown{
   from{opacity:0;transform:translateY(-10px);}
   to{opacity:1;transform:translateY(0);}
@@ -358,7 +365,7 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
     <div class="content-wrapper">
 
       <div class="mb-3 shrink-0">
-        <a class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group mb-2 no-underline" href="../dashboard-profesor.html">
+        <a class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group mb-2 no-underline w-fit" href="../dashboard-profesor.html">
           <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
           <span class="text-xs font-bold uppercase tracking-widest font-headline">VOLVER A GESTIÓN</span>
         </a>
@@ -367,40 +374,71 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
             <h1 class="text-2xl md:text-3xl font-black tracking-tighter text-on-surface headline">
               Alumnos <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Inscriptos</span>
             </h1>
-            <div class="flex items-center"><span class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 mr-2">CLASE:</span><span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-md border border-primary/20">CROSSFIT ADVANCED</span></div>
+            <div class="flex items-center mt-1">
+                <span class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 mr-2">CLASE:</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary-dim text-[11px] font-black uppercase tracking-widest rounded-md border border-primary/20 shadow-sm">CROSSFIT ADVANCED</span>
+            </div>
           </div>
           <div class="flex items-center gap-4">
             <div class="relative group">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl group-focus-within:text-primary transition-colors">search</span>
-              <input class="w-64 pl-12 pr-4 py-3 bg-white/50 backdrop-blur-sm border-2 border-white/60 rounded-xl font-headline text-sm font-medium text-on-surface placeholder:text-slate-400 focus:border-primary/40 focus:ring-0 transition-all outline-none" id="dni-search" placeholder="Buscar por nombre o DNI.." type="text">
+              <input class="w-64 pl-12 pr-4 py-3 bg-white/50 backdrop-blur-sm border-2 border-white/60 rounded-xl font-headline text-sm font-medium text-on-surface placeholder:text-slate-400 focus:border-primary/40 focus:ring-0 transition-all outline-none shadow-sm" id="dni-search" placeholder="Buscar por nombre o DNI.." type="text">
             </div>
           </div>
         </div>
       </div>
 
-      <div class="flex-grow flex flex-col bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium min-h-0">
-        <div class="flex-grow overflow-y-auto custom-scrollbar">
+      <div class="flex-grow flex flex-col bg-white/80 backdrop-blur-md rounded-2xl border border-white/60 card-premium min-h-0">
+        <div class="flex-grow overflow-y-auto custom-scrollbar relative">
           <table class="w-full text-left border-separate border-spacing-0">
-            <thead class="sticky top-0 bg-white/90 backdrop-blur-md z-10">
+            <thead class="sticky top-0 bg-white/95 backdrop-blur-md z-10 shadow-sm">
               <tr>
-                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10 text-center">Nombre Completo</th>
-                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10 text-center">DNI</th>
-                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10 text-center">Edad</th>
-                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10 text-center">Consideraciones Médicas</th>
-                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10 text-center">Inscripción</th>
+                <th class="border-b-2 border-primary/20 sortable-header cursor-pointer select-none transition-colors" data-sort="name">
+                  <div class="flex items-center gap-1 px-8 py-4">
+                    <span class="text-[11px] font-black uppercase tracking-widest text-primary-dim font-headline">Nombre Completo</span>
+                    <span class="material-symbols-outlined text-[16px] text-slate-300 sort-icon transition-transform">unfold_more</span>
+                  </div>
+                </th>
+                
+                <th class="border-b-2 border-primary/20 sortable-header cursor-pointer select-none transition-colors" data-sort="dni">
+                  <div class="flex items-center justify-end gap-1 px-8 py-4">
+                    <span class="text-[11px] font-black uppercase tracking-widest text-primary-dim font-headline">DNI</span>
+                    <span class="material-symbols-outlined text-[16px] text-slate-300 sort-icon transition-transform">unfold_more</span>
+                  </div>
+                </th>
+                
+                <th class="border-b-2 border-primary/20 sortable-header cursor-pointer select-none transition-colors" data-sort="age">
+                  <div class="flex items-center justify-center gap-1 px-8 py-4">
+                    <span class="text-[11px] font-black uppercase tracking-widest text-primary-dim font-headline">Edad</span>
+                    <span class="material-symbols-outlined text-[16px] text-slate-300 sort-icon transition-transform">unfold_more</span>
+                  </div>
+                </th>
+                
+                <th class="px-8 py-4 text-[11px] font-black uppercase tracking-widest text-primary-dim font-headline border-b-2 border-primary/20 text-center">
+                  Consideraciones Médicas
+                </th>
+                
+                <th class="border-b-2 border-primary/20 sortable-header cursor-pointer select-none transition-colors" data-sort="date">
+                  <div class="flex items-center justify-end gap-1 px-8 py-4">
+                    <span class="text-[11px] font-black uppercase tracking-widest text-primary-dim font-headline">Inscripción</span>
+                    <span class="material-symbols-outlined text-[16px] text-slate-300 sort-icon transition-transform">unfold_more</span>
+                  </div>
+                </th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-primary/5" id="table-body"></tbody>
+            <tbody class="divide-y divide-slate-100" id="table-body">
+              </tbody>
           </table>
         </div>
-        <div class="shrink-0 px-8 py-5 border-t border-primary/10 flex items-center justify-between bg-white/40">
-          <p class="uppercase tracking-widest text-slate-400 text-sm font-bold" id="pagination-info">Mostrando <span class="text-primary" id="range-text">1-10</span> de <span id="total-text">25</span> alumnos</p>
+        
+        <div class="shrink-0 px-8 py-5 border-t border-primary/10 flex items-center justify-between bg-slate-50/50">
+          <p class="uppercase tracking-widest text-slate-500 text-xs font-bold" id="pagination-info">Mostrando <span class="text-primary font-black" id="range-text">1-10</span> de <span class="font-black text-slate-700" id="total-text">25</span> alumnos</p>
           <div class="flex items-center gap-1.5" id="pagination-controls">
-            <button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 text-slate-400 hover:bg-primary/5 transition-all duration-200 cursor-pointer opacity-30 cursor-not-allowed" id="prev-btn">
+            <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:bg-primary/5 transition-all duration-200 cursor-pointer opacity-30 cursor-not-allowed shadow-sm bg-white" id="prev-btn">
               <span class="material-symbols-outlined text-[18px]">chevron_left</span>
             </button>
             <div class="flex gap-1" id="page-numbers"></div>
-            <button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 text-slate-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer" id="next-btn">
+            <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer shadow-sm bg-white" id="next-btn">
               <span class="material-symbols-outlined text-[18px]">chevron_right</span>
             </button>
           </div>
@@ -465,40 +503,46 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
 </script>
 
 <script>
+// Data Original (Inmutable)
 const allStudents = [
-    { id: 'AM', name: 'Alejandro Mendoza', dni: '45.221.890', age: 28, medical: 'Ninguna', date: '12 Oct 2023' },
-    { id: 'FB', name: 'Facundo Benitez', dni: '40.123.456', age: 30, medical: 'Ninguna', date: '24 Oct 2023' },
-    { id: 'JS', name: 'Julián Silva', dni: '29.883.441', age: 41, medical: 'Ninguna', date: '18 Oct 2023' },
-    { id: 'LC', name: 'Lucía Castro', dni: '41.002.553', age: 25, medical: 'Lesión rodilla', isWarning: true, date: '20 Oct 2023' },
-    { id: 'MS', name: 'Martina Sanchez', dni: '41.234.567', age: 27, medical: 'Ninguna', date: '25 Oct 2023' },
-    { id: 'RG', name: 'Ricardo Guerra', dni: '33.112.449', age: 36, medical: 'Ninguna', date: '22 Oct 2023' },
-    { id: 'VR', name: 'Valentina Rojas', dni: '38.992.102', age: 32, medical: 'Asma leve', isWarning: true, date: '15 Oct 2023' },
-    { id: 'CP', name: 'Carlos Paredes', dni: '22.345.678', age: 34, medical: 'Hipertensión', isWarning: true, date: '26 Oct 2023' },
-    { id: 'SM', name: 'Sofia Martínez', dni: '31.456.789', age: 22, medical: 'Ninguna', date: '27 Oct 2023' },
-    { id: 'DR', name: 'Diego Ramírez', dni: '42.567.890', age: 29, medical: 'Ninguna', date: '28 Oct 2023' },
-    { id: 'AV', name: 'Andrea Valdés', dni: '33.678.901', age: 31, medical: 'Escoleosis', isWarning: true, date: '29 Oct 2023' },
-    { id: 'MT', name: 'Mateo Torres', dni: '24.789.012', age: 38, medical: 'Ninguna', date: '30 Oct 2023' },
-    { id: 'EA', name: 'Elena Aranda', dni: '35.890.123', age: 26, medical: 'Ninguna', date: '31 Oct 2023' },
-    { id: 'JN', name: 'Javier Navarro', dni: '46.901.234', age: 40, medical: 'Diabetes T2', isWarning: true, date: '01 Nov 2023' },
-    { id: 'CL', name: 'Camila López', dni: '27.012.345', age: 23, medical: 'Ninguna', date: '02 Nov 2023' },
-    { id: 'RR', name: 'Roberto Rivas', dni: '38.123.456', age: 45, medical: 'Cirugía LCA', isWarning: true, date: '03 Nov 2023' },
-    { id: 'IG', name: 'Isidora Godoy', dni: '49.234.567', age: 24, medical: 'Ninguna', date: '04 Nov 2023' },
-    { id: 'PH', name: 'Pablo Herrera', dni: '30.345.678', age: 33, medical: 'Ninguna', date: '05 Nov 2023' },
-    { id: 'FM', name: 'Fernanda Muñoz', dni: '41.456.789', age: 28, medical: 'Ninguna', date: '06 Nov 2023' },
-    { id: 'GF', name: 'Gabriel Fuentes', dni: '32.567.890', age: 35, medical: 'Ninguna', date: '07 Nov 2023' },
-    { id: 'VB', name: 'Victoria Bravo', dni: '43.678.901', age: 27, medical: 'Ninguna', date: '08 Nov 2023' },
-    { id: 'DP', name: 'Daniela Perez', dni: '44.555.666', age: 26, medical: 'Ninguna', date: '09 Nov 2023' },
-    { id: 'MR', name: 'Mario Rojas', dni: '37.888.999', age: 32, medical: 'Ninguna', date: '10 Nov 2023' },
-    { id: 'LT', name: 'Laura Torres', dni: '40.111.222', age: 29, medical: 'Ninguna', date: '11 Nov 2023' },
-    { id: 'HG', name: 'Hugo Gomez', dni: '39.444.555', age: 31, medical: 'Ninguna', date: '12 Nov 2023' }
+    { id: 'AM', name: 'Alejandro Mendoza', dni: '45.221.890', age: 28, medical: 'Ninguna', date: '12 Oct 2023', rawDate: '2023-10-12' },
+    { id: 'FB', name: 'Facundo Benitez', dni: '40.123.456', age: 30, medical: 'Ninguna', date: '24 Oct 2023', rawDate: '2023-10-24' },
+    { id: 'JS', name: 'Julián Silva', dni: '29.883.441', age: 41, medical: 'Ninguna', date: '18 Oct 2023', rawDate: '2023-10-18' },
+    { id: 'LC', name: 'Lucía Castro', dni: '41.002.553', age: 25, medical: 'Lesión rodilla', isWarning: true, date: '20 Oct 2023', rawDate: '2023-10-20' },
+    { id: 'MS', name: 'Martina Sanchez', dni: '41.234.567', age: 27, medical: 'Ninguna', date: '25 Oct 2023', rawDate: '2023-10-25' },
+    { id: 'RG', name: 'Ricardo Guerra', dni: '33.112.449', age: 36, medical: 'Ninguna', date: '22 Oct 2023', rawDate: '2023-10-22' },
+    { id: 'VR', name: 'Valentina Rojas', dni: '38.992.102', age: 32, medical: 'Asma leve', isWarning: true, date: '15 Oct 2023', rawDate: '2023-10-15' },
+    { id: 'CP', name: 'Carlos Paredes', dni: '22.345.678', age: 34, medical: 'Hipertensión', isWarning: true, date: '26 Oct 2023', rawDate: '2023-10-26' },
+    { id: 'SM', name: 'Sofia Martínez', dni: '31.456.789', age: 22, medical: 'Ninguna', date: '27 Oct 2023', rawDate: '2023-10-27' },
+    { id: 'DR', name: 'Diego Ramírez', dni: '42.567.890', age: 29, medical: 'Ninguna', date: '28 Oct 2023', rawDate: '2023-10-28' },
+    { id: 'AV', name: 'Andrea Valdés', dni: '33.678.901', age: 31, medical: 'Escoleosis', isWarning: true, date: '29 Oct 2023', rawDate: '2023-10-29' },
+    { id: 'MT', name: 'Mateo Torres', dni: '24.789.012', age: 38, medical: 'Ninguna', date: '30 Oct 2023', rawDate: '2023-10-30' },
+    { id: 'EA', name: 'Elena Aranda', dni: '35.890.123', age: 26, medical: 'Ninguna', date: '31 Oct 2023', rawDate: '2023-10-31' },
+    { id: 'JN', name: 'Javier Navarro', dni: '46.901.234', age: 40, medical: 'Diabetes T2', isWarning: true, date: '01 Nov 2023', rawDate: '2023-11-01' },
+    { id: 'CL', name: 'Camila López', dni: '27.012.345', age: 23, medical: 'Ninguna', date: '02 Nov 2023', rawDate: '2023-11-02' },
+    { id: 'RR', name: 'Roberto Rivas', dni: '38.123.456', age: 45, medical: 'Cirugía LCA', isWarning: true, date: '03 Nov 2023', rawDate: '2023-11-03' },
+    { id: 'IG', name: 'Isidora Godoy', dni: '49.234.567', age: 24, medical: 'Ninguna', date: '04 Nov 2023', rawDate: '2023-11-04' },
+    { id: 'PH', name: 'Pablo Herrera', dni: '30.345.678', age: 33, medical: 'Ninguna', date: '05 Nov 2023', rawDate: '2023-11-05' },
+    { id: 'FM', name: 'Fernanda Muñoz', dni: '41.456.789', age: 28, medical: 'Ninguna', date: '06 Nov 2023', rawDate: '2023-11-06' },
+    { id: 'GF', name: 'Gabriel Fuentes', dni: '32.567.890', age: 35, medical: 'Ninguna', date: '07 Nov 2023', rawDate: '2023-11-07' },
+    { id: 'VB', name: 'Victoria Bravo', dni: '43.678.901', age: 27, medical: 'Ninguna', date: '08 Nov 2023', rawDate: '2023-11-08' },
+    { id: 'DP', name: 'Daniela Perez', dni: '44.555.666', age: 26, medical: 'Ninguna', date: '09 Nov 2023', rawDate: '2023-11-09' },
+    { id: 'MR', name: 'Mario Rojas', dni: '37.888.999', age: 32, medical: 'Ninguna', date: '10 Nov 2023', rawDate: '2023-11-10' },
+    { id: 'LT', name: 'Laura Torres', dni: '40.111.222', age: 29, medical: 'Ninguna', date: '11 Nov 2023', rawDate: '2023-11-11' },
+    { id: 'HG', name: 'Hugo Gomez', dni: '39.444.555', age: 31, medical: 'Ninguna', date: '12 Nov 2023', rawDate: '2023-11-12' }
 ];
 
-allStudents.sort((a, b) => a.name.localeCompare(b.name));
-
+// Estado de la tabla
 let currentPage = 1;
 const rowsPerPage = 10;
-let filteredStudents = [...allStudents];
+let filteredStudents = [...allStudents]; // Array que mostramos
 
+// Estado del Ordenamiento (Tri-State)
+// null = sin orden (default), 'asc' = ascendente, 'desc' = descendente
+let currentSortColumn = null;
+let currentSortDirection = null;
+
+// Elementos del DOM
 const tableBody = document.getElementById('table-body');
 const dniSearch = document.getElementById('dni-search');
 const rangeText = document.getElementById('range-text');
@@ -506,7 +550,101 @@ const totalText = document.getElementById('total-text');
 const pageNumbersContainer = document.getElementById('page-numbers');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
+const sortableHeaders = document.querySelectorAll('.sortable-header');
 
+// FUNCIÓN 1: El motor de ordenamiento Tri-State
+function handleSort(column) {
+    // Si cliqueamos una columna diferente, reseteamos el estado
+    if (currentSortColumn !== column) {
+        currentSortColumn = column;
+        currentSortDirection = 'asc';
+    } else {
+        // Ciclo de los 3 estados: asc -> desc -> null
+        if (currentSortDirection === 'asc') {
+            currentSortDirection = 'desc';
+        } else if (currentSortDirection === 'desc') {
+            currentSortColumn = null;
+            currentSortDirection = null;
+        }
+    }
+
+    updateSortIcons();
+    applyFiltersAndSort();
+}
+
+// FUNCIÓN 2: Actualización visual de las flechitas (UI)
+function updateSortIcons() {
+    sortableHeaders.forEach(header => {
+        const icon = header.querySelector('.sort-icon');
+        const column = header.dataset.sort;
+        
+        // Color por defecto y reset
+        icon.style.color = '#cbd5e1'; // slate-300
+        icon.textContent = 'unfold_more';
+
+        // Si es la columna activa, cambiamos ícono y color
+        if (column === currentSortColumn) {
+            icon.style.color = '#005a52'; // primary-dim
+            if (currentSortDirection === 'asc') {
+                icon.textContent = 'expand_less'; // flecha arriba
+            } else if (currentSortDirection === 'desc') {
+                icon.textContent = 'expand_more'; // flecha abajo
+            }
+        }
+    });
+}
+
+// FUNCIÓN 3: Aplicar Búsqueda y Orden, luego Renderizar
+function applyFiltersAndSort() {
+    // 1. Aplicamos el Filtro de Búsqueda sobre los datos originales
+    const val = dniSearch.value.toLowerCase().trim();
+    filteredStudents = allStudents.filter(s => {
+        const nameMatch = s.name.toLowerCase().includes(val);
+        const cleanDni = s.dni.replace(/[^0-9Kk]/g, '').toLowerCase();
+        const inputClean = val.replace(/[^0-9Kk]/g, '').toLowerCase();
+        const dniMatch = (inputClean.length > 0 && cleanDni.startsWith(inputClean)) || s.dni.toLowerCase().includes(val);
+        return nameMatch || dniMatch;
+    });
+
+    // 2. Aplicamos el Ordenamiento (si hay uno activo)
+    if (currentSortColumn && currentSortDirection) {
+        filteredStudents.sort((a, b) => {
+            let valA = a[currentSortColumn];
+            let valB = b[currentSortColumn];
+
+            // Parsing especial para números y fechas
+            if (currentSortColumn === 'dni') {
+                valA = parseInt(valA.replace(/\./g, ''));
+                valB = parseInt(valB.replace(/\./g, ''));
+            } else if (currentSortColumn === 'date') {
+                // Usamos rawDate ('YYYY-MM-DD') para ordenar fechas correctamente
+                valA = new Date(a.rawDate).getTime();
+                valB = new Date(b.rawDate).getTime();
+            }
+
+            if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+            if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+            return 0;
+        });
+    }
+
+    // Regresamos a la página 1 cuando cambia el orden o filtro
+    currentPage = 1;
+    renderTable();
+}
+
+// Listeners de los Headers Ordenables
+sortableHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const column = header.dataset.sort;
+        handleSort(column);
+    });
+});
+
+// Listener del Buscador
+dniSearch.addEventListener('input', applyFiltersAndSort);
+
+// FUNCIÓN 4: Renderizar la Tabla (MEJORA 1: Hover y MEJORA 3: Alineación)
 function renderTable() {
     tableBody.innerHTML = '';
     const start = (currentPage - 1) * rowsPerPage;
@@ -514,28 +652,31 @@ function renderTable() {
     const pageStudents = filteredStudents.slice(start, end);
 
     if (pageStudents.length === 0) {
-        tableBody.innerHTML = `<tr><td class="px-8 py-20 text-center text-slate-400 font-medium" colspan="5">No se encontraron alumnos con ese criterio de búsqueda</td></tr>`;
+        tableBody.innerHTML = `<tr><td class="px-8 py-20 text-center text-slate-400 font-medium" colspan="5">No se encontraron alumnos con ese criterio.</td></tr>`;
     } else {
         pageStudents.forEach(student => {
             const medicalTag = student.isWarning 
-                ? `<span class="flex items-center justify-center gap-1.5 px-2.5 py-1 text-error text-[9px] font-black uppercase tracking-widest w-fit mx-auto"><span class="material-symbols-outlined text-[14px]">warning</span> ${student.medical}</span>`
-                : `<span class="px-2.5 py-1 bg-slate-100 text-slate-500 rounded-lg text-[9px] font-black uppercase tracking-widest block w-fit mx-auto">${student.medical}</span>`;
+                ? `<span class="flex items-center justify-center gap-1 px-3 py-1 bg-error-container/40 border border-error-container text-error text-[10px] font-black uppercase tracking-widest w-fit mx-auto rounded-md shadow-sm"><span class="material-symbols-outlined text-[14px]">warning</span> ${student.medical}</span>`
+                : `<span class="px-3 py-1 bg-slate-100 text-slate-500 rounded-md text-[10px] font-black uppercase tracking-widest block w-fit mx-auto">${student.medical}</span>`;
 
             const row = document.createElement('tr');
-            row.className = 'hover:bg-primary/5 transition-colors group/row';
+            // MEJORA 1: Hover notable bg-slate-50
+            row.className = 'hover:bg-slate-50 transition-colors cursor-default';
             row.innerHTML = `
-                <td class="px-8 py-4">
-                    <div class="flex items-center justify-center">
-                        <div class="flex items-center justify-start gap-4 w-56">
-                            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-black text-xs headline shrink-0">${student.id}</div>
-                            <span class="font-bold text-on-surface text-sm headline whitespace-nowrap">${student.name}</span>
-                        </div>
+                <td class="px-8 py-3.5">
+                    <div class="flex items-center justify-start gap-4">
+                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black text-xs headline shrink-0 shadow-sm border border-primary/20">${student.id}</div>
+                        <span class="font-extrabold text-on-surface text-sm headline whitespace-nowrap">${student.name}</span>
                     </div>
                 </td>
-                <td class="px-8 py-4 text-center text-slate-500 font-bold text-xs tracking-tight">${student.dni}</td>
-                <td class="px-8 py-4 text-center text-slate-500 font-bold text-sm">${student.age}</td>
-                <td class="px-8 py-4 text-center">${medicalTag}</td>
-                <td class="px-8 py-4 text-center text-slate-400 font-medium text-xs">${student.date}</td>
+                
+                <td class="px-8 py-3.5 text-right text-slate-500 font-bold text-sm tracking-tight tabular-nums">${student.dni}</td>
+                
+                <td class="px-8 py-3.5 text-center text-slate-500 font-bold text-sm">${student.age}</td>
+                
+                <td class="px-8 py-3.5 text-center">${medicalTag}</td>
+                
+                <td class="px-8 py-3.5 text-right text-slate-400 font-semibold text-xs tracking-wide tabular-nums">${student.date}</td>
             `;
             tableBody.appendChild(row);
         });
@@ -561,11 +702,11 @@ function renderPagination() {
         const btn = document.createElement('button');
         btn.textContent = text;
         if (isDisabled) {
-            btn.className = 'w-8 h-8 flex items-center justify-center rounded border border-transparent text-slate-400 font-bold text-xs cursor-default headline';
+            btn.className = 'w-8 h-8 flex items-center justify-center rounded-lg border border-transparent text-slate-400 font-bold text-xs cursor-default headline';
         } else if (isActive) {
-            btn.className = 'w-8 h-8 flex items-center justify-center rounded bg-primary text-white font-bold text-xs shadow-sm active:scale-95 transition-all cursor-pointer headline';
+            btn.className = 'w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-xs shadow-md active:scale-95 transition-all cursor-pointer headline';
         } else {
-            btn.className = 'w-8 h-8 flex items-center justify-center rounded border border-slate-200 text-slate-600 hover:border-primary hover:text-primary font-bold text-xs transition-all cursor-pointer hover:bg-primary/5 headline';
+            btn.className = 'w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 text-slate-600 hover:border-primary hover:text-primary font-bold text-xs transition-all cursor-pointer hover:bg-primary/5 headline bg-white shadow-sm';
         }
         if (!isDisabled) {
             btn.onclick = () => { currentPage = pageNum; renderTable(); };
@@ -614,19 +755,7 @@ function renderPagination() {
     nextBtn.onclick = () => { if (currentPage < totalPages) { currentPage++; renderTable(); } };
 }
 
-dniSearch.addEventListener('input', (e) => {
-    const val = e.target.value.toLowerCase().trim();
-    filteredStudents = allStudents.filter(s => {
-        const nameMatch = s.name.toLowerCase().includes(val);
-        const cleanDni = s.dni.replace(/[^0-9Kk]/g, '').toLowerCase();
-        const inputClean = val.replace(/[^0-9Kk]/g, '').toLowerCase();
-        const dniMatch = (inputClean.length > 0 && cleanDni.startsWith(inputClean)) || s.dni.toLowerCase().includes(val);
-        return nameMatch || dniMatch;
-    });
-    currentPage = 1;
-    renderTable();
-});
-
+// Inicialización de la vista
 renderTable();
 </script>
 

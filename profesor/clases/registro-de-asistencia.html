@@ -237,24 +237,11 @@ h1,h2,h3,h4,.headline{
   background:#c5caca;
 }
 
-.card-premium{
-  box-shadow:0 10px 30px -5px rgba(0,0,0,.04), 0 4px 12px -4px rgba(0,0,0,.02);
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-}
-
-.card-interactive{
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-}
-.card-interactive:hover{
-  transform:translateY(-4px) scale(1.01);
-  box-shadow:0 12px 24px -10px rgba(0,103,95,.15);
-  border-color:rgba(0,103,95,.3);
-}
-
 .nav-link.active{
   background:#00675f !important;
   color:#fff !important;
 }
+
 .nav-link.active .material-symbols-outlined{
   color:#fff !important;
 }
@@ -262,9 +249,15 @@ h1,h2,h3,h4,.headline{
 #notification-dropdown{
   animation:slideInDown .2s ease-out;
 }
+
 #notification-dropdown.hidden{
   display:none;
 }
+
+/* UTILIDADES FUNCIONALES Y VISUALES */
+.tabular-nums { font-variant-numeric: tabular-nums; }
+.sortable-header:hover { background-color: rgba(0, 90, 82, 0.05); }
+
 @keyframes slideInDown{
   from{opacity:0;transform:translateY(-10px);}
   to{opacity:1;transform:translateY(0);}
@@ -386,25 +379,7 @@ h1,h2,h3,h4,.headline{
                 <div class="flex-1"><p class="text-xs font-bold text-on-surface">Stock bajo: Proteína Whey</p><p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p></div>
               </div>
             </div>
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0"><span class="material-symbols-outlined text-sm">event_busy</span></div>
-                <div class="flex-1"><p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p><p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p></div>
-              </div>
             </div>
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0"><span class="material-symbols-outlined text-sm">person_add</span></div>
-                <div class="flex-1"><p class="text-xs font-bold text-on-surface">Nuevo socio: Juan Pérez</p><p class="text-[10px] text-on-surface-variant">Suscripción Plan Premium</p></div>
-              </div>
-            </div>
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0"><span class="material-symbols-outlined text-sm">payments</span></div>
-                <div class="flex-1"><p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p><p class="text-[10px] text-on-surface-variant">Vencimiento en 2 días</p></div>
-              </div>
-            </div>
-          </div>
           <div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
             <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;">
               <span>Ver todas</span>
@@ -446,19 +421,7 @@ h1,h2,h3,h4,.headline{
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
             <span class="font-medium text-sm">Ver Cronograma</span>
           </a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-maestro-de-ejercicios.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">fitness_center</span>
-            <span class="font-medium text-sm">Catálogo Ejercicios</span>
-          </a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Editor-de-planes.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">assignment</span>
-            <span class="font-medium text-sm">Planificaciones</span>
-          </a>
         </div>
-        <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
-          <span class="material-symbols-outlined text-error">logout</span>
-          <span class="font-lexend font-medium text-sm">Cerrar Sesión</span>
-        </a>
       </nav>
     </div>
   </aside>
@@ -466,16 +429,20 @@ h1,h2,h3,h4,.headline{
   <main class="main-content custom-scrollbar">
     <div class="content-wrapper">
 
-      <!-- Back Button & Page Header -->
       <div class="mb-3 shrink-0">
-        <a class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group mb-2 cursor-pointer no-underline" href="../dashboard-profesor.html">
+        <a class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group mb-2 cursor-pointer no-underline w-fit" href="../dashboard-profesor.html">
           <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
-          <span class="text-xs font-bold uppercase tracking-widest font-headline">Volver a gestión</span>
+          <span class="text-xs font-bold uppercase tracking-widest font-headline">VOLVER A GESTIÓN</span>
         </a>
-        <div class="flex flex-col lg:flex-row justify-between gap-2 lg:gap-4 items-center">
-          <div class="flex flex-col">
-            <h1 class="text-2xl md:text-3xl font-black tracking-tighter text-on-surface headline flex flex-wrap gap-1 md:gap-2">Registro de <span class="text-primary">Asistencia</span></h1>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-1 mt-2"><span class="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-widest">CLASE:</span><span class="px-2 md:px-3 py-1 bg-primary/10 text-primary text-[10px] md:text-xs font-black uppercase tracking-widest rounded-lg border-2 border-primary/20 w-fit">HIIT ADVANCED PERFORMANCE</span></div>
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
+          <div class="flex flex-col gap-1 mt-1">
+            <h1 class="text-2xl md:text-3xl font-black tracking-tighter text-on-surface headline">
+              Registro de <span class="text-primary">Asistencia</span>
+            </h1>
+            <div class="flex items-center mt-1">
+                <span class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant/70 mr-2">CLASE:</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-md border border-primary/20">HIIT ADVANCED PERFORMANCE</span>
+            </div>
           </div>
           <div class="flex flex-col w-full lg:w-auto lg:max-w-xs items-end gap-3 lg:-mt-8">
             <div class="w-full flex lg:justify-end">
@@ -484,37 +451,51 @@ h1,h2,h3,h4,.headline{
                 <span class="material-symbols-outlined text-lg">check_circle</span>
               </button>
             </div>
-            <div class="relative w-full group sticky top-0 z-20 bg-mesh py-2">
+            <div class="relative w-full group">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl group-focus-within:text-primary transition-colors">search</span>
-              <input class="w-full pl-12 pr-4 py-3 bg-white/50 backdrop-blur-sm border-2 border-white/60 rounded-xl font-headline text-sm font-medium text-on-surface placeholder:text-slate-400 focus:border-primary/40 focus:ring-0 transition-all outline-none" id="hybrid-search" placeholder="Buscar por Nombre o DNI..." title="Filtrar alumnos por Nombre o DNI" type="text">
+              <input class="w-full pl-12 pr-4 py-3 bg-white/50 backdrop-blur-sm border-2 border-white/60 rounded-xl font-headline text-sm font-medium text-on-surface placeholder:text-slate-400 focus:border-primary/40 focus:ring-0 transition-all outline-none" id="hybrid-search" placeholder="Buscar por Nombre o DNI.." type="text">
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Attendance Table Container -->
-      <div class="flex-grow flex flex-col bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium overflow-hidden min-h-[400px]">
-        <div class="flex-grow overflow-auto custom-scrollbar">
+      <div class="flex-grow flex flex-col bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium min-h-0">
+        <div class="flex-grow overflow-y-auto custom-scrollbar">
           <table class="w-full text-left border-separate border-spacing-0" id="attendance-table">
             <thead class="sticky top-0 bg-white/90 backdrop-blur-md z-10 hidden md:table-header-group">
               <tr>
-                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10 text-center">Nombre Completo</th>
-                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10 text-center">DNI</th>
-                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10 text-center">marcar Ausente</th>
+                <th class="border-b border-primary/10 sortable-header cursor-pointer select-none transition-colors" data-sort="name">
+                  <div class="flex items-center gap-1 px-8 py-5">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-primary-dim font-headline">Nombre Completo</span>
+                    <span class="material-symbols-outlined text-[16px] text-slate-300 sort-icon transition-transform">unfold_more</span>
+                  </div>
+                </th>
+                
+                <th class="border-b border-primary/10 sortable-header cursor-pointer select-none transition-colors" data-sort="dni">
+                  <div class="flex items-center justify-end gap-1 px-8 py-5">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-primary-dim font-headline">DNI</span>
+                    <span class="material-symbols-outlined text-[16px] text-slate-300 sort-icon transition-transform">unfold_more</span>
+                  </div>
+                </th>
+                
+                <th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary-dim font-headline border-b border-primary/10 text-center">
+                  Marcar Ausente
+                </th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-primary/5 flex flex-col md:table-row-group" id="table-body"></tbody>
+            <tbody class="divide-y divide-primary/5 flex flex-col md:table-row-group" id="table-body">
+              </tbody>
           </table>
         </div>
-        <!-- Pagination -->
+        
         <div class="shrink-0 px-4 md:px-8 py-4 md:py-5 border-t border-primary/10 flex flex-col sm:flex-row items-center justify-between bg-white/40 gap-4">
           <p class="uppercase tracking-widest text-slate-400 text-xs md:text-sm font-bold text-center sm:text-left" id="pagination-info">MOSTRANDO <span class="text-primary" id="range-text">1-12</span> DE <span id="total-text">32</span> ALUMNOS</p>
           <div class="flex items-center gap-1 md:gap-2" id="pagination-controls">
-            <button class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer" disabled id="prev-btn" style="opacity: 0.5; pointer-events: none;">
+            <button class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-slate-200 text-slate-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer" disabled id="prev-btn" style="opacity: 0.5; pointer-events: none;">
               <span class="material-symbols-outlined text-lg md:text-xl">chevron_left</span>
             </button>
             <div class="flex gap-1 md:gap-2" id="page-numbers"></div>
-            <button class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer" id="next-btn">
+            <button class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-slate-200 text-slate-400 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-pointer" id="next-btn">
               <span class="material-symbols-outlined text-lg md:text-xl">chevron_right</span>
             </button>
           </div>
@@ -526,24 +507,52 @@ h1,h2,h3,h4,.headline{
 
 </div>
 
-<footer class="footer shrink-0">
-  <div class="h-full px-8 max-w-[1880px] mx-auto flex items-center justify-between gap-4">
-    <div class="flex flex-col">
-      <a href="../dashboard-profesor.html" class="text-base font-black text-white font-lexend mb-0.5 headline no-underline">Squat Gym</a>
-      <p class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" id="confirmation-modal">
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-300" onclick="toggleModal(false)"></div>
+  <div class="relative bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all border border-white/20">
+    <div class="p-8 md:p-10 text-center">
+      <div class="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mx-auto mb-6 rotate-3 hover:rotate-0 transition-transform duration-300">
+        <span class="material-symbols-outlined text-3xl md:text-4xl font-bold">task_alt</span>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-black tracking-tighter text-on-surface headline mb-4">¿Finalizar Registro?</h2>
+      <p class="text-on-surface-variant text-sm font-medium leading-relaxed px-2 md:px-4">Estás por cerrar el listado de asistencia. Los datos se sincronizarán con el sistema de gestión del gimnasio.</p>
     </div>
-    <div class="flex items-center gap-6">
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-profesor/Ayuda-profesor.html">Ayuda</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-profesor/Privacidad-profesor.html">Privacidad</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-profesor/Contacto-profesor.html">Contacto</a>
+    <div class="flex flex-col sm:flex-row gap-3 p-6 pt-0">
+      <button class="flex-1 py-3.5 px-6 rounded-xl text-sm font-black uppercase tracking-widest text-slate-500 hover:bg-slate-100 hover:text-on-surface transition-all active:scale-95" onclick="toggleModal(false)">Cancelar</button>
+      <button class="flex-1 py-3.5 px-6 rounded-xl text-sm font-black uppercase tracking-widest bg-primary text-white shadow-lg shadow-primary/30 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all active:scale-95" onclick="window.location.href='../dashboard-profesor.html'">Confirmar</button>
     </div>
   </div>
-</footer>
-
 </div>
 
 <script>
-    // Sort all students alphabetically A-Z globally and set absent to false
+    document.getElementById('sidebar-toggle').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('sidebar-visible');
+        document.getElementById('sidebar-backdrop').classList.toggle('show');
+    });
+    document.getElementById('sidebar-close').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.remove('sidebar-visible');
+        document.getElementById('sidebar-backdrop').classList.remove('show');
+    });
+    document.getElementById('sidebar-backdrop').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.remove('sidebar-visible');
+        document.getElementById('sidebar-backdrop').classList.remove('show');
+    });
+    function toggleNotifications() {
+        document.getElementById('notification-dropdown').classList.toggle('hidden');
+    }
+    function toggleModal(show) {
+        const modal = document.getElementById('confirmation-modal');
+        if (show) {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        } else {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    }
+</script>
+
+<script>
     const allStudents = [
         { id: 'AR', name: 'Agustin Rodriguez', dni: '41.789.012', absent: false },
         { id: 'AM', name: 'Alejandro Martinez', dni: '40.321.455', absent: false },
@@ -583,6 +592,10 @@ h1,h2,h3,h4,.headline{
     const rowsPerPage = 12;
     let filteredStudents = [...allStudents];
 
+    // Variables de estado para el Ordenamiento Tri-State
+    let currentSortColumn = null;
+    let currentSortDirection = null;
+
     const tableBody = document.getElementById('table-body');
     const hybridSearch = document.getElementById('hybrid-search');
     const rangeText = document.getElementById('range-text');
@@ -590,7 +603,85 @@ h1,h2,h3,h4,.headline{
     const pageNumbersContainer = document.getElementById('page-numbers');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const sortableHeaders = document.querySelectorAll('.sortable-header');
 
+    // LÓGICA: Motor Tri-State
+    function handleSort(column) {
+        if (currentSortColumn !== column) {
+            currentSortColumn = column;
+            currentSortDirection = 'asc';
+        } else {
+            if (currentSortDirection === 'asc') {
+                currentSortDirection = 'desc';
+            } else {
+                currentSortColumn = null;
+                currentSortDirection = null;
+            }
+        }
+        updateSortIcons();
+        applyFiltersAndSort();
+    }
+
+    function updateSortIcons() {
+        sortableHeaders.forEach(header => {
+            const icon = header.querySelector('.sort-icon');
+            const column = header.dataset.sort;
+            icon.style.color = '#cbd5e1'; // Gris clarito por defecto
+            icon.textContent = 'unfold_more';
+
+            if (column === currentSortColumn) {
+                icon.style.color = '#005a52'; // Verde primario si está activo
+                icon.textContent = currentSortDirection === 'asc' ? 'expand_less' : 'expand_more';
+            }
+        });
+    }
+
+    function applyFiltersAndSort() {
+        const val = hybridSearch.value.toLowerCase().trim();
+        const cleanVal = val.replace(/\./g, '');
+        
+        filteredStudents = allStudents.filter(s => {
+            const cleanDni = s.dni.replace(/\./g, '');
+            const nameMatch = s.name.toLowerCase().includes(val);
+            const dniMatch = cleanDni.startsWith(cleanVal);
+            return nameMatch || dniMatch;
+        });
+
+        if (currentSortColumn && currentSortDirection) {
+            filteredStudents.sort((a, b) => {
+                let valA = a[currentSortColumn];
+                let valB = b[currentSortColumn];
+
+                if (currentSortColumn === 'dni') {
+                    valA = parseInt(valA.replace(/\./g, ''));
+                    valB = parseInt(valB.replace(/\./g, ''));
+                }
+
+                if (valA < valB) return currentSortDirection === 'asc' ? -1 : 1;
+                if (valA > valB) return currentSortDirection === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+
+        currentPage = 1;
+        renderTable();
+    }
+
+    sortableHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            handleSort(header.dataset.sort);
+        });
+    });
+
+    hybridSearch.addEventListener('input', applyFiltersAndSort);
+
+    // LÓGICA: Modificar estado de Ausente
+    window.toggleAbsent = (dni) => {
+        const student = allStudents.find(s => s.dni === dni);
+        if (student) student.absent = !student.absent;
+    };
+
+    // RENDER: Dibujar filas de la tabla
     function renderTable() {
         tableBody.innerHTML = '';
         const start = (currentPage - 1) * rowsPerPage;
@@ -599,23 +690,26 @@ h1,h2,h3,h4,.headline{
 
         pageStudents.forEach(student => {
             const row = document.createElement('tr');
-            row.className = 'hover:bg-primary/5 transition-colors group/row cursor-pointer student-row flex flex-col md:table-row border-b border-primary/5 md:border-b-0 py-4 md:py-0';
+            // MEJORA APLICADA: hover:bg-slate-50
+            row.className = 'hover:bg-primary/5 transition-colors group/row cursor-default student-row flex flex-col md:table-row border-b border-primary/5 md:border-b-0 py-4 md:py-0';
             row.innerHTML = `
                 <td class="px-4 md:px-8 py-2 md:py-4 md:table-cell">
-                    <div class="flex items-center gap-3 md:gap-4 w-fit mx-auto">
+                    <div class="flex items-center gap-3 md:gap-4 w-fit mx-auto md:mx-0">
                         <div class="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary font-black text-xs headline shrink-0">${student.id}</div>
                         <span class="font-bold text-on-surface text-sm headline text-left w-48">${student.name}</span>
                     </div>
                 </td>
-                <td class="px-4 md:px-8 py-2 md:py-4 text-slate-500 font-bold text-xs tracking-tight text-center md:table-cell flex justify-between md:justify-center items-center">
+                
+                <td class="px-4 md:px-8 py-2 md:py-4 text-slate-500 font-bold text-xs tracking-tight text-center md:text-right tabular-nums md:table-cell flex justify-between md:justify-end items-center">
                     <span class="md:hidden text-[10px] uppercase font-black tracking-widest text-primary/60">DNI</span>
                     ${student.dni}
                 </td>
+                
                 <td class="px-4 md:px-8 py-2 md:py-4 text-center md:table-cell flex justify-between md:justify-center items-center">
                     <span class="md:hidden text-[10px] uppercase font-black tracking-widest text-primary/60">Ausente</span>
                     <label class="relative inline-flex items-center cursor-pointer">
                         <input class="sr-only peer" type="checkbox" ${student.absent ? 'checked' : ''} onchange="toggleAbsent('${student.dni}')">
-                        <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-error"></div>
+                        <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-error"></div>
                     </label>
                 </td>
             `;
@@ -624,16 +718,12 @@ h1,h2,h3,h4,.headline{
 
         const actualEnd = Math.min(end, filteredStudents.length);
         rangeText.textContent = filteredStudents.length === 0 ? '0-0' : `${start + 1}-${actualEnd}`;
-        totalText.textContent = allStudents.length;
+        totalText.textContent = filteredStudents.length;
 
         renderPagination();
     }
 
-    window.toggleAbsent = (dni) => {
-        const student = allStudents.find(s => s.dni === dni);
-        if (student) student.absent = !student.absent;
-    };
-
+    // RENDER: Dibujar botones de paginación RESTAURADOS A CÍRCULOS
     function renderPagination() {
         const totalPages = Math.ceil(filteredStudents.length / rowsPerPage);
         pageNumbersContainer.innerHTML = '';
@@ -661,9 +751,11 @@ h1,h2,h3,h4,.headline{
                 const btn = document.createElement('button');
                 btn.textContent = i;
                 if (i === currentPage) {
-                    btn.className = 'w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-primary text-white font-black text-xs md:text-sm headline shadow-lg shadow-primary/30 active:scale-95 transition-all cursor-pointer';
+                    // Botón activo (rounded-full)
+                    btn.className = 'w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-primary text-white font-black text-xs md:text-sm headline shadow-lg shadow-primary/30 active:scale-95 transition-all cursor-pointer';
                 } else {
-                    btn.className = 'w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-xl border border-slate-200 text-slate-600 hover:border-primary hover:text-primary font-black text-xs md:text-sm headline transition-all duration-200 cursor-pointer hover:bg-primary/5 active:scale-95';
+                    // Botón inactivo (rounded-full)
+                    btn.className = 'w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full border border-slate-200 text-slate-600 hover:border-primary hover:text-primary font-black text-xs md:text-sm headline transition-all duration-200 cursor-pointer hover:bg-primary/5 active:scale-95';
                 }
                 btn.onclick = () => {
                     currentPage = i;
@@ -682,19 +774,6 @@ h1,h2,h3,h4,.headline{
         nextBtn.style.pointerEvents = (currentPage === totalPages || totalPages === 0) ? 'none' : 'auto';
     }
 
-    hybridSearch.addEventListener('input', (e) => {
-        const val = e.target.value.toLowerCase().trim();
-        const cleanVal = val.replace(/\./g, '');
-        filteredStudents = allStudents.filter(s => {
-            const cleanDni = s.dni.replace(/\./g, '');
-            const nameMatch = s.name.toLowerCase().includes(val);
-            const dniMatch = cleanDni.startsWith(cleanVal);
-            return nameMatch || dniMatch;
-        });
-        currentPage = 1;
-        renderTable();
-    });
-
     prevBtn.onclick = () => {
         if (currentPage > 1) { currentPage--; renderTable(); }
     };
@@ -705,73 +784,6 @@ h1,h2,h3,h4,.headline{
     };
 
     renderTable();
-</script>
-
-<script>
-    document.getElementById('sidebar-toggle').addEventListener('click', () => {
-        const sidebar = document.getElementById('sidebar');
-        const backdrop = document.getElementById('sidebar-backdrop');
-        sidebar.classList.toggle('sidebar-visible');
-        backdrop.classList.toggle('show');
-    });
-
-    document.getElementById('sidebar-close').addEventListener('click', () => {
-        const sidebar = document.getElementById('sidebar');
-        const backdrop = document.getElementById('sidebar-backdrop');
-        sidebar.classList.remove('sidebar-visible');
-        backdrop.classList.remove('show');
-    });
-
-    document.getElementById('sidebar-backdrop').addEventListener('click', () => {
-        const sidebar = document.getElementById('sidebar');
-        const backdrop = document.getElementById('sidebar-backdrop');
-        sidebar.classList.remove('sidebar-visible');
-        backdrop.classList.remove('show');
-    });
-
-    function toggleNotifications() {
-        const dropdown = document.getElementById('notification-dropdown');
-        dropdown.classList.toggle('hidden');
-    }
-
-    window.addEventListener('click', function(e) {
-        const dropdown = document.getElementById('notification-dropdown');
-        const bell = document.getElementById('notification-bell');
-        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.classList.add('hidden');
-        }
-    });
-</script>
-
-<!-- Confirmation Modal -->
-<div class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4" id="confirmation-modal">
-  <div class="absolute inset-0 bg-black/40 backdrop-blur-md transition-opacity duration-300" onclick="toggleModal(false)"></div>
-  <div class="relative bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden transform transition-all border border-white/20">
-    <div class="p-8 md:p-10 text-center">
-      <div class="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mx-auto mb-6 rotate-3 hover:rotate-0 transition-transform duration-300">
-        <span class="material-symbols-outlined text-3xl md:text-4xl font-bold">task_alt</span>
-      </div>
-      <h2 class="text-2xl md:text-3xl font-black tracking-tighter text-on-surface headline mb-4">¿Finalizar Registro?</h2>
-      <p class="text-on-surface-variant text-sm font-medium leading-relaxed px-2 md:px-4">Estás por cerrar el listado de asistencia. Los datos se sincronizarán con el sistema de gestión del gimnasio.</p>
-    </div>
-    <div class="flex flex-col sm:flex-row gap-3 p-6 pt-0">
-      <button class="flex-1 py-3.5 px-6 rounded-xl text-sm font-black uppercase tracking-widest text-slate-500 hover:bg-slate-100 hover:text-on-surface transition-all active:scale-95" onclick="toggleModal(false)">Cancelar</button>
-      <button class="flex-1 py-3.5 px-6 rounded-xl text-sm font-black uppercase tracking-widest bg-primary text-white shadow-lg shadow-primary/30 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all active:scale-95" onclick="window.location.href='../dashboard-profesor.html'">Confirmar</button>
-    </div>
-  </div>
-</div>
-
-<script>
-    function toggleModal(show) {
-        const modal = document.getElementById('confirmation-modal');
-        if (show) {
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        } else {
-            modal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-    }
 </script>
 
 </body>
