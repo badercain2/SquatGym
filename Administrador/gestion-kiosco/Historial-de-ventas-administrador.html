@@ -501,7 +501,7 @@
 
             <a
               class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity"
-              href="../dashboard-encargado.html"
+              href="../dashboard-administrador.html"
             >
               Squat Gym
             </a>
@@ -651,7 +651,7 @@
 
             <button
               class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
-              onclick="window.location.href='../general-secretaria/Mi-perfil-encargado.html'"
+              onclick="window.location.href='../general-secretaria/Mi-perfil-administrador.html'"
             >
               <span
                 class="material-symbols-outlined"
@@ -690,7 +690,7 @@
             <nav class="flex flex-col h-full gap-2">
               <a
                 class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all"
-                href="../dashboard-encargado.html"
+                href="../dashboard-administrador.html"
               >
                 <span
                   class="material-symbols-outlined"
@@ -709,7 +709,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Catalogo-de-clases-encargado.html"
+                  href="../gestion-clases/Catalogo-de-clases-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -722,7 +722,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Cronograma-semanal-encargado.html"
+                  href="../gestion-clases/Cronograma-semanal-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -733,7 +733,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Consultar-alumno-encargado.html"
+                  href="../gestion-clases/Consultar-alumno-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -764,7 +764,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="Control-de-inventario-encargado.html"
+                  href="Control-de-inventario-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -775,7 +775,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="Cupones-encargado.html"
+                  href="Cupones-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -822,21 +822,22 @@
                   </button>
                   <div class="absolute right-0 mt-2 w-48 bg-surface-container-lowest shadow-xl rounded-xl border border-outline-variant/20 z-[80] overflow-hidden hidden group-focus-within:block transition-all transform origin-top-right">
                     <div class="flex flex-col py-1">
-                      <button onclick="exportVentas('PDF')" class="w-full text-left px-4 py-2 text-sm font-semibold text-on-surface hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-3">
-                        <span class="material-symbols-outlined text-lg text-error">picture_as_pdf</span>
-                        Como PDF
-                      </button>
-                      <button onclick="exportVentas('Excel')" class="w-full text-left px-4 py-2 text-sm font-semibold text-on-surface hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-3">
-                        <span class="material-symbols-outlined text-lg text-secondary">table_view</span>
-                        Como Excel
-                      </button>
-                      <button onclick="exportVentas('Word')" class="w-full text-left px-4 py-2 text-sm font-semibold text-on-surface hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-3">
-                        <span class="material-symbols-outlined text-lg text-tertiary">description</span>
-                        Como Word
-                      </button>
+                        <button onclick="exportVentas('CSV')" class="w-full text-left px-4 py-2 text-sm font-semibold text-on-surface hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-3">
+                            <span class="material-symbols-outlined text-lg text-secondary">table_view</span>
+                            Como CSV
+                        </button>
+                        <button onclick="exportVentas('TXT')" class="w-full text-left px-4 py-2 text-sm font-semibold text-on-surface hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-3">
+                            <span class="material-symbols-outlined text-lg text-tertiary">description</span>
+                            Como TXT
+                        </button>
                     </div>
                   </div>
                 </div>
+
+                <button onclick="abrirModalVenta()" class="bg-primary hover:bg-primary-dim text-white font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors shadow-md shadow-primary/20 shrink-0">
+                    <span class="material-symbols-outlined text-sm">add</span>
+                    Registrar Venta
+                </button>
 
                 <div class="relative">
                   <span
@@ -1009,6 +1010,39 @@
             </div>
           </div>
         </main>
+
+        <!-- Modal Registrar Venta -->
+        <div class="fixed inset-0 z-[100] items-center justify-center hidden" id="venta-modal">
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="cerrarModalVenta()"></div>
+          <div class="relative bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden p-6 font-lexend">
+            <div class="flex justify-between items-center mb-6">
+              <div class="flex items-center gap-2 text-primary">
+                <span class="material-symbols-outlined text-2xl">point_of_sale</span>
+                <h3 class="text-xl font-bold text-on-surface">Registrar Venta</h3>
+              </div>
+              <button class="text-on-surface-variant hover:text-error transition-colors" onclick="cerrarModalVenta()">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+            </div>
+            <div class="space-y-4">
+              <div><label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Cliente</label>
+                <input id="venta-cliente" class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm" placeholder="Nombre del cliente" type="text"></div>
+              <div><label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Productos</label>
+                <input id="venta-productos" class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm" placeholder="Ej: Protein Shake x2" type="text"></div>
+              <div class="grid grid-cols-2 gap-4">
+                <div><label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Método</label>
+                  <select id="venta-metodo" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                    <option>Efectivo</option><option>Tarjeta</option><option>QR</option></select></div>
+                <div><label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Total ($)</label>
+                  <input id="venta-total" class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm" placeholder="0.00" type="number" step="0.01" min="0" onkeydown="if(event.key=='-'||event.key=='e')event.preventDefault()"></div>
+              </div>
+            </div>
+            <div class="flex justify-end gap-3 mt-8">
+              <button class="px-5 py-2.5 rounded-lg border border-outline text-on-surface-variant text-sm font-bold hover:bg-surface-container-low transition-all" onclick="cerrarModalVenta()">Cancelar</button>
+              <button class="px-5 py-2.5 rounded-lg bg-[#00675f] text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all" onclick="registrarVenta()">Registrar Venta</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div id="toastNotification" class="fixed bottom-6 right-6 z-[120] bg-[#004d40] text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 hidden">
@@ -1038,17 +1072,17 @@
           <div class="flex items-center gap-6">
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Ayuda-encargado.html"
+              href="../general-secretaria/Ayuda-administrador.html"
               >Ayuda</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Privacidad-encargado.html"
+              href="../general-secretaria/Privacidad-administrador.html"
               >Privacidad</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Contacto-encargado.html"
+              href="../general-secretaria/Contacto-administrador.html"
               >Contacto</a
             >
           </div>
@@ -1243,60 +1277,35 @@
       // ---- Scripts de Exportación ----
       function exportVentas(format) {
         document.activeElement.blur();
-
-        const toast = document.getElementById('toastNotification');
-        let iconColor = '';
-        let iconName = '';
-
-        if (format === 'PDF') {
-          iconColor = 'text-error';
-          iconName = 'picture_as_pdf';
-        } else if (format === 'Excel') {
-          iconColor = 'text-secondary';
-          iconName = 'table_view';
-        } else if (format === 'Word') {
-          iconColor = 'text-tertiary';
-          iconName = 'description';
+        if (format === 'CSV') {
+          var csv = 'Fecha,Hora,Cliente,Productos,Método,Total\n';
+          filteredVentas.forEach(function(v) {
+            csv += [v.fecha, v.hora, v.cliente, '"' + v.productos + '"', v.metodo, v.total].join(',') + '\n';
+          });
+          var blob = new Blob([csv], {type: 'text/csv;charset=utf-8'});
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = 'historial-ventas.csv';
+          a.click();
+          URL.revokeObjectURL(url);
+        } else if (format === 'PDF' || format === 'Excel' || format === 'Word') {
+          var content = 'Historial de Ventas - Squat Gym\n\n';
+          content += 'Fecha\tHora\tCliente\tProductos\tMétodo\tTotal\n';
+          filteredVentas.forEach(function(v) {
+            content += v.fecha + '\t' + v.hora + '\t' + v.cliente + '\t' + v.productos + '\t' + v.metodo + '\t$' + v.total + '\n';
+          });
+          var blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = 'historial-ventas.' + format.toLowerCase();
+          a.click();
+          URL.revokeObjectURL(url);
         }
-
-        toast.innerHTML = `
-          <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">downloading</span>
-          <div class="flex flex-col">
-            <span class="font-bold text-sm">Exportando a ${format}...</span>
-            <span class="text-[10px] opacity-80">Generando archivo, por favor espere</span>
-          </div>
-        `;
-
+        var toast = document.getElementById('toastNotification');
+        toast.innerHTML = '<span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span><div class="flex flex-col"><span class="font-bold text-sm">¡Exportación Exitosa!</span><span class="text-[10px] opacity-80">Archivo descargado</span></div>';
         showToast();
-
-        setTimeout(() => {
-          toast.innerHTML = `
-            <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm ${iconColor}">${iconName}</span>
-            <div class="flex flex-col">
-              <span class="font-bold text-sm">¡Exportación Exitosa!</span>
-              <span class="text-[10px] opacity-80">El archivo .${format.toLowerCase()} se ha descargado</span>
-            </div>
-          `;
-
-          toast.classList.remove('opacity-0', 'transition-opacity', 'duration-300');
-          toast.classList.add('toast-enter');
-
-          setTimeout(() => {
-            toast.classList.remove('toast-enter');
-            toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
-            setTimeout(() => {
-              toast.classList.add('hidden');
-              toast.classList.remove('opacity-0', 'transition-opacity', 'duration-300');
-              toast.innerHTML = `
-                <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span>
-                <div class="flex flex-col">
-                  <span class="font-bold text-sm">Operación Exitosa</span>
-                  <span class="text-[10px] opacity-80">Procesado correctamente</span>
-                </div>
-              `;
-            }, 300);
-          }, 3500);
-        }, 1500);
       }
 
       function showToast() {
@@ -1312,6 +1321,58 @@
             toast.classList.remove('opacity-0', 'transition-opacity', 'duration-300');
           }, 300);
         }, 3000);
+      }
+
+      function abrirModalVenta() {
+        document.getElementById('venta-modal').classList.remove('hidden');
+        document.getElementById('venta-modal').classList.add('flex');
+      }
+      function cerrarModalVenta() {
+        document.getElementById('venta-modal').classList.add('hidden');
+        document.getElementById('venta-modal').classList.remove('flex');
+      }
+      function registrarVenta() {
+        var cliente = document.getElementById('venta-cliente').value.trim();
+        var productos = document.getElementById('venta-productos').value.trim();
+        var metodo = document.getElementById('venta-metodo').value;
+        var total = parseFloat(document.getElementById('venta-total').value);
+        if (!cliente || !productos || isNaN(total) || total <= 0) {
+          alert('Complete todos los campos correctamente');
+          return;
+        }
+        var ahora = new Date();
+        var fecha = ahora.toLocaleDateString('es-AR', {day:'2-digit',month:'2-digit',year:'numeric'});
+        var hora = ahora.toLocaleTimeString('es-AR', {hour:'2-digit',minute:'2-digit',hour12:false});
+        var nuevaVenta = {fecha:fecha, hora:hora, cliente:cliente, productos:productos, metodo:metodo, total:total};
+        ventasData.unshift(nuevaVenta);
+        filteredVentas = [...ventasData];
+        currentPage = 1;
+        renderTable();
+        localStorage.setItem('admin-ventas', JSON.stringify(ventasData));
+        // Actualizar inventario
+        var inv = localStorage.getItem('admin-inventory');
+        if (inv) {
+          try {
+            var products = JSON.parse(inv);
+            var updated = false;
+            products.forEach(function(p) {
+              if (productos.toLowerCase().includes(p.name.toLowerCase()) && p.stock > 0) {
+                p.stock = p.stock - 1;
+                if (p.stock <= 5 && p.status !== 'Stock Crítico') p.status = 'Stock Crítico';
+                if (p.stock <= 0 && p.status !== 'Agotado') p.status = 'Agotado';
+                updated = true;
+              }
+            });
+            if (updated) localStorage.setItem('admin-inventory', JSON.stringify(products));
+          } catch(e) {}
+        }
+        document.getElementById('venta-cliente').value = '';
+        document.getElementById('venta-productos').value = '';
+        document.getElementById('venta-total').value = '';
+        cerrarModalVenta();
+        var toast = document.getElementById('toastNotification');
+        toast.innerHTML = '<span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span><div class="flex flex-col"><span class="font-bold text-sm">Venta Registrada</span><span class="text-[10px] opacity-80">' + cliente + ' - $' + total.toFixed(2) + '</span></div>';
+        showToast();
       }
     </script>
   </body>

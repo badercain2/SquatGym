@@ -235,7 +235,7 @@ select {
       </div>
 
       <nav class="flex flex-col h-full gap-2">
-        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-encargado.html">
+        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-administrador.html">
           <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>
           <span class="font-lexend tracking-tight">Inicio</span>
         </a>
@@ -245,17 +245,17 @@ select {
             Gesti&oacute;n de Clases
           </div>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-de-clases-encargado.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-de-clases-administrador.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
             <span class="font-medium text-sm">Cat&aacute;logo de Clases</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Cronograma-semanal-encargado.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Cronograma-semanal-administrador.html">
             <span class="material-symbols-outlined text-primary transition-colors" style="font-variation-settings:'FILL' 1;">calendar_view_week</span>
             <span class="font-medium text-sm">Cronograma</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Consultar-alumno-encargado.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Consultar-alumno-administrador.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
             <span class="font-medium text-sm">Consultar Alumno</span>
           </a>
@@ -271,12 +271,12 @@ select {
             <span class="font-medium text-sm">Historial de Ventas</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Control-de-inventario-encargado.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Control-de-inventario-administrador.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span>
             <span class="font-medium text-sm">Control de Inventario</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Cupones-encargado.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Cupones-administrador.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
             <span class="font-medium text-sm">Cupones</span>
           </a>
@@ -353,7 +353,11 @@ select {
 
         <!-- Lado Derecho: Botones de Acción Admin -->
         <div class="flex items-center gap-2 w-full md:w-auto justify-end">
-            <button onclick="openClassModal()" class="bg-primary hover:bg-primary-dim text-white font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors shadow-md shadow-primary/20 shrink-0">
+            <button onclick="toggleEditMode()" id="edit-mode-toggle" class="border border-outline-variant/30 text-on-surface hover:bg-surface-container-low font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors shrink-0">
+                <span class="material-symbols-outlined text-sm">visibility</span>
+                Solo Lectura
+            </button>
+            <button onclick="openClassModal()" id="nueva-clase-btn" class="bg-primary hover:bg-primary-dim text-white font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors shadow-md shadow-primary/20 shrink-0">
                 <span class="material-symbols-outlined text-sm">add</span>
                 Nueva Clase
             </button>
@@ -853,6 +857,20 @@ select {
     </div>
 </div>
 
+<footer class="footer shrink-0">
+  <div class="h-full px-8 max-w-[1880px] mx-auto flex items-center justify-between gap-4">
+    <div class="flex flex-col">
+      <div class="text-base font-black text-white font-lexend mb-0.5 headline">Squat Gym</div>
+      <p class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60">&copy; 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
+    </div>
+    <div class="flex items-center gap-6">
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Ayuda-administrador.html">Ayuda</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Privacidad-administrador.html">Privacidad</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Contacto-administrador.html">Contacto</a>
+    </div>
+  </div>
+</footer>
+
 </div>
 
 <script>
@@ -865,6 +883,46 @@ select {
       document.getElementById('sidebar').classList.remove('sidebar-visible');
       document.getElementById('sidebar-backdrop').classList.remove('show');
     });
+    document.getElementById('sidebar-backdrop').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('sidebar-visible');
+      document.getElementById('sidebar-backdrop').classList.remove('show');
+    });
+
+    function toggleNotifications() {
+      const dropdown = document.getElementById('notification-dropdown');
+      dropdown.classList.toggle('hidden');
+    }
+    window.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('notification-dropdown');
+      const bell = document.getElementById('notification-bell');
+      if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
+
+    // ---- Modo Lectura / Edición ----
+    let isReadOnly = false;
+    function toggleEditMode() {
+      isReadOnly = !isReadOnly;
+      const btn = document.getElementById('edit-mode-toggle');
+      const newBtn = document.getElementById('nueva-clase-btn');
+      const exportBtn = document.querySelector('[class*="group outline-none"]');
+      if (isReadOnly) {
+        btn.innerHTML = '<span class="material-symbols-outlined text-sm">edit</span> Modo Edición';
+        btn.className = 'bg-primary hover:bg-primary-dim text-white font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors shadow-md shadow-primary/20 shrink-0';
+        if (newBtn) newBtn.style.display = 'none';
+        if (exportBtn) exportBtn.style.opacity = '0.5';
+        document.querySelectorAll('.group\\/hover\\:opacity-100').forEach(function(el) { el.style.display = 'none'; });
+        document.querySelectorAll('.group.cursor-pointer[onclick*="openClassModal"]').forEach(function(el) { el.style.pointerEvents = 'none'; });
+      } else {
+        btn.innerHTML = '<span class="material-symbols-outlined text-sm">visibility</span> Solo Lectura';
+        btn.className = 'border border-outline-variant/30 text-on-surface hover:bg-surface-container-low font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors shrink-0';
+        if (newBtn) newBtn.style.display = '';
+        if (exportBtn) exportBtn.style.opacity = '1';
+        document.querySelectorAll('.group\\/hover\\:opacity-100').forEach(function(el) { el.style.display = ''; });
+        document.querySelectorAll('.group.cursor-pointer[onclick*="openClassModal"]').forEach(function(el) { el.style.pointerEvents = ''; });
+      }
+    }
 
     // ---- Scripts de Administración del Cronograma ----
     const modal = document.getElementById('classModal');
@@ -1000,6 +1058,14 @@ select {
             const targetCell = cells[dayIndex]; // +0 porque el div de la hora es [0]
 
             if (targetCell) {
+                // Verificar superposición: si el slot ya tiene una clase
+                const existingClass = targetCell.querySelector('[class*="bg-["]');
+                if (existingClass && document.getElementById('modalTitle').innerText !== 'Editar Clase') {
+                    const toast = document.getElementById('toastNotification');
+                    toast.innerHTML = '<span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">warning</span><div class="flex flex-col"><span class="font-bold text-sm">Conflicto de Horario</span><span class="text-[10px] opacity-80">Ya existe una clase en ese día y horario</span></div>';
+                    showToast();
+                    return;
+                }
                 // Reemplazamos el slot vacio (el boton "+") por el HTML de la nueva clase
                 // Limpiamos los estilos que hacían al slot vacío "clickeable" porque ahora la clase maneja su propio click
                 targetCell.className = "p-1.5 h-full";

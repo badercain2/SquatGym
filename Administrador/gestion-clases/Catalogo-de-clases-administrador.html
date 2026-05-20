@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Squat Gym - Secretaría · Catálogo de Clases</title>
+    <title>Squat Gym - Administrador · Catálogo de Clases</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
@@ -536,7 +536,7 @@
 
             <a
               class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity"
-              href="../dashboard-encargado.html"
+              href="../dashboard-administrador.html"
             >
               Squat Gym
             </a>
@@ -689,7 +689,7 @@
               class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
               onclick="
                 window.location.href =
-                  '../general-secretaria/Mi-perfil-encargado.html'
+                  '../general-secretaria/Mi-perfil-administrador.html'
               "
             >
               <span
@@ -729,7 +729,7 @@
             <nav class="flex flex-col h-full gap-2">
               <a
                 class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all"
-                href="../dashboard-encargado.html"
+                href="../dashboard-administrador.html"
               >
                 <span
                   class="material-symbols-outlined"
@@ -748,7 +748,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group"
-                  href="Catalogo-de-clases-encargado.html"
+                  href="Catalogo-de-clases-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-primary transition-colors"
@@ -762,7 +762,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="Cronograma-semanal-encargado.html"
+                  href="Cronograma-semanal-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -773,7 +773,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="Consultar-alumno-encargado.html"
+                  href="Consultar-alumno-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -803,7 +803,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Control-de-inventario-encargado.html"
+                  href="../gestion-kiosco/Control-de-inventario-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -814,7 +814,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Cupones-encargado.html"
+                  href="../gestion-kiosco/Cupones-administrador.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -949,17 +949,17 @@
           <div class="flex items-center gap-6">
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Ayuda-encargado.html"
+              href="../general-secretaria/Ayuda-administrador.html"
               >Ayuda</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Privacidad-encargado.html"
+              href="../general-secretaria/Privacidad-administrador.html"
               >Privacidad</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Contacto-encargado.html"
+              href="../general-secretaria/Contacto-administrador.html"
               >Contacto</a
             >
           </div>
@@ -2516,9 +2516,15 @@
           <button
             class="w-full px-5 py-3 rounded-lg bg-error text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all"
             onclick="
-              document
-                .getElementById('delete-confirmation-modal')
-                .classList.add('hidden')
+              if(pendingDeleteClassId) {
+                classData = classData.filter(function(c){return c.id !== pendingDeleteClassId;});
+                filteredData = filteredData.filter(function(c){return c.id !== pendingDeleteClassId;});
+                if(filteredData.length % itemsPerPage === 0 && currentPage > 1) currentPage--;
+                renderClasses(currentPage);
+                mostrarToast('Clase eliminada correctamente');
+                pendingDeleteClassId = null;
+              }
+              document.getElementById('delete-confirmation-modal').classList.add('hidden');
             "
           >
             Eliminar
@@ -2538,6 +2544,7 @@
     </div>
 
     <script>
+      let pendingDeleteClassId = null;
       let classData = [
         {
           id: 4,
@@ -2700,7 +2707,7 @@
                         <button class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-primary hover:bg-primary/10 transition-colors border border-outline-variant/30" onclick="document.getElementById('modify-class-modal').classList.remove('hidden')" title="Editar Clase">
                             <span class="material-symbols-outlined text-sm">edit</span>
                         </button>
-                        <button class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-error hover:bg-error/10 transition-colors border border-outline-variant/30" onclick="document.getElementById('delete-confirmation-modal').classList.remove('hidden')" title="Eliminar Clase">
+                        <button class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-error hover:bg-error/10 transition-colors border border-outline-variant/30" onclick="pendingDeleteClassId=${cls.id};document.getElementById('delete-confirmation-modal').classList.remove('hidden')" title="Eliminar Clase">
                             <span class="material-symbols-outlined text-sm">delete</span>
                         </button>
                     </div>
