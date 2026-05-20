@@ -1,1046 +1,923 @@
-<!DOCTYPE html>
-
-<html class="light" lang="es" style="width: 1280px; height: 1024px; overflow: hidden; position: relative;"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Squat Gym - Gestión de Kiosko</title>
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Squat Gym - Control de Inventario</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface-container": "#e5e9e9",
-                        "surface": "#f5f7f7",
-                        "on-primary-container": "#00574f",
-                        "on-surface-variant": "#595c5c",
-                        "on-error": "#ffefee",
-                        "tertiary-fixed": "#27bcff",
-                        "outline-variant": "#abadae",
-                        "surface-bright": "#f5f7f7",
-                        "on-primary": "#bffff5",
-                        "secondary-fixed": "#22f2f3",
-                        "secondary": "#006667",
-                        "on-tertiary-fixed-variant": "#003e58",
-                        "on-secondary": "#bbffff",
-                        "surface-dim": "#d0d5d6",
-                        "on-secondary-fixed": "#004142",
-                        "error-container": "#fb5151",
-                        "error": "#b31b25",
-                        "inverse-on-surface": "#9b9d9e",
-                        "on-secondary-container": "#005656",
-                        "tertiary-fixed-dim": "#00aeef",
-                        "surface-container-low": "#eef1f1",
-                        "primary-dim": "#005a52",
-                        "on-tertiary-container": "#00344b",
-                        "on-primary-fixed": "#00423c",
-                        "on-tertiary-fixed": "#001a28",
-                        "surface-variant": "#d9dede",
-                        "primary-container": "#56f1e0",
-                        "surface-tint": "#00675f",
-                        "primary": "#00675f",
-                        "tertiary-container": "#27bcff",
-                        "on-secondary-fixed-variant": "#006061",
-                        "secondary-fixed-dim": "#00e3e4",
-                        "on-surface": "#2c2f30",
-                        "on-background": "#2c2f30",
-                        "background": "#f5f7f7",
-                        "surface-container-lowest": "#ffffff",
-                        "outline": "#747778",
-                        "secondary-dim": "#00595a",
-                        "inverse-surface": "#0b0f0f",
-                        "on-error-container": "#570008",
-                        "surface-container-high": "#dfe3e3",
-                        "secondary-container": "#22f2f3",
-                        "inverse-primary": "#56f1e0",
-                        "error-dim": "#9f0519",
-                        "primary-fixed": "#56f1e0",
-                        "on-tertiary": "#e8f4ff",
-                        "surface-container-highest": "#d9dede",
-                        "primary-fixed-dim": "#43e2d2",
-                        "tertiary-dim": "#005578",
-                        "on-primary-fixed-variant": "#006159",
-                        "tertiary": "#006289"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {},
-                    "fontFamily": {
-                        "headline": ["Lexend"],
-                        "display": ["Lexend"],
-                        "body": ["Manrope"],
-                        "label": ["Manrope"]
-                    },
-                    "fontSize": {}
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "inverse-surface": "#0b0f0f",
+                    "outline-variant": "#abadae",
+                    "on-tertiary": "#e8f4ff",
+                    "secondary-fixed-dim": "#00e3e4",
+                    "secondary-dim": "#00595a",
+                    "background": "#f8fafa",
+                    "surface": "#f8fafa",
+                    "surface-container": "#e5e9e9",
+                    "inverse-on-surface": "#9b9d9e",
+                    "on-tertiary-container": "#00344b",
+                    "on-primary-fixed": "#00423c",
+                    "on-surface": "#1a1c1d",
+                    "surface-container-highest": "#d9dede",
+                    "tertiary-fixed-dim": "#00aeef",
+                    "tertiary-fixed": "#27bcff",
+                    "surface-bright": "#f8fafa",
+                    "on-error-container": "#570008",
+                    "primary-container": "#56f1e0",
+                    "primary-fixed": "#56f1e0",
+                    "on-primary-fixed-variant": "#006159",
+                    "secondary": "#006667",
+                    "on-secondary-fixed-variant": "#006061",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#d9dede",
+                    "tertiary": "#006289",
+                    "primary": "#00675f",
+                    "on-tertiary-fixed-variant": "#003e58",
+                    "tertiary-container": "#27bcff",
+                    "on-secondary-container": "#005656",
+                    "on-secondary-fixed": "#004142",
+                    "error-container": "#fb5151",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#dfe3e3",
+                    "on-tertiary-fixed": "#001a28",
+                    "secondary-fixed": "#22f2f3",
+                    "tertiary-dim": "#005578",
+                    "on-background": "#1a1c1d",
+                    "surface-container-low": "#f1f4f4",
+                    "error-dim": "#9f0519",
+                    "on-primary-container": "#00201d",
+                    "surface-dim": "#d0d5d6",
+                    "surface-tint": "#00675f",
+                    "inverse-primary": "#56f1e0",
+                    "error": "#b31b25",
+                    "secondary-container": "#d0f8f8",
+                    "on-surface-variant": "#444748",
+                    "outline": "#747778",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#43e2d2",
+                    "primary-dim": "#005a52",
+                    "on-secondary": "#ffffff"
                 },
+                "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "1rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+                },
+                "fontFamily": {
+                    "headline": ["Lexend"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+                }
             },
-        }
-    </script>
+        },
+    }
+</script>
 <style>
-        body {
-            font-family: 'Manrope', sans-serif;
-            background-color: theme('colors.background');
-            color: theme('colors.on-surface');
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        h1, h2, h3, h4, h5, h6, .font-headline, .font-display, .font-lexend {
-            font-family: 'Lexend', sans-serif;
-        }
-        /* Custom scrollbar for container elements if needed, though instruction is to avoid vertical scroll */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: theme('colors.surface-variant');
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: theme('colors.outline-variant');
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .bg-mesh {
-            background-color: #f8fafa;
-            background-image: radial-gradient(at 0% 0%, hsla(174, 100%, 95%, 1) 0, transparent 50%), 
-                              radial-gradient(at 100% 0%, hsla(180, 100%, 96%, 1) 0, transparent 50%);
-        }
-        .card-interactive {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-interactive:hover {
-            transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 12px 24px -10px rgba(0, 103, 95, 0.15);
-            border-color: theme('colors.primary/30');
-        }
-        .btn-interactive:active {
-            transform: scale(0.95);
-            opacity: 0.8;
-        }
-    </style>
-<style>
-    .sidebar-collapsed {
-        transform: translateX(-100%);
-        pointer-events: none;
-        opacity: 0;
-    }
-    .nav-link.active {
-        background-color: #00675f !important;
-        color: white !important;
-        transition: none !important;
-    }
-    .nav-link.active .material-symbols-outlined {
-        color: white !important;
-    }
-    #notification-dropdown.hidden {
-        display: none;
-    }
-    #notification-dropdown {
-        animation: slideInDown 0.2s ease-out;
-    }
-    @keyframes slideInDown {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .card-premium {
-        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -4px rgba(0, 0, 0, 0.02);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-    .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .pagination-dot {
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background-color: #cbd5e1;
-    }
+:root{
+  --sidebar-width: 280px;
+  --header-height: 64px;
+  --footer-height: 70px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  margin:0;
+  font-family:'Manrope',sans-serif;
+  background:#f8fafa;
+  color:#1a1c1d;
+}
+
+h1,h2,h3,h4,.headline{
+  font-family:'Lexend',sans-serif;
+}
+
+.material-symbols-outlined{
+  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
+}
+
+.bg-mesh{
+  background-color:#f8fafa;
+  background-image:
+    radial-gradient(at 0% 0%, hsla(174,100%,95%,1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(180,100%,96%,1) 0, transparent 50%);
+}
+
+.card-premium{
+  box-shadow:
+    0 10px 30px -5px rgba(0,0,0,.03),
+    0 4px 12px -4px rgba(0,0,0,.01);
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+
+.layout-shell{
+  width:100%;
+  max-width:1920px;
+  height:100vh;
+  margin:0 auto;
+  display:grid;
+  grid-template-rows:var(--header-height) 1fr var(--footer-height);
+  overflow:hidden;
+}
+
+.header{
+  height:var(--header-height);
+  background:#005a52;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:50;
+}
+
+.main-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  min-height:0;
+  overflow:hidden;
+  position:relative;
+}
+
+.sidebar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:var(--sidebar-width);
+  height:100vh;
+  background:#ffffff;
+  border-right:1px solid rgba(171,173,174,.3);
+  overflow:hidden;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 10px 30px rgba(0,0,0,.05);
+  z-index:80;
+  transform:translateX(-100%);
+  visibility:hidden;
+  opacity:0;
+}
+
+.sidebar-visible{
+  transform:translateX(0);
+  visibility:visible;
+  opacity:1;
+}
+
+.sidebar-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.3);
+  backdrop-filter:blur(4px);
+  z-index:70;
+  opacity:0;
+  visibility:hidden;
+  transition:all .3s ease;
+}
+
+.sidebar-backdrop.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.sidebar-inner{
+  width:var(--sidebar-width);
+  height:100%;
+  overflow-y:auto;
+  padding:24px 16px 16px;
+}
+
+.main-content{
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  padding:20px 28px;
+  gap:12px;
+}
+
+.content-wrapper{
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  flex:1;
+}
+
+.top-section{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  margin-bottom:4px;
+}
+
+.page-title{
+  font-size:clamp(1.4rem,2.5vw,2.2rem);
+  line-height:.95;
+  font-weight:900;
+  letter-spacing:-.05em;
+}
+
+.footer{
+  background:#00675f;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.custom-scrollbar::-webkit-scrollbar{
+  width:8px;
+  height:8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb{
+  background:#d9dede;
+  border-radius:999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover{
+  background:#c5caca;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.nav-link.active{
+  background:#00675f !important;
+  color:#fff !important;
+}
+
+.nav-link.active .material-symbols-outlined{
+  color:#fff !important;
+}
+
+#notification-dropdown{
+  animation:slideInDown .2s ease-out;
+}
+
+#notification-dropdown.hidden{
+  display:none;
+}
+
+@keyframes slideInDown{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.table-card{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.6);
+  border-radius:24px;
+  overflow:hidden;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width:1600px){
+  .main-content{
+    padding:28px;
+  }
+}
+
+@media (max-width:1366px){
+  :root{
+    --sidebar-width:250px;
+  }
+
+  .main-content{
+    padding:22px;
+  }
+
+  .page-title{
+    font-size:2.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 220px;
+  }
+
+  .main-content {
+    padding: 18px;
+    gap: 18px;
+  }
+
+  .page-title {
+    font-size: 2.2rem;
+  }
+
+  header .headline {
+    font-size: 1.6rem;
+  }
+
+  header .px-8 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .footer .px-12 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-shell {
+    grid-template-rows: var(--header-height) 1fr var(--footer-height);
+    overflow-y: auto;
+  }
+
+  .main-grid {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    min-height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(171,173,174,.3);
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .sidebar-inner {
+    width: 100%;
+    padding: 10px 14px;
+    overflow: visible;
+  }
+
+  .sidebar-inner nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    height: auto;
+  }
+
+  .sidebar-inner nav .mt-auto {
+    margin-top: 0 !important;
+    margin-left: auto;
+  }
+
+  .sidebar-inner nav .mt-2 {
+    margin-top: 0 !important;
+    flex-wrap: wrap;
+    display: flex;
+    gap: 4px;
+  }
+
+  .sidebar-inner nav .mt-2 > div:first-child {
+    display: none;
+  }
+
+  .main-content {
+    padding: 14px;
+    gap: 12px;
+    overflow: visible;
+  }
+
+  .content-wrapper {
+    overflow: visible;
+  }
+
+  .top-section {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  header .headline {
+    font-size: 1.2rem;
+  }
+
+  header .gap-4 {
+    gap: 6px;
+  }
+
+  header .px-8 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  header .w-11.h-11 {
+    width: 36px;
+    height: 36px;
+  }
+
+  header .text-\[28px\] {
+    font-size: 20px !important;
+  }
+
+  .footer .h-full {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 10px 16px !important;
+  }
+
+  .footer .gap-8 {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .footer .text-lg {
+    font-size: 14px;
+  }
+
+  #notification-dropdown {
+    width: 260px;
+    right: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .page-title {
+    font-size: 1.3rem;
+  }
+
+  header .headline {
+    font-size: 1.1rem;
+  }
+
+  header .w-11.h-11 {
+    width: 32px;
+    height: 32px;
+  }
+
+  header .text-\[28px\] {
+    font-size: 18px !important;
+  }
+
+  header .px-8 {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  #notification-dropdown {
+    width: 220px;
+    right: -10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .page-title {
+    font-size: 1.1rem;
+  }
+
+  .footer .text-\[9px\] {
+    font-size: 7px !important;
+  }
+}
 </style>
 </head>
-<body class="bg-mesh text-on-surface h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full relative">
-<!-- Header Component -->
-<header class="shrink-0 w-full z-50 border-b border-outline-variant/30 h-20" style="background-color: #005a52;"><div class="max-w-[1240px] mx-auto w-full h-full flex justify-between items-center px-8">
-<div class="flex items-center">
-<button class="mr-4 text-white hover:bg-white/10 p-2 rounded-full transition-colors flex items-center justify-center shrink-0" id="sidebar-toggle">
-<span class="material-symbols-outlined text-[28px]">menu</span>
-</button>
-<div class="font-black tracking-tighter font-lexend text-white text-3xl">Squat Gym</div>
-</div>
-<div class="flex items-center gap-4 text-white">
-<div class="relative">
-<button class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all group hover:bg-white/10 text-white" id="notification-bell" onclick="toggleNotifications()">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
-<span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-error text-[11px] text-white font-bold flex items-center justify-center rounded-full border border-white shadow-sm w-4 h-4 text-[9px]" style="top: -2px; right: -2px;">4</span>
-</button>
-<div class="absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60] hidden" id="notification-dropdown">
-<div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
-<h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
-<span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
-</div>
-<div class="flex flex-col">
-<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-<div class="flex gap-3">
-<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
-<span class="material-symbols-outlined text-sm">inventory_2</span>
-</div>
-<div class="flex-1">
-<p class="text-xs font-bold text-on-surface">Stock bajo: Proteína Whey</p>
-<p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
-</div>
-</div>
-</div>
-<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-<div class="flex gap-3">
-<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-<span class="material-symbols-outlined text-sm">event_busy</span>
-</div>
-<div class="flex-1">
-<p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
-<p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
-</div>
-</div>
-</div>
-<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-<div class="flex gap-3">
-<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-<span class="material-symbols-outlined text-sm">person_add</span>
-</div>
-<div class="flex-1">
-<p class="text-xs font-bold text-on-surface">Nuevo socio: Juan Pérez</p>
-<p class="text-[10px] text-on-surface-variant">Suscripción Plan Premium</p>
-</div>
-</div>
-</div>
-<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
-<div class="flex gap-3">
-<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
-<span class="material-symbols-outlined text-sm">payments</span>
-</div>
-<div class="flex-1">
-<p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
-<p class="text-[10px] text-on-surface-variant">Vencimiento en 2 días</p>
-</div>
-</div>
-</div>
-</div>
-<div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex gap-2 justify-center">
-<button class="flex-1 font-black transition-colors uppercase tracking-widest flex justify-center items-center gap-1 py-2.5 px-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 active:scale-[0.98] text-xs">
-<span class="material-symbols-outlined text-[14px]">add_circle</span>
-<span class="truncate">Crear</span>
-</button>
-<button class="flex-1 font-black transition-all uppercase tracking-widest flex justify-center items-center gap-1 group py-2.5 px-2 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] text-xs" style="background-color: #00675f; color: white;">
-<span class="truncate">Ver todas</span>
-<span class="material-symbols-outlined text-[14px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-<button class="flex items-center justify-center w-10 h-10 rounded-full transition-all hover:bg-white/10 text-white">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
-</button>
-</div>
-</div></header>
-<div class="flex flex-1 overflow-hidden relative">
-<!-- Backdrop -->
-<div class="absolute inset-0 bg-slate-900/50 z-[35] opacity-0 pointer-events-none transition-opacity duration-300" id="sidebar-backdrop"></div>
-<!-- Sidebar -->
-<aside class="w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col pt-6 pb-4 fixed top-20 left-0 bottom-20 z-[40] shadow-2xl transition-all duration-300 ease-in-out sidebar-collapsed" id="sidebar">
-<nav class="flex-1 flex flex-col gap-2 px-4 overflow-y-auto w-64">
-<a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all text-on-surface" href="#" onclick="setActive(this)">
-<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 0;'>home</span>
-<span class="nav-text font-lexend tracking-tight">Inicio</span>
-</a>
-<div class="flex flex-col gap-1 mt-2"><div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Clases</div><a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group text-on-surface" href="#" onclick="setActive(this)"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style='font-variation-settings: "FILL" 0;'>calendar_month</span><span class="nav-text font-medium text-sm">Catálogo de Clases</span></a><a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group text-on-surface" href="#" onclick="setActive(this)"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style='font-variation-settings: "FILL" 0;'>calendar_view_week</span><span class="nav-text font-medium text-sm">Cronograma</span></a><a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group text-on-surface" href="#" onclick="setActive(this)"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style='font-variation-settings: "FILL" 0;'>person</span><span class="nav-text font-medium text-sm">Consultar Alumno</span></a></div>
-<div class="flex flex-col gap-1 mt-4"><div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Kiosko</div>
-<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
-<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">point_of_sale</span>
-<span class="nav-text font-medium text-sm">Registrar Venta</span>
-</a>
-<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all active bg-primary text-white" href="#" onclick="setActive(this)">
-<span class="material-symbols-outlined text-white" style='font-variation-settings: "FILL" 1;'>inventory_2</span>
-<span class="nav-text font-medium text-sm">Control de Inventario</span>
-</a>
-<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group text-on-surface" href="#" onclick="setActive(this)">
-<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">loyalty</span>
-<span class="nav-text font-medium text-sm">Cupones</span>
-</a>
-</div>
-<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto text-on-surface" href="#" onclick="setActive(this)">
-<span class="material-symbols-outlined text-error transition-colors" style="font-variation-settings: 'FILL' 0;">logout</span>
-<span class="nav-text font-lexend font-medium text-sm">Cerrar Sesión</span>
-</a></nav>
-</aside>
-<!-- Main Content Canvas -->
-<main class="flex-grow flex flex-col px-8 py-6 w-full overflow-y-auto gap-6 transition-all duration-300 custom-scrollbar pt-6">
-<!-- Back Button & Page Header -->
-<div class="mb-8 shrink-0">
-<button class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group mb-4">
-<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
-<span class="text-xs font-bold uppercase tracking-widest font-headline">Volver</span>
-</button>
-<div class="flex flex-col md:flex-row justify-between items-end gap-6">
-<div class="flex flex-col">
-<h1 class="text-5xl font-black tracking-tighter text-on-surface headline gap-2 whitespace-nowrap">Control de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Invetario</span></h1>
-</div>
-</div>
-</div>
-<!-- Layout Container -->
-<div class="flex-grow flex flex-col min-h-0">
-<!-- Inventory Table -->
-<div class="flex-grow flex flex-col bg-white/70 backdrop-blur-md rounded-2xl border-2 border-primary/20 card-premium overflow-hidden">
-<!-- Table Header / Filters -->
-<div class="shrink-0 px-8 py-5 border-b-2 border-primary/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/60">
-<h2 class="text-xl font-black tracking-tight text-on-surface headline">Inventario de Productos</h2>
-<div class="flex flex-wrap items-center gap-4 w-full md:w-auto">
-<div class="relative flex items-center w-full md:w-auto">
-<select class="appearance-none w-full bg-white/80 border-2 border-primary/10 rounded-xl py-2 pl-4 pr-10 text-xs font-bold headline text-on-surface hover:border-primary/30 focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all cursor-pointer" id="typeFilter">
-<option value="">Todos los Tipos</option>
-<option value="suplementos">Suplementos</option>
-<option value="bebidas">Bebidas</option>
-<option value="accesorios">Accesorios</option>
-<option value="comida">Comida</option>
-</select>
-<span class="material-symbols-outlined absolute right-3 text-primary/60 text-lg pointer-events-none">arrow_drop_down</span>
-</div>
-<div class="relative flex items-center group w-full md:w-auto">
-<span class="material-symbols-outlined absolute left-3 text-slate-400 text-lg group-focus-within:text-primary transition-colors">search</span>
-<input class="w-full bg-white/80 border-2 border-primary/10 rounded-xl py-2 pl-10 pr-4 text-xs font-bold headline text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all md:w-64" id="productSearch" placeholder="Buscar producto..." type="text"/>
-</div>
-<button class="flex items-center justify-center w-full md:w-auto gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest headline hover:bg-secondary transition-all shadow-md shadow-primary/10 hover:shadow-primary/30 active:scale-95" onclick="openAddProductModal()">
-<span class="material-symbols-outlined text-lg">add_circle</span>
-                            Añadir Producto
-                        </button>
-</div>
-</div>
-<!-- Table Body -->
-<div class="flex-grow overflow-auto no-scrollbar">
-<table class="w-full text-left border-collapse">
-<thead class="sticky top-0 bg-white/95 backdrop-blur-md z-10">
-<tr>
-<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b-2 border-primary/10">Producto</th>
-<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b-2 border-primary/10">Tipo</th>
-<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b-2 border-primary/10">Precio</th>
-<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b-2 text-center border-primary/10">Cantidad/Stock</th>
-<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b-2 text-center border-primary/10">Estado</th>
-<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b-2 text-center border-primary/10">Acciones</th>
-</tr>
-</thead>
-<tbody class="divide-y-2 divide-primary/10" id="inventoryBody">
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Aminoacidos BCAA" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRw34KaSBA7oN05K2yzlSaN7cFn7nTyb8WST3yM1D7wnw5wIKTL4Yh44xi9TCXn89LznWZBhuPYNJhBZ28W9snguA4nXDWzEqSggPaFnQ6aOsFFRoGsbOlP7Xx0BbB3qz36Rx_nITHfgAIWeAcWe3FTKZ0XWS9-20IukJXDJiJ_qZMrwQkj98zbAxzLXtRVj9X3djoMNpguE9bpUU6BuVE3WYoqdsaptEcSLJ0EvbQT1_w-JA11urumxVSCTyIQjJXyihzrIrxwfQ"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Aminoacidos BCAA</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Suplementos</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 29.50</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-error headline text-base">2</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-red-600 px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Stock Crítico
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(12)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Barra Energética" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVmX92bZTFi3puxKpZvJouOUvnQlOQJbFuxJo9-Kn-puvPftFQT0bt0T8swx-SNy02hAEeQo9SbBvTnug0QyvOaFL0p_F6nJE_Q7AwnMbr8URx8cLlr8Fx2yP9-atdRKQ5g4DkIHPYMS3ceEqmmOyVfgoTJgucRpj4bvrh-DE4u5GM4l95E1AhPFRmj8-pJdv2KR6I9YEpCltRQeQEHow7nFCSdTbg-SFEm8PA1iVJUw-DChFwwB7HBOzBrMeifAa4sGfzeWsdHug"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Barra Energética</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Comida</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 2.10</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">25</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(4)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Bebida Isotónica" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG0SfE3S7CUs26s0ERDjkktTuUWB8WCwfFBX6kMbivToDoP2GP9jQxKXcTBa7mVwLnRS3U5UkruwQ-WRFahSnQvucFfrTiBIzEInVk6RMasJuz-8xH7vFOFqyI1o-RGCVaDpa_DCLRjVbv52wgotSiyan2QI7gLb5nEw_FT7QggsyfkV8yEjES_BOYHxHZO0wc9X1EGXijGSXNjNNZXwNr14YYBDHVAxNIX_1qR6Vf-H_V9VRzJ_n10XRZzUz3BLG0t-ZNleR5SQc"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Bebida Isotónica</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Bebidas</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 2.50</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">30</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(6)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Creatina Monohidrato" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcQcj5XPSMvot-IrKHh2gR01kMC0nRulZ4K4M7-huSM54QApvVn9oic11jxQgPoHMoImgOhhmEy_v4vEnJSKPknxg60A_rek5GYLufo1EIrJ-tf599VUC5ol7kHTj8HNJkO1PJTfaaLzJTqbC1bRAVEmqNpEr8TmdhMos-50w2szOMRHLCe66NgtcHsiFdKZYrvnm1lbcCyDkdHuyyg7EBZ-OF-_EYtpk5alyzEWhp8C9jC_pWHOM1pgr3txXnQ4XAvztkJS8Z25g"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Creatina Monohidrato</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Suplementos</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 22.99</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">12</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(5)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Cuerda de Saltar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUJI3kfnBvP2q8xklN36sWLyZLMh65OIpeEXFiea5sSkSLmSJDxyUV9vKT5zGeTCE8_KLJx0ovwSLMU_jB3sC-LlRcvsdpBpx5eP_vOSnNSdtUl92dC7t4O8BALpMPkikssuuP2deRFBwYePVld27vo6lo1Wy1QrSD-nhO4lz_ZWZrnTuXJSxmfwOF0IvHVp38o8KrNdZvVxOIhrnFKeuXX3GHJ_T5ZPXLazB4gELb9Rsn8KUXxscQ-Ys9RFYA8ILnaau2oSCQX1w"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Cuerda de Saltar</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Accesorios</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 9.50</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">22</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(9)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Gorra Squat Gym" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKs0j6mfEdenr5ZGslwzFA4bU9cJ70ymDEpuYAPs_djHnlK-nohw-rNvs9NTLqovyGbPLDasDP1QV7ZGGVpDX0tr21lTfjC2cZ1JowtrKKWtGNJnY_o0qkJPtC6UZOj1bxZRAEZ6C4INaVcET9-YB2Cftzbtpky6XqIG_twtcgsUdr7EzsVJvVwwmzoWWMk6gARhqBwa2Dx2dT0Q1p_HGolzwqAGXunRbC4LETl_-TD9jlopODz31AwYUoWrLEzkHzF_EbjETde9E"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Gorra Squat Gym</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Merchandising</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 19.90</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">10</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(13)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Guantes de Gimnasio" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcMohtjVBGh2ANo8RauR77FWIBiBZaeEcvNWNO6YnW7Be3-bhskjrRS3BDTKY2q9JJirbhS7l14Ae0D-bGIhjBOX7GW9g_QW3tfSLGd0kjHGIaF2Mqe0L81tDBofZdMKSoYLUy8F06ofFnlMJ2LqC70xCgnk9cC1gSG5Ui9wk5Ei-W4CxcZXdYC5ubd68qPhOX1IZC1nZ_oSDZFGiKF6pFDAiUeFyxd1uoMG8v3V3mrSTsNz76oIzlHcxkSwOCb50cBUXz7yEojP4"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Guantes de Gimnasio</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Accesorios</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 15.00</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">8</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(7)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Mochila Gym" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT-d8lT5_g8Jl_k4jxnXkqiHP4nd0ILFkEgGs3ja_BVIdHtZqCVhxu21WmDQAPm5lqmXXxxLdqg7Rxyk6mitm35VSYswSYlTle3YyuiEH37We1IKIjfMdQiWCtwEPJBjOooDfYgAplGdr6DcUc15gUCsNowqB3HoW-Ddy1yDfPAsgn_xQtHPdGjtG8we8L6YU41FzTM1bvHqhYlSjYJZFHDgKmkKxGsYpYw6HQDTdHaUMv6cGquPQlCCHMxNBDDd0qvLAt7hlM5-I"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Mochila Gym</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Accesorios</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 45.00</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-error headline text-base">1</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-red-600 px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Stock Crítico
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(16)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Muñequeras" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA78sb1MT4n5GEEEZmMYiDNewEx8taetMPJZluCINrSR1iIxg9ThwhA3371Xw7rCKTtkARQB1kOzYjQa5f3ARkOIrkByNfZQg0U0uHDdWflI81okQw9ur3DNLPt2ChM6UiAPmEpnkDF4rFVgTSkAEvtncUoCMIyQlvWzBJZFmU6J-2-_RRUNIyw4_Ajmv3vRxvoqVRwoootqcw6y04kjAwVes4EFx22CbMmoJYGgvNgL0R17Hpc2odfPqnvQNh2KlivTbbqmyY-ar0"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Muñequeras</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Accesorios</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 7.00</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">40</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(11)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Pre-Workout Blast" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwJH4bO3NigIPrH2qYBQbEmea5i_h21bkK4ZpxIdMuDGRgLD3u2OZnfamgOi8hiw02T46Ipt8FlhvWT6QM3Z06EiauSFgbTeRYd2w5JtM_vhjDhHWcWA-trUpsw9fFsDxIYo5Ku787-XJpSDeN4wAYjl3vMCczqFkyoKmwLUoZVt2n7QCZ5HKD8VfqpzGpWwWpU-Qo6er5g9bVRjgcyHNSX6ywk-x6YS9ylq9lZ2fUmYTAAQrEGSpUuj1J6M5Wh2bmiUTARcpczmU"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Pre-Workout Blast</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Suplementos</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 35.00</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-error headline text-base">4</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-red-600 px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Stock Crítico
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(8)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Protein Shake" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLzka1Ys63oXx3MkxdvLy5acNOj_byjZyGOF2YhFTn6NFCEUqNpYPE28TuMc1eZ3GVT7tWkkrVeKkOwhU16ZnD3pj9eczDE-AJKuhzhS60FE9zklhX9_A-OmioIjmvZDAu44XYYuNgX4dtq2xDjhT8q5-aNBiJDhSrd4QJaOjT0w1tnpTESryF5hGHkIJ1P46cnpOMUvaGp2evCqRrteynZmyG9kLKqaAj_7WMW_HV1CZSPFH7zX1IYuFOW3a5jATaSBYQBU1dYd8"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Protein Shake</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Suplementos</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 4.50</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">42</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(1)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Shaker 700ml" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7tdgZ2Mw4jNjw0DZw3nbi8X8uoUPOOIEaNtCHQap6nVutHZyJWLUuuQCCZF_TsrVQsuabvWKaAr45h6PPCkTzSBqle-QrZ_IMOsBeekNadLYuF-7gV-6NbrF6bEFsWlL8N3c4SwSfIVjCM4Y57HT_7Z5cap__XbCIexCF2mBUc1bzqKFg8DVvmwTw6Rq8odZF0Cg-8ZPiWOHx6p2KOUIbzgxoKUQlohAtf-tST6a9hXqC8mLEcVPE6JgEmt6GHz-YPsOniwBBbkA"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Shaker 700ml</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Accesorios</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 5.50</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">55</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(14)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Toalla Microfibra" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf9XL4XI_CbhBL5gITMI9Y_oFd3F5EQHQmAVlIjV3dLPSSxZUBrf3MtMelqngtYcl_tCnX9YZqLYAp8mqzK2e3PNN3IA_9qvLyiOSz210cZVUE5UcOFp6ImziUDW90HJX6ug_sQdQD3hWF81ZBpCn0LmlRr6ocdvQWDh3ZnptIDweQ9MTMQZ581VFkX9FPWsCrQvv_5tUd6rqIN2Blyxse00jzU0ZEARh33M4qvwE4qVHB7SOkI8aygtOvfYjGKREBHzMsL7hlvEY"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Toalla Microfibra</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Accesorios</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 12.00</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">18</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(3)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Vitamin Complex" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP2yFrZFCH_ryZpJ-Yoplu7Q7-xCh9KfiorciQ7_td9HDNgBKX-5ae_X8XgbsNRYKckLXoMwNtwCv_dTG1pSrEO8np9uPwS6lFzw4DjR107nRvXsbvgwG2tC1At9hCUxg_cOM0Jk-lTS_wB5XCdI6a_50D5M2l0PzHi2tOTLzUDzrjtg-cCEBVGDIAC3P3F9wl_LpzR0nAM3LDtKyDoL_RYGNxcy5Pzjko9eyvWEGCZ-XDJZpU5ERwunM6VgZ6SZJtgtmyOhEfmV0"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Vitamin Complex</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Suplementos</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 18.20</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">15</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(10)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-<tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="Zapatillas Training" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHKpfhL4TW7mNG85jcIZ_PTXzEfF1kbbU0Skfid-Qd3_2d9EZsADFOxYDEG6IJvUxZXo1dZx2pi0XXxLofqMkPJR1j6UOqozLon5MzqBVCpl_tf_Py7IcQSyLpvOGhhdUIdeBMYZCFzifRsmbAMYxpsesMCmkdWqUlGZY0l1VyJM-kXkbPAh_z0QvUWofiSK_FoSEbRa331dMdbYkKIdeNPfPJaynVnqSt2Wnan9jMHrwjBrRehmM6AX5WiO17l_xkauZNn_tTEB0"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">Zapatillas Training</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">Accesorios</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ 89.00</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black text-on-surface headline text-base">6</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center text-primary px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            Disponible
-                        </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(15)" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Pagination -->
-<div class="shrink-0 px-8 py-5 border-t-2 border-primary/10 flex flex-col md:flex-row items-center justify-between gap-4 bg-white/60">
-<p class="text-[10px] font-black uppercase tracking-widest text-slate-400" id="paginationInfo">Mostrando <span class="text-primary" id="rangeDisplay">1-15</span> de <span class="" id="totalDisplay">15</span> productos registrados</p>
-<div class="flex items-center gap-2" id="paginationControls"><button class="w-9 h-9 flex items-center justify-center rounded-xl border border-primary/20 transition-all active:bg-primary/5 opacity-30 cursor-not-allowed text-slate-300" disabled=""><span class="material-symbols-outlined text-lg">chevron_left</span></button><button class="w-9 h-9 flex items-center justify-center rounded-xl bg-primary text-white font-black text-xs headline shadow-lg shadow-primary/20 ring-4 ring-primary/10 active:scale-95 transition-all">1</button><button class="w-9 h-9 flex items-center justify-center rounded-xl border border-primary/20 transition-all active:bg-primary/5 opacity-30 cursor-not-allowed text-slate-300" disabled=""><span class="material-symbols-outlined text-lg">chevron_right</span></button></div>
-</div>
-</div>
-</div>
-</main>
-</div>
-<!-- Footer Component -->
-<footer class="shrink-0 bg-white/50 backdrop-blur-sm w-full py-6 border-t border-outline-variant/30 mt-auto" style="background-color: #00675f;"><div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1280px] mx-auto w-full gap-4"><div class="flex flex-col items-center md:items-start"><div class="text-lg font-black text-white font-lexend mb-1 headline">Squat Gym</div><p class="text-white/60 text-[9px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM</p></div><div class="flex space-x-8"><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Ayuda</a><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Privacidad</a><a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Contacto</a></div></div></footer>
+<body class="bg-mesh antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+<div class="layout-shell">
+
+<header class="header shrink-0">
+  <div class="h-full max-w-[1880px] mx-auto px-8 flex items-center justify-between">
+
+    <div class="flex items-center gap-4">
+      <button class="w-11 h-11 rounded-full hover:bg-white/10 transition flex items-center justify-center text-white shrink-0" id="sidebar-toggle">
+        <span class="material-symbols-outlined text-[28px]">menu</span>
+      </button>
+
+      <a class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity" href="../dashboard-secretaria.html">
+        Squat Gym
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4 text-white">
+
+      <div class="relative">
+        <button class="relative flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" id="notification-bell" onclick="toggleNotifications()">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications</span>
+
+          <span class="absolute -top-1 -right-1 w-5 h-5 bg-error text-[10px] font-bold flex items-center justify-center rounded-full border border-white shadow-sm">
+            4
+          </span>
+        </button>
+
+        <div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
+
+          <div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
+            <h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
+            <span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+          </div>
+
+          <div class="flex flex-col">
+
+            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+              <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
+                  <span class="material-symbols-outlined text-sm">inventory_2</span>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-bold text-on-surface">Stock bajo: Prote&iacute;na Whey</p>
+                  <p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+              <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                  <span class="material-symbols-outlined text-sm">event_busy</span>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
+                  <p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+              <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+                  <span class="material-symbols-outlined text-sm">person_add</span>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-bold text-on-surface">Nuevo socio: Juan P&eacute;rez</p>
+                  <p class="text-[10px] text-on-surface-variant">Suscripci&oacute;n Plan Premium</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+              <div class="flex gap-3">
+                <div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+                  <span class="material-symbols-outlined text-sm">payments</span>
+                </div>
+                <div class="flex-1">
+                  <p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
+                  <p class="text-[10px] text-on-surface-variant">Vencimiento en 2 d&iacute;as</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
+            <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;">
+              <span>Ver todas</span>
+              <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10">
+        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">account_circle</span>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+<div class="main-grid">
+
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-inner custom-scrollbar">
+      
+      <div class="flex items-center justify-between mb-6 px-2">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">fitness_center</span>
+          <span class="font-black text-on-surface headline tracking-tight">Men&uacute;</span>
+        </div>
+        <button class="w-8 h-8 rounded-full hover:bg-slate-100 transition flex items-center justify-center text-slate-400 hover:text-on-surface" id="sidebar-close">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+      </div>
+
+      <nav class="flex flex-col h-full gap-2">
+
+        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-secretaria.html">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>
+          <span class="font-lexend tracking-tight">Inicio</span>
+        </a>
+
+        <div class="flex flex-col gap-1 mt-2">
+
+          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+            Gesti&oacute;n de Clases
+          </div>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Catalogo-de-clases-secretaria.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
+            <span class="font-medium text-sm">Cat&aacute;logo de Clases</span>
+          </a>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Cronograma-semanal-secretaria.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
+            <span class="font-medium text-sm">Cronograma</span>
+          </a>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Consultar-alumno-secretaria.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
+            <span class="font-medium text-sm">Consultar Alumno</span>
+          </a>
+
+        </div>
+
+        <div class="flex flex-col gap-1 mt-4">
+
+          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+            Gesti&oacute;n de Kiosko
+          </div>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Registrar-venta.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">point_of_sale</span>
+            <span class="font-medium text-sm">Registrar Venta</span>
+          </a>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Control-de-inventario.html">
+            <span class="material-symbols-outlined text-primary transition-colors" style="font-variation-settings:'FILL' 1;">inventory_2</span>
+            <span class="font-medium text-sm">Control de Inventario</span>
+          </a>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Cupones.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
+            <span class="font-medium text-sm">Cupones</span>
+          </a>
+
+        </div>
+
+        <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
+          <span class="material-symbols-outlined text-error">logout</span>
+          <span class="font-lexend font-medium text-sm">Cerrar Sesi&oacute;n</span>
+        </a>
+
+      </nav>
+
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+
+    <div class="content-wrapper">
+
+      <div class="top-section">
+
+        <div>
+          <h1 class="page-title text-on-surface headline">
+            Control de
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+              Inventario
+            </span>
+          </h1>
+        </div>
+
+        <button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl font-black text-xs uppercase tracking-widest headline hover:bg-primary-dim transition-all shadow-md active:scale-95 shrink-0" onclick="openAddProductModal()">
+          <span class="material-symbols-outlined text-lg">add_circle</span>
+          A&ntilde;adir Producto
+        </button>
+
+      </div>
+
+      <div class="table-card card-premium flex-1 min-h-0">
+
+        <!-- Table Header / Filters -->
+        <div class="shrink-0 px-6 py-4 border-b border-primary/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-surface-container-lowest/80">
+          <h2 class="text-base font-black tracking-tight text-on-surface headline">Inventario de Productos</h2>
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="relative flex items-center">
+              <select class="appearance-none bg-surface-container-lowest border border-outline-variant/40 rounded-lg py-2 pl-3 pr-8 text-xs font-bold headline text-on-surface hover:border-primary/30 focus:outline-none focus:border-primary/40 transition-all cursor-pointer" id="typeFilter">
+                <option value="">Todos los Tipos</option>
+                <option value="suplementos">Suplementos</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="accesorios">Accesorios</option>
+                <option value="comida">Comida</option>
+              </select>
+              <span class="material-symbols-outlined absolute right-2 text-primary/60 text-base pointer-events-none">arrow_drop_down</span>
+            </div>
+            <div class="relative flex items-center group">
+              <span class="material-symbols-outlined absolute left-3 text-slate-400 text-base group-focus-within:text-primary transition-colors">search</span>
+              <input class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg py-2 pl-9 pr-3 text-xs font-bold headline text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-primary/40 transition-all w-56" id="productSearch" placeholder="Buscar producto..." type="text">
+            </div>
+          </div>
+        </div>
+
+        <!-- Table Body -->
+        <div class="flex-1 overflow-auto no-scrollbar">
+          <table class="w-full text-left border-collapse">
+            <thead class="sticky top-0 bg-surface-container-lowest z-10">
+              <tr>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10">Producto</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10">Tipo</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b border-primary/10">Precio</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b text-center border-primary/10">Stock</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b text-center border-primary/10">Estado</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary/60 font-headline border-b text-center border-primary/10">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-primary/5" id="inventoryBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="shrink-0 px-6 py-4 border-t border-primary/10 flex items-center justify-between bg-surface-container-lowest/80">
+          <p class="text-[10px] font-black uppercase tracking-widest text-slate-400" id="paginationInfo">Mostrando <span class="text-primary" id="rangeDisplay">1-15</span> de <span id="totalDisplay">15</span> productos</p>
+          <div class="flex items-center gap-2" id="paginationControls"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+<footer class="footer shrink-0">
+  <div class="h-full px-8 max-w-[1880px] mx-auto flex items-center justify-between gap-4">
+    <div class="flex flex-col">
+      <div class="text-base font-black text-white font-lexend mb-0.5 headline">
+        Squat Gym
+      </div>
+      <p class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60">
+        &copy; 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.
+      </p>
+    </div>
+    <div class="flex items-center gap-6">
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Ayuda-secretaria.html">Ayuda</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Privacidad-secretaria.html">Privacidad</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Contacto-secretaria.html">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+</div>
+
 <!-- Delete Confirmation Modal -->
 <div class="fixed inset-0 z-[100] items-center justify-center hidden" id="deleteModal">
-<div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300 opacity-0" id="deleteModalBackdrop"></div>
-<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-md w-full mx-4 relative z-10 transition-all duration-300 scale-95 opacity-0" id="deleteModalContent">
-<div class="p-6 border-b border-outline-variant/20">
-<h3 class="text-xl font-black font-headline text-on-surface">Confirmar Eliminación</h3>
+<div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-md w-full mx-4 relative z-10 p-6">
+<div class="flex flex-col items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-full bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-4xl">delete_forever</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface text-center">Confirmar Eliminaci&oacute;n</h3>
+<p class="text-on-surface-variant text-sm text-center">¿Estás seguro de que deseas eliminar este producto? Esta acci&oacute;n no se puede deshacer.</p>
+</div>
+<div class="flex flex-col gap-2">
+<button class="w-full px-5 py-3 rounded-lg bg-error text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all" id="confirmDeleteBtn">Eliminar</button>
+<button class="w-full px-5 py-3 rounded-lg border border-outline text-on-surface-variant text-sm font-bold hover:bg-surface-container-low transition-all" onclick="closeDeleteModal()">Cancelar</button>
+</div>
+</div>
+</div>
+
+<!-- Add / Edit Product Modal -->
+<div class="fixed inset-0 z-[110] items-center justify-center hidden" id="addProductModal">
+<div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeAddProductModal()"></div>
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-2xl w-full mx-4 relative z-10 max-h-[90vh] overflow-y-auto">
+<div class="p-6 border-b border-outline-variant/20 flex justify-between items-center">
+<h3 class="text-2xl font-bold font-headline text-on-surface">A&ntilde;adir Producto</h3>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors" onclick="closeAddProductModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
 </div>
 <div class="p-6">
-<p class="text-on-surface-variant">¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.</p>
+<form class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-8" id="addProductForm">
+<div class="flex flex-col items-start gap-3">
+<label class="text-xs font-black uppercase tracking-widest text-primary/60">Imagen del Producto</label>
+<div class="relative w-full aspect-square group cursor-pointer border-2 border-dashed border-primary/20 rounded-2xl overflow-hidden hover:border-primary/40 transition-all bg-surface-container-low flex items-center justify-center" id="imageUploadContainer">
+<input accept="image/*" class="hidden" id="productImageInput" type="file">
+<div class="flex flex-col items-center justify-center h-full gap-2" id="uploadPlaceholder">
+<span class="material-symbols-outlined text-4xl text-primary/40">add_photo_alternate</span>
+<span class="text-[10px] font-bold text-slate-400">Subir Imagen</span>
 </div>
-<div class="p-6 bg-surface-container-low rounded-b-2xl flex justify-end gap-4 border-t border-outline-variant/20">
-<button class="px-5 py-2.5 rounded-xl font-bold text-sm text-on-surface hover:bg-surface-variant transition-colors" onclick="closeDeleteModal()">
-                Cancelar
-            </button>
-<button class="px-5 py-2.5 rounded-xl font-black text-sm bg-error text-white hover:bg-error-dim transition-colors shadow-md shadow-error/20 active:scale-95" id="confirmDeleteBtn">
-                Eliminar
-            </button>
+<img class="w-full h-full object-cover hidden" id="imagePreview" src="">
+<button class="absolute top-2 right-2 w-8 h-8 bg-error text-white rounded-full items-center justify-center shadow-lg hover:bg-error-dim transition-all hidden" id="removeImageBtn" type="button">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-5">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-black uppercase tracking-widest text-primary/60">Nombre del Producto</label>
+<input class="bg-surface-container-low border border-primary/10 rounded-xl py-3 px-4 text-sm font-bold headline focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all w-full" id="newProductName" oninput="validateSaveButton()" placeholder="Nombre del producto" required type="text">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-black uppercase tracking-widest text-primary/60">Tipo</label>
+<div class="grid grid-cols-2 gap-2" id="productTypeSelectors">
+<button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Bebidas" onclick="selectType(this)" type="button">Bebidas</button>
+<button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Suplementos" onclick="selectType(this)" type="button">Suplementos</button>
+<button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Snacks" onclick="selectType(this)" type="button">Snacks</button>
+<button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Accesorios" onclick="selectType(this)" type="button">Accesorios</button>
+</div>
+<input id="newProductType" type="hidden" value="">
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-black uppercase tracking-widest text-primary/60">Precio ($)</label>
+<input class="bg-surface-container-low border border-primary/10 rounded-xl py-3 px-4 text-sm font-bold headline focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all w-full" id="newProductPrice" min="0" oninput="validateSaveButton()" onkeydown="if(event.key==='-' || event.key==='e') event.preventDefault()" placeholder="0.00" required step="0.01" type="number">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-black uppercase tracking-widest text-primary/60">Stock Inicial</label>
+<input class="bg-surface-container-low border border-primary/10 rounded-xl py-3 px-4 text-sm font-bold headline focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all w-full" id="newProductStock" min="0" oninput="validateSaveButton()" onkeydown="if(event.key==='-' || event.key==='.' || event.key===',' || event.key==='e') event.preventDefault()" placeholder="0" required type="number">
 </div>
 </div>
 </div>
+</form>
+</div>
+<div class="px-6 py-4 bg-surface-container-low rounded-b-2xl flex justify-end gap-3 border-t border-outline-variant/20">
+<button class="px-6 py-3 rounded-xl font-bold text-sm text-on-surface hover:bg-surface-variant transition-colors" onclick="closeAddProductModal()">Cancelar</button>
+<button class="px-6 py-3 rounded-xl font-black text-sm bg-primary text-white hover:bg-primary-dim transition-colors shadow-md shadow-primary/20 active:scale-95 opacity-50 pointer-events-none" id="saveProductBtn">Guardar Cambios</button>
+</div>
+</div>
+</div>
+
 <script>
-    // Sidebar toggle logic
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const backdrop = document.getElementById('sidebar-backdrop');
-        const icon = document.querySelector('#sidebar-toggle span');
-        
-        sidebar.classList.toggle('sidebar-collapsed');
-        const isCollapsed = sidebar.classList.contains('sidebar-collapsed');
-        icon.innerText = isCollapsed ? 'menu' : 'menu_open';
-        
-        if (isCollapsed) {
-            backdrop.classList.remove('opacity-100', 'pointer-events-auto');
-            backdrop.classList.add('opacity-0', 'pointer-events-none');
-        } else {
-            backdrop.classList.remove('opacity-0', 'pointer-events-none');
-            backdrop.classList.add('opacity-100', 'pointer-events-auto');
-        }
-    }
+    document.getElementById('sidebar-toggle').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('sidebar-visible');
+      document.getElementById('sidebar-backdrop').classList.toggle('show');
+    });
 
-    document.getElementById('sidebar-toggle').addEventListener('click', toggleSidebar);
-    document.getElementById('sidebar-backdrop').addEventListener('click', toggleSidebar);
+    document.getElementById('sidebar-close').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('sidebar-visible');
+      document.getElementById('sidebar-backdrop').classList.remove('show');
+    });
 
-    function setActive(element) {
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active', 'bg-primary', 'text-white');
-            link.classList.add('text-on-surface');
-            const icon = link.querySelector('.material-symbols-outlined');
-            if (icon) icon.style.fontVariationSettings = "'FILL' 0";
-        });
-        element.classList.add('active', 'bg-primary', 'text-white');
-        element.classList.remove('text-on-surface');
-        const activeIcon = element.querySelector('.material-symbols-outlined');
-        if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
-    }
+    document.getElementById('sidebar-backdrop').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('sidebar-visible');
+      document.getElementById('sidebar-backdrop').classList.remove('show');
+    });
 
     function toggleNotifications() {
-        const dropdown = document.getElementById('notification-dropdown');
-        dropdown.classList.toggle('hidden');
+      document.getElementById('notification-dropdown').classList.toggle('hidden');
     }
 
-    // Close dropdown when clicking outside
     window.addEventListener('click', function(e) {
-        const dropdown = document.getElementById('notification-dropdown');
-        const bell = document.getElementById('notification-bell');
-        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.classList.add('hidden');
-        }
+      const dropdown = document.getElementById('notification-dropdown');
+      const bell = document.getElementById('notification-bell');
+      if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
     });
 
-    // Modal Logic
-    let productToDeleteId = null;
-    let editingProductId = null;
-
-    function openDeleteModal(id) {
-        productToDeleteId = id;
-        const modal = document.getElementById('deleteModal');
-        const backdrop = document.getElementById('deleteModalBackdrop');
-        const content = document.getElementById('deleteModalContent');
-        
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        
-        // Trigger animations after a tiny delay for the display change to register
-        setTimeout(() => {
-            backdrop.classList.remove('opacity-0');
-            backdrop.classList.add('opacity-100');
-            content.classList.remove('scale-95', 'opacity-0');
-            content.classList.add('scale-100', 'opacity-100');
-        }, 10);
-    }
-
-    function closeDeleteModal() {
-        productToDeleteId = null;
-        const modal = document.getElementById('deleteModal');
-        const backdrop = document.getElementById('deleteModalBackdrop');
-        const content = document.getElementById('deleteModalContent');
-        
-        backdrop.classList.remove('opacity-100');
-        backdrop.classList.add('opacity-0');
-        content.classList.remove('scale-100', 'opacity-100');
-        content.classList.add('scale-95', 'opacity-0');
-        
-        setTimeout(() => {
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }, 300);
-    }
-
-    document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
-        if (productToDeleteId !== null) {
-            const index = products.findIndex(p => p.id === productToDeleteId);
-            if(index > -1) {
-                products.splice(index, 1);
-                filterAndRender();
-            }
-            closeDeleteModal();
-        }
-    });
-
-    // 1. Data Store
+    // Inventory Data & Logic
     const products = [
         { id: 1, name: "Protein Shake", cat: "Suplementos", price: 4.50, stock: 42, status: "Disponible", img: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200" },
-        { id: 2, name: "Agua Mineral 500ml", cat: "Bebidas", price: 1.20, stock: 5, status: "Stock Crítico", img: "https://images.unsplash.com/photo-1523362622744-8c1308371181?auto=format&fit=crop&q=80&w=200" },
         { id: 3, name: "Toalla Microfibra", cat: "Accesorios", price: 12.00, stock: 18, status: "Disponible", img: "https://images.unsplash.com/photo-1590632555513-207038e1245e?auto=format&fit=crop&q=80&w=200" },
-        { id: 4, name: "Barra Energética", cat: "Comida", price: 2.10, stock: 25, status: "Disponible", img: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&q=80&w=200" },
+        { id: 4, name: "Barra Energ\u00e9tica", cat: "Comida", price: 2.10, stock: 25, status: "Disponible", img: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&q=80&w=200" },
         { id: 5, name: "Creatina Monohidrato", cat: "Suplementos", price: 22.99, stock: 12, status: "Disponible", img: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200" },
-        { id: 6, name: "Bebida Isotónica", cat: "Bebidas", price: 2.50, stock: 30, status: "Disponible", img: "https://images.unsplash.com/photo-1523362622744-8c1308371181?auto=format&fit=crop&q=80&w=200" },
+        { id: 6, name: "Bebida Isot\u00f3nica", cat: "Bebidas", price: 2.50, stock: 30, status: "Disponible", img: "https://images.unsplash.com/photo-1523362622744-8c1308371181?auto=format&fit=crop&q=80&w=200" },
         { id: 7, name: "Guantes de Gimnasio", cat: "Accesorios", price: 15.00, stock: 8, status: "Disponible", img: "https://images.unsplash.com/photo-1590632555513-207038e1245e?auto=format&fit=crop&q=80&w=200" },
-        { id: 8, name: "Pre-Workout Blast", cat: "Suplementos", price: 35.00, stock: 4, status: "Stock Crítico", img: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200" },
+        { id: 8, name: "Pre-Workout Blast", cat: "Suplementos", price: 35.00, stock: 4, status: "Stock Cr\u00edtico", img: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200" },
         { id: 9, name: "Cuerda de Saltar", cat: "Accesorios", price: 9.50, stock: 22, status: "Disponible", img: "https://images.unsplash.com/photo-1590632555513-207038e1245e?auto=format&fit=crop&q=80&w=200" },
         { id: 10, name: "Vitamin Complex", cat: "Suplementos", price: 18.20, stock: 15, status: "Disponible", img: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200" },
-        { id: 11, name: "Muñequeras", cat: "Accesorios", price: 7.00, stock: 40, status: "Disponible", img: "https://images.unsplash.com/photo-1590632555513-207038e1245e?auto=format&fit=crop&q=80&w=200" },
-        { id: 12, name: "Aminoacidos BCAA", cat: "Suplementos", price: 29.50, stock: 2, status: "Stock Crítico", img: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200" },
+        { id: 11, name: "Mu\u00f1equeras", cat: "Accesorios", price: 7.00, stock: 40, status: "Disponible", img: "https://images.unsplash.com/photo-1590632555513-207038e1245e?auto=format&fit=crop&q=80&w=200" },
+        { id: 12, name: "Aminoacidos BCAA", cat: "Suplementos", price: 29.50, stock: 2, status: "Stock Cr\u00edtico", img: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200" },
         { id: 13, name: "Gorra Squat Gym", cat: "Merchandising", price: 19.90, stock: 10, status: "Disponible", img: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&q=80&w=200" },
         { id: 14, name: "Shaker 700ml", cat: "Accesorios", price: 5.50, stock: 55, status: "Disponible", img: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200" },
         { id: 15, name: "Zapatillas Training", cat: "Accesorios", price: 89.00, stock: 6, status: "Disponible", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=200" },
-        { id: 16, name: "Mochila Gym", cat: "Accesorios", price: 45.00, stock: 1, status: "Stock Crítico", img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=200" }
+        { id: 16, name: "Mochila Gym", cat: "Accesorios", price: 45.00, stock: 1, status: "Stock Cr\u00edtico", img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=200" }
     ];
 
-    // Sort alphabetically by product name
     products.sort((a, b) => a.name.localeCompare(b.name));
 
-    // 2. Pagination Logic
     let currentPage = 1;
     const itemsPerPage = 20;
     let filteredProducts = [...products];
@@ -1048,56 +925,40 @@
     function renderTable() {
         const body = document.getElementById('inventoryBody');
         body.innerHTML = '';
-        
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
         const pageItems = filteredProducts.slice(start, end);
 
         pageItems.forEach(prod => {
-            const statusClass = prod.status === "Stock Crítico" ? "text-red-600" : "text-primary";
+            const statusClass = prod.status === "Stock Cr\u00edtico" ? "text-error" : "text-primary";
             const stockClass = prod.stock <= 5 ? "text-error" : "text-on-surface";
-            
-            const row = `
+            body.insertAdjacentHTML('beforeend', `
                 <tr class="hover:bg-primary/5 transition-colors group/row">
-<td class="px-8 py-6">
-<div class="flex items-center gap-4">
-<div class="w-10 h-10 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
-<img alt="${prod.name}" class="w-full h-full object-cover" src="${prod.img}"/>
-</div>
-<div class="flex flex-col">
-<span class="font-bold text-on-surface text-sm headline">${prod.name}</span>
-</div>
-</div>
-</td>
-<td class="px-8 py-6">
-<span class="text-xs font-bold text-slate-600 headline">${prod.cat}</span>
-</td>
-<td class="px-8 py-6">
-<span class="text-sm font-black text-on-surface headline">$ ${prod.price.toFixed(2)}</span>
-</td>
-<td class="px-8 py-6 text-center">
-<span class="font-black ${stockClass} headline text-base">${prod.stock}</span>
-</td>
-<td class="px-8 py-6 text-center">
-<div class="inline-flex items-center justify-center ${statusClass} px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">
-                            ${prod.status}
+                    <td class="px-6 py-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-lg bg-primary/5 overflow-hidden flex-shrink-0 border border-primary/10">
+                                <img alt="${prod.name}" class="w-full h-full object-cover" src="${prod.img}"/>
+                            </div>
+                            <span class="font-bold text-on-surface text-sm headline">${prod.name}</span>
                         </div>
-</td>
-<td class="px-8 py-6">
-<div class="flex items-center justify-center gap-4">
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
-<span class="material-symbols-outlined text-lg">edit</span>
-</button>
-<button class="inline-flex items-center justify-center p-1.5 rounded-lg text-red-600 hover:text-red-700 hover:bg-red-50 transition-all active:scale-90" onclick="openDeleteModal(${prod.id})" title="Eliminar">
-<span class="material-symbols-outlined text-lg">delete</span>
-</button>
-</div>
-</td>
-</tr>
-            `;
-            body.insertAdjacentHTML('beforeend', row);
+                    </td>
+                    <td class="px-6 py-4"><span class="text-xs font-bold text-slate-600 headline">${prod.cat}</span></td>
+                    <td class="px-6 py-4"><span class="text-sm font-black text-on-surface headline">$ ${prod.price.toFixed(2)}</span></td>
+                    <td class="px-6 py-4 text-center"><span class="font-black ${stockClass} headline text-base">${prod.stock}</span></td>
+                    <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center ${statusClass} px-1 py-0.5 font-black text-[9px] uppercase tracking-wider headline">${prod.status}</span></td>
+                    <td class="px-6 py-4">
+                        <div class="flex items-center justify-center gap-3">
+                            <button class="inline-flex items-center justify-center p-1.5 rounded-lg text-primary hover:text-secondary hover:bg-primary/5 transition-all active:scale-90" onclick="openEditProductModal(this)" title="Modificar">
+                                <span class="material-symbols-outlined text-lg">edit</span>
+                            </button>
+                            <button class="inline-flex items-center justify-center p-1.5 rounded-lg text-error hover:text-error hover:bg-error/5 transition-all active:scale-90" onclick="openDeleteModal(${prod.id})" title="Eliminar">
+                                <span class="material-symbols-outlined text-lg">delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `);
         });
-
         updatePaginationUI();
     }
 
@@ -1106,171 +967,104 @@
         const controls = document.getElementById('paginationControls');
         controls.innerHTML = '';
 
-        // Left Arrow
-        const prevBtn = document.createElement('button');
-        prevBtn.className = `w-9 h-9 flex items-center justify-center rounded-xl border border-primary/20 transition-all active:bg-primary/5 ${currentPage === 1 ? 'opacity-30 cursor-not-allowed text-slate-300' : 'text-slate-400 hover:border-primary hover:text-primary'}`;
-        prevBtn.innerHTML = '<span class="material-symbols-outlined text-lg">chevron_left</span>';
-        prevBtn.disabled = currentPage === 1;
-        prevBtn.onclick = () => { if(currentPage > 1) { currentPage--; renderTable(); } };
-        controls.appendChild(prevBtn);
-
-        // Page Numbers
-        for (let i = 1; i <= totalPages; i++) {
-            const pageBtn = document.createElement('button');
-            if (i === currentPage) {
-                pageBtn.className = "w-9 h-9 flex items-center justify-center rounded-xl bg-primary text-white font-black text-xs headline shadow-lg shadow-primary/20 ring-4 ring-primary/10 active:scale-95 transition-all";
-            } else {
-                pageBtn.className = "w-9 h-9 flex items-center justify-center rounded-xl border border-primary/10 text-slate-600 hover:border-primary hover:text-primary font-black text-xs headline transition-all active:scale-95";
-            }
-            pageBtn.innerText = i;
-            pageBtn.onclick = () => { currentPage = i; renderTable(); };
-            controls.appendChild(pageBtn);
+        function makeBtn(html, cls, click) {
+            const b = document.createElement('button');
+            b.innerHTML = html;
+            b.className = cls;
+            if (click) b.onclick = click;
+            return b;
         }
 
-        // Right Arrow
-        const nextBtn = document.createElement('button');
-        nextBtn.className = `w-9 h-9 flex items-center justify-center rounded-xl border border-primary/20 transition-all active:bg-primary/5 ${currentPage === totalPages || totalPages === 0 ? 'opacity-30 cursor-not-allowed text-slate-300' : 'text-slate-400 hover:border-primary hover:text-primary'}`;
-        nextBtn.innerHTML = '<span class="material-symbols-outlined text-lg">chevron_right</span>';
-        nextBtn.disabled = currentPage === totalPages || totalPages === 0;
-        nextBtn.onclick = () => { if(currentPage < totalPages) { currentPage++; renderTable(); } };
-        controls.appendChild(nextBtn);
+        const baseCls = 'w-9 h-9 flex items-center justify-center rounded-lg text-xs font-bold headline transition-all';
 
-        // Footer Info
+        controls.appendChild(makeBtn(
+            '<span class="material-symbols-outlined text-sm">chevron_left</span>',
+            `${baseCls} border border-primary/20 ${currentPage === 1 ? 'opacity-30 cursor-not-allowed text-slate-300' : 'text-slate-400 hover:border-primary hover:text-primary'}`,
+            currentPage > 1 ? () => { currentPage--; renderTable(); } : null
+        ));
+
+        for (let i = 1; i <= totalPages; i++) {
+            controls.appendChild(makeBtn(
+                i,
+                i === currentPage
+                    ? `${baseCls} bg-primary text-white shadow-sm`
+                    : `${baseCls} border border-primary/10 text-slate-600 hover:border-primary hover:text-primary`,
+                () => { currentPage = i; renderTable(); }
+            ));
+        }
+
+        controls.appendChild(makeBtn(
+            '<span class="material-symbols-outlined text-sm">chevron_right</span>',
+            `${baseCls} border border-primary/20 ${currentPage >= totalPages || totalPages === 0 ? 'opacity-30 cursor-not-allowed text-slate-300' : 'text-slate-400 hover:border-primary hover:text-primary'}`,
+            currentPage < totalPages ? () => { currentPage++; renderTable(); } : null
+        ));
+
         const start = filteredProducts.length === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
         const end = Math.min(currentPage * itemsPerPage, filteredProducts.length);
         document.getElementById('rangeDisplay').innerText = `${start}-${end}`;
         document.getElementById('totalDisplay').innerText = filteredProducts.length;
     }
 
-    function deleteProduct(id) {
-        openDeleteModal(id);
-    }
-
     function filterAndRender() {
         const term = document.getElementById('productSearch').value.toLowerCase();
-        const typeTerm = document.getElementById('typeFilter') ? document.getElementById('typeFilter').value.toLowerCase() : "";
-        
-        // Apply exact prefix matching as requested
-        // Only show products where the name STARTS with the search term
+        const typeTerm = document.getElementById('typeFilter').value.toLowerCase();
         filteredProducts = products.filter(p => {
             const name = p.name.toLowerCase();
             const type = p.cat.toLowerCase();
-            
-            const matchesName = name.startsWith(term);
-            const matchesType = typeTerm === "" || type === typeTerm;
-            
-            return matchesName && matchesType;
+            return name.startsWith(term) && (typeTerm === "" || type === typeTerm);
         });
-        
-        // Safety check for empty results or page overflow
         const maxPage = Math.max(1, Math.ceil(filteredProducts.length / itemsPerPage));
         if (currentPage > maxPage) currentPage = maxPage;
-        
         renderTable();
     }
 
-    document.getElementById('productSearch').addEventListener('input', () => {
-        currentPage = 1;
-        filterAndRender();
-    });
+    document.getElementById('productSearch').addEventListener('input', () => { currentPage = 1; filterAndRender(); });
+    document.getElementById('typeFilter').addEventListener('change', () => { currentPage = 1; filterAndRender(); });
 
-    if(document.getElementById('typeFilter')) {
-        document.getElementById('typeFilter').addEventListener('change', () => {
-            currentPage = 1;
-            filterAndRender();
-        });
+    // Delete Modal
+    let productToDeleteId = null;
+
+    function openDeleteModal(id) {
+        productToDeleteId = id;
+        document.getElementById('deleteModal').classList.remove('hidden');
+        document.getElementById('deleteModal').classList.add('flex');
     }
 
-    // Initial load
-    document.addEventListener('DOMContentLoaded', renderTable);
-</script>
-<div class="fixed inset-0 z-[110] items-center justify-center hidden" id="addProductModal">
-<div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity duration-300" id="addProductBackdrop"></div>
-<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-2xl w-full mx-4 relative z-10 transition-all duration-300 scale-95 opacity-0" id="addProductContent">
-<div class="p-6 border-b border-outline-variant/20 flex justify-between items-center">
-<h3 class="text-2xl font-black font-headline text-on-surface">Visualizar Producto</h3>
-<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors" onclick="closeAddProductModal()">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<div class="p-8 overflow-y-auto max-h-[70vh]"><form class="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] gap-10" id="addProductForm">
-<div class="flex flex-col items-start gap-4">
-<label class="text-xs font-black uppercase tracking-widest text-primary/60 mb-1">Imagen del Producto</label>
-<div class="relative w-full aspect-square group cursor-pointer border-2 border-dashed border-primary/20 rounded-2xl overflow-hidden hover:border-primary/40 transition-all bg-surface-container-low flex items-center justify-center" id="imageUploadContainer">
-<input accept="image/*" class="hidden" id="productImageInput" type="file"/>
-<div class="flex flex-col items-center justify-center h-full gap-2" id="uploadPlaceholder">
-<span class="material-symbols-outlined text-4xl text-primary/40">add_photo_alternate</span>
-<span class="text-[10px] font-bold text-slate-400">Subir Imagen</span>
-</div>
-<img class="w-full h-full object-cover hidden" id="imagePreview" src=""/>
-<button class="absolute top-2 right-2 w-8 h-8 bg-error text-white rounded-full items-center justify-center shadow-lg hover:bg-error-dim transition-all hidden" id="removeImageBtn" type="button">
-<span class="material-symbols-outlined text-lg">close</span>
-</button>
-</div>
-</div>
-<div class="flex flex-col gap-6">
-<div class="flex flex-col gap-2">
-<label class="text-xs font-black uppercase tracking-widest text-primary/60">Nombre del Producto</label>
-<input class="bg-surface border-2 border-primary/10 rounded-xl py-3 px-4 text-sm font-bold headline focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all w-full" id="newProductName" oninput="validateSaveButton()" placeholder="rrrr" required="" type="text"/>
-</div>
-<div class="flex flex-col gap-2">
-<label class="text-xs font-black uppercase tracking-widest text-primary/60">Tipo</label>
-<div class="grid grid-cols-2 gap-2" id="productTypeSelectors"><button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface text-on-surface" data-value="Bebidas" onclick="selectType(this)" type="button">Bebidas</button><button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface text-on-surface" data-value="Suplementos" onclick="selectType(this)" type="button">Suplementos</button><button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface text-on-surface" data-value="Snacks" onclick="selectType(this)" type="button">Snacks</button><button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface text-on-surface" data-value="Accesorios" onclick="selectType(this)" type="button">Accesorios</button></div>
-<input class="" id="newProductType" type="hidden" value=""/>
-</div>
-<div class="grid grid-cols-2 gap-4">
-<div class="flex flex-col gap-2">
-<label class="text-xs font-black uppercase tracking-widest text-primary/60">Precio ($)</label>
-<input class="bg-surface border-2 border-primary/10 rounded-xl py-3 px-4 text-sm font-bold headline focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all w-full" id="newProductPrice" min="0" oninput="validateSaveButton()" onkeydown="if(event.key==='-' || event.key==='e') event.preventDefault();" onkeypress="return event.charCode &gt;= 48 &amp;&amp; event.charCode &lt;= 57 || event.charCode == 46" placeholder="0.00" required="" step="0.01" type="number"/>
-</div>
-<div class="flex flex-col gap-2">
-<label class="text-xs font-black uppercase tracking-widest text-primary/60">Stock Inicial</label>
-<input class="bg-surface border-2 border-primary/10 rounded-xl py-3 px-4 text-sm font-bold headline focus:outline-none focus:border-primary/40 focus:ring-4 focus:ring-primary/5 transition-all w-full" id="newProductStock" min="0" oninput="validateSaveButton()" onkeydown="if(event.key==='-' || event.key==='.' || event.key===',' || event.key==='e') event.preventDefault();" onkeypress="return event.charCode &gt;= 48 &amp;&amp; event.charCode &lt;= 57" placeholder="0" required="" type="number"/>
-</div>
-</div>
-</div>
-</form></div>
-<div class="p-6 bg-surface-container-low rounded-b-2xl flex justify-end gap-4 border-t border-outline-variant/20">
-<button class="px-6 py-3 rounded-xl font-bold text-sm text-on-surface hover:bg-surface-variant transition-colors" onclick="closeAddProductModal()">
-                Cancelar
-            </button>
-<button class="px-6 py-3 rounded-xl font-black text-sm bg-primary text-white hover:bg-secondary transition-colors shadow-md shadow-primary/20 active:scale-95 opacity-50 pointer-events-none" id="saveProductBtn">Guardar Cambios</button>
-</div>
-</div>
-</div><script>
+    function closeDeleteModal() {
+        productToDeleteId = null;
+        document.getElementById('deleteModal').classList.remove('flex');
+        document.getElementById('deleteModal').classList.add('hidden');
+    }
+
+    document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
+        if (productToDeleteId !== null) {
+            const index = products.findIndex(p => p.id === productToDeleteId);
+            if (index > -1) { products.splice(index, 1); filterAndRender(); }
+            closeDeleteModal();
+        }
+    });
+
+    // Add / Edit Product Modal
+    let editingProductId = null;
+
     function openAddProductModal() {
         editingProductId = null;
-        document.querySelector('#addProductModal h3.text-2xl').innerText = 'Añadir Producto';
-        const modal = document.getElementById('addProductModal');
-        const backdrop = document.getElementById('addProductBackdrop');
-        const content = document.getElementById('addProductContent');
-        
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        
-        setTimeout(() => {
-            backdrop.classList.add('opacity-100');
-            content.classList.remove('scale-95', 'opacity-0');
-            content.classList.add('scale-100', 'opacity-100');
-        }, 10);
+        document.querySelector('#addProductModal h3.text-2xl').innerText = 'A\u00f1adir Producto';
+        document.getElementById('addProductModal').classList.remove('hidden');
+        document.getElementById('addProductModal').classList.add('flex');
     }
 
     function closeAddProductModal() {
         editingProductId = null;
-        const modal = document.getElementById('addProductModal');
-        const backdrop = document.getElementById('addProductBackdrop');
-        const content = document.getElementById('addProductContent');
-        
-        backdrop.classList.remove('opacity-100');
-        content.classList.remove('scale-100', 'opacity-100');
-        content.classList.add('scale-95', 'opacity-0');
-        
-        setTimeout(() => {
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-            document.getElementById('addProductForm').reset();
-            removeProductImage();
-        }, 300);
+        document.getElementById('addProductModal').classList.remove('flex');
+        document.getElementById('addProductModal').classList.add('hidden');
+        document.getElementById('addProductForm').reset();
+        removeProductImage();
+        document.getElementById('newProductType').value = '';
+        document.querySelectorAll('.type-chip').forEach(c => {
+            c.classList.remove('bg-primary', 'text-white');
+            c.classList.add('bg-surface-container-low', 'text-on-surface');
+        });
     }
 
     const imageInput = document.getElementById('productImageInput');
@@ -1280,7 +1074,7 @@
     const removeBtn = document.getElementById('removeImageBtn');
 
     uploadContainer.addEventListener('click', () => imageInput.click());
-    
+
     imageInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (file) {
@@ -1291,7 +1085,7 @@
                 placeholder.classList.add('hidden');
                 removeBtn.classList.remove('hidden');
                 removeBtn.classList.add('flex');
-            }
+            };
             reader.readAsDataURL(file);
         }
     });
@@ -1305,44 +1099,90 @@
         removeBtn.classList.remove('flex');
     }
 
-    removeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        removeProductImage();
-    });
+    removeBtn.addEventListener('click', (e) => { e.stopPropagation(); removeProductImage(); });
 
     document.getElementById('saveProductBtn').addEventListener('click', () => {
-        const name = document.getElementById('newProductName').value;
+        const name = document.getElementById('newProductName').value.trim();
         const type = document.getElementById('newProductType').value;
         const price = parseFloat(document.getElementById('newProductPrice').value);
         const stock = parseInt(document.getElementById('newProductStock').value);
         const img = preview.src || 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&q=80&w=200';
 
-        if (name && price && !isNaN(stock)) {
+        if (name && type && price > 0 && !isNaN(stock) && stock >= 0) {
             if (editingProductId) {
                 const prod = products.find(p => p.id === editingProductId);
-                if (prod) {
-                    prod.name = name;
-                    prod.cat = type;
-                    prod.price = price;
-                    prod.stock = stock;
-                    prod.status = stock <= 5 ? "Stock Crítico" : "Disponible";
-                    prod.img = img;
-                }
-                editingProductId = null;
+                if (prod) { prod.name = name; prod.cat = type; prod.price = price; prod.stock = stock; prod.status = stock <= 5 ? "Stock Cr\u00edtico" : "Disponible"; prod.img = img; }
             } else {
-                products.unshift({
-                    id: Date.now(),
-                    name: name,
-                    cat: type,
-                    price: price,
-                    stock: stock,
-                    status: stock <= 5 ? "Stock Crítico" : "Disponible",
-                    img: img
-                });
+                products.unshift({ id: Date.now(), name, cat: type, price, stock, status: stock <= 5 ? "Stock Cr\u00edtico" : "Disponible", img });
             }
             filterAndRender();
             closeAddProductModal();
+        } else {
+            alert('Complete todos los campos correctamente');
         }
     });
+
+    function selectType(btn) {
+        document.querySelectorAll('.type-chip').forEach(c => {
+            c.classList.remove('bg-primary', 'text-white');
+            c.classList.add('bg-surface-container-low', 'text-on-surface');
+        });
+        btn.classList.remove('bg-surface-container-low', 'text-on-surface');
+        btn.classList.add('bg-primary', 'text-white');
+        document.getElementById('newProductType').value = btn.getAttribute('data-value');
+        validateSaveButton();
+    }
+
+    function validateSaveButton() {
+        const name = document.getElementById('newProductName').value.trim();
+        const type = document.getElementById('newProductType').value;
+        const price = parseFloat(document.getElementById('newProductPrice').value);
+        const stock = parseInt(document.getElementById('newProductStock').value);
+        const btn = document.getElementById('saveProductBtn');
+        if (name && type && !isNaN(price) && price > 0 && !isNaN(stock) && stock >= 0) {
+            btn.classList.remove('opacity-50', 'pointer-events-none');
+        } else {
+            btn.classList.add('opacity-50', 'pointer-events-none');
+        }
+    }
+
+    function openEditProductModal(btn) {
+        const row = btn.closest('tr');
+        const name = row.querySelector('.headline.text-sm').innerText;
+        const category = row.querySelector('td:nth-child(2) span').innerText;
+        const price = row.querySelector('td:nth-child(3) span').innerText.replace('$ ', '');
+        const stock = row.querySelector('td:nth-child(4) span').innerText;
+        const imgSrc = row.querySelector('img').src;
+        const prod = products.find(p => p.name === name);
+        if (prod) editingProductId = prod.id;
+
+        document.querySelector('#addProductModal h3.text-2xl').innerText = 'Modificar Producto';
+        document.getElementById('newProductName').value = name;
+        document.getElementById('newProductPrice').value = price;
+        document.getElementById('newProductStock').value = stock;
+        preview.src = imgSrc;
+        preview.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+        removeBtn.classList.remove('hidden');
+        removeBtn.classList.add('flex');
+
+        document.querySelectorAll('.type-chip').forEach(c => {
+            c.classList.remove('bg-primary', 'text-white');
+            c.classList.add('bg-surface-container-low', 'text-on-surface');
+            if (c.getAttribute('data-value') === category) {
+                c.classList.remove('bg-surface-container-low', 'text-on-surface');
+                c.classList.add('bg-primary', 'text-white');
+            }
+        });
+        document.getElementById('newProductType').value = category;
+        validateSaveButton();
+
+        document.getElementById('addProductModal').classList.remove('hidden');
+        document.getElementById('addProductModal').classList.add('flex');
+    }
+
+    document.addEventListener('DOMContentLoaded', renderTable);
 </script>
-<script class="">function selectType(btn) { document.querySelectorAll('.type-chip').forEach(c => { c.classList.remove('bg-primary', 'text-white'); c.classList.add('bg-surface', 'text-on-surface'); }); btn.classList.remove('bg-surface', 'text-on-surface'); btn.classList.add('bg-primary', 'text-white'); document.getElementById('newProductType').value = btn.getAttribute('data-value'); validateSaveButton(); } function validateSaveButton() { const name = document.getElementById('newProductName').value.trim(); const type = document.getElementById('newProductType').value; const price = parseFloat(document.getElementById('newProductPrice').value); const stock = parseInt(document.getElementById('newProductStock').value); const btn = document.getElementById('saveProductBtn'); if (name && type && !isNaN(price) && price > 0 && !isNaN(stock) && stock > 1) { btn.classList.remove('opacity-50', 'pointer-events-none'); } else { btn.classList.add('opacity-50', 'pointer-events-none'); } }</script><script>function openEditProductModal(btn) { const row = btn.closest('tr'); const name = row.querySelector('.headline.text-sm').innerText; const category = row.querySelector('td:nth-child(2) span').innerText; const price = row.querySelector('td:nth-child(3) span').innerText.replace('$ ', ''); const stock = row.querySelector('td:nth-child(4) span').innerText; const imgSrc = row.querySelector('img').src; const prod = products.find(p => p.name === name); if (prod) editingProductId = prod.id; document.getElementById('newProductName').value = name; document.getElementById('newProductPrice').value = price; document.getElementById('newProductStock').value = stock; const preview = document.getElementById('imagePreview'); const placeholder = document.getElementById('uploadPlaceholder'); const removeBtn = document.getElementById('removeImageBtn'); preview.src = imgSrc; preview.classList.remove('hidden'); placeholder.classList.add('hidden'); removeBtn.classList.remove('hidden'); removeBtn.classList.add('flex'); document.querySelectorAll('.type-chip').forEach(chip => { if (chip.getAttribute('data-value') === category) { selectType(chip); } }); openAddProductModal(); document.querySelector('#addProductModal h3.text-2xl').innerText = 'Editar Producto'; document.getElementById('saveProductBtn').innerText = 'Guardar Cambios'; }</script><script>function openEditProductModal(btn) { const row = btn.closest('tr'); const name = row.querySelector('.headline.text-sm').innerText; const category = row.querySelector('td:nth-child(2) span').innerText; const price = row.querySelector('td:nth-child(3) span').innerText.replace('$ ', ''); const stock = row.querySelector('td:nth-child(4) span').innerText; const imgSrc = row.querySelector('img').src; const prod = products.find(p => p.name === name); if (prod) editingProductId = prod.id; document.getElementById('newProductName').value = name; document.getElementById('newProductPrice').value = price; document.getElementById('newProductStock').value = stock; const preview = document.getElementById('imagePreview'); const placeholder = document.getElementById('uploadPlaceholder'); const removeBtn = document.getElementById('removeImageBtn'); preview.src = imgSrc; preview.classList.remove('hidden'); placeholder.classList.add('hidden'); removeBtn.classList.remove('hidden'); removeBtn.classList.add('flex'); document.querySelectorAll('.type-chip').forEach(chip => { if (chip.getAttribute('data-value') === category) { selectType(chip); } }); openAddProductModal(); document.querySelector('#addProductModal h3.text-2xl').innerText = 'Editar Producto'; document.getElementById('saveProductBtn').innerText = 'Guardar Cambios'; }</script></body></html>
+
+</body>
+</html>
