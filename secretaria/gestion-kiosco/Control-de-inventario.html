@@ -709,10 +709,26 @@ h1,h2,h3,h4,.headline{
           </h1>
         </div>
 
-        <button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl font-black text-xs uppercase tracking-widest headline hover:bg-primary-dim transition-all shadow-md active:scale-95 shrink-0" onclick="openAddProductModal()">
-          <span class="material-symbols-outlined text-lg">add_circle</span>
-          A&ntilde;adir Producto
-        </button>
+        <div class="flex items-center gap-3 shrink-0">
+          <div class="relative group" tabindex="0">
+            <button class="flex items-center gap-1.5 bg-surface-container-lowest text-on-surface text-xs font-semibold pl-3 pr-2 py-1.5 rounded-xl border border-outline-variant/40 hover:bg-surface-container-low focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer whitespace-nowrap" id="sede-btn-inventario" type="button">
+              <span class="material-symbols-outlined text-primary text-sm">location_on</span>
+              <span id="sede-label-inventario">Todas las sedes</span>
+              <span class="material-symbols-outlined text-on-surface-variant text-lg">expand_more</span>
+            </button>
+            <div class="hidden absolute left-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-zinc-100 py-2 z-50 group-focus-within:block" id="sede-dropdown-inventario" style="min-width:calc(100% + 30px)">
+              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('todas',this)">Todas las sedes</button>
+              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('zona-norte',this)">Zona Norte</button>
+              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('zona-sur',this)">Zona Sur</button>
+              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('zona-este',this)">Zona Este</button>
+              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('zona-oeste',this)">Zona Oeste</button>
+            </div>
+          </div>
+          <button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl font-black text-xs uppercase tracking-widest headline hover:bg-primary-dim transition-all shadow-md active:scale-95 shrink-0" onclick="openAddProductModal()">
+            <span class="material-symbols-outlined text-lg">add_circle</span>
+            A&ntilde;adir Producto
+          </button>
+        </div>
 
       </div>
 
@@ -722,15 +738,18 @@ h1,h2,h3,h4,.headline{
         <div class="shrink-0 px-6 py-4 border-b border-primary/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-surface-container-lowest/80">
           <h2 class="text-base font-black tracking-tight text-on-surface headline">Inventario de Productos</h2>
           <div class="flex flex-wrap items-center gap-3">
-            <div class="relative flex items-center">
-              <select class="appearance-none bg-surface-container-lowest border border-outline-variant/40 rounded-lg py-2 pl-3 pr-8 text-xs font-bold headline text-on-surface hover:border-primary/30 focus:outline-none focus:border-primary/40 transition-all cursor-pointer" id="typeFilter">
-                <option value="">Todos los Tipos</option>
-                <option value="suplementos">Suplementos</option>
-                <option value="bebidas">Bebidas</option>
-                <option value="accesorios">Accesorios</option>
-                <option value="comida">Comida</option>
-              </select>
-              <span class="material-symbols-outlined absolute right-2 text-primary/60 text-base pointer-events-none">arrow_drop_down</span>
+            <div class="relative group" tabindex="0">
+              <button class="flex items-center gap-2 bg-surface-container-lowest text-on-surface text-sm pl-4 pr-3 py-2 rounded-lg border border-outline-variant/40 hover:bg-surface-container-low focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer w-full whitespace-nowrap" id="type-btn" type="button">
+                <span id="type-label">Todos los Tipos</span>
+                <span class="material-symbols-outlined text-on-surface-variant text-xl">expand_more</span>
+              </button>
+              <div class="hidden absolute left-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-zinc-100 py-2 z-50 group-focus-within:block" id="type-dropdown" style="min-width:calc(100% + 40px)">
+                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('',this)">Todos los Tipos</button>
+                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('suplementos',this)">Suplementos</button>
+                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('bebidas',this)">Bebidas</button>
+                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('accesorios',this)">Accesorios</button>
+                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('comida',this)">Comida</button>
+              </div>
             </div>
             <div class="relative flex items-center group">
               <span class="material-symbols-outlined absolute left-3 text-slate-400 text-base group-focus-within:text-primary transition-colors">search</span>
@@ -844,7 +863,7 @@ h1,h2,h3,h4,.headline{
 <div class="grid grid-cols-2 gap-2" id="productTypeSelectors">
 <button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Bebidas" onclick="selectType(this)" type="button">Bebidas</button>
 <button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Suplementos" onclick="selectType(this)" type="button">Suplementos</button>
-<button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Snacks" onclick="selectType(this)" type="button">Snacks</button>
+<button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Comida" onclick="selectType(this)" type="button">Comida</button>
 <button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Accesorios" onclick="selectType(this)" type="button">Accesorios</button>
 </div>
 <input id="newProductType" type="hidden" value="">
@@ -1005,13 +1024,24 @@ h1,h2,h3,h4,.headline{
         document.getElementById('totalDisplay').innerText = filteredProducts.length;
     }
 
+    var currentTypeFilter = '';
+
+    function seleccionarTipo(val, btn) {
+        var labels = {'':'Todos los Tipos',suplementos:'Suplementos',bebidas:'Bebidas',accesorios:'Accesorios',comida:'Comida'};
+        document.getElementById('type-label').textContent = labels[val] || val;
+        btn.closest('.group').querySelector('[id$="-dropdown"]').classList.add('hidden');
+        document.activeElement.blur();
+        currentTypeFilter = val;
+        currentPage = 1;
+        filterAndRender();
+    }
+
     function filterAndRender() {
         const term = document.getElementById('productSearch').value.toLowerCase();
-        const typeTerm = document.getElementById('typeFilter').value.toLowerCase();
         filteredProducts = products.filter(p => {
             const name = p.name.toLowerCase();
             const type = p.cat.toLowerCase();
-            return name.startsWith(term) && (typeTerm === "" || type === typeTerm);
+            return name.startsWith(term) && (currentTypeFilter === "" || type === currentTypeFilter);
         });
         const maxPage = Math.max(1, Math.ceil(filteredProducts.length / itemsPerPage));
         if (currentPage > maxPage) currentPage = maxPage;
@@ -1019,7 +1049,6 @@ h1,h2,h3,h4,.headline{
     }
 
     document.getElementById('productSearch').addEventListener('input', () => { currentPage = 1; filterAndRender(); });
-    document.getElementById('typeFilter').addEventListener('change', () => { currentPage = 1; filterAndRender(); });
 
     // Delete Modal
     let productToDeleteId = null;
@@ -1179,6 +1208,13 @@ h1,h2,h3,h4,.headline{
 
         document.getElementById('addProductModal').classList.remove('hidden');
         document.getElementById('addProductModal').classList.add('flex');
+    }
+
+    function seleccionarSedeInventario(val, btn) {
+        var labels = {todas:'Todas las sedes','zona-norte':'Zona Norte','zona-sur':'Zona Sur','zona-este':'Zona Este','zona-oeste':'Zona Oeste'};
+        document.getElementById('sede-label-inventario').textContent = labels[val] || val;
+        btn.closest('.group').querySelector('[id$="-dropdown-inventario"]').classList.add('hidden');
+        document.activeElement.blur();
     }
 
     document.addEventListener('DOMContentLoaded', renderTable);
