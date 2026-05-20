@@ -300,6 +300,16 @@
         }
       }
 
+      #sede-select-catalogo::-ms-expand {
+        display: none;
+      }
+      #sede-select-catalogo {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: none;
+      }
+
       /* ===== RESPONSIVE ===== */
 
       @media (max-width: 1600px) {
@@ -536,7 +546,7 @@
 
             <a
               class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity"
-              href="../dashboard-encargado.html"
+              href="../dashboard-secretaria.html"
             >
               Squat Gym
             </a>
@@ -673,8 +683,11 @@
                 >
                   <button
                     class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs"
+                    onclick="
+                      location.href =
+                        '../Notificaciones-secretaria/Gestion-de-notificaciones-secretaria.html'
+                    "
                     style="background-color: rgb(0, 103, 95); color: white"
-                  onclick="location.href='Notificaciones-encargado/Gestion-de-notificaciones-encargado.html'"
                   >
                     <span>Ver todas</span>
                     <span
@@ -690,7 +703,7 @@
               class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
               onclick="
                 window.location.href =
-                  '../general-secretaria/Mi-perfil-encargado.html'
+                  '../general-secretaria/Mi-perfil-secretaria.html'
               "
             >
               <span
@@ -730,7 +743,7 @@
             <nav class="flex flex-col h-full gap-2">
               <a
                 class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all"
-                href="../dashboard-encargado.html"
+                href="../dashboard-secretaria.html"
               >
                 <span
                   class="material-symbols-outlined"
@@ -749,7 +762,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group"
-                  href="Catalogo-de-clases-encargado.html"
+                  href="Catalogo-de-clases-secretaria.html"
                 >
                   <span
                     class="material-symbols-outlined text-primary transition-colors"
@@ -763,7 +776,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="Cronograma-semanal-encargado.html"
+                  href="Cronograma-semanal-secretaria.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -774,7 +787,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="Consultar-alumno-encargado.html"
+                  href="Consultar-alumno-secretaria.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -793,18 +806,18 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Historial-de-ventas.html"
+                  href="../gestion-kiosco/Registrar-venta.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
                     >point_of_sale</span
                   >
-                  <span class="font-medium text-sm">Historial de Ventas</span>
+                  <span class="font-medium text-sm">Registrar Venta</span>
                 </a>
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Control-de-inventario-encargado.html"
+                  href="../gestion-kiosco/Control-de-inventario.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -815,7 +828,7 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Cupones-encargado.html"
+                  href="../gestion-kiosco/Cupones.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -852,7 +865,64 @@
                 </h1>
               </div>
 
-              <div class="flex items-center gap-4 shrink-0">
+              <div class="flex items-center gap-3 shrink-0">
+                <div class="relative group" tabindex="0">
+                  <button
+                    class="flex items-center gap-1.5 bg-surface-container-lowest text-on-surface text-xs font-semibold pl-3 pr-2 py-1.5 rounded-xl border border-outline-variant/40 hover:bg-surface-container-low focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer whitespace-nowrap"
+                    id="sede-btn-catalogo"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-primary text-sm"
+                      >location_on</span
+                    >
+                    <span id="sede-label-catalogo">Todas las sedes</span>
+                    <span
+                      class="material-symbols-outlined text-on-surface-variant text-lg"
+                      >expand_more</span
+                    >
+                  </button>
+                  <div
+                    class="hidden absolute left-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-zinc-100 py-2 z-50 group-focus-within:block"
+                    id="sede-dropdown-catalogo"
+                    style="min-width: calc(100% + 30px)"
+                  >
+                    <button
+                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+                      type="button"
+                      onclick="seleccionarSedeCatalogo('todas', this)"
+                    >
+                      Todas las sedes
+                    </button>
+                    <button
+                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+                      type="button"
+                      onclick="seleccionarSedeCatalogo('zona-norte', this)"
+                    >
+                      Zona Norte
+                    </button>
+                    <button
+                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+                      type="button"
+                      onclick="seleccionarSedeCatalogo('zona-sur', this)"
+                    >
+                      Zona Sur
+                    </button>
+                    <button
+                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+                      type="button"
+                      onclick="seleccionarSedeCatalogo('zona-este', this)"
+                    >
+                      Zona Este
+                    </button>
+                    <button
+                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+                      type="button"
+                      onclick="seleccionarSedeCatalogo('zona-oeste', this)"
+                    >
+                      Zona Oeste
+                    </button>
+                  </div>
+                </div>
                 <button
                   class="h-10 flex items-center justify-center gap-2 bg-primary text-white hover:bg-primary-dim rounded-xl transition-all duration-300 font-bold text-xs uppercase px-6 shadow-md"
                   onclick="
@@ -861,35 +931,38 @@
                       .classList.remove('hidden')
                   "
                 >
-                  <span class="material-symbols-outlined text-[18px]">add</span
-                  >CREAR NUEVA CLASE
+                  <span class="material-symbols-outlined text-[18px]">add</span>
+                  CREAR CLASE
                 </button>
-                <div class="relative w-64">
-                  <span
-                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
-                    >search</span
-                  >
-                  <input
-                    class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant/40 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm font-medium"
-                    id="class-search"
-                    placeholder="Buscar clase..."
-                    type="text"
-                  />
-                </div>
+              </div>
+            </div>
+
+            <div class="flex justify-end">
+              <div class="relative w-64">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
+                  >search</span
+                >
+                <input
+                  class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant/40 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm font-medium"
+                  id="class-search"
+                  placeholder="Buscar clase..."
+                  type="text"
+                />
               </div>
             </div>
 
             <!-- Grid container -->
             <div class="flex-1 min-h-0 overflow-y-auto pr-1 custom-scrollbar">
               <div
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-2"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
                 id="class-grid"
               ></div>
             </div>
 
             <!-- Pagination -->
             <div
-              class="shrink-0 pt-3 flex items-center justify-between border-t border-primary/10"
+              class="shrink-0 pt-2 flex items-center justify-between border-t border-primary/10"
             >
               <span
                 class="results-summary text-[9px] font-black text-slate-400 uppercase tracking-widest headline"
@@ -950,17 +1023,17 @@
           <div class="flex items-center gap-6">
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Ayuda-encargado.html"
+              href="../general-secretaria/Ayuda-secretaria.html"
               >Ayuda</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Privacidad-encargado.html"
+              href="../general-secretaria/Privacidad-secretaria.html"
               >Privacidad</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Contacto-encargado.html"
+              href="../general-secretaria/Contacto-secretaria.html"
               >Contacto</a
             >
           </div>
@@ -1438,25 +1511,58 @@
               id="next-step-btn-create"
               type="button"
               onclick="
-                var m=document.getElementById('create-class-modal');
-                var nm=m.querySelector(&quot;input[type='text']&quot;).value.trim();
-                var nums=m.querySelectorAll(&quot;input[type='number']&quot;);
-                var cp=parseFloat(nums[0].value)||0;
-                var pr=parseFloat(nums[1].value)||0;
-                var sd=false;
-                m.querySelectorAll('.grid-cols-4 button').forEach(function(b){if(b.classList.contains('bg-primary'))sd=true});
-                var tc=document.getElementById('teacher-list-container');
-                if(!nm){alert('Debe ingresar un nombre para la clase');return}
-                if(!sd){alert('Debe seleccionar al menos un d\u00eda');return}
-                if(!tc.children.length){alert('Debe seleccionar al menos un docente');return}
-                if(cp<=0){alert('El cupo m\u00e1ximo debe ser mayor a 0');return}
-                if(pr<=0){alert('El precio mensual debe ser mayor a 0');return}
-                var map={L:'LUNES',M:'MARTES',X:'MI\u00c9RCOLES',V:'VIERNES'};
-                var sel=[];
-                m.querySelectorAll('.grid-cols-4 button').forEach(function(b){if(b.classList.contains('bg-primary')){var l=b.textContent.trim();if(map[l])sel.push(map[l])}});
-                document.getElementById('create-class-modal').classList.add('hidden');
-                document.getElementById('create-schedule-step2-modal').classList.remove('hidden');
-                setTimeout(function(){aplicarFiltroDiasCrear(sel)},50)
+                var m = document.getElementById('create-class-modal');
+                var nm = m.querySelector('input[type=\'text\']').value.trim();
+                var nums = m.querySelectorAll('input[type=\'number\']');
+                var cp = parseFloat(nums[0].value) || 0;
+                var pr = parseFloat(nums[1].value) || 0;
+                var sd = false;
+                m.querySelectorAll('.grid-cols-4 button').forEach(function (b) {
+                  if (b.classList.contains('bg-primary')) sd = true;
+                });
+                var tc = document.getElementById('teacher-list-container');
+                if (!nm) {
+                  alert('Debe ingresar un nombre para la clase');
+                  return;
+                }
+                if (!sd) {
+                  alert('Debe seleccionar al menos un d\u00eda');
+                  return;
+                }
+                if (!tc.children.length) {
+                  alert('Debe seleccionar al menos un docente');
+                  return;
+                }
+                if (cp <= 0) {
+                  alert('El cupo m\u00e1ximo debe ser mayor a 0');
+                  return;
+                }
+                if (pr <= 0) {
+                  alert('El precio mensual debe ser mayor a 0');
+                  return;
+                }
+                var map = {
+                  L: 'LUNES',
+                  M: 'MARTES',
+                  X: 'MI\u00c9RCOLES',
+                  V: 'VIERNES',
+                };
+                var sel = [];
+                m.querySelectorAll('.grid-cols-4 button').forEach(function (b) {
+                  if (b.classList.contains('bg-primary')) {
+                    var l = b.textContent.trim();
+                    if (map[l]) sel.push(map[l]);
+                  }
+                });
+                document
+                  .getElementById('create-class-modal')
+                  .classList.add('hidden');
+                document
+                  .getElementById('create-schedule-step2-modal')
+                  .classList.remove('hidden');
+                setTimeout(function () {
+                  aplicarFiltroDiasCrear(sel);
+                }, 50);
               "
             >
               SIGUIENTE PASO
@@ -1638,27 +1744,77 @@
       <div
         class="w-full max-w-4xl rounded-2xl flex flex-col max-h-[90vh] overflow-hidden bg-white shadow-2xl"
       >
-        <div
-          class="px-8 py-6 border-b border-zinc-100 flex justify-between items-center bg-white"
-        >
-          <div>
-            <h2
-              class="text-2xl font-black tracking-tight"
-              style="font-family: &quot;Lexend&quot;, sans-serif"
+        <div class="px-8 py-6 border-b border-zinc-100 bg-white">
+          <div class="flex justify-between items-start">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-16 h-16 rounded-xl overflow-hidden shrink-0 bg-surface-container-low"
+                id="view-class-img"
+              >
+                <img
+                  class="w-full h-full object-cover"
+                  alt=""
+                  id="view-class-img-src"
+                />
+              </div>
+              <div>
+                <h2
+                  class="text-2xl font-black tracking-tight"
+                  style="font-family: &quot;Lexend&quot;, sans-serif"
+                  id="view-class-name"
+                >
+                  Visualización de Horarios
+                </h2>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
+                  <span
+                    class="text-[10px] font-bold text-on-surface-variant flex items-center gap-1"
+                    ><span class="material-symbols-outlined text-sm"
+                      >calendar_month</span
+                    >
+                    <span id="view-class-dias">-</span></span
+                  >
+                  <span
+                    class="text-[10px] font-bold text-on-surface-variant flex items-center gap-1"
+                    ><span class="material-symbols-outlined text-sm"
+                      >schedule</span
+                    >
+                    <span id="view-class-turnos">0 turnos</span></span
+                  >
+                  <span
+                    class="text-[10px] font-bold text-on-surface-variant flex items-center gap-1"
+                    ><span class="material-symbols-outlined text-sm"
+                      >group</span
+                    >
+                    <span id="view-class-profesores">-</span></span
+                  >
+                  <span
+                    class="text-[10px] font-bold text-on-surface-variant flex items-center gap-1"
+                    ><span class="material-symbols-outlined text-sm"
+                      >payments</span
+                    >
+                    <span id="view-class-price">$0</span></span
+                  >
+                  <span
+                    class="text-[10px] font-bold text-on-surface-variant flex items-center gap-1"
+                    ><span class="material-symbols-outlined text-sm"
+                      >person</span
+                    >
+                    <span id="view-class-capacity">0/0</span></span
+                  >
+                </div>
+              </div>
+            </div>
+            <button
+              class="hover:bg-gray-100 p-2 rounded-full transition-colors flex items-center justify-center shrink-0"
+              onclick="
+                document
+                  .getElementById('schedule-view-modal')
+                  .classList.add('hidden')
+              "
             >
-              Visualizaci&oacute;n de Horarios
-            </h2>
+              <span class="material-symbols-outlined">close</span>
+            </button>
           </div>
-          <button
-            class="hover:bg-gray-100 p-2 rounded-full transition-colors flex items-center justify-center"
-            onclick="
-              document
-                .getElementById('schedule-view-modal')
-                .classList.add('hidden')
-            "
-          >
-            <span class="material-symbols-outlined">close</span>
-          </button>
         </div>
         <div
           class="px-8 py-4 flex-grow overflow-y-auto flex flex-col gap-8 bg-white"
@@ -2303,13 +2459,31 @@
               type="button"
               id="btn-modify-next-step"
               onclick="
-                var btns = document.querySelectorAll('#modify-class-modal .grid-cols-4 button');
-                var map = {L:'LUNES',M:'MARTES',X:'MIÉRCOLES',V:'VIERNES'};
+                var btns = document.querySelectorAll(
+                  '#modify-class-modal .grid-cols-4 button',
+                );
+                var map = {
+                  L: 'LUNES',
+                  M: 'MARTES',
+                  X: 'MIÉRCOLES',
+                  V: 'VIERNES',
+                };
                 var sel = [];
-                btns.forEach(function(b){if(b.classList.contains('bg-primary')){var l=b.textContent.trim();if(map[l])sel.push(map[l])}});
-                document.getElementById('modify-class-modal').classList.add('hidden');
-                document.getElementById('modify-schedule-step2-modal').classList.remove('hidden');
-                setTimeout(function(){aplicarFiltroDiasMod(sel)},50)
+                btns.forEach(function (b) {
+                  if (b.classList.contains('bg-primary')) {
+                    var l = b.textContent.trim();
+                    if (map[l]) sel.push(map[l]);
+                  }
+                });
+                document
+                  .getElementById('modify-class-modal')
+                  .classList.add('hidden');
+                document
+                  .getElementById('modify-schedule-step2-modal')
+                  .classList.remove('hidden');
+                setTimeout(function () {
+                  aplicarFiltroDiasMod(sel);
+                }, 50);
               "
             >
               SIGUIENTE PASO
@@ -2652,7 +2826,7 @@
         pageItems.forEach((cls) => {
           const card = document.createElement("div");
           card.className =
-            "bg-surface-container-lowest rounded-2xl overflow-hidden border border-primary/10 flex flex-col card-premium";
+            "bg-surface-container-lowest rounded-2xl overflow-hidden border border-primary/10 flex flex-col card-premium mt-8";
           card.setAttribute("data-class-name", cls.name);
 
           const progress = (cls.inscritos / cls.capacidad) * 100;
@@ -2695,7 +2869,7 @@
                     </div>
 
                     <div class="flex items-center gap-2 mt-auto">
-                        <a class="flex-grow group/btn flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-primary text-white font-bold text-[9px] uppercase tracking-widest transition-all duration-300 hover:bg-primary-dim active:scale-[0.97]" href="javascript:void(0)" onclick="document.getElementById('schedule-view-modal').classList.remove('hidden')">
+                        <a class="flex-grow group/btn flex items-center justify-center gap-1 py-2 px-3 rounded-xl bg-primary text-white font-bold text-[9px] uppercase tracking-widest transition-all duration-300 hover:bg-primary-dim active:scale-[0.97]" href="javascript:void(0)" onclick="abrirVerTurnos(${cls.id})">
                             <span>VER TURNOS</span>
                         </a>
                         <button class="w-9 h-9 flex items-center justify-center rounded-xl bg-surface-container-low text-primary hover:bg-primary/10 transition-colors border border-outline-variant/30" onclick="document.getElementById('modify-class-modal').classList.remove('hidden')" title="Editar Clase">
@@ -2824,85 +2998,137 @@
         }
       });
 
-      function mostrarToast(msg) {
-        var toast = document.getElementById('toast-notification');
-        if (!toast) {
-          toast = document.createElement('div');
-          toast.id = 'toast-notification';
-          toast.className = 'fixed bottom-6 right-6 z-[120] bg-[#004d40] text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300';
-          toast.innerHTML = '<span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span><span class="font-bold text-sm" id="toast-msg-text"></span>';
-          document.body.appendChild(toast);
-        }
-        document.getElementById('toast-msg-text').innerText = msg;
-        toast.classList.remove('hidden', 'opacity-0');
-        setTimeout(function() {
-          toast.classList.add('opacity-0');
-          setTimeout(function() { toast.classList.add('hidden'); }, 300);
-        }, 3000);
-      }
-
       function finalizarCrearClase() {
-        document.getElementById('create-schedule-step2-modal').classList.add('hidden');
-        mostrarToast('Clase creada correctamente');
+        document
+          .getElementById("create-schedule-step2-modal")
+          .classList.add("hidden");
+        mostrarToast("Clase creada correctamente");
       }
 
       function finalizarModificarClase() {
-        document.getElementById('modify-schedule-step2-modal').classList.add('hidden');
-        mostrarToast('Clase modificada correctamente');
+        document
+          .getElementById("modify-schedule-step2-modal")
+          .classList.add("hidden");
+        mostrarToast("Clase modificada correctamente");
       }
 
       function aplicarFiltroDiasMod(dias) {
-        var btns = document.querySelectorAll('#modify-schedule-step2-modal .day-btn3');
+        var btns = document.querySelectorAll(
+          "#modify-schedule-step2-modal .day-btn3",
+        );
         var primero = null;
-        btns.forEach(function(b) {
-          b.style.display = '';
-          if (dias.indexOf(b.getAttribute('data-day')) === -1) {
-            b.style.display = 'none';
+        btns.forEach(function (b) {
+          b.style.display = "";
+          if (dias.indexOf(b.getAttribute("data-day")) === -1) {
+            b.style.display = "none";
           } else if (!primero) {
             primero = b;
           }
         });
         if (primero) primero.click();
         var total = 0;
-        btns.forEach(function(b) {
-          if (b.style.display === 'none') return;
-          var badge = b.querySelector('.badge-counter3');
+        btns.forEach(function (b) {
+          if (b.style.display === "none") return;
+          var badge = b.querySelector(".badge-counter3");
           if (badge) total += parseInt(badge.textContent) || 0;
         });
-        document.getElementById('global-counter3').textContent = total;
+        document.getElementById("global-counter3").textContent = total;
+      }
+
+      function seleccionarSedeCatalogo(val, btn) {
+        var labels = {
+          todas: "Todas las sedes",
+          "zona-norte": "Zona Norte",
+          "zona-sur": "Zona Sur",
+          "zona-este": "Zona Este",
+          "zona-oeste": "Zona Oeste",
+        };
+        document.getElementById("sede-label-catalogo").textContent =
+          labels[val] || val;
+        btn
+          .closest(".group")
+          .querySelector('[id$="-dropdown-catalogo"]')
+          .classList.add("hidden");
+        document.activeElement.blur();
+      }
+
+      function abrirVerTurnos(id) {
+        var cls = classData.find(function (c) {
+          return c.id === id;
+        });
+        if (!cls) return;
+        document.getElementById("view-class-name").textContent = cls.name;
+        document.getElementById("view-class-dias").textContent = cls.dias;
+        document.getElementById("view-class-turnos").textContent = cls.turnos;
+        document.getElementById("view-class-profesores").textContent =
+          cls.profesores;
+        document.getElementById("view-class-price").textContent = cls.precio;
+        document.getElementById("view-class-capacity").textContent =
+          cls.inscritos + "/" + cls.capacidad;
+        var img = document.getElementById("view-class-img-src");
+        if (cls.img) {
+          img.src = cls.img;
+          img.style.display = "";
+        } else {
+          img.style.display = "none";
+        }
+        document
+          .getElementById("schedule-view-modal")
+          .classList.remove("hidden");
       }
 
       function aplicarFiltroDiasCrear(dias) {
-        var btns = document.querySelectorAll('#create-schedule-step2-modal .day-btn2');
+        var btns = document.querySelectorAll(
+          "#create-schedule-step2-modal .day-btn2",
+        );
         var primero = null;
-        btns.forEach(function(b) {
-          b.style.display = '';
-          if (dias.indexOf(b.getAttribute('data-day')) === -1) {
-            b.style.display = 'none';
+        btns.forEach(function (b) {
+          b.style.display = "";
+          if (dias.indexOf(b.getAttribute("data-day")) === -1) {
+            b.style.display = "none";
           } else if (!primero) {
             primero = b;
           }
         });
         if (primero) primero.click();
         var total = 0;
-        btns.forEach(function(b) {
-          if (b.style.display === 'none') return;
-          var badge = b.querySelector('.badge-counter2');
+        btns.forEach(function (b) {
+          if (b.style.display === "none") return;
+          var badge = b.querySelector(".badge-counter2");
           if (badge) total += parseInt(badge.textContent) || 0;
         });
-        document.getElementById('global-counter2').textContent = total;
-        var btn = document.getElementById('btn-finalizar2');
+        document.getElementById("global-counter2").textContent = total;
+        var btn = document.getElementById("btn-finalizar2");
         if (total > 0) {
           btn.disabled = false;
-          btn.classList.remove('bg-surface-variant','text-on-surface-variant','opacity-50','cursor-not-allowed');
-          btn.classList.add('bg-primary','text-white','shadow-sm','hover:bg-primary/90');
+          btn.classList.remove(
+            "bg-surface-variant",
+            "text-on-surface-variant",
+            "opacity-50",
+            "cursor-not-allowed",
+          );
+          btn.classList.add(
+            "bg-primary",
+            "text-white",
+            "shadow-sm",
+            "hover:bg-primary/90",
+          );
         } else {
           btn.disabled = true;
-          btn.classList.add('bg-surface-variant','text-on-surface-variant','opacity-50','cursor-not-allowed');
-          btn.classList.remove('bg-primary','text-white','shadow-sm','hover:bg-primary/90');
+          btn.classList.add(
+            "bg-surface-variant",
+            "text-on-surface-variant",
+            "opacity-50",
+            "cursor-not-allowed",
+          );
+          btn.classList.remove(
+            "bg-primary",
+            "text-white",
+            "shadow-sm",
+            "hover:bg-primary/90",
+          );
         }
       }
-
     </script>
 
     <script>
@@ -2983,7 +3209,7 @@
           var t = 0;
           var ok = true;
           document.querySelectorAll(".day-btn2").forEach(function (b) {
-            if (b.style.display === 'none') return;
+            if (b.style.display === "none") return;
             var d = b.getAttribute("data-day");
             var c = schedule[d] ? schedule[d].size : 0;
             var badge = b.querySelector(".badge-counter2");
