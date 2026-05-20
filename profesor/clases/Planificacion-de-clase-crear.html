@@ -376,51 +376,54 @@ tr.dragging{ opacity:.5; background-color:rgba(0,103,95,.1); }
           <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
           <span class="text-[10px] font-black uppercase tracking-widest font-headline">Volver al Editor</span>
         </a>
-        <div class="flex flex-col lg:flex-row justify-between items-end gap-4">
-          <div class="flex flex-col">
-            <h1 class="text-2xl md:text-3xl font-black tracking-tighter text-on-surface headline">Planificación de <span class="text-primary">Clase</span></h1>
-          </div>
-          <div class="flex gap-4 items-center">
-            <div class="flex gap-3">
-              <div class="bg-white/70 backdrop-blur-md px-4 py-2 rounded-2xl border border-primary/10 shadow-sm flex flex-col min-w-[90px] lg:min-w-[100px]">
-                <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">Total Ejercicios</span>
-                <span class="text-lg font-black text-primary headline" id="total-exercises-badge">00</span>
-              </div>
-              <div class="bg-white/70 backdrop-blur-md px-4 py-2 rounded-2xl border border-primary/10 shadow-sm flex flex-col min-w-[90px] lg:min-w-[100px]">
-                <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">Carga Estimada</span>
-                <span class="text-lg font-black text-primary headline" id="estimated-load-badge">0 min</span>
-              </div>
+        <div class="flex flex-col">
+          <h1 class="text-2xl md:text-3xl font-black tracking-tighter text-on-surface headline">Planificación de <span class="text-primary">Clase</span></h1>
+        </div>
+      </div>
+
+      <!-- Plan Name Section -->
+      <div class="shrink-0 flex items-center justify-between gap-4 mb-4">
+        <div class="bg-white/70 backdrop-blur-md rounded-3xl border-2 border-primary/20 card-premium p-5">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-xl">assignment</span>
+              <h2 class="text-sm font-black tracking-tight text-on-surface headline uppercase">Ingresar nombre de planificación</h2>
             </div>
+            <div class="flex-1 max-w-sm">
+              <input class="w-full bg-white border-2 border-primary/10 rounded-2xl px-4 py-2.5 headline font-bold text-sm text-primary focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none placeholder:text-primary/30 shadow-sm" id="plan-name" oninput="checkPlanName()" placeholder="boxeo" type="text" value="">
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3 shrink-0">
+          <div class="bg-white/70 backdrop-blur-md px-4 py-2 rounded-2xl border border-primary/10 shadow-sm flex flex-col min-w-[90px]">
+            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">Total Ejercicios</span>
+            <span class="text-lg font-black text-primary headline" id="total-exercises-badge">00</span>
+          </div>
+          <div class="bg-white/70 backdrop-blur-md px-4 py-2 rounded-2xl border border-primary/10 shadow-sm flex flex-col min-w-[90px]">
+            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">Carga Estimada</span>
+            <span class="text-lg font-black text-primary headline" id="estimated-load-badge">0 min</span>
           </div>
         </div>
       </div>
 
-      <!-- Layout Container -->
+      <!-- Exercise Blocks Section -->
       <div class="flex-grow flex flex-col min-h-0">
         <div class="flex-grow flex flex-col bg-white/70 backdrop-blur-md rounded-3xl border-2 border-primary/20 card-premium overflow-hidden">
-          <div class="shrink-0 px-6 py-3 border-b-2 border-primary/10 flex justify-between items-center bg-white/60 relative">
+          <div class="shrink-0 px-6 py-3 border-b-2 border-primary/10 flex justify-between items-center bg-white/60">
             <h2 class="text-lg font-black tracking-tight text-on-surface headline">Bloques de Entrenamiento</h2>
-            <div class="relative flex gap-4 items-center" id="dropdown-container">
-              <div class="w-60 lg:w-72 group relative ml-auto">
-                <label class="block text-[10px] font-black uppercase tracking-widest text-primary mb-1 ml-1 font-headline" for="plan-name">Nombre de la Planificación<span class="text-red-500 ml-1">*</span></label>
-                <div class="relative">
-                  <input class="w-full bg-white/80 backdrop-blur-md border-2 border-primary/10 rounded-2xl px-4 py-2 headline font-bold text-sm text-primary focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all outline-none placeholder:text-primary/30 shadow-sm" id="plan-name" oninput="checkPlanName()" placeholder="Ej: HIIT" type="text" value="">
-                  <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-primary/40 text-lg group-focus-within:text-primary transition-colors">edit</span>
-                </div>
-              </div>
-              <div class="relative">
-                <button class="flex items-center gap-2 bg-primary text-white px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest headline hover:bg-secondary transition-all shadow-lg shadow-primary/20 active:scale-95" onclick="toggleDropdown()">
-                  <span class="material-symbols-outlined text-lg">add_circle</span>
-                  Agregar Ejercicio
-                </button>
-                <div class="exercise-dropdown absolute right-0 top-full mt-3 w-72 bg-white rounded-2xl border border-zinc-200 shadow-2xl z-50 overflow-hidden" id="library-dropdown">
+            <div class="relative">
+              <button class="flex items-center gap-2 bg-primary text-white px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest headline hover:bg-secondary transition-all shadow-lg shadow-primary/20 active:scale-95" onclick="toggleDropdown()">
+                <span class="material-symbols-outlined text-lg">add_circle</span>
+                Agregar Ejercicio
+              </button>
+              <div class="exercise-dropdown absolute right-0 top-full mt-3 w-72 bg-white rounded-2xl border border-zinc-200 shadow-2xl z-50 overflow-hidden" id="library-dropdown">
                   <div class="p-4 bg-zinc-50 border-b border-zinc-100">
                     <div class="relative">
                       <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary text-sm font-bold">search</span>
                       <input class="w-full pl-9 pr-4 py-2 bg-white border-2 border-primary/10 rounded-lg text-xs font-bold headline text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-zinc-400" id="exercise-search" oninput="filterLibrary()" placeholder="Buscar en librería..." type="text">
                     </div>
                   </div>
-                  <div class="max-h-64 overflow-y-auto custom-scrollbar" id="library-items"></div>
+                  <div class="max-h-[132px] overflow-y-auto custom-scrollbar" id="library-items"></div>
                   <button class="w-full text-left px-4 py-4 hover:bg-primary/10 cursor-pointer transition-colors flex items-center justify-between border-t border-zinc-100 bg-primary/5 group" onclick="openNewExerciseModal()">
                     <div class="flex flex-col">
                       <span class="text-sm font-black text-primary headline">OTRO</span>
@@ -430,7 +433,6 @@ tr.dragging{ opacity:.5; background-color:rgba(0,103,95,.1); }
                   </button>
                 </div>
               </div>
-            </div>
           </div>
           <div class="flex-grow overflow-auto custom-scrollbar relative">
             <table class="w-full text-left border-collapse" id="exercise-table">
@@ -457,7 +459,7 @@ tr.dragging{ opacity:.5; background-color:rgba(0,103,95,.1); }
           </div>
         </div>
         <div class="mt-3 flex justify-end">
-          <button class="bg-primary text-white px-6 py-3 rounded-2xl font-black transition-all headline text-sm uppercase tracking-widest flex items-center gap-3 hover:bg-secondary shadow-lg shadow-primary/20 active:scale-95 cursor-pointer" id="save-plan-btn" onclick="document.getElementById('success-save-modal').classList.remove('hidden')">
+          <button class="bg-primary text-white px-6 py-3 rounded-2xl font-black transition-all headline text-sm uppercase tracking-widest flex items-center gap-3 hover:bg-secondary shadow-lg shadow-primary/20 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:shadow-none" id="save-plan-btn" onclick="document.getElementById('success-save-modal').classList.remove('hidden')" disabled>
             <span class="material-symbols-outlined">save</span>
             Guardar Planificación
           </button>
@@ -519,7 +521,7 @@ tr.dragging{ opacity:.5; background-color:rgba(0,103,95,.1); }
         <input id="new-ex-intensity" type="hidden" value="Baja">
       </div>
       <div class="pt-4 flex gap-4">
-        <button class="flex-1 py-4 rounded-xl border border-zinc-200 font-bold text-slate-500 hover:bg-zinc-50 transition-colors uppercase text-xs tracking-widest" onclick="closeModal('new-exercise-modal')">Cancelar</button>
+        <button class="flex-1 py-4 rounded-xl border border-red-200 font-bold text-red-500 hover:bg-red-50 transition-colors uppercase text-xs tracking-widest" onclick="closeModal('new-exercise-modal')">Cancelar</button>
         <button class="flex-1 py-4 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-primary-dim transition-all uppercase text-xs tracking-widest" onclick="processNewExercise()">Crear Ejercicio</button>
       </div>
     </div>
@@ -533,7 +535,7 @@ tr.dragging{ opacity:.5; background-color:rgba(0,103,95,.1); }
     <p class="text-slate-500 text-sm mb-6">¿En qué posición quieres insertar <span class="font-bold text-primary" id="order-request-name"></span>?</p>
     <input class="w-full px-6 py-4 rounded-xl border-2 border-primary/10 focus:border-primary focus:ring-4 focus:ring-primary/10 headline font-black text-2xl text-center mb-6 text-primary outline-none transition-all" id="order-request-input" min="1" type="number" value="1">
     <div class="flex gap-4">
-      <button class="flex-1 py-3 rounded-xl border border-zinc-200 font-bold text-slate-500 hover:bg-zinc-50 transition-colors" onclick="closeModal('order-request-modal')">Cancelar</button>
+      <button class="flex-1 py-3 rounded-xl border border-red-200 font-bold text-red-500 hover:bg-red-50 transition-colors" onclick="closeModal('order-request-modal')">Cancelar</button>
       <button class="flex-1 py-3 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/20 hover:bg-primary-dim transition-all" onclick="confirmOrderRequest()">Confirmar</button>
     </div>
   </div>
@@ -668,6 +670,19 @@ tr.dragging{ opacity:.5; background-color:rgba(0,103,95,.1); }
         });
         updateBadges();
         updatePaginationInfo();
+        updateSaveButton();
+    }
+
+    function updateSaveButton() {
+        const btn = document.getElementById('save-plan-btn');
+        if (!btn) return;
+        if (exercises.length > 0) {
+            btn.disabled = false;
+            btn.classList.remove('opacity-40', 'cursor-not-allowed');
+        } else {
+            btn.disabled = true;
+            btn.classList.add('opacity-40', 'cursor-not-allowed');
+        }
     }
 
     function handleDragStart(e) {
