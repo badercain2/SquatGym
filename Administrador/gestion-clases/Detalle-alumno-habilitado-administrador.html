@@ -122,7 +122,7 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
       <button class="w-11 h-11 rounded-full hover:bg-white/10 transition flex items-center justify-center text-white shrink-0" id="sidebar-toggle">
         <span class="material-symbols-outlined text-[28px]">menu</span>
       </button>
-      <a class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity" href="../dashboard-encargado.html">Squat Gym</a>
+      <a class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity" href="../dashboard-administrador.html">Squat Gym</a>
     </div>
     <div class="flex items-center gap-4 text-white">
       <div class="relative">
@@ -164,22 +164,116 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         </div>
         <button class="w-8 h-8 rounded-full hover:bg-slate-100 transition flex items-center justify-center text-slate-400 hover:text-on-surface" id="sidebar-close"><span class="material-symbols-outlined text-lg">close</span></button>
       </div>
-      <nav class="flex flex-col h-full gap-2">
-        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-encargado.html"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span><span class="font-lexend tracking-tight">Inicio</span></a>
-        <div class="flex flex-col gap-1 mt-2">
-          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gesti&oacute;n de Clases</div>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-de-clases-encargado.html"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span><span class="font-medium text-sm">Cat&aacute;logo de Clases</span></a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Cronograma-semanal-encargado.html"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span><span class="font-medium text-sm">Cronograma</span></a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Consultar-alumno-encargado.html"><span class="material-symbols-outlined text-primary transition-colors" style="font-variation-settings:'FILL' 1;">person</span><span class="font-medium text-sm">Consultar Alumno</span></a>
-        </div>
-        <div class="flex flex-col gap-1 mt-4">
-          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gesti&oacute;n de Kiosko</div>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Registrar-venta-encargado.html"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">point_of_sale</span><span class="font-medium text-sm">Historial de Ventas</span></a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Control-de-inventario-encargado.html"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span><span class="font-medium text-sm">Control de Inventario</span></a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Cupones-encargado.html"><span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span><span class="font-medium text-sm">Cupones</span></a>
-        </div>
-        <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#"><span class="material-symbols-outlined text-error">logout</span><span class="font-lexend font-medium text-sm">Cerrar Sesi&oacute;n</span></a>
-      </nav>
+                  <nav class="flex flex-col h-full gap-2">
+              <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl active font-medium transition-all" href="../dashboard-administrador.html">
+                <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">home</span>
+                <span class="font-lexend tracking-tight">Inicio</span>
+              </a>
+
+              <div class="flex flex-col gap-1 mt-2">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Usuarios y Roles
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person_add</span>
+                  <span class="font-medium text-sm">Crear Usuario</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">manage_accounts</span>
+                  <span class="font-medium text-sm">Modificar Usuario</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person_remove</span>
+                  <span class="font-medium text-sm">Dar de Baja Usuario</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">admin_panel_settings</span>
+                  <span class="font-medium text-sm">Asignar Permisos</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Personal
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">history</span>
+                  <span class="font-medium text-sm">Historial de Novedades</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Clases
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-de-clases-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
+                  <span class="font-medium text-sm">Catálogo de Clases</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Cronograma-semanal-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
+                  <span class="font-medium text-sm">Cronograma</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Consultar-alumno-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
+                  <span class="font-medium text-sm">Consultar Alumno</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Kiosko
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Control-de-inventario-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span>
+                  <span class="font-medium text-sm">Control de Inventario</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Cupones-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
+                  <span class="font-medium text-sm">Cupones</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Pagos
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">sell</span>
+                  <span class="font-medium text-sm">Configurar Promociones</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Cobranzas
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">receipt_long</span>
+                  <span class="font-medium text-sm">Reporte de Cobranzas</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Auditoría
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">monitoring</span>
+                  <span class="font-medium text-sm">Auditar Actividad</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">summarize</span>
+                  <span class="font-medium text-sm">Generar Reporte</span>
+                </a>
+              </div>
+
+              <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
+                <span class="material-symbols-outlined text-error">logout</span>
+                <span class="font-lexend font-medium text-sm">Cerrar Sesión</span>
+              </a>
+            </nav>
+
     </div>
   </aside>
 
@@ -195,8 +289,8 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
           </h1>
         </div>
         <div class="inline-flex p-1 bg-surface-container-high rounded-full border border-outline-variant/30 shrink-0">
-          <button class="px-5 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200 text-on-surface-variant hover:bg-surface-container" id="btn-habilitar" onclick="updateStatus(true)">Habilitar</button>
-          <button class="px-5 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200 bg-error text-white shadow-sm" id="btn-deshabilitar" onclick="updateStatus(false)">Deshabilitar</button>
+          <button class="px-5 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200 bg-primary text-white shadow-sm" id="btn-habilitar" onclick="updateStatus(true)">Habilitar</button>
+          <button class="px-5 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-200 text-on-surface-variant hover:bg-surface-container" id="btn-deshabilitar" onclick="updateStatus(false)">Deshabilitar</button>
         </div>
       </div>
 
@@ -218,7 +312,7 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
                 <div class="flex items-center gap-3 text-slate-600"><span class="material-symbols-outlined text-base">mail</span><p class="text-sm font-bold tracking-tight truncate max-w-[160px]">cmartinez@email.com</p></div>
               </div>
               <div class="w-full pt-4 border-t border-primary/10">
-                <span class="inline-flex items-center px-5 py-2 rounded-xl bg-error/10 text-error font-black text-[10px] uppercase tracking-widest border border-error/20 headline" id="status-badge"><span class="material-symbols-outlined text-sm mr-1.5" style="font-variation-settings:'FILL' 1;">cancel</span> Deshabilitado</span>
+                <span class="inline-flex items-center px-5 py-2 rounded-xl bg-primary/10 text-primary font-black text-[10px] uppercase tracking-widest border border-primary/20 headline" id="status-badge"><span class="material-symbols-outlined text-sm mr-1.5" style="font-variation-settings:'FILL' 1;">check_circle</span> Habilitado</span>
               </div>
             </div>
           </article>
@@ -228,9 +322,9 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
               <span class="material-symbols-outlined text-sm">account_balance_wallet</span> ESTADO DE CUENTA
             </h2>
             <article class="bg-surface-container-lowest rounded-2xl border border-primary/10 card-premium p-5">
-              <div class="bg-error/5 border border-error/10 p-4 rounded-xl flex flex-col items-start gap-1 w-full">
+              <div class="bg-primary/5 border border-primary/10 p-4 rounded-xl flex flex-col items-start gap-1 w-full">
                 <span class="text-[10px] font-black uppercase tracking-widest text-slate-500 headline">Deuda Total:</span>
-                <span class="text-lg text-error font-black headline">-$10.000 - Moroso</span>
+                <span class="text-lg text-primary font-black headline">$0.00 - Al d&iacute;a</span>
               </div>
             </article>
           </div>
@@ -265,19 +359,8 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
             <h2 class="text-[10px] font-black text-primary uppercase tracking-[0.2em] headline flex items-center gap-2 px-1">
               <span class="material-symbols-outlined text-sm">pending_actions</span> PAGOS PENDIENTES
             </h2>
-            <article class="bg-surface-container-lowest rounded-2xl border border-primary/10 card-premium overflow-hidden">
-              <div class="overflow-x-auto overflow-y-auto custom-scrollbar max-h-[130px]">
-                <table class="w-full text-left border-collapse">
-                  <thead class="sticky top-0 bg-surface-container-lowest z-10">
-                    <tr><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Fecha</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Concepto</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Monto</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b text-center border-primary/10">Estado</th></tr>
-                  </thead>
-                  <tbody class="divide-y divide-primary/5 text-sm">
-                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Oct 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual Musculaci&oacute;n</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5.000</td><td class="px-5 py-3 text-error text-center font-bold text-xs">Pendiente</td></tr>
-                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Sep 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual Musculaci&oacute;n</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5.000</td><td class="px-5 py-3 text-error text-center font-bold text-xs">Pendiente</td></tr>
-                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Ago 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual Musculaci&oacute;n</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5.000</td><td class="px-5 py-3 text-error text-center font-bold text-xs">Pendiente</td></tr>
-                  </tbody>
-                </table>
-              </div>
+            <article class="bg-surface-container-lowest rounded-2xl border border-primary/10 card-premium p-8 flex items-center justify-center">
+              <p class="text-slate-400 font-bold tracking-widest uppercase text-xs">No hay pagos pendientes</p>
             </article>
           </div>
 
@@ -292,11 +375,11 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
                     <tr><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Fecha</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Concepto</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Monto</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b text-center border-primary/10">M&eacute;todo</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b text-center border-primary/10">Factura</th></tr>
                   </thead>
                   <tbody class="divide-y divide-primary/5 text-sm">
-                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Nov 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Musculaci&oacute;n + HIIT</td><td class="px-5 py-3 font-black text-on-surface text-xs">$4,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Efectivo</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice('15 Nov 2023', 'Cuota Mensual - Musculaci\u00f3n + HIIT', '$4,500', 'Efectivo')">Ver</button></td></tr>
-                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Oct 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Crossfit</td><td class="px-5 py-3 font-black text-on-surface text-xs">$4,800</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Efectivo</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice('15 Oct 2023', 'Cuota Mensual - Crossfit', '$4,800', 'Efectivo')">Ver</button></td></tr>
-                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Sep 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Zumba</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Tarjeta</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice('15 Sep 2023', 'Cuota Mensual - Zumba', '$5,500', 'Tarjeta')">Ver</button></td></tr>
-                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Ago 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Boxeo</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Transferencia</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice('15 Ago 2023', 'Cuota Mensual - Boxeo', '$5,500', 'Transferencia')">Ver</button></td></tr>
-                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Jul 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Pilates</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Efectivo</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice('15 Jul 2023', 'Cuota Mensual - Pilates', '$5,500', 'Efectivo')">Ver</button></td></tr>
+                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Nov 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Musculaci&oacute;n + HIIT</td><td class="px-5 py-3 font-black text-on-surface text-xs">$4,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Efectivo</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice(this)">VER</button></td></tr>
+                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Oct 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Crossfit</td><td class="px-5 py-3 font-black text-on-surface text-xs">$4,800</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Efectivo</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice(this)">VER</button></td></tr>
+                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Sep 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Zumba</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Tarjeta</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice(this)">VER</button></td></tr>
+                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Ago 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Boxeo</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Transferencia</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice(this)">VER</button></td></tr>
+                    <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Jul 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Pilates</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Efectivo</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice(this)">VER</button></td></tr>
                   </tbody>
                 </table>
               </div>
@@ -320,9 +403,9 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
       <p class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60">&copy; 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
     </div>
     <div class="flex items-center gap-6">
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Ayuda-encargado.html">Ayuda</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Privacidad-encargado.html">Privacidad</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Contacto-encargado.html">Contacto</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general/Ayuda-administrador.html">Ayuda</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general/Privacidad-administrador.html">Privacidad</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general/Contacto-administrador.html">Contacto</a>
     </div>
   </div>
 </footer>
@@ -350,8 +433,12 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
 <div class="flex flex-col"><span class="text-[10px] font-black text-slate-500 uppercase tracking-widest">FECHA</span><span class="text-sm font-bold text-on-surface" id="modal-date">-</span></div>
 <div class="flex flex-col text-right"><span class="text-[10px] font-black text-slate-500 uppercase tracking-widest">METODO DE PAGO</span><span class="text-sm font-bold text-on-surface" id="modal-method">-</span></div>
 <div class="flex flex-col col-span-2 py-2 border-y border-outline-variant/10"><span class="text-[10px] font-black text-slate-500 uppercase tracking-widest">CONCEPTO</span><span class="text-sm font-bold text-on-surface" id="modal-concept">-</span></div>
+<div class="flex flex-col col-span-2"><span class="text-[10px] font-black text-slate-500 uppercase tracking-widest">NRO. OPERACI&Oacute;N</span><span class="text-sm font-bold text-on-surface font-mono">#GYM-882931</span></div>
 </div>
-<button class="w-full py-3 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary-dim transition-all active:scale-[0.98]" onclick="document.getElementById('invoice-modal').classList.add('hidden')">CERRAR</button>
+<div class="flex gap-3">
+<button class="flex-1 py-3 rounded-xl border-2 border-primary text-primary text-[10px] font-black uppercase tracking-widest hover:bg-primary/5 transition-all">IMPRIMIR</button>
+<button class="flex-1 py-3 rounded-xl bg-primary text-white text-[10px] font-black uppercase tracking-widest hover:bg-primary-dim shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm">download</span>DESCARGAR PDF</button>
+</div>
 </div>
 </div>
 </div>
@@ -396,11 +483,12 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         }
     }
 
-    function openInvoice(date, concept, amount, method) {
-        document.getElementById('modal-date').textContent = date;
-        document.getElementById('modal-concept').textContent = concept;
-        document.getElementById('modal-amount').textContent = amount;
-        document.getElementById('modal-method').textContent = method;
+    function openInvoice(btn) {
+        const row = btn.closest('tr');
+        document.getElementById('modal-date').textContent = row.cells[0].textContent;
+        document.getElementById('modal-concept').textContent = row.cells[1].textContent;
+        document.getElementById('modal-amount').textContent = row.cells[2].textContent;
+        document.getElementById('modal-method').textContent = row.cells[3].textContent;
         document.getElementById('invoice-modal').classList.remove('hidden');
     }
 </script>

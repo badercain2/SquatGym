@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Squat Gym - Secretaría · Catálogo de Clases</title>
+    <title>Squat Gym - Administrador · Catálogo de Clases</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
@@ -536,7 +536,7 @@
 
             <a
               class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity"
-              href="../dashboard-encargado.html"
+              href="../dashboard-administrador.html"
             >
               Squat Gym
             </a>
@@ -689,7 +689,7 @@
               class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
               onclick="
                 window.location.href =
-                  '../general-secretaria/Mi-perfil-encargado.html'
+                  '../general/Mi-perfil-administrador.html'
               "
             >
               <span
@@ -726,114 +726,116 @@
               </button>
             </div>
 
-            <nav class="flex flex-col h-full gap-2">
-              <a
-                class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all"
-                href="../dashboard-encargado.html"
-              >
-                <span
-                  class="material-symbols-outlined"
-                  style="font-variation-settings: &quot;FILL&quot; 1"
-                  >home</span
-                >
+                        <nav class="flex flex-col h-full gap-2">
+              <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl active font-medium transition-all" href="../dashboard-administrador.html">
+                <span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1">home</span>
                 <span class="font-lexend tracking-tight">Inicio</span>
               </a>
 
               <div class="flex flex-col gap-1 mt-2">
-                <div
-                  class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
-                >
-                  Gesti&oacute;n de Clases
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Usuarios y Roles
                 </div>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group"
-                  href="Catalogo-de-clases-encargado.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-primary transition-colors"
-                    style="font-variation-settings: &quot;FILL&quot; 1"
-                    >calendar_month</span
-                  >
-                  <span class="font-medium text-sm"
-                    >Cat&aacute;logo de Clases</span
-                  >
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person_add</span>
+                  <span class="font-medium text-sm">Crear Usuario</span>
                 </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">manage_accounts</span>
+                  <span class="font-medium text-sm">Modificar Usuario</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person_remove</span>
+                  <span class="font-medium text-sm">Dar de Baja Usuario</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">admin_panel_settings</span>
+                  <span class="font-medium text-sm">Asignar Permisos</span>
+                </a>
+              </div>
 
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="Cronograma-semanal-encargado.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >calendar_view_week</span
-                  >
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Personal
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">history</span>
+                  <span class="font-medium text-sm">Historial de Novedades</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Clases
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-de-clases-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
+                  <span class="font-medium text-sm">Catálogo de Clases</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Cronograma-semanal-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
                   <span class="font-medium text-sm">Cronograma</span>
                 </a>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="Consultar-alumno-encargado.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >person</span
-                  >
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Consultar-alumno-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
                   <span class="font-medium text-sm">Consultar Alumno</span>
                 </a>
               </div>
 
               <div class="flex flex-col gap-1 mt-4">
-                <div
-                  class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
-                >
-                  Gesti&oacute;n de Kiosko
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Kiosko
                 </div>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Registrar-venta-encargado.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >point_of_sale</span
-                  >
-                  <span class="font-medium text-sm">Historial de Ventas</span>
-                </a>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Control-de-inventario-encargado.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >inventory_2</span
-                  >
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Control-de-inventario-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span>
                   <span class="font-medium text-sm">Control de Inventario</span>
                 </a>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Cupones-encargado.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >loyalty</span
-                  >
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Cupones-administrador.html">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
                   <span class="font-medium text-sm">Cupones</span>
                 </a>
               </div>
 
-              <a
-                class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto"
-                href="../1-Pantallas-generales-ayuda-contacto-etc/login.html"
-              >
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Pagos
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">sell</span>
+                  <span class="font-medium text-sm">Configurar Promociones</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Gestión de Cobranzas
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">receipt_long</span>
+                  <span class="font-medium text-sm">Reporte de Cobranzas</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+                  Auditoría
+                </div>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">monitoring</span>
+                  <span class="font-medium text-sm">Auditar Actividad</span>
+                </a>
+                <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+                  <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">summarize</span>
+                  <span class="font-medium text-sm">Generar Reporte</span>
+                </a>
+              </div>
+
+              <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
                 <span class="material-symbols-outlined text-error">logout</span>
-                <span class="font-lexend font-medium text-sm"
-                  >Cerrar Sesi&oacute;n</span
-                >
+                <span class="font-lexend font-medium text-sm">Cerrar Sesión</span>
               </a>
             </nav>
+
           </div>
         </aside>
 
@@ -949,17 +951,17 @@
           <div class="flex items-center gap-6">
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Ayuda-encargado.html"
+              href="../general/Ayuda-administrador.html"
               >Ayuda</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Privacidad-encargado.html"
+              href="../general/Privacidad-administrador.html"
               >Privacidad</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Contacto-encargado.html"
+              href="../general/Contacto-administrador.html"
               >Contacto</a
             >
           </div>
@@ -2822,23 +2824,6 @@
           dropdown.classList.add("hidden");
         }
       });
-
-      function mostrarToast(msg) {
-        var toast = document.getElementById('toast-notification');
-        if (!toast) {
-          toast = document.createElement('div');
-          toast.id = 'toast-notification';
-          toast.className = 'fixed bottom-6 right-6 z-[120] bg-[#004d40] text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transition-all duration-300';
-          toast.innerHTML = '<span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span><span class="font-bold text-sm" id="toast-msg-text"></span>';
-          document.body.appendChild(toast);
-        }
-        document.getElementById('toast-msg-text').innerText = msg;
-        toast.classList.remove('hidden', 'opacity-0');
-        setTimeout(function() {
-          toast.classList.add('opacity-0');
-          setTimeout(function() { toast.classList.add('hidden'); }, 300);
-        }, 3000);
-      }
 
       function finalizarCrearClase() {
         document.getElementById('create-schedule-step2-modal').classList.add('hidden');

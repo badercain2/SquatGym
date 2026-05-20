@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Squat Gym - Historial de Ventas</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1a1c1d",
+                        "surface-tint": "#00675f",
+                        "primary-fixed-dim": "#43e2d2",
+                        "primary-container": "#56f1e0",
+                        "tertiary-fixed-dim": "#00aeef",
+                        "secondary": "#006667",
+                        "outline": "#747778",
+                        "on-error": "#ffffff",
+                        "error-container": "#fb5151",
+                        "on-secondary-fixed": "#004142",
+                        "tertiary-dim": "#005578",
+                        "primary-dim": "#005a52",
+                        "error": "#b31b25",
+                        "secondary-fixed-dim": "#00e3e4",
+                        "on-secondary-fixed-variant": "#006061",
+                        "inverse-on-surface": "#9b9d9e",
+                        "surface-container-low": "#f1f4f4",
+                        "inverse-primary": "#56f1e0",
+                        "inverse-surface": "#0b0f0f",
+                        "on-tertiary-fixed-variant": "#003e58",
+                        "tertiary-fixed": "#27bcff",
+                        "surface-variant": "#d9dede",
+                        "surface-container-high": "#dfe3e3",
+                        "on-primary": "#ffffff",
+                        "secondary-dim": "#00595a",
+                        "on-secondary-container": "#005656",
+                        "primary-fixed": "#56f1e0",
+                        "surface-dim": "#d0d5d6",
+                        "on-tertiary-container": "#00344b",
+                        "on-surface": "#1a1c1d",
+                        "on-surface-variant": "#444748",
+                        "on-tertiary": "#e8f4ff",
+                        "on-error-container": "#570008",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#001a28",
+                        "on-primary-fixed": "#00423c",
+                        "surface-container": "#e5e9e9",
+                        "surface-bright": "#f8fafa",
+                        "on-primary-fixed-variant": "#006159",
+                        "outline-variant": "#abadae",
+                        "secondary-container": "#d0f8f8",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#27bcff",
+                        "surface": "#f8fafa",
+                        "background": "#f8fafa",
+                        "error-dim": "#9f0519",
+                        "tertiary": "#006289",
+                        "primary": "#00675f",
+                        "surface-container-highest": "#d9dede",
+                        "on-primary-container": "#00201d",
+                        "secondary-fixed": "#22f2f3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Lexend"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f8fafa;
+            color: #1a1c1d;
+        }
+        h1, h2, h3, h4, .headline {
+            font-family: 'Lexend', sans-serif;
+        }
+        .card-premium {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -4px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bg-mesh {
+            background-color: #f8fafa;
+            background-image: radial-gradient(at 0% 0%, hsla(174, 100%, 95%, 1) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, hsla(180, 100%, 96%, 1) 0, transparent 50%);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e9e9; border-radius: 10px; }
+    </style>
+</head>
+<body class="antialiased bg-mesh min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="shrink-0 w-full z-50 border-b border-outline-variant/30 h-20 sticky top-0" style="background-color: #005a52;">
+<div class="max-w-[1240px] mx-auto w-full h-full flex justify-between items-center px-8">
+<div class="flex items-center">
+<button class="mr-4 text-white hover:bg-white/10 p-2 rounded-full transition-colors flex items-center justify-center shrink-0" id="sidebar-toggle">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<div class="font-black tracking-tighter font-lexend text-white text-3xl">Squat Gym</div>
+</div>
+<div class="flex items-center gap-4 text-white">
+<div class="relative">
+<button class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all group hover:bg-white/10 text-white" id="notification-bell">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>notifications</span>
+<span class="absolute -top-1.5 -right-1.5 w-4 h-4 bg-error text-[9px] text-white font-bold flex items-center justify-center rounded-full border border-white shadow-sm" style="top: -2px; right: -2px;">4</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="hidden md:flex flex-col items-end mr-1">
+<p class="font-bold text-xs text-white">Rodrigo García</p>
+<p class="text-[9px] font-black uppercase tracking-widest opacity-80 text-primary-container">Encargado</p>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full transition-all hover:bg-white/10 text-white">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-[1240px] mx-auto px-8 py-8 flex flex-col gap-8">
+<!-- Page Title Header -->
+<div class="shrink-0">
+<button class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group mb-4">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-xs font-bold uppercase tracking-widest headline">VOLVER AL PANEL</span>
+</button>
+<h1 class="text-5xl font-black tracking-tighter text-on-surface headline">
+                Historial de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Ventas</span>
+</h1>
+</div>
+<!-- Sales Metrics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<article class="bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium p-6 flex flex-col gap-4 group">
+<div class="flex justify-between items-start">
+<div class="p-3 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>payments</span>
+</div>
+<span class="text-secondary font-black text-[10px] uppercase tracking-widest flex items-center bg-secondary/10 px-2 py-1 rounded-lg">+12% <span class="material-symbols-outlined text-[14px] ml-1">trending_up</span></span>
+</div>
+<div>
+<h3 class="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] headline">Ventas Hoy</h3>
+<p class="text-2xl font-black text-on-surface headline mt-1">$45.280,00</p>
+</div>
+</article>
+<article class="bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium p-6 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="p-3 rounded-xl bg-tertiary/10 text-tertiary">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>receipt_long</span>
+</div>
+<span class="text-on-surface-variant text-[10px] font-black uppercase tracking-widest">482 trans.</span>
+</div>
+<div>
+<h3 class="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] headline">Transacciones Mes</h3>
+<p class="text-2xl font-black text-on-surface headline mt-1">1,245</p>
+</div>
+</article>
+<article class="bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium p-6 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="p-3 rounded-xl bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>shopping_basket</span>
+</div>
+<span class="text-secondary text-[10px] font-black uppercase tracking-widest">Kiosco</span>
+</div>
+<div>
+<h3 class="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] headline">Ventas Kiosco</h3>
+<p class="text-2xl font-black text-on-surface headline mt-1">$8.120,00</p>
+</div>
+</article>
+<article class="bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium p-6 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="p-3 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>card_membership</span>
+</div>
+<span class="text-primary text-[10px] font-black uppercase tracking-widest">VIP</span>
+</div>
+<div>
+<h3 class="text-on-surface-variant text-[10px] font-black uppercase tracking-[0.2em] headline">Membresías</h3>
+<p class="text-2xl font-black text-on-surface headline mt-1">$37.160,00</p>
+</div>
+</article>
+</section>
+<!-- Filters Section -->
+<section class="bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium p-6">
+<div class="flex flex-wrap items-end gap-4">
+<div class="flex-1 min-w-[240px]">
+<label class="block text-[10px] font-black text-primary uppercase tracking-[0.2em] headline mb-2 px-1">Buscador</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full bg-surface-container-low border-0 rounded-xl py-3 pl-10 pr-4 text-sm font-bold headline focus:ring-2 focus:ring-primary transition-all" placeholder="Nombre o ID..." type="text"/>
+</div>
+</div>
+<div class="w-48">
+<label class="block text-[10px] font-black text-primary uppercase tracking-[0.2em] headline mb-2 px-1">Rango</label>
+<select class="w-full bg-surface-container-low border-0 rounded-xl py-3 px-4 text-sm font-bold headline focus:ring-2 focus:ring-primary outline-none appearance-none">
+<option>Hoy</option>
+<option>7 días</option>
+<option>Mes</option>
+</select>
+</div>
+<div class="w-48">
+<label class="block text-[10px] font-black text-primary uppercase tracking-[0.2em] headline mb-2 px-1">Tipo</label>
+<select class="w-full bg-surface-container-low border-0 rounded-xl py-3 px-4 text-sm font-bold headline focus:ring-2 focus:ring-primary outline-none appearance-none">
+<option>Todos</option>
+<option>Membresía</option>
+<option>Kiosco</option>
+</select>
+</div>
+<button class="bg-primary hover:bg-primary-dim text-white h-[44px] px-8 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all active:scale-[0.98] shadow-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                    Filtrar
+                </button>
+</div>
+</section>
+<!-- Sales Table Section -->
+<section class="flex flex-col gap-3">
+<h2 class="text-xs font-black text-primary uppercase tracking-[0.2em] headline flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-sm">history</span> TRANSACCIONES RECIENTES
+            </h2>
+<article class="bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low/50">
+<tr>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Fecha / Hora</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Alumno</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Concepto</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Monto</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Método</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10 text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary/5">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-4">
+<p class="font-bold text-on-surface headline text-sm">24 May 2024</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase">14:30 hs</p>
+</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-black text-[10px] headline">MA</div>
+<div>
+<p class="font-bold text-on-surface headline text-sm">Marcos Andrade</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase">#8821</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-lg bg-tertiary/10 text-tertiary font-black text-[9px] uppercase tracking-wider headline">Membresía Anual</span>
+</td>
+<td class="px-8 py-4 font-black text-on-surface headline text-sm">$12.500,00</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+<span class="text-xs font-bold headline">Tarjeta</span>
+</div>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="px-4 py-2 bg-primary/10 text-primary hover:bg-primary text-white rounded-lg text-[9px] font-black uppercase tracking-widest transition-all headline shadow-sm group-hover:scale-105">DETALLE</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-4">
+<p class="font-bold text-on-surface headline text-sm">24 May 2024</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase">12:15 hs</p>
+</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center font-black text-[10px] headline">SO</div>
+<div>
+<p class="font-bold text-on-surface headline text-sm">Sonia Olmos</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase">#9012</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-lg bg-secondary/10 text-secondary font-black text-[9px] uppercase tracking-wider headline">Agua Mineral 500ml</span>
+</td>
+<td class="px-8 py-4 font-black text-on-surface headline text-sm">$850,00</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span class="text-xs font-bold headline">Efectivo</span>
+</div>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="px-4 py-2 bg-primary/10 text-primary hover:bg-primary text-white rounded-lg text-[9px] font-black uppercase tracking-widest transition-all headline shadow-sm group-hover:scale-105">DETALLE</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-8 py-4">
+<p class="font-bold text-on-surface headline text-sm">24 May 2024</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase">10:45 hs</p>
+</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center font-black text-[10px] headline">JF</div>
+<div>
+<p class="font-bold text-on-surface headline text-sm">Javier Funes</p>
+<p class="text-[10px] font-bold text-slate-400 uppercase">#7743</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-lg bg-primary/10 text-primary font-black text-[9px] uppercase tracking-wider headline">Personal Trainer</span>
+</td>
+<td class="px-8 py-4 font-black text-on-surface headline text-sm">$8.200,00</td>
+<td class="px-8 py-4">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+<span class="text-xs font-bold headline">Transf.</span>
+</div>
+</td>
+<td class="px-8 py-4 text-right">
+<button class="px-4 py-2 bg-primary/10 text-primary hover:bg-primary text-white rounded-lg text-[9px] font-black uppercase tracking-widest transition-all headline shadow-sm group-hover:scale-105">DETALLE</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-8 py-4 bg-surface-container-low/30 border-t border-primary/10 flex justify-between items-center">
+<p class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Ventas 1-3 de 128</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white font-black text-xs headline shadow-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-primary/10 text-on-surface font-black text-xs headline transition-all">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-primary/10 text-on-surface font-black text-xs headline transition-all">3</button>
+</div>
+</div>
+</article>
+</section>
+<!-- Footer Report Status -->
+<footer class="mt-4 mb-8">
+<div class="bg-gradient-to-r from-primary to-secondary p-[1px] rounded-2xl shadow-lg">
+<div class="bg-white rounded-2xl p-6 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">auto_awesome</span>
+</div>
+<div>
+<p class="font-black text-on-surface headline">Reporte Automático Generado</p>
+<p class="text-xs font-bold text-slate-500 uppercase tracking-widest">El arqueo se realizará a las 22:00hs.</p>
+</div>
+</div>
+<button class="text-primary font-black text-xs headline tracking-widest uppercase flex items-center gap-2 hover:underline group">
+                        Configurar
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</footer>
+</main>
+<!-- App Footer -->
+<footer class="shrink-0 bg-primary w-full py-6 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1240px] mx-auto w-full gap-4">
+<div class="flex flex-col items-center md:items-start">
+<div class="text-lg font-black text-white font-lexend mb-1 headline">Squat Gym</div>
+<p class="text-white/60 text-[9px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM</p>
+</div>
+<div class="flex space-x-8">
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Ayuda</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Privacidad</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Contacto</a>
+</div>
+</div>
+</footer>
+</body></html>

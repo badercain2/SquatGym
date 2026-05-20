@@ -1,7 +1,7 @@
 <!DOCTYPE html><html class="light" lang="es"><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Squat Gym - Secretaría · Cronograma Semanal</title>
+<title>Squat Gym - Administración · Actualizar Cronograma</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -63,13 +63,6 @@
                     "primary-dim": "#005a52",
                     "on-secondary": "#ffffff"
                 },
-                "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "1rem",
-                    "2xl": "1.5rem",
-                    "full": "9999px"
-                },
                 "fontFamily": {
                     "headline": ["Lexend"],
                     "body": ["Manrope"],
@@ -86,31 +79,19 @@
   --footer-height: 70px;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
-html,
-body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
+html, body{
+  width:100%; height:100%; overflow:hidden;
 }
 
 body{
-  margin:0;
-  font-family:'Manrope',sans-serif;
-  background:#f8fafa;
-  color:#1a1c1d;
+  margin:0; font-family:'Manrope',sans-serif; background:#f8fafa; color:#1a1c1d;
 }
 
-h1,h2,h3,h4,.headline{
-  font-family:'Lexend',sans-serif;
-}
+h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
 
-.material-symbols-outlined{
-  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
-}
+.material-symbols-outlined{ font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
 
 .bg-mesh{
   background-color:#f8fafa;
@@ -120,165 +101,68 @@ h1,h2,h3,h4,.headline{
 }
 
 .card-premium{
-  box-shadow:
-    0 10px 30px -5px rgba(0,0,0,.03),
-    0 4px 12px -4px rgba(0,0,0,.01);
+  box-shadow: 0 10px 30px -5px rgba(0,0,0,.03), 0 4px 12px -4px rgba(0,0,0,.01);
   transition:all .3s cubic-bezier(.4,0,.2,1);
 }
 
 .layout-shell{
-  width:100%;
-  max-width:1920px;
-  height:100vh;
-  margin:0 auto;
-  display:grid;
-  grid-template-rows:var(--header-height) 1fr var(--footer-height);
-  overflow:hidden;
+  width:100%; max-width:1920px; height:100vh; margin:0 auto;
+  display:grid; grid-template-rows:var(--header-height) 1fr var(--footer-height); overflow:hidden;
 }
 
-.header{
-  height:var(--header-height);
-  background:#005a52;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  z-index:50;
-}
+.header{ height:var(--header-height); background:#005a52; border-bottom:1px solid rgba(255,255,255,.08); z-index:50; }
 
-.main-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  min-height:0;
-  overflow:hidden;
-  position:relative;
-}
+.main-grid{ display:grid; grid-template-columns:1fr; min-height:0; overflow:hidden; position:relative; }
 
 .sidebar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:var(--sidebar-width);
-  height:100vh;
-  background:#ffffff;
-  border-right:1px solid rgba(171,173,174,.3);
-  overflow:hidden;
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-  z-index:80;
-  transform:translateX(-100%);
-  visibility:hidden;
-  opacity:0;
+  position:fixed; top:0; left:0; width:var(--sidebar-width); height:100vh; background:#ffffff;
+  border-right:1px solid rgba(171,173,174,.3); overflow:hidden; transition:all .3s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 10px 30px rgba(0,0,0,.05); z-index:80; transform:translateX(-100%); visibility:hidden; opacity:0;
 }
 
-.sidebar-visible{
-  transform:translateX(0);
-  visibility:visible;
-  opacity:1;
-}
+.sidebar-visible{ transform:translateX(0); visibility:visible; opacity:1; }
 
 .sidebar-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.3);
-  backdrop-filter:blur(4px);
-  z-index:70;
-  opacity:0;
-  visibility:hidden;
-  transition:all .3s ease;
+  position:fixed; inset:0; background:rgba(0,0,0,.3); backdrop-filter:blur(4px);
+  z-index:70; opacity:0; visibility:hidden; transition:all .3s ease;
 }
 
-.sidebar-backdrop.show{
-  opacity:1;
-  visibility:visible;
-}
+.sidebar-backdrop.show{ opacity:1; visibility:visible; }
 
-.sidebar-inner{
-  width:var(--sidebar-width);
-  height:100%;
-  overflow-y:auto;
-  padding:24px 16px 16px;
-}
+.sidebar-inner{ width:var(--sidebar-width); height:100%; overflow-y:auto; padding:24px 16px 16px; }
 
-.main-content{
-  min-width:0;
-  min-height:0;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  padding:20px 28px;
-  gap:12px;
-}
+.main-content{ min-width:0; min-height:0; overflow:hidden; display:flex; flex-direction:column; padding:20px 28px; gap:12px; }
 
-.content-wrapper{
-  display:flex;
-  flex-direction:column;
-  min-height:0;
-  flex:1;
-}
+.content-wrapper{ display:flex; flex-direction:column; min-height:0; flex:1; }
 
-.top-section{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  margin-bottom:4px;
-}
+.top-section{ display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:4px; }
 
-.page-title{
-  font-size:clamp(1.4rem,2.5vw,2.2rem);
-  line-height:.95;
-  font-weight:900;
-  letter-spacing:-.05em;
-}
+.page-title{ font-size:clamp(1.4rem,2.5vw,2.2rem); line-height:.95; font-weight:900; letter-spacing:-.05em; }
 
-.footer{
-  background:#00675f;
-  border-top:1px solid rgba(255,255,255,.08);
-}
+.footer{ background:#00675f; border-top:1px solid rgba(255,255,255,.08); }
 
-.custom-scrollbar::-webkit-scrollbar{
-  width:8px;
-  height:8px;
-}
+.custom-scrollbar::-webkit-scrollbar{ width:8px; height:8px; }
+.custom-scrollbar::-webkit-scrollbar-track{ background:transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb{ background:#d9dede; border-radius:999px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover{ background:#c5caca; }
 
-.custom-scrollbar::-webkit-scrollbar-track{
-  background:transparent;
-}
+.nav-link.active{ background:#00675f !important; color:#fff !important; }
+.nav-link.active .material-symbols-outlined{ color:#fff !important; }
 
-.custom-scrollbar::-webkit-scrollbar-thumb{
-  background:#d9dede;
-  border-radius:999px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover{
-  background:#c5caca;
-}
-
-.nav-link.active{
-  background:#00675f !important;
-  color:#fff !important;
-}
-
-.nav-link.active .material-symbols-outlined{
-  color:#fff !important;
-}
-
-#notification-dropdown{
-  animation:slideInDown .2s ease-out;
-}
-
-#notification-dropdown.hidden{
-  display:none;
-}
+#notification-dropdown{ animation:slideInDown .2s ease-out; }
+#notification-dropdown.hidden{ display:none; }
 
 @keyframes slideInDown{
-  from{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{ opacity:0; transform:translateY(-10px); }
+  to{ opacity:1; transform:translateY(0); }
 }
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.toast-enter { animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
 select {
     appearance: none;
@@ -289,221 +173,10 @@ select {
     padding-right: 2.5rem !important;
 }
 
-/* ===== RESPONSIVE ===== */
-
-@media (max-width:1600px){
-  .main-content{
-    padding:28px;
-  }
-}
-
-@media (max-width:1366px){
-  :root{
-    --sidebar-width:250px;
-  }
-
-  .main-content{
-    padding:22px;
-  }
-
-  .page-title{
-    font-size:2.8rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  :root {
-    --sidebar-width: 220px;
-  }
-
-  .main-content {
-    padding: 18px;
-    gap: 18px;
-  }
-
-  .page-title {
-    font-size: 2.2rem;
-  }
-
-  header .headline {
-    font-size: 1.6rem;
-  }
-
-  header .px-8 {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .footer .px-12 {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-}
-
-@media (max-width: 768px) {
-  .layout-shell {
-    grid-template-rows: var(--header-height) 1fr var(--footer-height);
-    overflow-y: auto;
-  }
-
-  .main-grid {
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
-    min-height: auto;
-  }
-
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(171,173,174,.3);
-    box-shadow: none;
-    overflow: visible;
-  }
-
-  .sidebar-inner {
-    width: 100%;
-    padding: 10px 14px;
-    overflow: visible;
-  }
-
-  .sidebar-inner nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 4px;
-    height: auto;
-  }
-
-  .sidebar-inner nav a {
-    padding: 5px 8px;
-    font-size: 10px;
-    border-radius: 6px !important;
-    white-space: nowrap;
-  }
-
-  .sidebar-inner nav .mt-auto {
-    margin-top: 0 !important;
-    margin-left: auto;
-  }
-
-  .sidebar-inner nav .mt-2 {
-    margin-top: 0 !important;
-    flex-wrap: wrap;
-    display: flex;
-    gap: 4px;
-  }
-
-  .sidebar-inner nav .mt-2 > div:first-child {
-    display: none;
-  }
-
-  .main-content {
-    padding: 14px;
-    gap: 12px;
-    overflow: visible;
-  }
-
-  .content-wrapper {
-    overflow: visible;
-  }
-
-  .top-section {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-
-  .page-title {
-    font-size: 1.6rem;
-    line-height: 1;
-  }
-
-  header .headline {
-    font-size: 1.2rem;
-  }
-
-  header .gap-4 {
-    gap: 6px;
-  }
-
-  header .px-8 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  header .w-11.h-11 {
-    width: 36px;
-    height: 36px;
-  }
-
-  header .text-\[28px\] {
-    font-size: 20px !important;
-  }
-
-  .footer .h-full {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    padding: 10px 16px !important;
-  }
-
-  .footer .gap-8 {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .footer .text-lg {
-    font-size: 14px;
-  }
-
-  #notification-dropdown {
-    width: 260px;
-    right: -40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-content {
-    padding: 10px;
-    gap: 8px;
-  }
-
-  .page-title {
-    font-size: 1.3rem;
-  }
-
-  header .headline {
-    font-size: 1.1rem;
-  }
-
-  header .w-11.h-11 {
-    width: 32px;
-    height: 32px;
-  }
-
-  header .text-\[28px\] {
-    font-size: 18px !important;
-  }
-
-  header .px-8 {
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-
-  #notification-dropdown {
-    width: 220px;
-    right: -10px;
-  }
-}
-
-@media (max-width: 360px) {
-  .page-title {
-    font-size: 1.1rem;
-  }
-
-  .footer .text-\[9px\] {
-    font-size: 7px !important;
-  }
+/* Modales y Formularios */
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
 }
 </style>
 </head>
@@ -511,6 +184,7 @@ select {
 
 <div class="layout-shell">
 
+<!-- Header (Modificado para Admin) -->
 <header class="header shrink-0">
   <div class="h-full max-w-[1880px] mx-auto px-8 flex items-center justify-between">
 
@@ -519,108 +193,47 @@ select {
         <span class="material-symbols-outlined text-[28px]">menu</span>
       </button>
 
-      <a class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity" href="../dashboard-secretaria.html">
+      <a class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity" href="../dashboard-encargado.html">
         Squat Gym
       </a>
     </div>
 
+    <!-- Resto del header igual (campana, perfil) -->
     <div class="flex items-center gap-4 text-white">
-
-      <div class="relative">
-        <button class="relative flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" id="notification-bell" onclick="toggleNotifications()">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications</span>
-
-          <span class="absolute -top-1 -right-1 w-5 h-5 bg-error text-[10px] font-bold flex items-center justify-center rounded-full border border-white shadow-sm">
-            4
-          </span>
-        </button>
-
-        <div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
-
-          <div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
-            <h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
-            <span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+        <div class="relative">
+          <button class="relative flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" id="notification-bell" onclick="toggleNotifications()">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications</span>
+            <span class="absolute -top-1 -right-1 w-5 h-5 bg-error text-[10px] font-bold flex items-center justify-center rounded-full border border-white shadow-sm">4</span>
+          </button>
+          <div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
+            <div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
+              <h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
+              <span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+            </div>
+            <div class="flex flex-col">
+              <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"><div class="flex gap-3"><div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0"><span class="material-symbols-outlined text-sm">inventory_2</span></div><div class="flex-1"><p class="text-xs font-bold text-on-surface">Stock bajo: Prote&iacute;na Whey</p><p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p></div></div></div>
+              <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"><div class="flex gap-3"><div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0"><span class="material-symbols-outlined text-sm">event_busy</span></div><div class="flex-1"><p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p><p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p></div></div></div>
+              <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"><div class="flex gap-3"><div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0"><span class="material-symbols-outlined text-sm">person_add</span></div><div class="flex-1"><p class="text-xs font-bold text-on-surface">Nuevo socio: Juan P&eacute;rez</p><p class="text-[10px] text-on-surface-variant">Suscripci&oacute;n Plan Premium</p></div></div></div>
+              <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer"><div class="flex gap-3"><div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0"><span class="material-symbols-outlined text-sm">payments</span></div><div class="flex-1"><p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p><p class="text-[10px] text-on-surface-variant">Vencimiento en 2 d&iacute;as</p></div></div></div>
+            </div>
+            <div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
+              <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;"><span>Ver todas</span><span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span></button>
+            </div>
           </div>
-
-          <div class="flex flex-col">
-
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
-                  <span class="material-symbols-outlined text-sm">inventory_2</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Stock bajo: Prote&iacute;na Whey</p>
-                  <p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <span class="material-symbols-outlined text-sm">event_busy</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
-                  <p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <span class="material-symbols-outlined text-sm">person_add</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Nuevo socio: Juan P&eacute;rez</p>
-                  <p class="text-[10px] text-on-surface-variant">Suscripci&oacute;n Plan Premium</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
-                  <span class="material-symbols-outlined text-sm">payments</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
-                  <p class="text-[10px] text-on-surface-variant">Vencimiento en 2 d&iacute;as</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
-            <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;">
-              <span>Ver todas</span>
-              <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
-            </button>
-          </div>
-
         </div>
-      </div>
-
-      <button class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" onclick="window.location.href='../general-secretaria/Mi-perfil-secretaria.html'">
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">account_circle</span>
-      </button>
-
+        <button class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" onclick="window.location.href='../general-secretaria/Mi-perfil-encargado.html'">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">account_circle</span>
+        </button>
     </div>
-
   </div>
 </header>
 
 <div class="main-grid">
-
   <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
-
+  
+  <!-- Sidebar Encargado -->
   <aside class="sidebar" id="sidebar">
-
     <div class="sidebar-inner custom-scrollbar">
-      
       <div class="flex items-center justify-between mb-6 px-2">
         <div class="flex items-center gap-3">
           <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">fitness_center</span>
@@ -632,490 +245,625 @@ select {
       </div>
 
       <nav class="flex flex-col h-full gap-2">
-
-        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-secretaria.html">
+        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-encargado.html">
           <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>
           <span class="font-lexend tracking-tight">Inicio</span>
         </a>
 
         <div class="flex flex-col gap-1 mt-2">
-
           <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
             Gesti&oacute;n de Clases
           </div>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-de-clases-secretaria.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-de-clases-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
             <span class="font-medium text-sm">Cat&aacute;logo de Clases</span>
           </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Cronograma-semanal-secretaria.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Cronograma-semanal-encargado.html">
             <span class="material-symbols-outlined text-primary transition-colors" style="font-variation-settings:'FILL' 1;">calendar_view_week</span>
             <span class="font-medium text-sm">Cronograma</span>
           </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Consultar-alumno-secretaria.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Consultar-alumno-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
             <span class="font-medium text-sm">Consultar Alumno</span>
           </a>
-
         </div>
 
         <div class="flex flex-col gap-1 mt-4">
-
           <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
             Gesti&oacute;n de Kiosko
           </div>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Registrar-venta.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Registrar-venta-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">point_of_sale</span>
-            <span class="font-medium text-sm">Registrar Venta</span>
+            <span class="font-medium text-sm">Historial de Ventas</span>
           </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Control-de-inventario.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Control-de-inventario-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span>
             <span class="font-medium text-sm">Control de Inventario</span>
           </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Cupones.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Cupones-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
             <span class="font-medium text-sm">Cupones</span>
           </a>
-
         </div>
 
-        <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
+        <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="../1-Pantallas-generales-ayuda-contacto-etc/login.html">
           <span class="material-symbols-outlined text-error">logout</span>
           <span class="font-lexend font-medium text-sm">Cerrar Sesi&oacute;n</span>
         </a>
-
       </nav>
-
     </div>
-
   </aside>
 
   <main class="main-content custom-scrollbar">
-
     <div class="content-wrapper">
-
+      
       <div class="top-section">
-
         <div>
           <h1 class="page-title text-on-surface headline">
-            Cronograma
+            Actualizar
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              Semanal
+              Cronograma
             </span>
           </h1>
         </div>
-
         <div class="bg-primary/10 px-4 py-2 rounded-xl border border-primary/20 shrink-0">
-          <span class="font-label text-xs font-black text-primary uppercase tracking-widest" id="current-day-badge">Hoy: Mi&eacute;rcoles 27 de Mayo</span>
+          <span class="font-label text-xs font-black text-primary uppercase tracking-widest" id="current-day-badge">Hoy: Miércoles 27 de Mayo</span>
         </div>
-
       </div>
 
-      <!-- Filter and Date Navigation -->
-      <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant/10 p-3 flex flex-col md:flex-row items-center gap-3 shrink-0">
+      <!-- Barra de herramientas Admin -->
+      <div class="bg-surface-container-lowest rounded-2xl shadow-sm border border-outline-variant/10 p-3 flex flex-col md:flex-row justify-between items-center gap-3 shrink-0">
+        <!-- Selector de fechas (Igual que antes) -->
         <div class="flex items-center bg-surface-container-low/50 rounded-xl p-1 gap-2">
           <div class="relative group" tabindex="0">
             <button class="flex items-center gap-3 px-4 py-2 hover:bg-surface-container-high/50 transition-colors rounded-lg cursor-pointer group">
               <span class="material-symbols-outlined text-primary text-xl">calendar_today</span>
               <div class="flex flex-col items-start">
-                <span class="font-label text-[9px] font-black text-primary/60 uppercase tracking-widest leading-none mb-0.5">Seleccionar Fecha</span>
-                <span class="font-headline text-xs font-bold text-primary uppercase tracking-wider" id="selected-full-date">27 DE MAYO, 2026</span>
+                <span class="font-label text-[9px] font-black text-primary/60 uppercase tracking-widest leading-none mb-0.5">Semana del</span>
+                <span class="font-headline text-xs font-bold text-primary uppercase tracking-wider" id="selected-full-date">25 AL 31 DE MAYO</span>
               </div>
               <span class="material-symbols-outlined text-primary text-base transition-transform group-focus-within:rotate-180 ml-1">expand_more</span>
             </button>
-            <div class="dropdown-content absolute top-full left-0 mt-2 w-72 bg-white shadow-2xl rounded-2xl border border-outline-variant/20 z-[70] overflow-hidden hidden group-focus-within:block transition-all">
-              <div class="p-4 bg-primary/5 border-b border-outline-variant/10 flex justify-between items-center">
-                <button class="p-2 hover:bg-primary/10 rounded-full transition-all cursor-pointer flex items-center justify-center" id="prev-month">
-                  <span class="material-symbols-outlined text-primary text-xl">chevron_left</span>
-                </button>
-                <span class="font-headline font-bold text-primary text-sm uppercase tracking-widest flex-1 text-center select-none" id="calendar-month-year">Mayo 2026</span>
-                <button class="p-2 hover:bg-primary/10 rounded-full transition-all cursor-pointer flex items-center justify-center" id="next-month">
-                  <span class="material-symbols-outlined text-primary text-xl">chevron_right</span>
-                </button>
-              </div>
-              <div class="p-4">
-                <div class="grid grid-cols-7 gap-1 mb-2">
-                  <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Lu</span>
-                  <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Ma</span>
-                  <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Mi</span>
-                  <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Ju</span>
-                  <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Vi</span>
-                  <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Sa</span>
-                  <span class="text-[9px] font-bold text-center text-outline-variant uppercase">Do</span>
-                </div>
-                <div class="grid grid-cols-7 gap-1" id="calendar-days-container"><span class="h-9 w-9"></span><span class="h-9 w-9"></span><span class="h-9 w-9"></span><span class="h-9 w-9"></span><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="1">1</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="2">2</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="3">3</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="4">4</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="5">5</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="6">6</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="7">7</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="8">8</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="9">9</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="10">10</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="11">11</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="12">12</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="13">13</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="14">14</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="15">15</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="16">16</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="17">17</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="18">18</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="19">19</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="20">20</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="21">21</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="22">22</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="23">23</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="24">24</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface bg-primary text-white hover:bg-primary hover:text-white transition-all calendar-day-btn selected" data-day="25">25</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="26">26</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="27">27</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="28">28</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="29">29</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="30">30</button><button class="h-9 w-9 flex items-center justify-center rounded-lg text-xs font-bold text-on-surface hover:bg-primary/10 hover:text-primary transition-all calendar-day-btn" data-day="31">31</button></div>
-              </div>
-            </div>
+            <!-- Dropdown del calendario omitido por limpieza visual en este ejemplo -->
           </div>
+        </div>
+
+        <!-- Botones de Acción Admin -->
+        <div class="flex gap-2">
+            <button onclick="openClassModal()" class="bg-primary hover:bg-primary-dim text-white font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors shadow-md shadow-primary/20">
+                <span class="material-symbols-outlined text-sm">add</span>
+                Nueva Clase
+            </button>
+            <button class="border border-outline-variant/30 text-on-surface hover:bg-surface-container-low font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors">
+                <span class="material-symbols-outlined text-sm">print</span>
+                Exportar
+            </button>
         </div>
       </div>
 
-      <!-- Schedule Grid -->
-      <div class="bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.06)] overflow-hidden border border-outline-variant/10 flex flex-col flex-1 min-h-0 card-premium">
+      <!-- Schedule Grid - Ahora Interactiva -->
+      <div class="bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.06)] overflow-hidden border border-outline-variant/10 flex flex-col flex-1 min-h-0 card-premium mt-2">
         <!-- Header Row -->
         <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] border-b border-outline-variant/10 shrink-0">
           <div class="h-12 flex items-center justify-center bg-surface-container-low border-r border-outline-variant/10">
             <span class="material-symbols-outlined text-primary text-base">schedule</span>
           </div>
-          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10">
-            <span class="font-label text-[9px] uppercase tracking-widest text-outline">LUN</span>
-            <span class="font-headline font-bold text-xs">25</span>
-          </div>
-          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10">
-            <span class="font-label text-[9px] uppercase tracking-widest text-outline">MAR</span>
-            <span class="font-headline font-bold text-xs">26</span>
-          </div>
-          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10 bg-primary/5">
-            <span class="font-label text-[9px] uppercase tracking-widest text-outline text-primary font-bold">MI&Eacute;</span>
-            <span class="font-headline font-bold text-xs text-primary">27</span>
-          </div>
-          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10">
-            <span class="font-label text-[9px] uppercase tracking-widest text-outline">JUE</span>
-            <span class="font-headline font-bold text-xs">28</span>
-          </div>
-          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10">
-            <span class="font-label text-[9px] uppercase tracking-widest text-outline">VIE</span>
-            <span class="font-headline font-bold text-xs">29</span>
-          </div>
-          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10">
-            <span class="font-label text-[9px] uppercase tracking-widest text-outline">S&Aacute;B</span>
-            <span class="font-headline font-bold text-xs">30</span>
-          </div>
-          <div class="h-12 flex flex-col items-center justify-center">
-            <span class="font-label text-[9px] uppercase tracking-widest text-outline">DOM</span>
-            <span class="font-headline font-bold text-xs">31</span>
-          </div>
+          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10"><span class="font-label text-[9px] uppercase tracking-widest text-outline">LUN</span><span class="font-headline font-bold text-xs">25</span></div>
+          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10"><span class="font-label text-[9px] uppercase tracking-widest text-outline">MAR</span><span class="font-headline font-bold text-xs">26</span></div>
+          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10 bg-primary/5"><span class="font-label text-[9px] uppercase tracking-widest text-outline text-primary font-bold">MIÉ</span><span class="font-headline font-bold text-xs text-primary">27</span></div>
+          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10"><span class="font-label text-[9px] uppercase tracking-widest text-outline">JUE</span><span class="font-headline font-bold text-xs">28</span></div>
+          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10"><span class="font-label text-[9px] uppercase tracking-widest text-outline">VIE</span><span class="font-headline font-bold text-xs">29</span></div>
+          <div class="h-12 flex flex-col items-center justify-center border-r border-outline-variant/10"><span class="font-label text-[9px] uppercase tracking-widest text-outline">SÁB</span><span class="font-headline font-bold text-xs">30</span></div>
+          <div class="h-12 flex flex-col items-center justify-center"><span class="font-label text-[9px] uppercase tracking-widest text-outline">DOM</span><span class="font-headline font-bold text-xs">31</span></div>
         </div>
 
-        <!-- Time Slots - Scrollable -->
+        <!-- Time Slots -->
         <div class="relative custom-scrollbar overflow-y-auto flex-1 min-h-0">
+          <!-- Background Grid lines -->
           <div class="absolute inset-0 grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] pointer-events-none min-h-full">
             <div class="border-r border-outline-variant/10 bg-surface-container-low/30"></div>
-            <div class="border-r border-outline-variant/10"></div>
-            <div class="border-r border-outline-variant/10"></div>
-            <div class="border-r border-outline-variant/10"></div>
-            <div class="border-r border-outline-variant/10"></div>
-            <div class="border-r border-outline-variant/10"></div>
-            <div class="border-r border-outline-variant/10"></div>
-            <div></div>
+            <div class="border-r border-outline-variant/10"></div><div class="border-r border-outline-variant/10"></div><div class="border-r border-outline-variant/10"></div>
+            <div class="border-r border-outline-variant/10"></div><div class="border-r border-outline-variant/10"></div><div class="border-r border-outline-variant/10"></div><div></div>
           </div>
 
           <div class="relative">
+            <!-- Fila 07:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">07:00</span>
               </div>
-              <div class="p-1.5">
-                <div class="bg-[#00695c] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00695c]/20">
+              
+              <!-- Clase Existente (Editable) -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#00695c] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <!-- Overlay de Edición Admin -->
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Yoga', 'Prof. Sofia', '07:00', '08:00', 'Lunes')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar">
+                        <span class="material-symbols-outlined text-[18px]">edit</span>
+                    </button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar">
+                        <span class="material-symbols-outlined text-[18px]">delete</span>
+                    </button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Yoga - Prof. Sofia</span>
-                  <span class="text-[9px] opacity-80">07-08</span>
+                  <span class="text-[9px] opacity-80 mt-1">07:00 - 08:00</span>
                 </div>
               </div>
-              <div class="p-1.5">
-                <div class="bg-[#00897b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00897b]/20">
-                  <span class="font-headline text-[10px] font-bold leading-tight">HIIT - Prof. Juan, Prof. Elena</span>
-                  <span class="text-[9px] opacity-80">07-08</span>
+
+              <!-- Clase Existente -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#00897b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm group">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('HIIT', 'Prof. Juan', '07:00', '08:00', 'Martes')" class="w-8 h-8 bg-white/20 hover:bg-white/40 rounded-md flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button class="w-8 h-8 bg-error/80 hover:bg-error rounded-md flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
+                  <span class="font-headline text-[10px] font-bold leading-tight">HIIT - Prof. Juan</span>
+                  <span class="text-[9px] opacity-80 mt-1">07:00 - 08:00</span>
                 </div>
               </div>
-              <div class="p-1.5">
-                <div class="bg-[#26a69a] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#26a69a]/20">
-                  <span class="font-headline text-[10px] font-bold leading-tight">Mobility - Prof. Carlos</span>
-                  <span class="text-[9px] opacity-80">07-08</span>
+
+              <!-- Slot Vacío (Click para crear) -->
+              <div class="p-1.5 h-full group cursor-pointer" onclick="openClassModal('','','07:00','08:00','Miércoles')">
+                <div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 transition-all flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl transition-colors">add</span>
                 </div>
               </div>
-              <div class="p-1.5">
-                <div class="bg-[#004d40] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#004d40]/20">
-                  <span class="font-headline text-[10px] font-bold leading-tight">Crossfit - Prof. Sofia, Juan, Elena</span>
-                  <span class="text-[9px] opacity-80">07-08</span>
-                </div>
-              </div>
-              <div class="p-1.5">
-                <div class="bg-[#00796b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00796b]/20">
-                  <span class="font-headline text-[10px] font-bold leading-tight">Pilates - Prof. Maria</span>
-                  <span class="text-[9px] opacity-80">07-08</span>
-                </div>
-              </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <!-- Resto de la fila 07:00 vacío -->
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','07:00','08:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','07:00','08:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','07:00','08:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','07:00','08:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 08:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">08:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#00695c] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00695c]/20">
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#26a69a] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm group">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button class="w-8 h-8 bg-white/20 hover:bg-white/40 rounded-md flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button class="w-8 h-8 bg-error/80 hover:bg-error rounded-md flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Spinning - Prof. Carlos</span>
-                  <span class="text-[9px] opacity-80">08-09</span>
+                  <span class="text-[9px] opacity-80 mt-1">08:00 - 09:00</span>
                 </div>
               </div>
-              <div class="p-1.5">
-                <div class="bg-[#00897b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00897b]/20">
-                  <span class="font-headline text-[10px] font-bold leading-tight">Boxeo - Prof. Juan</span>
-                  <span class="text-[9px] opacity-80">08-09</span>
-                </div>
-              </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+
+              <!-- Llenando con slots vacios editables por brevedad -->
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 09:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">09:00</span>
               </div>
-              <div class="p-1.5">
-                <div class="bg-[#004d40] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#004d40]/20">
-                  <span class="font-headline text-[10px] font-bold leading-tight">Funcional - Prof. Sofia</span>
-                  <span class="text-[9px] opacity-80">09-10</span>
+              
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#004d40] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm group">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button class="w-8 h-8 bg-white/20 hover:bg-white/40 rounded-md flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button class="w-8 h-8 bg-error/80 hover:bg-error rounded-md flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
+                  <span class="font-headline text-[10px] font-bold leading-tight">Crossfit - Equipo</span>
+                  <span class="text-[9px] opacity-80 mt-1">09:00 - 10:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#00695c] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00695c]/20">
-                  <span class="font-headline text-[10px] font-bold leading-tight">Yoga - Prof. Maria</span>
-                  <span class="text-[9px] opacity-80">09-10</span>
-                </div>
-              </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal()"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+<!-- Fila 10:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">10:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#00796b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00796b]/20">
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','10:00','11:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','10:00','11:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              
+              <!-- Pilates 10:00 Miércoles -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#00796b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Pilates', 'Prof. Elena', '10:00', '11:00', 'Miércoles')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Pilates - Prof. Elena</span>
-                  <span class="text-[9px] opacity-80">10-11</span>
+                  <span class="text-[9px] opacity-80 mt-1">10:00 - 11:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#26a69a] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#26a69a]/20">
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','10:00','11:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              
+              <!-- Spinning 10:00 Viernes -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#26a69a] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Spinning', 'Prof. Juan', '10:00', '11:00', 'Viernes')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Spinning - Prof. Juan</span>
-                  <span class="text-[9px] opacity-80">10-11</span>
+                  <span class="text-[9px] opacity-80 mt-1">10:00 - 11:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','10:00','11:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','10:00','11:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 11:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">11:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#00695c] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00695c]/20">
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','11:00','12:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','11:00','12:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','11:00','12:00','Miércoles')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','11:00','12:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              
+              <!-- Crossfit 11:00 Viernes -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#00695c] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Crossfit', 'Prof. Carlos', '11:00', '12:00', 'Viernes')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Crossfit - Prof. Carlos</span>
-                  <span class="text-[9px] opacity-80">11-12</span>
+                  <span class="text-[9px] opacity-80 mt-1">11:00 - 12:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','11:00','12:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','11:00','12:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 12:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">12:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','12:00','13:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','12:00','13:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','12:00','13:00','Miércoles')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','12:00','13:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','12:00','13:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','12:00','13:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','12:00','13:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 13:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">13:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','13:00','14:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','13:00','14:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','13:00','14:00','Miércoles')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','13:00','14:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','13:00','14:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','13:00','14:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','13:00','14:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 14:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">14:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#004d40] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#004d40]/20">
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','14:00','15:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','14:00','15:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              
+              <!-- Boxeo 14:00 Miércoles -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#004d40] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Boxeo', 'Prof. Juan', '14:00', '15:00', 'Miércoles')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Boxeo - Prof. Juan</span>
-                  <span class="text-[9px] opacity-80">14-15</span>
+                  <span class="text-[9px] opacity-80 mt-1">14:00 - 15:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','14:00','15:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','14:00','15:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','14:00','15:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','14:00','15:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 15:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">15:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','15:00','16:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','15:00','16:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','15:00','16:00','Miércoles')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','15:00','16:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','15:00','16:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','15:00','16:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','15:00','16:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 16:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">16:00</span>
               </div>
-              <div class="p-1.5">
-                <div class="bg-[#00897b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00897b]/20">
+              
+              <!-- HIIT 16:00 Lunes -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#00897b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('HIIT', 'Prof. Elena', '16:00', '17:00', 'Lunes')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">HIIT - Prof. Elena</span>
-                  <span class="text-[9px] opacity-80">16-17</span>
+                  <span class="text-[9px] opacity-80 mt-1">16:00 - 17:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','16:00','17:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','16:00','17:00','Miércoles')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','16:00','17:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','16:00','17:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','16:00','17:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','16:00','17:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 17:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">17:00</span>
               </div>
-              <div class="p-1.5">
-                <div class="bg-[#00695c] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00695c]/20">
+              
+              <!-- Funcional 17:00 Lunes -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#00695c] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Funcional', 'Prof. Carlos', '17:00', '18:00', 'Lunes')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Funcional - Prof. Carlos</span>
-                  <span class="text-[9px] opacity-80">17-18</span>
+                  <span class="text-[9px] opacity-80 mt-1">17:00 - 18:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','17:00','18:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','17:00','18:00','Miércoles')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','17:00','18:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','17:00','18:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','17:00','18:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','17:00','18:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 18:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">18:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#26a69a] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#26a69a]/20">
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','18:00','19:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              
+              <!-- Zumba 18:00 Martes -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#26a69a] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Zumba', 'Prof. Maria', '18:00', '19:00', 'Martes')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Zumba - Prof. Maria</span>
-                  <span class="text-[9px] opacity-80">18-19</span>
+                  <span class="text-[9px] opacity-80 mt-1">18:00 - 19:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','18:00','19:00','Miércoles')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','18:00','19:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','18:00','19:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','18:00','19:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','18:00','19:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 19:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">19:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#00796b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00796b]/20">
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','19:00','20:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','19:00','20:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              
+              <!-- Yoga 19:00 Miércoles -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#00796b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Yoga', 'Prof. Sofia', '19:00', '20:00', 'Miércoles')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Yoga - Prof. Sofia</span>
-                  <span class="text-[9px] opacity-80">19-20</span>
+                  <span class="text-[9px] opacity-80 mt-1">19:00 - 20:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','19:00','20:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','19:00','20:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','19:00','20:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','19:00','20:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 20:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">20:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','20:00','21:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','20:00','21:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','20:00','21:00','Miércoles')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','20:00','21:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','20:00','21:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','20:00','21:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','20:00','21:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
+            <!-- Fila 21:00 -->
             <div class="grid grid-cols-[80px_1fr_1fr_1fr_1fr_1fr_1fr_1fr] min-h-[80px] border-b border-outline-variant/10">
               <div class="flex items-start justify-center pt-3 border-r border-outline-variant/10 sticky left-0 z-10 bg-surface-container-lowest">
                 <span class="font-label text-[10px] font-bold text-outline">21:00</span>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5">
-                <div class="bg-[#00897b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-lg shadow-[#00897b]/20">
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','21:00','22:00','Lunes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','21:00','22:00','Martes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              
+              <!-- Meditación 21:00 Miércoles -->
+              <div class="p-1.5 h-full">
+                <div class="relative bg-[#00897b] text-white p-2 rounded-lg h-full flex flex-col justify-between shadow-sm hover:shadow-md group transition-all">
+                  <div class="absolute inset-0 bg-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm z-20">
+                    <button onclick="openClassModal('Meditación', 'Prof. Elena', '21:00', '22:00', 'Miércoles')" class="w-8 h-8 bg-white/20 hover:bg-white/40 text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Editar"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                    <button onclick="deleteClass(this)" class="w-8 h-8 bg-error/80 hover:bg-error text-white rounded-md flex items-center justify-center transition-colors shadow-sm" title="Eliminar"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                  </div>
                   <span class="font-headline text-[10px] font-bold leading-tight">Meditación - Prof. Elena</span>
-                  <span class="text-[9px] opacity-80">21-22</span>
+                  <span class="text-[9px] opacity-80 mt-1">21:00 - 22:00</span>
                 </div>
               </div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
-              <div class="p-1.5"></div>
+              
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','21:00','22:00','Jueves')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','21:00','22:00','Viernes')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','21:00','22:00','Sábado')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
+              <div class="p-1.5 group cursor-pointer" onclick="openClassModal('','','21:00','22:00','Domingo')"><div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div></div>
             </div>
 
           </div>
         </div>
 
       </div>
-
     </div>
-
   </main>
+</div>
 
+<!-- Modal para Crear/Editar Clase -->
+<div id="classModal" class="fixed inset-0 z-[100] modal-backdrop flex items-center justify-center hidden opacity-0 transition-opacity duration-200">
+    <div class="bg-surface-container-lowest rounded-2xl shadow-2xl border border-outline-variant/20 w-full max-w-md overflow-hidden transform scale-95 transition-transform duration-200" id="classModalContent">
+        
+        <!-- Header Modal -->
+        <div class="px-6 py-4 border-b border-outline-variant/10 flex justify-between items-center bg-primary/5">
+            <h2 class="font-headline font-bold text-lg text-primary" id="modalTitle">Nueva Clase</h2>
+            <button onclick="closeClassModal()" class="text-on-surface-variant hover:text-error transition-colors rounded-full p-1 hover:bg-error/10">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Body Formulario -->
+        <div class="p-6 flex flex-col gap-4">
+            
+            <div>
+                <label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Día</label>
+                <select id="classDay" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                    <option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Hora Inicio</label>
+                    <input type="time" id="classStart" value="07:00" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Hora Fin</label>
+                    <input type="time" id="classEnd" value="08:00" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Actividad</label>
+                <select id="classActivity" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                    <option>Yoga</option><option>HIIT</option><option>Crossfit</option><option>Spinning</option><option>Pilates</option><option>Boxeo</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Profesor a Cargo</label>
+                <select id="classProfessor" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                    <option>Prof. Sofia</option><option>Prof. Juan</option><option>Prof. Carlos</option><option>Prof. Elena</option><option>Prof. Maria</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Cupo Máximo</label>
+                <input type="number" id="classCapacity" value="20" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+            </div>
+
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex flex-col gap-3">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input type="checkbox" id="classReemplazo" class="w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary" onchange="toggleReemplazo()">
+                    <span class="text-xs font-bold text-on-surface uppercase tracking-wide">Es un Reemplazo Docente</span>
+                </label>
+                <div id="reemplazoFields" class="hidden flex flex-col gap-3">
+                    <div>
+                        <label class="block text-[10px] font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Profesor Titular (ausente)</label>
+                        <select id="classTitular" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                            <option value="">Seleccionar titular...</option>
+                            <option>Prof. Sofia</option><option>Prof. Juan</option><option>Prof. Carlos</option><option>Prof. Elena</option><option>Prof. Maria</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Profesor Reemplazante</label>
+                        <select id="classReemplazante" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                            <option value="">Seleccionar reemplazante...</option>
+                            <option>Prof. Sofia</option><option>Prof. Juan</option><option>Prof. Carlos</option><option>Prof. Elena</option><option>Prof. Maria</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-on-surface-variant mb-1 uppercase tracking-wide">Motivo del Reemplazo</label>
+                        <select id="classMotivo" class="w-full rounded-lg border-outline-variant/30 text-sm focus:border-primary focus:ring-primary bg-surface-container-low">
+                            <option>Enfermedad</option><option>Vacaciones</option><option>Capacitaci&oacute;n</option><option>Personal</option><option>Otro</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Acciones -->
+        <div class="px-6 py-4 border-t border-outline-variant/10 flex justify-end gap-3 bg-surface-container-low/50">
+            <button onclick="closeClassModal()" class="px-4 py-2 text-sm font-bold text-on-surface-variant hover:text-on-surface transition-colors">
+                Cancelar
+            </button>
+            <button onclick="saveClass()" class="px-4 py-2 bg-primary hover:bg-primary-dim text-white text-sm font-bold rounded-lg shadow-md transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px]">save</span> Guardar
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast Notificación (Simula actualización en vivo DB) -->
+<div id="toastNotification" class="fixed bottom-6 right-6 z-[120] bg-[#004d40] text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 hidden">
+    <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span>
+    <div class="flex flex-col">
+        <span class="font-bold text-sm">Cronograma Actualizado</span>
+        <span class="text-[10px] opacity-80">Sincronizado con base de datos</span>
+    </div>
 </div>
 
 <footer class="footer shrink-0">
   <div class="h-full px-8 max-w-[1880px] mx-auto flex items-center justify-between gap-4">
     <div class="flex flex-col">
-      <div class="text-base font-black text-white font-lexend mb-0.5 headline">
-        Squat Gym
-      </div>
-      <p class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60">
-        &copy; 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.
-      </p>
+      <div class="text-base font-black text-white font-lexend mb-0.5 headline">Squat Gym</div>
+      <p class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60">&copy; 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
     </div>
     <div class="flex items-center gap-6">
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Ayuda-secretaria.html">Ayuda</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Privacidad-secretaria.html">Privacidad</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Contacto-secretaria.html">Contacto</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Ayuda-encargado.html">Ayuda</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Privacidad-encargado.html">Privacidad</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Contacto-encargado.html">Contacto</a>
     </div>
   </div>
 </footer>
@@ -1123,45 +871,127 @@ select {
 </div>
 
 <script>
+    // ---- Scripts de UI General ----
     document.getElementById('sidebar-toggle').addEventListener('click', () => {
-      const sidebar = document.getElementById('sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      sidebar.classList.toggle('sidebar-visible');
-      backdrop.classList.toggle('show');
+      document.getElementById('sidebar').classList.toggle('sidebar-visible');
+      document.getElementById('sidebar-backdrop').classList.toggle('show');
     });
-
     document.getElementById('sidebar-close').addEventListener('click', () => {
-      const sidebar = document.getElementById('sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      sidebar.classList.remove('sidebar-visible');
-      backdrop.classList.remove('show');
+      document.getElementById('sidebar').classList.remove('sidebar-visible');
+      document.getElementById('sidebar-backdrop').classList.remove('show');
     });
-
     document.getElementById('sidebar-backdrop').addEventListener('click', () => {
-      const sidebar = document.getElementById('sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      sidebar.classList.remove('sidebar-visible');
-      backdrop.classList.remove('show');
+      document.getElementById('sidebar').classList.remove('sidebar-visible');
+      document.getElementById('sidebar-backdrop').classList.remove('show');
     });
 
     function toggleNotifications() {
-      const dropdown = document.getElementById('notification-dropdown');
-      dropdown.classList.toggle('hidden');
+      document.getElementById('notification-dropdown').classList.toggle('hidden');
     }
-
     window.addEventListener('click', function(e) {
       const dropdown = document.getElementById('notification-dropdown');
       const bell = document.getElementById('notification-bell');
-
-      if (
-        dropdown &&
-        !dropdown.classList.contains('hidden') &&
-        !bell.contains(e.target) &&
-        !dropdown.contains(e.target)
-      ) {
+      if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
         dropdown.classList.add('hidden');
       }
     });
+
+    // ---- Scripts de Administración del Cronograma ----
+    const modal = document.getElementById('classModal');
+    const modalContent = document.getElementById('classModalContent');
+
+    function openClassModal(activity = '', professor = '', start = '', end = '', day = '') {
+        const isEdit = activity !== '';
+        document.getElementById('modalTitle').innerText = isEdit ? 'Editar Clase' : 'Nueva Clase';
+        
+        if(isEdit) {
+            document.getElementById('classActivity').value = activity;
+            document.getElementById('classProfessor').value = professor;
+        }
+
+        if(start) document.getElementById('classStart').value = start;
+        if(end) document.getElementById('classEnd').value = end;
+        if(day) document.getElementById('classDay').value = day;
+
+        // Reset reemplazo
+        document.getElementById('classReemplazo').checked = false;
+        document.getElementById('reemplazoFields').classList.add('hidden');
+        document.getElementById('classTitular').value = '';
+        document.getElementById('classReemplazante').value = '';
+        document.getElementById('classMotivo').value = 'Enfermedad';
+
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+        }, 10);
+    }
+
+    function toggleReemplazo() {
+        const checked = document.getElementById('classReemplazo').checked;
+        const fields = document.getElementById('reemplazoFields');
+        if (checked) {
+            fields.classList.remove('hidden');
+        } else {
+            fields.classList.add('hidden');
+        }
+    }
+
+    function closeClassModal() {
+        modal.classList.add('opacity-0');
+        modalContent.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 200); // Mismo tiempo que la duración en Tailwind
+    }
+
+    function deleteClass(btn) {
+        if(confirm('¿Estás seguro que deseas eliminar esta clase del cronograma?')) {
+            const slot = btn.closest('.p-1\\.5');
+            slot.innerHTML = `<div class="w-full h-full rounded-lg border-2 border-dashed border-transparent group-hover:border-primary/30 group-hover:bg-primary/5 flex items-center justify-center transition-all cursor-pointer" onclick="openClassModal()"><span class="material-symbols-outlined text-primary/0 group-hover:text-primary/50 text-xl">add</span></div>`;
+            showToast('Clase Eliminada', 'La clase fue removida del cronograma');
+        }
+    }
+
+    function saveClass() {
+        const isReemplazo = document.getElementById('classReemplazo').checked;
+        const actividad = document.getElementById('classActivity').value;
+        const profesor = document.getElementById('classProfessor').value;
+        const dia = document.getElementById('classDay').value;
+        const inicio = document.getElementById('classStart').value;
+        const fin = document.getElementById('classEnd').value;
+        
+        closeClassModal();
+        
+        let msg = actividad + ' - ' + profesor + ' | ' + dia + ' ' + inicio + ' a ' + fin;
+        let title = 'Clase Guardada';
+        
+        if (isReemplazo) {
+            const titular = document.getElementById('classTitular').value;
+            const reemplazante = document.getElementById('classReemplazante').value;
+            const motivo = document.getElementById('classMotivo').value;
+            title = 'Reemplazo Asignado';
+            msg = reemplazante + ' cubre a ' + titular + ' (' + motivo + ') | ' + dia + ' ' + inicio;
+        }
+        
+        showToast(title, msg);
+    }
+
+    function showToast(title, msg) {
+        const toast = document.getElementById('toastNotification');
+        toast.innerHTML = '<span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span><div class="flex flex-col"><span class="font-bold text-sm">' + title + '</span><span class="text-[10px] opacity-80">' + msg + '</span></div>';
+        toast.classList.remove('hidden');
+        toast.classList.add('toast-enter');
+        
+        setTimeout(() => {
+            toast.classList.remove('toast-enter');
+            toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('opacity-0', 'transition-opacity', 'duration-300');
+            }, 300);
+        }, 4000);
+    }
 </script>
 
 </body>
