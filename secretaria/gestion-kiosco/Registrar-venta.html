@@ -1,1088 +1,1974 @@
-<!DOCTYPE html><html class="light" lang="es"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Squat Gym - POS Kiosko</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<script id="tailwind-config">
-    tailwind.config = {
+<!doctype html>
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Squat Gym - POS Kiosko</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
         darkMode: "class",
         theme: {
-            extend: {
-                "colors": {
-                    "inverse-surface": "#0b0f0f",
-                    "outline-variant": "#abadae",
-                    "on-tertiary": "#e8f4ff",
-                    "secondary-fixed-dim": "#00e3e4",
-                    "secondary-dim": "#00595a",
-                    "background": "#f8fafa",
-                    "surface": "#f8fafa",
-                    "surface-container": "#e5e9e9",
-                    "inverse-on-surface": "#9b9d9e",
-                    "on-tertiary-container": "#00344b",
-                    "on-primary-fixed": "#00423c",
-                    "on-surface": "#1a1c1d",
-                    "surface-container-highest": "#d9dede",
-                    "tertiary-fixed-dim": "#00aeef",
-                    "tertiary-fixed": "#27bcff",
-                    "surface-bright": "#f8fafa",
-                    "on-error-container": "#570008",
-                    "primary-container": "#56f1e0",
-                    "primary-fixed": "#56f1e0",
-                    "on-primary-fixed-variant": "#006159",
-                    "secondary": "#006667",
-                    "on-secondary-fixed-variant": "#006061",
-                    "surface-container-lowest": "#ffffff",
-                    "surface-variant": "#d9dede",
-                    "tertiary": "#006289",
-                    "primary": "#00675f",
-                    "on-tertiary-fixed-variant": "#003e58",
-                    "tertiary-container": "#27bcff",
-                    "on-secondary-container": "#005656",
-                    "on-secondary-fixed": "#004142",
-                    "error-container": "#fb5151",
-                    "on-primary": "#ffffff",
-                    "surface-container-high": "#dfe3e3",
-                    "on-tertiary-fixed": "#001a28",
-                    "secondary-fixed": "#22f2f3",
-                    "tertiary-dim": "#005578",
-                    "on-background": "#1a1c1d",
-                    "surface-container-low": "#f1f4f4",
-                    "error-dim": "#9f0519",
-                    "on-primary-container": "#00201d",
-                    "surface-dim": "#d0d5d6",
-                    "surface-tint": "#00675f",
-                    "inverse-primary": "#56f1e0",
-                    "error": "#b31b25",
-                    "secondary-container": "#d0f8f8",
-                    "on-surface-variant": "#444748",
-                    "outline": "#747778",
-                    "on-error": "#ffffff",
-                    "primary-fixed-dim": "#43e2d2",
-                    "primary-dim": "#005a52",
-                    "on-secondary": "#ffffff"
-                },
-                "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "1rem",
-                    "2xl": "1.5rem",
-                    "full": "9999px"
-                },
-                "fontFamily": {
-                    "headline": ["Lexend"],
-                    "body": ["Manrope"],
-                    "label": ["Manrope"]
-                }
+          extend: {
+            colors: {
+              "inverse-surface": "#0b0f0f",
+              "outline-variant": "#abadae",
+              "on-tertiary": "#e8f4ff",
+              "secondary-fixed-dim": "#00e3e4",
+              "secondary-dim": "#00595a",
+              background: "#f8fafa",
+              surface: "#f8fafa",
+              "surface-container": "#e5e9e9",
+              "inverse-on-surface": "#9b9d9e",
+              "on-tertiary-container": "#00344b",
+              "on-primary-fixed": "#00423c",
+              "on-surface": "#1a1c1d",
+              "surface-container-highest": "#d9dede",
+              "tertiary-fixed-dim": "#00aeef",
+              "tertiary-fixed": "#27bcff",
+              "surface-bright": "#f8fafa",
+              "on-error-container": "#570008",
+              "primary-container": "#56f1e0",
+              "primary-fixed": "#56f1e0",
+              "on-primary-fixed-variant": "#006159",
+              secondary: "#006667",
+              "on-secondary-fixed-variant": "#006061",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#d9dede",
+              tertiary: "#006289",
+              primary: "#00675f",
+              "on-tertiary-fixed-variant": "#003e58",
+              "tertiary-container": "#27bcff",
+              "on-secondary-container": "#005656",
+              "on-secondary-fixed": "#004142",
+              "error-container": "#fb5151",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#dfe3e3",
+              "on-tertiary-fixed": "#001a28",
+              "secondary-fixed": "#22f2f3",
+              "tertiary-dim": "#005578",
+              "on-background": "#1a1c1d",
+              "surface-container-low": "#f1f4f4",
+              "error-dim": "#9f0519",
+              "on-primary-container": "#00201d",
+              "surface-dim": "#d0d5d6",
+              "surface-tint": "#00675f",
+              "inverse-primary": "#56f1e0",
+              error: "#b31b25",
+              "secondary-container": "#d0f8f8",
+              "on-surface-variant": "#444748",
+              outline: "#747778",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#43e2d2",
+              "primary-dim": "#005a52",
+              "on-secondary": "#ffffff",
             },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "1rem",
+              "2xl": "1.5rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Lexend"],
+              body: ["Manrope"],
+              label: ["Manrope"],
+            },
+          },
         },
-    }
-</script>
-<style>
-:root{
-  --sidebar-width: 280px;
-  --header-height: 64px;
-  --footer-height: 70px;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html,
-body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
-}
-
-body{
-  margin:0;
-  font-family:'Manrope',sans-serif;
-  background:#f8fafa;
-  color:#1a1c1d;
-}
-
-h1,h2,h3,h4,.headline{
-  font-family:'Lexend',sans-serif;
-}
-
-.material-symbols-outlined{
-  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
-}
-
-.bg-mesh{
-  background-color:#f8fafa;
-  background-image:
-    radial-gradient(at 0% 0%, hsla(174,100%,95%,1) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(180,100%,96%,1) 0, transparent 50%);
-}
-
-.card-premium{
-  box-shadow:
-    0 10px 30px -5px rgba(0,0,0,.03),
-    0 4px 12px -4px rgba(0,0,0,.01);
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-}
-
-.layout-shell{
-  width:100%;
-  max-width:1920px;
-  height:100vh;
-  margin:0 auto;
-  display:grid;
-  grid-template-rows:var(--header-height) 1fr var(--footer-height);
-  overflow:hidden;
-}
-
-.header{
-  height:var(--header-height);
-  background:#005a52;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  z-index:50;
-}
-
-.main-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  min-height:0;
-  overflow:hidden;
-  position:relative;
-}
-
-.sidebar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:var(--sidebar-width);
-  height:100vh;
-  background:#ffffff;
-  border-right:1px solid rgba(171,173,174,.3);
-  overflow:hidden;
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-  z-index:80;
-  transform:translateX(-100%);
-  visibility:hidden;
-  opacity:0;
-}
-
-.sidebar-visible{
-  transform:translateX(0);
-  visibility:visible;
-  opacity:1;
-}
-
-.sidebar-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.3);
-  backdrop-filter:blur(4px);
-  z-index:70;
-  opacity:0;
-  visibility:hidden;
-  transition:all .3s ease;
-}
-
-.sidebar-backdrop.show{
-  opacity:1;
-  visibility:visible;
-}
-
-.sidebar-inner{
-  width:var(--sidebar-width);
-  height:100%;
-  overflow-y:auto;
-  padding:24px 16px 16px;
-}
-
-.main-content{
-  min-width:0;
-  min-height:0;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  padding:20px 28px;
-  gap:12px;
-}
-
-.content-wrapper{
-  display:flex;
-  flex-direction:column;
-  min-height:0;
-  flex:1;
-}
-
-.footer{
-  background:#00675f;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-
-.custom-scrollbar::-webkit-scrollbar{
-  width:8px;
-  height:8px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb{
-  background:#d9dede;
-  border-radius:999px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover{
-  background:#c5caca;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.nav-link.active{
-  background:#00675f !important;
-  color:#fff !important;
-}
-
-.nav-link.active .material-symbols-outlined{
-  color:#fff !important;
-}
-
-#notification-dropdown{
-  animation:slideInDown .2s ease-out;
-}
-
-#notification-dropdown.hidden{
-  display:none;
-}
-
-@keyframes slideInDown{
-  from{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media (max-width:1600px){
-  .main-content{
-    padding:28px;
-  }
-}
-
-@media (max-width:1366px){
-  :root{
-    --sidebar-width:250px;
-  }
-
-  .main-content{
-    padding:22px;
-  }
-}
-
-@media (max-width: 1024px) {
-  :root {
-    --sidebar-width: 220px;
-  }
-
-  .main-content {
-    padding: 18px;
-    gap: 18px;
-  }
-
-  header .headline {
-    font-size: 1.6rem;
-  }
-
-  header .px-8 {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .footer .px-12 {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-}
-
-@media (max-width: 768px) {
-  .layout-shell {
-    grid-template-rows: var(--header-height) 1fr var(--footer-height);
-    overflow-y: auto;
-  }
-
-  .main-grid {
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
-    min-height: auto;
-  }
-
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(171,173,174,.3);
-    box-shadow: none;
-    overflow: visible;
-  }
-
-  .sidebar-inner {
-    width: 100%;
-    padding: 10px 14px;
-    overflow: visible;
-  }
-
-  .sidebar-inner nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 4px;
-    height: auto;
-  }
-
-  .sidebar-inner nav .mt-auto {
-    margin-top: 0 !important;
-    margin-left: auto;
-  }
-
-  .sidebar-inner nav .mt-2 {
-    margin-top: 0 !important;
-    flex-wrap: wrap;
-    display: flex;
-    gap: 4px;
-  }
-
-  .sidebar-inner nav .mt-2 > div:first-child {
-    display: none;
-  }
-
-  .main-content {
-    padding: 14px;
-    gap: 12px;
-    overflow: visible;
-  }
-
-  .content-wrapper {
-    overflow: visible;
-  }
-
-  header .headline {
-    font-size: 1.2rem;
-  }
-
-  header .gap-4 {
-    gap: 6px;
-  }
-
-  header .px-8 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  header .w-11.h-11 {
-    width: 36px;
-    height: 36px;
-  }
-
-  header .text-\[28px\] {
-    font-size: 20px !important;
-  }
-
-  .footer .h-full {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    padding: 10px 16px !important;
-  }
-
-  .footer .gap-8 {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .footer .text-lg {
-    font-size: 14px;
-  }
-
-  #notification-dropdown {
-    width: 260px;
-    right: -40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-content {
-    padding: 10px;
-    gap: 8px;
-  }
-
-  header .headline {
-    font-size: 1.1rem;
-  }
-
-  header .w-11.h-11 {
-    width: 32px;
-    height: 32px;
-  }
-
-  header .text-\[28px\] {
-    font-size: 18px !important;
-  }
-
-  header .px-8 {
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-
-  #notification-dropdown {
-    width: 220px;
-    right: -10px;
-  }
-}
-
-@media (max-width: 360px) {
-  .footer .text-\[9px\] {
-    font-size: 7px !important;
-  }
-}
-</style>
-</head>
-<body class="bg-mesh antialiased selection:bg-primary-container selection:text-on-primary-container">
-
-<div class="layout-shell">
-
-<header class="header shrink-0">
-  <div class="h-full max-w-[1880px] mx-auto px-8 flex items-center justify-between">
-
-    <div class="flex items-center gap-4">
-      <button class="w-11 h-11 rounded-full hover:bg-white/10 transition flex items-center justify-center text-white shrink-0" id="sidebar-toggle">
-        <span class="material-symbols-outlined text-[28px]">menu</span>
-      </button>
-
-      <a class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity" href="../dashboard-secretaria.html">
-        Squat Gym
-      </a>
-    </div>
-
-    <div class="flex items-center gap-4 text-white">
-
-      <div class="relative">
-        <button class="relative flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" id="notification-bell" onclick="toggleNotifications()">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications</span>
-
-          <span class="absolute -top-1 -right-1 w-5 h-5 bg-error text-[10px] font-bold flex items-center justify-center rounded-full border border-white shadow-sm">
-            4
-          </span>
-        </button>
-
-        <div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
-
-          <div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
-            <h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
-            <span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+      };
+    </script>
+    <style>
+      :root {
+        --sidebar-width: 280px;
+        --header-height: 64px;
+        --footer-height: 70px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        background: #f8fafa;
+        color: #1a1c1d;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .headline {
+        font-family: "Lexend", sans-serif;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      .bg-mesh {
+        background-color: #f8fafa;
+        background-image:
+          radial-gradient(at 0% 0%, hsla(174, 100%, 95%, 1) 0, transparent 50%),
+          radial-gradient(
+            at 100% 0%,
+            hsla(180, 100%, 96%, 1) 0,
+            transparent 50%
+          );
+      }
+
+      .card-premium {
+        box-shadow:
+          0 10px 30px -5px rgba(0, 0, 0, 0.03),
+          0 4px 12px -4px rgba(0, 0, 0, 0.01);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .layout-shell {
+        width: 100%;
+        max-width: 1920px;
+        height: 100vh;
+        margin: 0 auto;
+        display: grid;
+        grid-template-rows: var(--header-height) 1fr var(--footer-height);
+        overflow: hidden;
+      }
+
+      .header {
+        height: var(--header-height);
+        background: #005a52;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        z-index: 50;
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: var(--sidebar-width);
+        height: 100vh;
+        background: #ffffff;
+        border-right: 1px solid rgba(171, 173, 174, 0.3);
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        z-index: 80;
+        transform: translateX(-100%);
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .sidebar-visible {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(4px);
+        z-index: 70;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .sidebar-backdrop.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .sidebar-inner {
+        width: var(--sidebar-width);
+        height: 100%;
+        overflow-y: auto;
+        padding: 24px 16px 16px;
+      }
+
+      .main-content {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 28px;
+        gap: 12px;
+      }
+
+      .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        flex: 1;
+      }
+
+      .footer {
+        background: #00675f;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #d9dede;
+        border-radius: 999px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #c5caca;
+      }
+
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .nav-link.active {
+        background: #00675f !important;
+        color: #fff !important;
+      }
+
+      .nav-link.active .material-symbols-outlined {
+        color: #fff !important;
+      }
+
+      #notification-dropdown {
+        animation: slideInDown 0.2s ease-out;
+      }
+
+      #notification-dropdown.hidden {
+        display: none;
+      }
+
+      @keyframes slideInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+
+      @media (max-width: 1600px) {
+        .main-content {
+          padding: 28px;
+        }
+      }
+
+      @media (max-width: 1366px) {
+        :root {
+          --sidebar-width: 250px;
+        }
+
+        .main-content {
+          padding: 22px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        :root {
+          --sidebar-width: 220px;
+        }
+
+        .main-content {
+          padding: 18px;
+          gap: 18px;
+        }
+
+        header .headline {
+          font-size: 1.6rem;
+        }
+
+        header .px-8 {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .footer .px-12 {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .layout-shell {
+          grid-template-rows: var(--header-height) 1fr var(--footer-height);
+          overflow-y: auto;
+        }
+
+        .main-grid {
+          display: flex;
+          flex-direction: column;
+          overflow: visible;
+          min-height: auto;
+        }
+
+        .sidebar {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid rgba(171, 173, 174, 0.3);
+          box-shadow: none;
+          overflow: visible;
+        }
+
+        .sidebar-inner {
+          width: 100%;
+          padding: 10px 14px;
+          overflow: visible;
+        }
+
+        .sidebar-inner nav {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 4px;
+          height: auto;
+        }
+
+        .sidebar-inner nav .mt-auto {
+          margin-top: 0 !important;
+          margin-left: auto;
+        }
+
+        .sidebar-inner nav .mt-2 {
+          margin-top: 0 !important;
+          flex-wrap: wrap;
+          display: flex;
+          gap: 4px;
+        }
+
+        .sidebar-inner nav .mt-2 > div:first-child {
+          display: none;
+        }
+
+        .main-content {
+          padding: 14px;
+          gap: 12px;
+          overflow: visible;
+        }
+
+        .content-wrapper {
+          overflow: visible;
+        }
+
+        header .headline {
+          font-size: 1.2rem;
+        }
+
+        header .gap-4 {
+          gap: 6px;
+        }
+
+        header .px-8 {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        header .w-11.h-11 {
+          width: 36px;
+          height: 36px;
+        }
+
+        header .text-\[28px\] {
+          font-size: 20px !important;
+        }
+
+        .footer .h-full {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+          padding: 10px 16px !important;
+        }
+
+        .footer .gap-8 {
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .footer .text-lg {
+          font-size: 14px;
+        }
+
+        #notification-dropdown {
+          width: 260px;
+          right: -40px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main-content {
+          padding: 10px;
+          gap: 8px;
+        }
+
+        header .headline {
+          font-size: 1.1rem;
+        }
+
+        header .w-11.h-11 {
+          width: 32px;
+          height: 32px;
+        }
+
+        header .text-\[28px\] {
+          font-size: 18px !important;
+        }
+
+        header .px-8 {
+          padding-left: 6px;
+          padding-right: 6px;
+        }
+
+        #notification-dropdown {
+          width: 220px;
+          right: -10px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .footer .text-\[9px\] {
+          font-size: 7px !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-mesh antialiased selection:bg-primary-container selection:text-on-primary-container"
+  >
+    <div class="layout-shell">
+      <header class="header shrink-0">
+        <div
+          class="h-full max-w-[1880px] mx-auto px-8 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-4">
+            <button
+              class="w-11 h-11 rounded-full hover:bg-white/10 transition flex items-center justify-center text-white shrink-0"
+              id="sidebar-toggle"
+            >
+              <span class="material-symbols-outlined text-[28px]">menu</span>
+            </button>
+
+            <a
+              class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity"
+              href="../dashboard-secretaria.html"
+            >
+              Squat Gym
+            </a>
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center gap-4 text-white">
+            <div class="relative">
+              <button
+                class="relative flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
+                id="notification-bell"
+                onclick="toggleNotifications()"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >notifications</span
+                >
 
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
-                  <span class="material-symbols-outlined text-sm">inventory_2</span>
+                <span
+                  class="absolute -top-1 -right-1 w-5 h-5 bg-error text-[10px] font-bold flex items-center justify-center rounded-full border border-white shadow-sm"
+                >
+                  4
+                </span>
+              </button>
+
+              <div
+                class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]"
+                id="notification-dropdown"
+              >
+                <div
+                  class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low"
+                >
+                  <h3 class="font-headline font-bold text-on-surface text-sm">
+                    Notificaciones
+                  </h3>
+                  <span
+                    class="text-[10px] font-bold text-primary uppercase tracking-wider"
+                    >4 Nuevas</span
+                  >
                 </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Stock bajo: Prote&iacute;na Whey</p>
-                  <p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
+
+                <div class="flex flex-col">
+                  <div
+                    class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"
+                  >
+                    <div class="flex gap-3">
+                      <div
+                        class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >inventory_2</span
+                        >
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-xs font-bold text-on-surface">
+                          Stock bajo: Prote&iacute;na Whey
+                        </p>
+                        <p class="text-[10px] text-on-surface-variant">
+                          Quedan menos de 5 unidades
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"
+                  >
+                    <div class="flex gap-3">
+                      <div
+                        class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >event_busy</span
+                        >
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-xs font-bold text-on-surface">
+                          Clase cancelada: Crossfit
+                        </p>
+                        <p class="text-[10px] text-on-surface-variant">
+                          Instructor no disponible hoy
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"
+                  >
+                    <div class="flex gap-3">
+                      <div
+                        class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >person_add</span
+                        >
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-xs font-bold text-on-surface">
+                          Nuevo socio: Juan P&eacute;rez
+                        </p>
+                        <p class="text-[10px] text-on-surface-variant">
+                          Suscripci&oacute;n Plan Premium
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer"
+                  >
+                    <div class="flex gap-3">
+                      <div
+                        class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >payments</span
+                        >
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-xs font-bold text-on-surface">
+                          Pago pendiente: Factura #4421
+                        </p>
+                        <p class="text-[10px] text-on-surface-variant">
+                          Vencimiento en 2 d&iacute;as
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center"
+                >
+                  <button
+                    class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs"
+                    style="background-color: rgb(0, 103, 95); color: white"
+                  >
+                    <span>Ver todas</span>
+                    <span
+                      class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform"
+                      >arrow_forward</span
+                    >
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <span class="material-symbols-outlined text-sm">event_busy</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
-                  <p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <span class="material-symbols-outlined text-sm">person_add</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Nuevo socio: Juan P&eacute;rez</p>
-                  <p class="text-[10px] text-on-surface-variant">Suscripci&oacute;n Plan Premium</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
-                  <span class="material-symbols-outlined text-sm">payments</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
-                  <p class="text-[10px] text-on-surface-variant">Vencimiento en 2 d&iacute;as</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
-            <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;">
-              <span>Ver todas</span>
-              <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <button
+              class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
+            >
+              <span
+                class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >account_circle</span
+              >
             </button>
           </div>
-
         </div>
-      </div>
+      </header>
 
-      <button class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10">
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">account_circle</span>
-      </button>
+      <div class="main-grid">
+        <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
-    </div>
-
-  </div>
-</header>
-
-<div class="main-grid">
-
-  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
-
-  <aside class="sidebar" id="sidebar">
-
-    <div class="sidebar-inner custom-scrollbar">
-      
-      <div class="flex items-center justify-between mb-6 px-2">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">fitness_center</span>
-          <span class="font-black text-on-surface headline tracking-tight">Men&uacute;</span>
-        </div>
-        <button class="w-8 h-8 rounded-full hover:bg-slate-100 transition flex items-center justify-center text-slate-400 hover:text-on-surface" id="sidebar-close">
-          <span class="material-symbols-outlined text-lg">close</span>
-        </button>
-      </div>
-
-      <nav class="flex flex-col h-full gap-2">
-
-        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-secretaria.html">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>
-          <span class="font-lexend tracking-tight">Inicio</span>
-        </a>
-
-        <div class="flex flex-col gap-1 mt-2">
-
-          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
-            Gesti&oacute;n de Clases
-          </div>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Catalogo-de-clases-secretaria.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
-            <span class="font-medium text-sm">Cat&aacute;logo de Clases</span>
-          </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Cronograma-semanal-secretaria.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
-            <span class="font-medium text-sm">Cronograma</span>
-          </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Consultar-alumno-secretaria.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
-            <span class="font-medium text-sm">Consultar Alumno</span>
-          </a>
-
-        </div>
-
-        <div class="flex flex-col gap-1 mt-4">
-
-          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
-            Gesti&oacute;n de Kiosko
-          </div>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Registrar-venta.html">
-            <span class="material-symbols-outlined text-primary transition-colors" style="font-variation-settings:'FILL' 1;">point_of_sale</span>
-            <span class="font-medium text-sm">Registrar Venta</span>
-          </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Control-de-inventario.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span>
-            <span class="font-medium text-sm">Control de Inventario</span>
-          </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Cupones.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
-            <span class="font-medium text-sm">Cupones</span>
-          </a>
-
-        </div>
-
-        <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
-          <span class="material-symbols-outlined text-error">logout</span>
-          <span class="font-lexend font-medium text-sm">Cerrar Sesi&oacute;n</span>
-        </a>
-
-      </nav>
-
-    </div>
-
-  </aside>
-
-  <main class="main-content">
-
-    <div class="content-wrapper">
-
-      <div class="flex flex-1 gap-5 min-h-0">
-
-        <!-- Left Column: Product Browser -->
-        <div class="flex-1 flex flex-col overflow-y-auto pr-2 scrollbar-hide min-h-0">
-
-          <!-- Search & Filters -->
-          <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 flex flex-col gap-3 shrink-0 p-3 mb-2">
-            <div class="flex flex-col gap-2">
-              <div class="flex items-center gap-4 pb-3 border-b border-outline-variant/20">
-                <span class="text-[10px] font-black text-primary uppercase tracking-widest">CLIENTE:</span>
-                <div class="relative w-72">
-                  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-lg">person_search</span>
-                  <input class="w-full bg-background border border-outline-variant/40 rounded-lg py-2 pl-10 pr-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all" id="customer-search" onfocus="toggleCustomerResults(true)" oninput="searchCustomers(this.value)" placeholder="Buscar por DNI o Nombre..." type="text">
-                  <div class="hidden absolute left-0 right-0 mt-1 bg-white border border-outline-variant/40 rounded-xl shadow-xl z-50 max-h-60 overflow-y-auto scrollbar-hide" id="customer-results"></div>
-                </div>
-                <button class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full border border-primary transition-all group" id="anon-toggle" onclick="setAnonymous()">
-                  <span class="w-2.5 h-2.5 rounded-full bg-primary border-2 border-white shadow-sm" id="anon-indicator"></span>
-                  <span class="text-[10px] font-bold text-primary uppercase tracking-wider">An&oacute;nimo</span>
-                </button>
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-inner custom-scrollbar">
+            <div class="flex items-center justify-between mb-6 px-2">
+              <div class="flex items-center gap-3">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >fitness_center</span
+                >
+                <span class="font-black text-on-surface headline tracking-tight"
+                  >Men&uacute;</span
+                >
               </div>
-              <div class="flex items-center gap-6 pt-1">
-                <div class="relative w-72 shrink-0">
-                  <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-lg">search</span>
-                  <input class="w-full bg-background border border-outline-variant/40 rounded-lg py-2 pl-10 pr-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all" id="search-input" oninput="filterSearch(this.value)" placeholder="Buscar Producto..." type="text">
+              <button
+                class="w-8 h-8 rounded-full hover:bg-slate-100 transition flex items-center justify-center text-slate-400 hover:text-on-surface"
+                id="sidebar-close"
+              >
+                <span class="material-symbols-outlined text-lg">close</span>
+              </button>
+            </div>
+
+            <nav class="flex flex-col h-full gap-2">
+              <a
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all"
+                href="../dashboard-secretaria.html"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >home</span
+                >
+                <span class="font-lexend tracking-tight">Inicio</span>
+              </a>
+
+              <div class="flex flex-col gap-1 mt-2">
+                <div
+                  class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
+                >
+                  Gesti&oacute;n de Clases
                 </div>
-                <div class="flex items-center gap-3">
-                  <span class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest whitespace-nowrap">TIPO:</span>
-                  <div class="relative">
-                    <select class="appearance-none bg-background text-on-surface font-medium text-sm pl-4 pr-10 py-2 rounded-lg border border-outline-variant/40 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer w-44" id="category-select" onchange="filterCategory(this.value)">
-                      <option value="Todas">Todas</option>
-                      <option value="Bebida">Bebidas</option>
-                      <option value="Suplemento">Suplementos</option>
-                      <option value="Comida">Comida</option>
-                      <option value="Accesorio">Accesorios</option>
-                    </select>
-                    <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-xl">expand_more</span>
+
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
+                  href="../gestion-clases/Catalogo-de-clases-secretaria.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
+                    >calendar_month</span
+                  >
+                  <span class="font-medium text-sm"
+                    >Cat&aacute;logo de Clases</span
+                  >
+                </a>
+
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
+                  href="../gestion-clases/Cronograma-semanal-secretaria.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
+                    >calendar_view_week</span
+                  >
+                  <span class="font-medium text-sm">Cronograma</span>
+                </a>
+
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
+                  href="../gestion-clases/Consultar-alumno-secretaria.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
+                    >person</span
+                  >
+                  <span class="font-medium text-sm">Consultar Alumno</span>
+                </a>
+              </div>
+
+              <div class="flex flex-col gap-1 mt-4">
+                <div
+                  class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
+                >
+                  Gesti&oacute;n de Kiosko
+                </div>
+
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active"
+                  href="Registrar-venta.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary transition-colors"
+                    style="font-variation-settings: &quot;FILL&quot; 1"
+                    >point_of_sale</span
+                  >
+                  <span class="font-medium text-sm">Registrar Venta</span>
+                </a>
+
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
+                  href="Control-de-inventario.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
+                    >inventory_2</span
+                  >
+                  <span class="font-medium text-sm">Control de Inventario</span>
+                </a>
+
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
+                  href="Cupones.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
+                    >loyalty</span
+                  >
+                  <span class="font-medium text-sm">Cupones</span>
+                </a>
+              </div>
+
+              <a
+                class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto"
+                href="#"
+              >
+                <span class="material-symbols-outlined text-error">logout</span>
+                <span class="font-lexend font-medium text-sm"
+                  >Cerrar Sesi&oacute;n</span
+                >
+              </a>
+            </nav>
+          </div>
+        </aside>
+
+        <main class="main-content">
+          <div class="content-wrapper">
+            <div class="flex flex-1 gap-5 min-h-0">
+              <!-- Left Column: Product Browser -->
+              <div
+                class="flex-1 flex flex-col overflow-y-auto pr-2 scrollbar-hide min-h-0"
+              >
+                <!-- Search & Filters -->
+                <div
+                  class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 flex flex-col gap-3 shrink-0 p-3 mb-2"
+                >
+                  <div class="flex flex-col gap-2">
+                    <div
+                      class="flex items-center gap-4 pb-3 border-b border-outline-variant/20"
+                    >
+                      <span
+                        class="text-[10px] font-black text-primary uppercase tracking-widest"
+                        >CLIENTE:</span
+                      >
+                      <div class="relative w-72">
+                        <span
+                          class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-lg"
+                          >person_search</span
+                        >
+                        <input
+                          class="w-full bg-background border border-outline-variant/40 rounded-lg py-2 pl-10 pr-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                          id="customer-search"
+                          onfocus="toggleCustomerResults(true)"
+                          oninput="searchCustomers(this.value)"
+                          placeholder="Buscar por DNI o Nombre..."
+                          type="text"
+                        />
+                        <div
+                          class="hidden absolute left-0 right-0 mt-1 bg-white border border-outline-variant/40 rounded-xl shadow-xl z-50 max-h-60 overflow-y-auto scrollbar-hide"
+                          id="customer-results"
+                        ></div>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-6 pt-1">
+                      <div class="relative w-72 shrink-0">
+                        <span
+                          class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-lg"
+                          >search</span
+                        >
+                        <input
+                          class="w-full bg-background border border-outline-variant/40 rounded-lg py-2 pl-10 pr-4 text-on-surface focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-sm transition-all"
+                          id="search-input"
+                          oninput="filterSearch(this.value)"
+                          placeholder="Buscar Producto..."
+                          type="text"
+                        />
+                      </div>
+                      <div class="flex items-center gap-3">
+                        <span
+                          class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest whitespace-nowrap"
+                          >TIPO:</span
+                        >
+                        <div class="relative group" tabindex="0">
+                          <button class="flex items-center gap-2 bg-surface-container-lowest text-on-surface text-sm pl-4 pr-3 py-2 rounded-lg border border-outline-variant/40 hover:bg-surface-container-low focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer w-full whitespace-nowrap" id="category-btn" type="button">
+                            <span id="category-label">Todas</span>
+                            <span class="material-symbols-outlined text-on-surface-variant text-xl">expand_more</span>
+                          </button>
+                          <div class="hidden absolute left-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-zinc-100 py-2 z-50 group-focus-within:block" id="category-dropdown" style="min-width:calc(100% + 40px)">
+                            <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarCategoria('Todas',this)">Todas</button>
+                            <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarCategoria('Bebida',this)">Bebidas</button>
+                            <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarCategoria('Suplemento',this)">Suplementos</button>
+                            <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarCategoria('Comida',this)">Comidas</button>
+                            <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarCategoria('Accesorio',this)">Accesorios</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div
+                  class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 flex-grow content-start"
+                  id="product-grid"
+                ></div>
+
+                <!-- Pagination -->
+                <div
+                  class="flex justify-center items-center gap-2 mt-auto pt-4 shrink-0"
+                >
+                  <button
+                    class="w-8 h-8 flex items-center justify-center rounded-full border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-low transition-colors"
+                    onclick="changePage(-1)"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >chevron_left</span
+                    >
+                  </button>
+                  <div class="flex gap-1" id="pagination-container"></div>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center rounded-full border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-low transition-colors"
+                    onclick="changePage(1)"
+                  >
+                    <span class="material-symbols-outlined text-sm"
+                      >chevron_right</span
+                    >
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right Column: Cart -->
+              <div
+                class="w-[340px] shrink-0 bg-surface-container-lowest shadow-lg shadow-[rgba(0,103,95,0.08)] border-outline-variant/20 flex flex-col overflow-hidden rounded-xl border"
+              >
+                <!-- Cart Header -->
+                <div
+                  class="p-4 border-b border-outline-variant/20 bg-surface-container-lowest z-10 shrink-0"
+                >
+                  <h2 class="font-headline text-base text-primary font-bold">
+                    <div class="flex items-center gap-2">
+                      <span class="material-symbols-outlined"
+                        >shopping_cart</span
+                      ><span>Carrito Actual</span>
+                    </div>
+                  </h2>
+                </div>
+                <!-- Cart Items -->
+                <div
+                  class="flex-grow overflow-y-auto p-4 flex flex-col gap-3 bg-background"
+                  id="cart-items"
+                ></div>
+                <!-- Cart Footer -->
+                <div
+                  class="bg-surface-container-low p-4 border-t border-outline-variant/20 flex flex-col gap-3 shrink-0 mt-auto"
+                >
+                  <div class="space-y-1">
+                    <div class="flex justify-between items-center text-sm py-1">
+                      <span class="text-on-surface-variant font-medium"
+                        >Subtotal</span
+                      >
+                      <span class="font-bold text-primary" id="cart-subtotal"
+                        >$0.00</span
+                      >
+                    </div>
+                    <div class="flex justify-between items-center text-sm py-1">
+                      <span class="text-primary font-bold">Descuento</span>
+                      <span class="text-primary font-bold" id="cart-discount"
+                        >$0.00</span
+                      >
+                    </div>
+                    <div
+                      class="flex gap-2 py-2 border-y border-outline-variant/10 my-2"
+                    >
+                      <div class="relative flex-grow">
+                        <input
+                          class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg py-1.5 px-3 text-on-surface-variant focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-xs uppercase transition-all"
+                          id="coupon-input"
+                          placeholder="C&oacute;digo de Cup&oacute;n"
+                          type="text"
+                        />
+                      </div>
+                      <button
+                        class="bg-primary/10 text-primary font-bold text-[10px] px-3 py-1.5 rounded-lg border border-primary/20 hover:bg-primary/20 transition-colors uppercase tracking-wider"
+                        onclick="applyCoupon()"
+                      >
+                        APLICAR
+                      </button>
+                    </div>
+                    <div
+                      class="flex flex-wrap gap-1 mb-2"
+                      id="applied-coupons"
+                    ></div>
+                    <div class="flex justify-between items-end pt-2">
+                      <span class="font-bold text-base text-primary"
+                        >Total</span
+                      >
+                      <div class="flex flex-col items-end">
+                        <span
+                          class="font-headline text-2xl text-primary tracking-tight"
+                          id="cart-total"
+                          >$0.00</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-2 mt-2">
+                    <p
+                      class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest px-1"
+                    >
+                      M&eacute;todo de Pago
+                    </p>
+                    <div class="grid gap-2 grid-cols-3">
+                      <button
+                        class="bg-surface-container-lowest rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method"
+                        onclick="selectPayment(this)"
+                      >
+                        <span class="material-symbols-outlined text-primary"
+                          >payments</span
+                        ><span
+                          class="font-medium text-[11px] text-primary leading-none"
+                          >Efectivo</span
+                        >
+                      </button>
+                      <button
+                        class="bg-surface-container-lowest rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method"
+                        onclick="selectPayment(this)"
+                      >
+                        <span class="material-symbols-outlined text-primary"
+                          >credit_card</span
+                        ><span
+                          class="font-medium text-[11px] text-primary leading-none"
+                          >Tarjeta</span
+                        >
+                      </button>
+                      <button
+                        class="bg-surface-container-lowest rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method"
+                        onclick="selectPayment(this)"
+                      >
+                        <span class="material-symbols-outlined text-primary"
+                          >qr_code_2</span
+                        ><span
+                          class="font-medium text-[11px] text-primary leading-none"
+                          >QR</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-2 mt-3">
+                    <button
+                      class="w-full bg-primary text-white font-bold py-2.5 rounded-lg hover:opacity-90 transition-all active:scale-[0.98] shadow-sm text-sm"
+                      id="btn-finalizar"
+                      onclick="processPayment()"
+                    >
+                      Registrar Pago
+                    </button>
+                    <button
+                      class="w-full bg-surface-container-lowest border border-error/30 text-error font-bold py-2.5 rounded-lg hover:bg-error/5 transition-colors text-sm"
+                      onclick="cancelSale()"
+                    >
+                      Cancelar Venta
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </main>
+      </div>
 
-          <!-- Product Grid -->
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 flex-grow content-start" id="product-grid"></div>
-
-          <!-- Pagination -->
-          <div class="flex justify-center items-center gap-2 mt-auto pt-4 shrink-0">
-            <button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-low transition-colors" onclick="changePage(-1)">
-              <span class="material-symbols-outlined text-sm">chevron_left</span>
-            </button>
-            <div class="flex gap-1" id="pagination-container"></div>
-            <button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-low transition-colors" onclick="changePage(1)">
-              <span class="material-symbols-outlined text-sm">chevron_right</span>
-            </button>
+      <footer class="footer shrink-0">
+        <div
+          class="h-full px-8 max-w-[1880px] mx-auto flex items-center justify-between gap-4"
+        >
+          <div class="flex flex-col">
+            <div
+              class="text-base font-black text-white font-lexend mb-0.5 headline"
+            >
+              Squat Gym
+            </div>
+            <p
+              class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60"
+            >
+              &copy; 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.
+            </p>
           </div>
-
+          <div class="flex items-center gap-6">
+            <a
+              class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
+              href="../general-secretaria/Ayuda-secretaria.html"
+              >Ayuda</a
+            >
+            <a
+              class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
+              href="../general-secretaria/Privacidad-secretaria.html"
+              >Privacidad</a
+            >
+            <a
+              class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
+              href="../general-secretaria/Contacto-secretaria.html"
+              >Contacto</a
+            >
+          </div>
         </div>
+      </footer>
+    </div>
 
-        <!-- Right Column: Cart -->
-        <div class="w-[340px] shrink-0 bg-surface-container-lowest shadow-lg shadow-[rgba(0,103,95,0.08)] border-outline-variant/20 flex flex-col overflow-hidden rounded-xl border">
-          <!-- Cart Header -->
-          <div class="p-4 border-b border-outline-variant/20 bg-surface-container-lowest z-10 shrink-0">
-            <h2 class="font-headline text-base text-primary font-bold"><div class="flex items-center gap-2"><span class="material-symbols-outlined">shopping_cart</span><span>Carrito Actual</span></div></h2>
+    <!-- Cash Payment Modal -->
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4"
+      id="modal-cash"
+    >
+      <div
+        class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-outline-variant/30 flex flex-col"
+      >
+        <div
+          class="bg-primary-dim p-6 text-white shrink-0 flex justify-between items-center"
+        >
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-2xl">payments</span>
+            <h2
+              class="font-headline font-bold text-lg uppercase tracking-wider"
+            >
+              Pago en Efectivo
+            </h2>
           </div>
-          <!-- Cart Items -->
-          <div class="flex-grow overflow-y-auto p-4 flex flex-col gap-3 bg-background" id="cart-items"></div>
-          <!-- Cart Footer -->
-          <div class="bg-surface-container-low p-4 border-t border-outline-variant/20 flex flex-col gap-3 shrink-0 mt-auto">
-            <div class="space-y-1">
-              <div class="flex justify-between items-center text-sm py-1">
-                <span class="text-on-surface-variant font-medium">Subtotal</span>
-                <span class="font-bold text-primary" id="cart-subtotal">$0.00</span>
-              </div>
-              <div class="flex justify-between items-center text-sm py-1">
-                <span class="text-primary font-bold">Descuento</span>
-                <span class="text-primary font-bold" id="cart-discount">$0.00</span>
-              </div>
-              <div class="flex gap-2 py-2 border-y border-outline-variant/10 my-2">
+          <button
+            class="hover:bg-white/10 rounded-full p-1 transition-colors"
+            onclick="closeModals()"
+          >
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="p-8 flex flex-col gap-6">
+          <div class="flex flex-col items-center gap-2">
+            <p
+              class="text-xs font-black text-on-surface-variant/60 uppercase tracking-[0.2em]"
+            >
+              Monto a Pagar
+            </p>
+            <p
+              class="text-4xl font-black text-primary tracking-tighter"
+              id="modal-total-cash"
+            >
+              $27.60
+            </p>
+          </div>
+          <div class="space-y-5">
+            <div class="flex flex-col gap-2">
+              <label
+                class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1"
+                >Monto Recibido</label
+              >
+              <div class="flex gap-2">
                 <div class="relative flex-grow">
-                  <input class="w-full bg-surface-container-lowest border border-outline-variant/40 rounded-lg py-1.5 px-3 text-on-surface-variant focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none text-xs uppercase transition-all" id="coupon-input" placeholder="C&oacute;digo de Cup&oacute;n" type="text">
+                  <span
+                    class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-on-surface-variant text-xl"
+                    >$</span
+                  >
+                  <input
+                    class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-4 pl-10 pr-4 text-2xl font-black text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all"
+                    id="cash-received-input"
+                    placeholder="22"
+                    step="0.01"
+                    type="number"
+                    value="2.00"
+                  />
                 </div>
-                <button class="bg-primary/10 text-primary font-bold text-[10px] px-3 py-1.5 rounded-lg border border-primary/20 hover:bg-primary/20 transition-colors uppercase tracking-wider" onclick="applyCoupon()">APLICAR</button>
-              </div>
-              <div class="flex flex-wrap gap-1 mb-2" id="applied-coupons"></div>
-              <div class="flex justify-between items-end pt-2">
-                <span class="font-bold text-base text-primary">Total</span>
-                <div class="flex flex-col items-end">
-                  <span class="font-headline text-2xl text-primary tracking-tight" id="cart-total">$0.00</span>
-                </div>
+                <button
+                  class="bg-secondary/10 text-secondary font-black text-[10px] px-4 rounded-xl border border-secondary/20 hover:bg-secondary/20 transition-all uppercase tracking-widest font-bold flex items-center justify-center"
+                  id="btn-calcular"
+                  onclick="calculateChangeDirect()"
+                >
+                  CALCULAR
+                </button>
               </div>
             </div>
-            <div class="flex flex-col gap-2 mt-2">
-              <p class="text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest px-1">M&eacute;todo de Pago</p>
-              <div class="grid gap-2 grid-cols-3">
-                <button class="bg-surface-container-lowest rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method" onclick="selectPayment(this)"><span class="material-symbols-outlined text-primary">payments</span><span class="font-medium text-[11px] text-primary leading-none">Efectivo</span></button>
-                <button class="bg-surface-container-lowest rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method" onclick="selectPayment(this)"><span class="material-symbols-outlined text-primary">credit_card</span><span class="font-medium text-[11px] text-primary leading-none">Tarjeta</span></button>
-                <button class="bg-surface-container-lowest rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method" onclick="selectPayment(this)"><span class="material-symbols-outlined text-primary">qr_code_2</span><span class="font-medium text-[11px] text-primary leading-none">QR</span></button>
+            <div
+              class="bg-surface-container-low rounded-xl p-5 flex justify-between items-center"
+            >
+              <div>
+                <p
+                  class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest"
+                >
+                  Vuelto
+                </p>
+                <p
+                  class="text-2xl font-black text-primary"
+                  id="modal-change-amount"
+                >
+                  $0.00
+                </p>
               </div>
-            </div>
-            <div class="flex flex-col gap-2 mt-3">
-              <button class="w-full bg-primary text-white font-bold py-2.5 rounded-lg hover:opacity-90 transition-all active:scale-[0.98] shadow-sm text-sm" id="btn-finalizar" onclick="processPayment()">Registrar Pago</button>
-              <button class="w-full bg-surface-container-lowest border border-error/30 text-error font-bold py-2.5 rounded-lg hover:bg-error/5 transition-colors text-sm" onclick="cancelSale()">Cancelar Venta</button>
+              <span
+                class="material-symbols-outlined text-4xl text-primary opacity-20"
+                >currency_exchange</span
+              >
             </div>
           </div>
+          <div class="flex gap-3 w-full">
+            <button
+              class="flex-1 py-3.5 rounded-xl border-2 border-outline-variant/40 text-on-surface-variant font-bold text-sm hover:bg-surface-container-low transition-all"
+              onclick="closeModals()"
+            >
+              CANCELAR
+            </button>
+            <button
+              class="flex-1 bg-primary text-white font-bold py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg text-sm"
+              onclick="confirmCashPayment()"
+            >
+              CONFIRMAR PAGO
+            </button>
+          </div>
         </div>
-
       </div>
-
     </div>
 
-  </main>
-
-</div>
-
-<footer class="footer shrink-0">
-  <div class="h-full px-8 max-w-[1880px] mx-auto flex items-center justify-between gap-4">
-    <div class="flex flex-col">
-      <div class="text-base font-black text-white font-lexend mb-0.5 headline">
-        Squat Gym
+    <!-- Credit Card Payment Modal -->
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4"
+      id="modal-card"
+    >
+      <div
+        class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-outline-variant/30 flex flex-col"
+      >
+        <div
+          class="bg-primary-dim p-6 text-white shrink-0 flex justify-between items-center"
+        >
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-2xl">credit_card</span>
+            <h2
+              class="font-headline font-bold text-lg uppercase tracking-wider"
+            >
+              Pago con Tarjeta
+            </h2>
+          </div>
+          <button
+            class="hover:bg-white/10 rounded-full p-1 transition-colors"
+            onclick="closeModals()"
+          >
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="p-6 flex flex-col gap-5">
+          <div class="flex flex-col items-center gap-1">
+            <p
+              class="text-xs font-black text-on-surface-variant/60 uppercase tracking-[0.2em]"
+            >
+              Monto a Pagar
+            </p>
+            <p
+              class="text-3xl font-black text-primary tracking-tighter"
+              id="modal-total-card"
+            >
+              $27.60
+            </p>
+          </div>
+          <div class="space-y-4">
+            <div class="flex flex-col gap-1">
+              <label
+                class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1"
+                >N&uacute;mero de Tarjeta</label
+              >
+              <input
+                class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all"
+                id="card-number"
+                placeholder="1234 5678 9012 3456"
+                type="text"
+                maxlength="19"
+                oninput="formatCardNumber(this)"
+              />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="flex flex-col gap-1">
+                <label
+                  class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1"
+                  >Vencimiento</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all"
+                  id="card-expiry"
+                  placeholder="MM/AA"
+                  type="text"
+                  maxlength="5"
+                  oninput="formatExpiry(this)"
+                />
+              </div>
+              <div class="flex flex-col gap-1">
+                <label
+                  class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1"
+                  >CVV</label
+                >
+                <input
+                  class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all"
+                  id="card-cvv"
+                  placeholder="123"
+                  type="text"
+                  maxlength="4"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label
+                class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1"
+                >Titular</label
+              >
+              <input
+                class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all"
+                id="card-holder"
+                placeholder="Nombre del titular"
+                type="text"
+              />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label
+                class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1"
+                >Cuotas</label
+              >
+              <select
+                class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all appearance-none cursor-pointer"
+                id="card-installments"
+              >
+                <option value="1">1 cuota sin inter&eacute;s</option>
+                <option value="3">3 cuotas</option>
+                <option value="6">6 cuotas</option>
+                <option value="12">12 cuotas</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex gap-3 w-full">
+            <button
+              class="flex-1 py-3.5 rounded-xl border-2 border-outline-variant/40 text-on-surface-variant font-bold text-sm hover:bg-surface-container-low transition-all"
+              onclick="closeModals()"
+            >
+              CANCELAR
+            </button>
+            <button
+              class="flex-1 bg-primary text-white font-bold py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg text-sm"
+              onclick="confirmCardPayment()"
+            >
+              CONFIRMAR PAGO
+            </button>
+          </div>
+        </div>
       </div>
-      <p class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60">
-        &copy; 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.
-      </p>
     </div>
-    <div class="flex items-center gap-6">
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Ayuda-secretaria.html">Ayuda</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Privacidad-secretaria.html">Privacidad</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Contacto-secretaria.html">Contacto</a>
+
+    <!-- QR Payment Modal -->
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4"
+      id="modal-qr"
+    >
+      <div
+        class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden border border-outline-variant/30 flex flex-col"
+      >
+        <div
+          class="bg-primary-dim p-6 text-white shrink-0 flex justify-between items-center"
+        >
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-2xl">qr_code_2</span>
+            <h2
+              class="font-headline font-bold text-lg uppercase tracking-wider"
+            >
+              Pago QR
+            </h2>
+          </div>
+          <button
+            class="hover:bg-white/10 rounded-full p-1 transition-colors"
+            onclick="closeModals()"
+          >
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="p-8 flex flex-col items-center gap-6">
+          <div class="flex flex-col items-center gap-1">
+            <p
+              class="text-xs font-black text-on-surface-variant/60 uppercase tracking-[0.2em]"
+            >
+              Monto a Pagar
+            </p>
+            <p
+              class="text-3xl font-black text-primary tracking-tighter"
+              id="modal-total-qr"
+            >
+              $27.60
+            </p>
+          </div>
+          <div
+            class="w-48 h-48 bg-surface-container-low rounded-2xl flex items-center justify-center border-2 border-dashed border-outline-variant/40"
+          >
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SquatGym-POS&bgcolor=f8fafa&color=1a1c1d&margin=10"
+              alt="Código QR"
+              class="w-44 h-44 rounded-xl shadow-sm border border-outline-variant/20"
+            />
+          </div>
+          <p class="text-xs text-on-surface-variant text-center font-medium">
+            Escane&aacute; el c&oacute;digo QR con tu aplicaci&oacute;n bancaria
+            para realizar el pago
+          </p>
+          <div class="flex gap-3 w-full">
+            <button
+              class="flex-1 py-3.5 rounded-xl border-2 border-outline-variant/40 text-on-surface-variant font-bold text-sm hover:bg-surface-container-low transition-all"
+              onclick="closeModals()"
+            >
+              CANCELAR
+            </button>
+            <button
+              class="flex-1 bg-primary text-white font-bold py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg text-sm"
+              onclick="confirmQrPayment()"
+            >
+              YA PAGU&Eacute;
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
 
-</div>
+    <!-- Invoice Modal -->
+    <div
+      class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-on-surface/60 backdrop-blur-sm"
+      id="modal-invoice"
+    >
+      <div
+        class="bg-surface-container-lowest rounded-2xl w-full max-w-md overflow-hidden shadow-2xl border border-outline-variant/30"
+      >
+        <div
+          class="p-5 flex justify-between items-center border-b border-outline-variant/20 bg-surface-container-low"
+        >
+          <div class="flex flex-col">
+            <span
+              class="text-[10px] font-black text-primary uppercase tracking-[0.2em] font-headline"
+              >RECIBO DE PAGO</span
+            >
+            <h3 class="text-lg font-black text-on-surface font-headline">
+              Squat Gym
+            </h3>
+          </div>
+          <button
+            class="p-2 bg-surface-container-highest text-on-surface-variant rounded-full transition-colors hover:bg-error hover:text-white flex items-center justify-center"
+            onclick="
+              document.getElementById('modal-invoice').classList.add('hidden')
+            "
+          >
+            <span class="material-symbols-outlined text-lg">close</span>
+          </button>
+        </div>
+        <div class="p-6 flex flex-col gap-5">
+          <div
+            class="flex flex-col items-center justify-center py-5 bg-primary/5 rounded-2xl border border-primary/10"
+          >
+            <p
+              class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-1"
+            >
+              MONTO TOTAL
+            </p>
+            <p
+              class="text-4xl font-black text-primary font-headline tracking-tighter"
+              id="invoice-amount"
+            >
+              $0
+            </p>
+          </div>
+          <div
+            class="flex flex-col gap-2 max-h-40 overflow-y-auto custom-scrollbar px-1"
+            id="invoice-items"
+          ></div>
+          <div class="grid grid-cols-2 gap-y-3 gap-x-5">
+            <div class="flex flex-col">
+              <span
+                class="text-[10px] font-black text-slate-500 uppercase tracking-widest"
+                >METODO</span
+              ><span
+                class="text-sm font-bold text-on-surface"
+                id="invoice-method"
+                >-</span
+              >
+            </div>
+            <div class="flex flex-col text-right">
+              <span
+                class="text-[10px] font-black text-slate-500 uppercase tracking-widest"
+                >FECHA</span
+              ><span class="text-sm font-bold text-on-surface" id="invoice-date"
+                >-</span
+              >
+            </div>
+            <div class="flex flex-col col-span-2">
+              <span
+                class="text-[10px] font-black text-slate-500 uppercase tracking-widest"
+                >NRO. OPERACI&Oacute;N</span
+              ><span
+                class="text-sm font-bold text-on-surface font-mono"
+                id="invoice-nro"
+                >#GYM-001</span
+              >
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <button
+              class="flex-1 py-3 rounded-xl border-2 border-primary text-primary text-[10px] font-black uppercase tracking-widest hover:bg-primary/5 transition-all"
+              onclick="document.getElementById('modal-invoice').classList.add('hidden')"
+            >
+              CANCELAR
+            </button>
+            <button
+              class="flex-1 py-3 rounded-xl bg-primary text-white text-[10px] font-black uppercase tracking-widest hover:bg-primary-dim shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-1"
+            >
+              <span class="material-symbols-outlined text-sm">download</span
+              >DESCARGAR PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!-- Cash Payment Modal -->
-<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4" id="modal-cash">
-<div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-outline-variant/30 flex flex-col">
-<div class="bg-primary-dim p-6 text-white shrink-0 flex justify-between items-center">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-2xl">payments</span>
-<h2 class="font-headline font-bold text-lg uppercase tracking-wider">Pago en Efectivo</h2>
-</div>
-<button class="hover:bg-white/10 rounded-full p-1 transition-colors" onclick="closeModals()">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<div class="p-8 flex flex-col gap-6">
-<div class="flex flex-col items-center gap-2">
-<p class="text-xs font-black text-on-surface-variant/60 uppercase tracking-[0.2em]">Monto a Pagar</p>
-<p class="text-4xl font-black text-primary tracking-tighter" id="modal-total-cash">$27.60</p>
-</div>
-<div class="space-y-5">
-<div class="flex flex-col gap-2">
-<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">Monto Recibido</label>
-<div class="flex gap-2">
-<div class="relative flex-grow">
-<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-on-surface-variant text-xl">$</span>
-<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-4 pl-10 pr-4 text-2xl font-black text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="cash-received-input" placeholder="22" step="0.01" type="number" value="2.00">
-</div>
-<button class="bg-secondary/10 text-secondary font-black text-[10px] px-4 rounded-xl border border-secondary/20 hover:bg-secondary/20 transition-all uppercase tracking-widest font-bold flex items-center justify-center" id="btn-calcular" onclick="calculateChangeDirect()">CALCULAR</button>
-</div>
-</div>
-<div class="bg-surface-container-low rounded-xl p-5 flex justify-between items-center">
-<div>
-<p class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest">Vuelto</p>
-<p class="text-2xl font-black text-primary" id="modal-change-amount">$0.00</p>
-</div>
-<span class="material-symbols-outlined text-4xl text-primary opacity-20">currency_exchange</span>
-</div>
-</div>
-<button class="w-full bg-primary text-white font-bold py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg text-sm" onclick="confirmCashPayment()">CONFIRMAR PAGO</button>
-</div>
-</div>
-</div>
+    <script>
+      let invoiceCounter = 0;
+      let cart = {};
+      let appliedCoupons = [];
+      let discountAmount = 0;
+      let searchTerm = "";
+      let selectedPayment = null;
 
-<!-- Credit Card Payment Modal -->
-<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4" id="modal-card">
-<div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-outline-variant/30 flex flex-col">
-<div class="bg-primary-dim p-6 text-white shrink-0 flex justify-between items-center">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-2xl">credit_card</span>
-<h2 class="font-headline font-bold text-lg uppercase tracking-wider">Pago con Tarjeta</h2>
-</div>
-<button class="hover:bg-white/10 rounded-full p-1 transition-colors" onclick="closeModals()">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<div class="p-6 flex flex-col gap-5">
-<div class="flex flex-col items-center gap-1">
-<p class="text-xs font-black text-on-surface-variant/60 uppercase tracking-[0.2em]">Monto a Pagar</p>
-<p class="text-3xl font-black text-primary tracking-tighter" id="modal-total-card">$27.60</p>
-</div>
-<div class="space-y-4">
-<div class="flex flex-col gap-1">
-<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">N&uacute;mero de Tarjeta</label>
-<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="card-number" placeholder="1234 5678 9012 3456" type="text" maxlength="19" oninput="formatCardNumber(this)">
-</div>
-<div class="grid grid-cols-2 gap-3">
-<div class="flex flex-col gap-1">
-<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">Vencimiento</label>
-<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="card-expiry" placeholder="MM/AA" type="text" maxlength="5" oninput="formatExpiry(this)">
-</div>
-<div class="flex flex-col gap-1">
-<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">CVV</label>
-<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="card-cvv" placeholder="123" type="text" maxlength="4">
-</div>
-</div>
-<div class="flex flex-col gap-1">
-<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">Titular</label>
-<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="card-holder" placeholder="Nombre del titular" type="text">
-</div>
-<div class="flex flex-col gap-1">
-<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">Cuotas</label>
-<select class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all appearance-none cursor-pointer" id="card-installments">
-<option value="1">1 cuota sin inter&eacute;s</option>
-<option value="3">3 cuotas</option>
-<option value="6">6 cuotas</option>
-<option value="12">12 cuotas</option>
-</select>
-</div>
-</div>
-<button class="w-full bg-primary text-white font-bold py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg text-sm" onclick="confirmCardPayment()">CONFIRMAR PAGO</button>
-</div>
-</div>
-</div>
+      const allProducts = [
+        {
+          id: "p1",
+          name: "Agua Mineral 500ml",
+          price: 1.2,
+          stock: 42,
+          icon: "water_drop",
+          category: "Bebida",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0uguUdjXPK7mlchBREidRSzNfFIDs4lpu_ig8FdGqjn-wl0td9-q_C0XVlF8tfGM2agGSYSIPD5vm7gmgAsMSePuBa-WG0hLQJ_RrB4n48HJjhy6eYwrHBsbIylIaT-N476F4KpamYzzARN3eZUq6AsFhfb6tZ8litgcu7ameOUUES4jQK5t7jC52Wa4xNYo8BTnc4wG4h7rr77AILHMoKk6Ebh1cm_wxr6qALu_6qeVByvm-nwYWuAmoic",
+        },
+        {
+          id: "p2",
+          name: "Prote\u00edna Whey 30g",
+          price: 3.5,
+          stock: 3,
+          icon: "science",
+          category: "Suplemento",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0uirkaYwp5SWHhMwwMsb8D7d08S6dSEpuaxGJQ_VmAi2jha60rnPLFI_ZEJ986gkggF1EQ4ZNf45JJPAHGPaEDWtsvUrZ4x0iUHuwOkKEqXQPcGVOo_PhaTehg2pK4QnsotsAXfezSmtLWuIPqBc_jsZmPe3ImQc_KgCVlnduGsQ3FNaOdWl_qekeCGprdSiQgs4hw4KJQayslW_lTVMlbtePB9G86_dfXATIBvMPoOjIUA2NJ4irtpMW3E",
+        },
+        {
+          id: "p3",
+          name: "Caf\u00e9 Espresso",
+          price: 2.0,
+          stock: 15,
+          icon: "coffee",
+          category: "Bebida",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0uik579RV9jydAXqRj7f8cmb-vdj6ltroNZBcjEbhnQn6ntJYC6Cr9y18VCDz7dAUnlDKtw-kCsEf58s5yWFf4ZCL9S3DZqzSCFglOx6i-4aVJaLrqneqNPxxn7pQi75l6mSd8W8re-gI1bRVVrYY-E5fz5sNXOoDImel24IlRO5kqYb58hxmw3jttbBJanexCUnUfnz_6wcJTJtM-bvr8Q5zcIBvrNOKqSzfpf-Rh1iLxkWHPS5hYMYmow",
+        },
+        {
+          id: "p4",
+          name: "Barra Cereal Mix",
+          price: 1.8,
+          stock: 28,
+          icon: "cookie",
+          category: "Comida",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ujxpTDEAUpuDLmTD6vz8tfRjuBX7HrOvsYBMb17MVXMEIbDMocX8UIbhOSP6B40YOLQfgAQZGY2kjAILTNvmFgDehPxM9WrHb4VwX2Xj4U7xgmvHBb4oKtyavAHTbojA_7cG1VpjyLpyqvTs1XIJk1rrG-t_wa8murzgriHKyufP7p6V9kIJYrN38MDonC4Xq6TiGA2orO9vL821daLPToOBccMGNwtxQYYE1d0sQryMbq0F55UyBCIoGM",
+        },
+        {
+          id: "p5",
+          name: "Toalla Microfibra",
+          price: 12.0,
+          stock: 10,
+          icon: "fitness_center",
+          category: "Accesorio",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ui67Y2GHMY57y48QRkeU6h49lZiNHZVxHyK10-6njI6cjvqpyCEAh0ThLKuAfYkfTV17cMcKoTeyz27n97I1C-2WusXn3ng5UQ_k4bMLDR4fKexXhWuS_ODiZjJ0bg7EGLkOVqGiFp07aUCdt7vUk16AcM_i4fLfMcnOE8olei0UaqVi-45zpR_B6nTNVb4dUq9zkQwDejmVWeySnorKtApF9VvHfWIIiRc-Y2hG5uEqDo7pwNVgmL-IN0",
+        },
+        {
+          id: "p6",
+          name: "Bebida Isot\u00f3nica",
+          price: 2.5,
+          stock: 0,
+          icon: "battery_charging_full",
+          category: "Bebida",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ujLfASirOrkuCCLMFfY_ecjTscc92w-J7nmTuXuQtPZ5hC0s04wpkMgtFr0Q-_lOgji6j7Vjs41XsBlFnb5uyljzF6ZJlqv_VYqlR2CXJgQjzgQKNxUkCeLt4Ua1fHvw5kc2P3bx4jqDJ4eKTirUvmr6uby95WETqB3934wS9qKAKUtk6cQ7qPtcL4ydv6dzMd_IAKfLAMtEjr1_4DaxNfrS0a_3ITztndSfEGS2nUPYj-njw4iSsx69g",
+        },
+        {
+          id: "p7",
+          name: "Barra Prote\u00edna",
+          price: 3.0,
+          stock: 55,
+          icon: "nutrition",
+          category: "Comida",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ujuDQuTG2GZK9f-pDG-E_--fOSXgjNbF-Tu7h_q6ZVLPT_i7Xx29Kl8ooZNjt1ZUQ9t20rmHY8XsizKJoxMNpiVfeoDPerKrtPai97hMfTH5LtQTf2djH3RcNkEiIvggBzOOZapRmaJ672-0S9sQed-cq8BEjrNPW0hZbr2mshdhdRKgmpkVgUi7Ele1jxxdCZpPhUBXqFxo8HzTzE4-SZJJgWVKi18JzxWkmZjaA9Rq8FizmYvnqxq0Ak",
+        },
+        {
+          id: "p8",
+          name: "Shaker 600ml",
+          price: 5.0,
+          stock: 20,
+          icon: "blender",
+          category: "Accesorio",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ujNrXGgY4z5-m8JZZftDwytRoccEr31zHeC1r94Y3sgyUXzbWidxWVZoVeAsynknoVCIg_SYlsLWb6_sgZ6nxp3ugEDqqOR3N0p3z6_u4EDv9Tw6ni1YpR2bys3oWZykkfhw7JRMa1D8z3Aoi4lmoVtsGB6fNe-bBrAkuYUFFtJ3dsCDY2403uGLMgxfC8YdHm8w4gg7gLIeIliaQBCWNfSoqtBWlsmF7EaorTSeMffxvQWDeSmrCo6pEM",
+        },
+        {
+          id: "p9",
+          name: "Pre-Entreno",
+          price: 15.0,
+          stock: 8,
+          icon: "bolt",
+          category: "Suplemento",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ugvwV6ckvG1mVOf8RqNncnslbZn5iUn8D-X2fViWgUHBEJoprhSVKNBlxrF8L1XFgQ_O1phkKB9K0XSM2Mk9biLVzmoqR7KKmmhcU_NNLrkPSV2f3d4NozvHwrGsooeLs9U1jBPGBtfvTY-a0-JwDHSlVZTJWPI8fgJmFWe-8AyQcXKaq2wo7AUEvKVcVkre-EjJ6MuttRHthlGU-uyG3394rlOXXQnCo4PSeIojshzoDoEaJweCBEnD5k",
+        },
+        {
+          id: "p10",
+          name: "Guantes Gym",
+          price: 8.5,
+          stock: 12,
+          icon: "back_hand",
+          category: "Accesorio",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ujB3i6NOavr6QxwkHL4huv76XHzg6woUHbYzqz01sXE6SogUuCIxIao1mC6tPrSvFTQGOQVM6ex3F7VfdHnF7UfXE6t_Dg7_pRPjB8VF6M_ltBqno5IpgXNNXnFcP1tKNg17qQoMOvwS6-PpFiPxxwmfuSB5_2-RulZqv2rHWXVpu2mCkZQw-2K9oh0037WZ337oiYghs_j0rqpw9G-0_rWbtHYsOn8fR_0RhLcTDfEWmWegKAV7UCo_w",
+        },
+        {
+          id: "p11",
+          name: "Magnesio L\u00edquido",
+          price: 2.5,
+          stock: 30,
+          icon: "category",
+          category: "Accesorio",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ugzz0PDIrDkXeHcmXdpjx44Bq9UrLEDUn7UatJWd2VmFx4BkMrLorcoWkO4Uhgxtwq8_YXF7X3IN9Wan_WmoZ_Nkm-OsZzyXGhkm1PgGhmAmes0Y1bWV0iHIzPV-5NuAwRtrvOLcIIcrkO5mtEmmwsyzt_Il-YZ7rCadStIaxJ97FEj7Ldda0dHZ6B1GdAR4Lxk4ny_v-VupqitXci73Xg1Ms4tw-LdtNjgm4GrKaxuw8zQ10WyeL8KqAg",
+        },
+        {
+          id: "p12",
+          name: "Jugo Naranja",
+          price: 1.5,
+          stock: 15,
+          icon: "local_drink",
+          category: "Bebida",
+          image:
+            "https://lh3.googleusercontent.com/aida/ADBb0ugHLQZcEvLRAbuLuJM0YjUZ6mxay-RGU1oUeYeDi8t2IqEXyCRcVy0KSoBkqkuQYGpi3HftXgseS_MwvW33k7WpWZpdF6A-1Dfi6e8fVDy1fkW0ltftCpAXVgWprq5Dj3OZWbZSiVpTAj-a6S4QP1Rr9m8OOBsgaGT8qoso6cx6dGm3-iZP2ey50tBt9YqFA-x0U_Q5kBrqimJ7CpnUc0oVcDOpz7RasgijDtqRQ-LH9FZ1dhPgbCxdlg",
+        },
+        {
+          id: "p13",
+          name: "Agua Vitaminada",
+          price: 2.2,
+          stock: 25,
+          icon: "water_drop",
+          category: "Bebida",
+        },
+        {
+          id: "p14",
+          name: "BCAA 500g",
+          price: 25.0,
+          stock: 5,
+          icon: "science",
+          category: "Suplemento",
+        },
+        {
+          id: "p15",
+          name: "T\u00e9 Verde",
+          price: 1.8,
+          stock: 18,
+          icon: "emoji_food_beverage",
+          category: "Bebida",
+        },
+        {
+          id: "p16",
+          name: "Barra Energ\u00e9tica",
+          price: 2.5,
+          stock: 0,
+          icon: "cookie",
+          category: "Comida",
+        },
+        {
+          id: "p17",
+          name: "Mu\u00f1equeras",
+          price: 6.0,
+          stock: 14,
+          icon: "accessibility_new",
+          category: "Accesorio",
+        },
+        {
+          id: "p18",
+          name: "Batido Proteico",
+          price: 4.5,
+          stock: 10,
+          icon: "blender",
+          category: "Bebida",
+        },
+        {
+          id: "p19",
+          name: "Creatina 300g",
+          price: 18.0,
+          stock: 7,
+          icon: "bolt",
+          category: "Suplemento",
+        },
+        {
+          id: "p20",
+          name: "Cintur\u00f3n Gym",
+          price: 22.0,
+          stock: 4,
+          icon: "accessibility",
+          category: "Accesorio",
+        },
+        {
+          id: "p21",
+          name: "Gatorade 500ml",
+          price: 2.0,
+          stock: 30,
+          icon: "battery_charging_full",
+          category: "Bebida",
+        },
+        {
+          id: "p22",
+          name: "Mix Frutos Secos",
+          price: 3.5,
+          stock: 40,
+          icon: "nutrition",
+          category: "Comida",
+        },
+        {
+          id: "p23",
+          name: "Straps Levantamiento",
+          price: 7.5,
+          stock: 16,
+          icon: "fitness_center",
+          category: "Accesorio",
+        },
+        {
+          id: "p24",
+          name: "Vitamina C",
+          price: 10.0,
+          stock: 0,
+          icon: "medication",
+          category: "Suplemento",
+        },
+        {
+          id: "p25",
+          name: "L-Carnitina",
+          price: 14.0,
+          stock: 12,
+          icon: "science",
+          category: "Suplemento",
+        },
+        {
+          id: "p26",
+          name: "Agua con Gas",
+          price: 1.5,
+          stock: 20,
+          icon: "water_drop",
+          category: "Bebida",
+        },
+        {
+          id: "p27",
+          name: "Rodilleras",
+          price: 15.0,
+          stock: 8,
+          icon: "accessibility",
+          category: "Accesorio",
+        },
+        {
+          id: "p28",
+          name: "Galleta Proteica",
+          price: 2.8,
+          stock: 35,
+          icon: "cookie",
+          category: "Comida",
+        },
+      ];
 
-<!-- QR Payment Modal -->
-<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4" id="modal-qr">
-<div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden border border-outline-variant/30 flex flex-col">
-<div class="bg-primary-dim p-6 text-white shrink-0 flex justify-between items-center">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-2xl">qr_code_2</span>
-<h2 class="font-headline font-bold text-lg uppercase tracking-wider">Pago QR</h2>
-</div>
-<button class="hover:bg-white/10 rounded-full p-1 transition-colors" onclick="closeModals()">
-<span class="material-symbols-outlined">close</span>
-</button>
-</div>
-<div class="p-8 flex flex-col items-center gap-6">
-<div class="flex flex-col items-center gap-1">
-<p class="text-xs font-black text-on-surface-variant/60 uppercase tracking-[0.2em]">Monto a Pagar</p>
-<p class="text-3xl font-black text-primary tracking-tighter" id="modal-total-qr">$27.60</p>
-</div>
-<div class="w-48 h-48 bg-surface-container-low rounded-2xl flex items-center justify-center border-2 border-dashed border-outline-variant/40">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SquatGym-POS&bgcolor=f8fafa&color=1a1c1d&margin=10" alt="Código QR" class="w-44 h-44 rounded-xl shadow-sm border border-outline-variant/20">
-</div>
-<p class="text-xs text-on-surface-variant text-center font-medium">Escane&aacute; el c&oacute;digo QR con tu aplicaci&oacute;n bancaria para realizar el pago</p>
-<button class="w-full bg-primary text-white font-bold py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg text-sm" onclick="confirmQrPayment()">YA PAGU&Eacute;</button>
-</div>
-</div>
-</div>
+      let currentCategory = "Todas";
+      let currentPage = 1;
+      const itemsPerPage = 8;
 
-<script>
-    let cart = {};
-    let appliedCoupons = [];
-    let discountAmount = 0;
-    let searchTerm = '';
-    let selectedPayment = null;
+      const validCoupons = { messi: 10.0, dibu: 5.0, promo20: 2.0 };
 
-    const allProducts = [
-        { id: 'p1', name: 'Agua Mineral 500ml', price: 1.20, stock: 42, icon: 'water_drop', category: 'Bebida', image: 'https://lh3.googleusercontent.com/aida/ADBb0uguUdjXPK7mlchBREidRSzNfFIDs4lpu_ig8FdGqjn-wl0td9-q_C0XVlF8tfGM2agGSYSIPD5vm7gmgAsMSePuBa-WG0hLQJ_RrB4n48HJjhy6eYwrHBsbIylIaT-N476F4KpamYzzARN3eZUq6AsFhfb6tZ8litgcu7ameOUUES4jQK5t7jC52Wa4xNYo8BTnc4wG4h7rr77AILHMoKk6Ebh1cm_wxr6qALu_6qeVByvm-nwYWuAmoic' },
-        { id: 'p2', name: 'Prote\u00edna Whey 30g', price: 3.50, stock: 3, icon: 'science', category: 'Suplemento', image: 'https://lh3.googleusercontent.com/aida/ADBb0uirkaYwp5SWHhMwwMsb8D7d08S6dSEpuaxGJQ_VmAi2jha60rnPLFI_ZEJ986gkggF1EQ4ZNf45JJPAHGPaEDWtsvUrZ4x0iUHuwOkKEqXQPcGVOo_PhaTehg2pK4QnsotsAXfezSmtLWuIPqBc_jsZmPe3ImQc_KgCVlnduGsQ3FNaOdWl_qekeCGprdSiQgs4hw4KJQayslW_lTVMlbtePB9G86_dfXATIBvMPoOjIUA2NJ4irtpMW3E' },
-        { id: 'p3', name: 'Caf\u00e9 Espresso', price: 2.00, stock: 15, icon: 'coffee', category: 'Bebida', image: 'https://lh3.googleusercontent.com/aida/ADBb0uik579RV9jydAXqRj7f8cmb-vdj6ltroNZBcjEbhnQn6ntJYC6Cr9y18VCDz7dAUnlDKtw-kCsEf58s5yWFf4ZCL9S3DZqzSCFglOx6i-4aVJaLrqneqNPxxn7pQi75l6mSd8W8re-gI1bRVVrYY-E5fz5sNXOoDImel24IlRO5kqYb58hxmw3jttbBJanexCUnUfnz_6wcJTJtM-bvr8Q5zcIBvrNOKqSzfpf-Rh1iLxkWHPS5hYMYmow' },
-        { id: 'p4', name: 'Barra Cereal Mix', price: 1.80, stock: 28, icon: 'cookie', category: 'Comida', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujxpTDEAUpuDLmTD6vz8tfRjuBX7HrOvsYBMb17MVXMEIbDMocX8UIbhOSP6B40YOLQfgAQZGY2kjAILTNvmFgDehPxM9WrHb4VwX2Xj4U7xgmvHBb4oKtyavAHTbojA_7cG1VpjyLpyqvTs1XIJk1rrG-t_wa8murzgriHKyufP7p6V9kIJYrN38MDonC4Xq6TiGA2orO9vL821daLPToOBccMGNwtxQYYE1d0sQryMbq0F55UyBCIoGM' },
-        { id: 'p5', name: 'Toalla Microfibra', price: 12.00, stock: 10, icon: 'fitness_center', category: 'Accesorio', image: 'https://lh3.googleusercontent.com/aida/ADBb0ui67Y2GHMY57y48QRkeU6h49lZiNHZVxHyK10-6njI6cjvqpyCEAh0ThLKuAfYkfTV17cMcKoTeyz27n97I1C-2WusXn3ng5UQ_k4bMLDR4fKexXhWuS_ODiZjJ0bg7EGLkOVqGiFp07aUCdt7vUk16AcM_i4fLfMcnOE8olei0UaqVi-45zpR_B6nTNVb4dUq9zkQwDejmVWeySnorKtApF9VvHfWIIiRc-Y2hG5uEqDo7pwNVgmL-IN0' },
-        { id: 'p6', name: 'Bebida Isot\u00f3nica', price: 2.50, stock: 0, icon: 'battery_charging_full', category: 'Bebida', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujLfASirOrkuCCLMFfY_ecjTscc92w-J7nmTuXuQtPZ5hC0s04wpkMgtFr0Q-_lOgji6j7Vjs41XsBlFnb5uyljzF6ZJlqv_VYqlR2CXJgQjzgQKNxUkCeLt4Ua1fHvw5kc2P3bx4jqDJ4eKTirUvmr6uby95WETqB3934wS9qKAKUtk6cQ7qPtcL4ydv6dzMd_IAKfLAMtEjr1_4DaxNfrS0a_3ITztndSfEGS2nUPYj-njw4iSsx69g' },
-        { id: 'p7', name: 'Barra Prote\u00edna', price: 3.00, stock: 55, icon: 'nutrition', category: 'Comida', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujuDQuTG2GZK9f-pDG-E_--fOSXgjNbF-Tu7h_q6ZVLPT_i7Xx29Kl8ooZNjt1ZUQ9t20rmHY8XsizKJoxMNpiVfeoDPerKrtPai97hMfTH5LtQTf2djH3RcNkEiIvggBzOOZapRmaJ672-0S9sQed-cq8BEjrNPW0hZbr2mshdhdRKgmpkVgUi7Ele1jxxdCZpPhUBXqFxo8HzTzE4-SZJJgWVKi18JzxWkmZjaA9Rq8FizmYvnqxq0Ak' },
-        { id: 'p8', name: 'Shaker 600ml', price: 5.00, stock: 20, icon: 'blender', category: 'Accesorio', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujNrXGgY4z5-m8JZZftDwytRoccEr31zHeC1r94Y3sgyUXzbWidxWVZoVeAsynknoVCIg_SYlsLWb6_sgZ6nxp3ugEDqqOR3N0p3z6_u4EDv9Tw6ni1YpR2bys3oWZykkfhw7JRMa1D8z3Aoi4lmoVtsGB6fNe-bBrAkuYUFFtJ3dsCDY2403uGLMgxfC8YdHm8w4gg7gLIeIliaQBCWNfSoqtBWlsmF7EaorTSeMffxvQWDeSmrCo6pEM' },
-        { id: 'p9', name: 'Pre-Entreno', price: 15.00, stock: 8, icon: 'bolt', category: 'Suplemento', image: 'https://lh3.googleusercontent.com/aida/ADBb0ugvwV6ckvG1mVOf8RqNncnslbZn5iUn8D-X2fViWgUHBEJoprhSVKNBlxrF8L1XFgQ_O1phkKB9K0XSM2Mk9biLVzmoqR7KKmmhcU_NNLrkPSV2f3d4NozvHwrGsooeLs9U1jBPGBtfvTY-a0-JwDHSlVZTJWPI8fgJmFWe-8AyQcXKaq2wo7AUEvKVcVkre-EjJ6MuttRHthlGU-uyG3394rlOXXQnCo4PSeIojshzoDoEaJweCBEnD5k' },
-        { id: 'p10', name: 'Guantes Gym', price: 8.50, stock: 12, icon: 'back_hand', category: 'Accesorio', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujB3i6NOavr6QxwkHL4huv76XHzg6woUHbYzqz01sXE6SogUuCIxIao1mC6tPrSvFTQGOQVM6ex3F7VfdHnF7UfXE6t_Dg7_pRPjB8VF6M_ltBqno5IpgXNNXnFcP1tKNg17qQoMOvwS6-PpFiPxxwmfuSB5_2-RulZqv2rHWXVpu2mCkZQw-2K9oh0037WZ337oiYghs_j0rqpw9G-0_rWbtHYsOn8fR_0RhLcTDfEWmWegKAV7UCo_w' },
-        { id: 'p11', name: 'Magnesio L\u00edquido', price: 2.50, stock: 30, icon: 'category', category: 'Accesorio', image: 'https://lh3.googleusercontent.com/aida/ADBb0ugzz0PDIrDkXeHcmXdpjx44Bq9UrLEDUn7UatJWd2VmFx4BkMrLorcoWkO4Uhgxtwq8_YXF7X3IN9Wan_WmoZ_Nkm-OsZzyXGhkm1PgGhmAmes0Y1bWV0iHIzPV-5NuAwRtrvOLcIIcrkO5mtEmmwsyzt_Il-YZ7rCadStIaxJ97FEj7Ldda0dHZ6B1GdAR4Lxk4ny_v-VupqitXci73Xg1Ms4tw-LdtNjgm4GrKaxuw8zQ10WyeL8KqAg' },
-        { id: 'p12', name: 'Jugo Naranja', price: 1.50, stock: 15, icon: 'local_drink', category: 'Bebida', image: 'https://lh3.googleusercontent.com/aida/ADBb0ugHLQZcEvLRAbuLuJM0YjUZ6mxay-RGU1oUeYeDi8t2IqEXyCRcVy0KSoBkqkuQYGpi3HftXgseS_MwvW33k7WpWZpdF6A-1Dfi6e8fVDy1fkW0ltftCpAXVgWprq5Dj3OZWbZSiVpTAj-a6S4QP1Rr9m8OOBsgaGT8qoso6cx6dGm3-iZP2ey50tBt9YqFA-x0U_Q5kBrqimJ7CpnUc0oVcDOpz7RasgijDtqRQ-LH9FZ1dhPgbCxdlg' },
-        { id: 'p13', name: 'Agua Vitaminada', price: 2.20, stock: 25, icon: 'water_drop', category: 'Bebida' },
-        { id: 'p14', name: 'BCAA 500g', price: 25.00, stock: 5, icon: 'science', category: 'Suplemento' },
-        { id: 'p15', name: 'T\u00e9 Verde', price: 1.80, stock: 18, icon: 'emoji_food_beverage', category: 'Bebida' },
-        { id: 'p16', name: 'Barra Energ\u00e9tica', price: 2.50, stock: 0, icon: 'cookie', category: 'Comida' },
-        { id: 'p17', name: 'Mu\u00f1equeras', price: 6.00, stock: 14, icon: 'accessibility_new', category: 'Accesorio' },
-        { id: 'p18', name: 'Batido Proteico', price: 4.50, stock: 10, icon: 'blender', category: 'Bebida' },
-        { id: 'p19', name: 'Creatina 300g', price: 18.00, stock: 7, icon: 'bolt', category: 'Suplemento' },
-        { id: 'p20', name: 'Cintur\u00f3n Gym', price: 22.00, stock: 4, icon: 'accessibility', category: 'Accesorio' },
-        { id: 'p21', name: 'Gatorade 500ml', price: 2.00, stock: 30, icon: 'battery_charging_full', category: 'Bebida' },
-        { id: 'p22', name: 'Mix Frutos Secos', price: 3.50, stock: 40, icon: 'nutrition', category: 'Comida' },
-        { id: 'p23', name: 'Straps Levantamiento', price: 7.50, stock: 16, icon: 'fitness_center', category: 'Accesorio' },
-        { id: 'p24', name: 'Vitamina C', price: 10.00, stock: 0, icon: 'medication', category: 'Suplemento' },
-        { id: 'p25', name: 'L-Carnitina', price: 14.00, stock: 12, icon: 'science', category: 'Suplemento' },
-        { id: 'p26', name: 'Agua con Gas', price: 1.50, stock: 20, icon: 'water_drop', category: 'Bebida' },
-        { id: 'p27', name: 'Rodilleras', price: 15.00, stock: 8, icon: 'accessibility', category: 'Accesorio' },
-        { id: 'p28', name: 'Galleta Proteica', price: 2.80, stock: 35, icon: 'cookie', category: 'Comida' },
-    ];
+      function init() {
+        renderProducts();
+        updateTotals(0);
+      }
 
-    let currentCategory = 'Todas';
-    let currentPage = 1;
-    const itemsPerPage = 8;
+      function filterCategory(category) {
+        currentCategory = category;
+        currentPage = 1;
+        renderProducts();
+      }
+      function seleccionarCategoria(cat, btn) {
+        var label = cat === 'Todas' ? 'Todas' : (cat === 'Bebida' ? 'Bebidas' : cat + 's');
+        document.getElementById('category-label').textContent = label;
+        btn.closest('.group').querySelector('[id$="-dropdown"]').classList.add('hidden');
+        document.activeElement.blur();
+        filterCategory(cat);
+      }
+      function filterSearch(term) {
+        searchTerm = term;
+        currentPage = 1;
+        renderProducts();
+      }
 
-    const validCoupons = { 'messi': 10.00, 'dibu': 5.00, 'promo20': 2.00 };
-
-    function init() { renderProducts(); updateTotals(0); }
-
-    function filterCategory(category) { currentCategory = category; currentPage = 1; renderProducts(); }
-    function filterSearch(term) { searchTerm = term; currentPage = 1; renderProducts(); }
-
-    function applyCoupon() {
-        const input = document.getElementById('coupon-input');
+      function applyCoupon() {
+        const input = document.getElementById("coupon-input");
         const code = input.value.trim().toLowerCase();
         if (validCoupons[code] && !appliedCoupons.includes(code)) {
-            appliedCoupons.push(code);
-            discountAmount += validCoupons[code];
-            input.value = '';
-            input.classList.remove('border-error', 'focus:border-error', 'focus:ring-error/20');
-            input.classList.add('border-primary', 'focus:border-primary');
-            renderCoupons();
-            recalculateCartTotals();
+          appliedCoupons.push(code);
+          discountAmount += validCoupons[code];
+          input.value = "";
+          input.classList.remove(
+            "border-error",
+            "focus:border-error",
+            "focus:ring-error/20",
+          );
+          input.classList.add("border-primary", "focus:border-primary");
+          renderCoupons();
+          recalculateCartTotals();
         } else {
-            input.classList.add('border-error', 'focus:border-error', 'focus:ring-error/20');
+          input.classList.add(
+            "border-error",
+            "focus:border-error",
+            "focus:ring-error/20",
+          );
         }
-    }
+      }
 
-    function removeCoupon(code) {
+      function removeCoupon(code) {
         const index = appliedCoupons.indexOf(code);
-        if (index > -1) { appliedCoupons.splice(index, 1); discountAmount -= validCoupons[code]; renderCoupons(); recalculateCartTotals(); }
-    }
+        if (index > -1) {
+          appliedCoupons.splice(index, 1);
+          discountAmount -= validCoupons[code];
+          renderCoupons();
+          recalculateCartTotals();
+        }
+      }
 
-    function renderCoupons() {
-        const container = document.getElementById('applied-coupons');
-        container.innerHTML = appliedCoupons.map(code =>
-            `<div class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1 uppercase tracking-wider border border-primary/20">${code} (-$${validCoupons[code].toFixed(2)})<span class="material-symbols-outlined text-[12px] cursor-pointer hover:text-error" onclick="removeCoupon('${code}')">close</span></div>`
-        ).join('');
-    }
+      function renderCoupons() {
+        const container = document.getElementById("applied-coupons");
+        container.innerHTML = appliedCoupons
+          .map(
+            (code) =>
+              `<div class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1 uppercase tracking-wider border border-primary/20">${code} (-$${validCoupons[code].toFixed(2)})<span class="material-symbols-outlined text-[12px] cursor-pointer hover:text-error" onclick="removeCoupon('${code}')">close</span></div>`,
+          )
+          .join("");
+      }
 
-    function recalculateCartTotals() {
+      function recalculateCartTotals() {
         let subtotal = 0;
-        Object.keys(cart).forEach(id => { subtotal += cart[id].price * cart[id].quantity; });
+        Object.keys(cart).forEach((id) => {
+          subtotal += cart[id].price * cart[id].quantity;
+        });
         updateTotals(subtotal);
-    }
+      }
 
-    function cancelSale() {
-        cart = {}; appliedCoupons = []; discountAmount = 0; searchTerm = ''; currentCategory = 'Todas'; currentPage = 1;
-        document.getElementById('search-input').value = '';
-        document.getElementById('category-select').value = 'Todas';
-        document.getElementById('coupon-input').value = '';
-        renderCoupons(); renderProducts(); renderCart();
-    }
+      function cancelSale() {
+        cart = {};
+        appliedCoupons = [];
+        discountAmount = 0;
+        searchTerm = "";
+        currentCategory = "Todas";
+        currentPage = 1;
+        document.getElementById("search-input").value = "";
+        document.getElementById("category-select").value = "Todas";
+        document.getElementById("coupon-input").value = "";
+        renderCoupons();
+        renderProducts();
+        renderCart();
+      }
 
-    function renderProducts() {
-        const grid = document.getElementById('product-grid');
-        const paginationContainer = document.getElementById('pagination-container');
+      function renderProducts() {
+        const grid = document.getElementById("product-grid");
+        const paginationContainer = document.getElementById(
+          "pagination-container",
+        );
         let filteredProducts = allProducts;
-        if (currentCategory !== 'Todas') filteredProducts = filteredProducts.filter(p => p.category === currentCategory);
-        if (searchTerm) filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
-        const totalPages = Math.ceil(filteredProducts.length / itemsPerPage) || 1;
+        if (currentCategory !== "Todas")
+          filteredProducts = filteredProducts.filter(
+            (p) => p.category === currentCategory,
+          );
+        if (searchTerm)
+          filteredProducts = filteredProducts.filter((p) =>
+            p.name.toLowerCase().includes(searchTerm.toLowerCase()),
+          );
+        const totalPages =
+          Math.ceil(filteredProducts.length / itemsPerPage) || 1;
         if (currentPage > totalPages) currentPage = totalPages;
         const startIndex = (currentPage - 1) * itemsPerPage;
-        const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+        const paginatedProducts = filteredProducts.slice(
+          startIndex,
+          startIndex + itemsPerPage,
+        );
 
-        grid.innerHTML = paginatedProducts.map(p => {
+        grid.innerHTML = paginatedProducts
+          .map((p) => {
             const isOutOfStock = p.stock === 0;
-            const isSelected = cart[p.id] ? 'selected' : '';
+            const isSelected = cart[p.id] ? "selected" : "";
             const cartQty = cart[p.id] ? cart[p.id].quantity : 0;
             const cardClasses = isOutOfStock
-                ? "bg-white rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 w-full h-full opacity-60 grayscale cursor-not-allowed"
-                : "bg-white rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full";
-            let mediaContent = '';
+              ? "bg-white rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 w-full h-full opacity-60 grayscale cursor-not-allowed"
+              : "bg-white rounded-xl p-3 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full";
+            let mediaContent = "";
             if (p.image) {
-                mediaContent = `<div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-background"><img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover"></div>`;
+              mediaContent = `<div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-background"><img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover"></div>`;
             } else {
-                mediaContent = `<div class="w-20 h-20 rounded-lg bg-background flex items-center justify-center mb-1 shrink-0"><span class="material-symbols-outlined text-outline-variant text-3xl opacity-30">image</span></div>`;
+              mediaContent = `<div class="w-20 h-20 rounded-lg bg-background flex items-center justify-center mb-1 shrink-0"><span class="material-symbols-outlined text-outline-variant text-3xl opacity-30">image</span></div>`;
             }
             return `<div class="relative group ${isSelected}">
-                <button class="${cardClasses}" ${isOutOfStock ? 'disabled' : `onclick="selectProduct('${p.id}')"`}>
+                <button class="${cardClasses}" ${isOutOfStock ? "disabled" : `onclick="selectProduct('${p.id}')"`}>
                     ${mediaContent}
                     <div class="flex-grow flex flex-col">
-                        <h3 class="font-medium text-sm ${isOutOfStock ? 'text-on-surface-variant' : 'text-primary'} leading-tight">${p.name}</h3>
-                        <p class="text-[11px] mt-1 ${isOutOfStock ? 'text-error font-bold' : 'text-on-surface font-semibold'}">${isOutOfStock ? 'Sin Stock' : `Stock: ${p.stock}`}</p>
+                        <h3 class="font-medium text-sm ${isOutOfStock ? "text-on-surface-variant" : "text-primary"} leading-tight">${p.name}</h3>
+                        <p class="text-[11px] mt-1 ${isOutOfStock ? "text-error font-bold" : "text-on-surface font-semibold"}">${isOutOfStock ? "Sin Stock" : `Stock: ${p.stock}`}</p>
                         <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">${p.category}</div>
                     </div>
                     <div class="mt-auto flex flex-col items-center pt-2">
-                        <div class="font-bold text-base ${isOutOfStock ? 'text-on-surface-variant' : 'text-primary'}">$${p.price.toFixed(2)}</div>
+                        <div class="font-bold text-base ${isOutOfStock ? "text-on-surface-variant" : "text-primary"}">$${p.price.toFixed(2)}</div>
                         <div class="text-[10px] font-bold text-on-surface-variant/60 bg-background px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-${p.id}">${cartQty}</div>
                     </div>
                 </button>
-                ${!isOutOfStock ? `<button class="absolute -top-2 -right-2 w-6 h-6 bg-primary-dim text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('${p.id}')"><span class="material-symbols-outlined text-sm font-bold">close</span></button>` : ''}
+                ${!isOutOfStock ? `<button class="absolute -top-2 -right-2 w-6 h-6 bg-primary-dim text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('${p.id}')"><span class="material-symbols-outlined text-sm font-bold">close</span></button>` : ""}
             </div>`;
-        }).join('');
+          })
+          .join("");
 
-        let paginationHTML = '';
+        let paginationHTML = "";
         for (let i = 1; i <= totalPages; i++) {
-            paginationHTML += `<button class="w-8 h-8 flex items-center justify-center rounded-lg font-medium text-xs page-btn ${i === currentPage ? 'bg-primary text-white font-bold shadow-sm' : 'hover:bg-surface-container-low text-on-surface-variant'}" onclick="setPage(${i})">${i}</button>`;
+          paginationHTML += `<button class="w-8 h-8 flex items-center justify-center rounded-lg font-medium text-xs page-btn ${i === currentPage ? "bg-primary text-white font-bold shadow-sm" : "hover:bg-surface-container-low text-on-surface-variant"}" onclick="setPage(${i})">${i}</button>`;
         }
         paginationContainer.innerHTML = paginationHTML;
-    }
+      }
 
-    function setPage(page) { currentPage = page; renderProducts(); }
+      function setPage(page) {
+        currentPage = page;
+        renderProducts();
+      }
 
-    function changePage(dir) {
+      function changePage(dir) {
         let filteredProducts = allProducts;
-        if (currentCategory !== 'Todas') filteredProducts = filteredProducts.filter(p => p.category === currentCategory);
-        if (searchTerm) filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
-        const totalPages = Math.ceil(filteredProducts.length / itemsPerPage) || 1;
+        if (currentCategory !== "Todas")
+          filteredProducts = filteredProducts.filter(
+            (p) => p.category === currentCategory,
+          );
+        if (searchTerm)
+          filteredProducts = filteredProducts.filter((p) =>
+            p.name.toLowerCase().includes(searchTerm.toLowerCase()),
+          );
+        const totalPages =
+          Math.ceil(filteredProducts.length / itemsPerPage) || 1;
         let nextNum = currentPage + dir;
-        if (nextNum >= 1 && nextNum <= totalPages) { currentPage = nextNum; renderProducts(); }
-    }
-
-    function selectProduct(id) {
-        const product = allProducts.find(p => p.id === id);
-        if (product.stock <= 0) return;
-        if (!cart[id]) { cart[id] = { ...product, quantity: 1 }; }
-        else { if(cart[id].quantity < product.stock) cart[id].quantity += 1; }
-        renderProducts(); renderCart();
-    }
-
-    function deselectProduct(id) { delete cart[id]; renderProducts(); renderCart(); }
-
-    function updateQuantity(id, delta) {
-        if (cart[id]) {
-            const product = allProducts.find(p => p.id === id);
-            cart[id].quantity += delta;
-            if (cart[id].quantity <= 0) { deselectProduct(id); return; }
-            if (cart[id].quantity > product.stock) cart[id].quantity = product.stock;
-            renderProducts(); renderCart();
+        if (nextNum >= 1 && nextNum <= totalPages) {
+          currentPage = nextNum;
+          renderProducts();
         }
-    }
+      }
 
-    function renderCart() {
-        const cartContainer = document.getElementById('cart-items');
+      function selectProduct(id) {
+        const product = allProducts.find((p) => p.id === id);
+        if (product.stock <= 0) return;
+        if (!cart[id]) {
+          cart[id] = { ...product, quantity: 1 };
+        } else {
+          if (cart[id].quantity < product.stock) cart[id].quantity += 1;
+        }
+        renderProducts();
+        renderCart();
+      }
+
+      function deselectProduct(id) {
+        delete cart[id];
+        renderProducts();
+        renderCart();
+      }
+
+      function updateQuantity(id, delta) {
+        if (cart[id]) {
+          const product = allProducts.find((p) => p.id === id);
+          cart[id].quantity += delta;
+          if (cart[id].quantity <= 0) {
+            deselectProduct(id);
+            return;
+          }
+          if (cart[id].quantity > product.stock)
+            cart[id].quantity = product.stock;
+          renderProducts();
+          renderCart();
+        }
+      }
+
+      function renderCart() {
+        const cartContainer = document.getElementById("cart-items");
         const keys = Object.keys(cart);
         if (keys.length === 0) {
-            cartContainer.innerHTML = `<div class="flex flex-col items-center justify-center h-full text-on-surface-variant/40 gap-3 py-12"><span class="material-symbols-outlined text-6xl opacity-20">shopping_cart</span><div class="text-center"><p class="font-medium text-sm">El carrito est\u00e1 vac\u00edo</p><p class="text-xs">Agregue productos para comenzar</p></div></div>`;
-            updateTotals(0); return;
+          cartContainer.innerHTML = `<div class="flex flex-col items-center justify-center h-full text-on-surface-variant/40 gap-3 py-12"><span class="material-symbols-outlined text-6xl opacity-20">shopping_cart</span><div class="text-center"><p class="font-medium text-sm">El carrito est\u00e1 vac\u00edo</p><p class="text-xs">Agregue productos para comenzar</p></div></div>`;
+          updateTotals(0);
+          return;
         }
-        let html = ''; let subtotal = 0;
-        keys.forEach(id => {
-            const item = cart[id];
-            subtotal += item.price * item.quantity;
-            html += `<div class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/30 shadow-sm flex flex-col gap-2">
+        let html = "";
+        let subtotal = 0;
+        keys.forEach((id) => {
+          const item = cart[id];
+          subtotal += item.price * item.quantity;
+          html += `<div class="bg-surface-container-lowest rounded-xl p-3 border border-outline-variant/30 shadow-sm flex flex-col gap-2">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-lg bg-background flex items-center justify-center text-primary overflow-hidden">
                         ${item.image ? `<img src="${item.image}" class="w-full h-full object-cover">` : `<span class="material-symbols-outlined opacity-30 text-xs">image</span>`}
@@ -1105,160 +1991,262 @@ h1,h2,h3,h4,.headline{
         });
         cartContainer.innerHTML = html;
         updateTotals(subtotal);
-    }
+      }
 
-    function updateTotals(subtotal) {
+      function updateTotals(subtotal) {
         const total = Math.max(0, subtotal - discountAmount);
-        document.getElementById('cart-subtotal').innerText = `$${subtotal.toFixed(2)}`;
-        document.getElementById('cart-discount').innerText = discountAmount > 0 ? `-$${discountAmount.toFixed(2)}` : `$0.00`;
-        document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
-    }
+        document.getElementById("cart-subtotal").innerText =
+          `$${subtotal.toFixed(2)}`;
+        document.getElementById("cart-discount").innerText =
+          discountAmount > 0 ? `-$${discountAmount.toFixed(2)}` : `$0.00`;
+        document.getElementById("cart-total").innerText =
+          `$${total.toFixed(2)}`;
+      }
 
-    function selectPayment(btn) {
-        document.querySelectorAll('.payment-method').forEach(m => {
-            m.classList.remove('border-primary', 'shadow-md');
-            m.classList.add('border-outline-variant/30');
+      function selectPayment(btn) {
+        document.querySelectorAll(".payment-method").forEach((m) => {
+          m.classList.remove("border-primary", "shadow-md");
+          m.classList.add("border-outline-variant/30");
         });
-        btn.classList.remove('border-outline-variant/30');
-        btn.classList.add('border-primary', 'shadow-md');
+        btn.classList.remove("border-outline-variant/30");
+        btn.classList.add("border-primary", "shadow-md");
         selectedPayment = btn;
-    }
+      }
 
-    function processPayment() {
-        const total = document.getElementById('cart-total').innerText;
-        const totalVal = parseFloat(total.replace('$', ''));
-        if (totalVal <= 0) { alert('El carrito est\u00e1 vac\u00edo'); return; }
-        if (!selectedPayment) { alert('Seleccione un m\u00e9todo de pago'); return; }
-        const method = selectedPayment.querySelector('span:last-child').innerText.trim();
-        if (method === 'Efectivo') {
-            document.getElementById('modal-total-cash').innerText = total;
-            document.getElementById('modal-cash').classList.remove('hidden');
-        } else if (method === 'Tarjeta') {
-            document.getElementById('modal-total-card').innerText = total;
-            document.getElementById('modal-card').classList.remove('hidden');
-        } else if (method === 'QR') {
-            document.getElementById('modal-total-qr').innerText = total;
-            document.getElementById('modal-qr').classList.remove('hidden');
+      function processPayment() {
+        const total = document.getElementById("cart-total").innerText;
+        const totalVal = parseFloat(total.replace("$", ""));
+        if (totalVal <= 0) {
+          alert("El carrito est\u00e1 vac\u00edo");
+          return;
         }
-    }
+        if (!selectedPayment) {
+          alert("Seleccione un m\u00e9todo de pago");
+          return;
+        }
+        const method = selectedPayment
+          .querySelector("span:last-child")
+          .innerText.trim();
+        if (method === "Efectivo") {
+          document.getElementById("modal-total-cash").innerText = total;
+          document.getElementById("modal-cash").classList.remove("hidden");
+        } else if (method === "Tarjeta") {
+          document.getElementById("modal-total-card").innerText = total;
+          document.getElementById("modal-card").classList.remove("hidden");
+        } else if (method === "QR") {
+          document.getElementById("modal-total-qr").innerText = total;
+          document.getElementById("modal-qr").classList.remove("hidden");
+        }
+      }
 
-    function calculateChangeDirect() {
-        const totalText = document.getElementById('modal-total-cash').innerText;
-        const totalValue = parseFloat(totalText.replace('$', '').trim());
-        const receivedInput = document.getElementById('cash-received-input');
+      function calculateChangeDirect() {
+        const totalText = document.getElementById("modal-total-cash").innerText;
+        const totalValue = parseFloat(totalText.replace("$", "").trim());
+        const receivedInput = document.getElementById("cash-received-input");
         const receivedValue = parseFloat(receivedInput.value);
         if (!isNaN(receivedValue) && receivedValue >= totalValue) {
-            document.getElementById('modal-change-amount').innerText = '$' + (receivedValue - totalValue).toFixed(2);
+          document.getElementById("modal-change-amount").innerText =
+            "$" + (receivedValue - totalValue).toFixed(2);
         } else {
-            document.getElementById('modal-change-amount').innerText = '$0.00';
-            if (receivedValue < totalValue) alert('El monto recibido es menor al total a pagar.');
+          document.getElementById("modal-change-amount").innerText = "$0.00";
+          if (receivedValue < totalValue)
+            alert("El monto recibido es menor al total a pagar.");
         }
-    }
+      }
 
-    function confirmCashPayment() { alert('Pago registrado con \u00e9xito'); closeModals(); cancelSale(); }
-    function confirmCardPayment() { alert('Pago con tarjeta registrado con \u00e9xito'); closeModals(); cancelSale(); }
-    function confirmQrPayment() { alert('Pago QR registrado con \u00e9xito'); closeModals(); cancelSale(); }
-    function closeModals() {
-        document.getElementById('modal-cash').classList.add('hidden');
-        document.getElementById('modal-card').classList.add('hidden');
-        document.getElementById('modal-qr').classList.add('hidden');
-    }
-    function formatCardNumber(input) {
-        let v = input.value.replace(/\D/g, '').substring(0, 16);
-        v = v.replace(/(.{4})/g, '$1 ').trim();
+      function mostrarFactura(metodo) {
+        invoiceCounter++;
+        var items = document.getElementById("invoice-items");
+        items.innerHTML = "";
+        Object.keys(cart).forEach(function (id) {
+          var item = cart[id];
+          items.innerHTML +=
+            '<div class="flex justify-between items-center py-1.5 border-b border-outline-variant/10 last:border-0"><span class="text-xs font-medium text-on-surface flex-1">' +
+            item.name +
+            " x" +
+            item.quantity +
+            '</span><span class="text-xs font-bold text-primary">$' +
+            (item.price * item.quantity).toFixed(2) +
+            "</span></div>";
+        });
+        var totalTxt = document.getElementById("cart-total").innerText;
+        document.getElementById("invoice-amount").textContent = totalTxt;
+        document.getElementById("invoice-method").textContent = metodo;
+        var now = new Date();
+        var dias = [
+          "Domingo",
+          "Lunes",
+          "Martes",
+          "Mi\u00e9rcoles",
+          "Jueves",
+          "Viernes",
+          "S\u00e1bado",
+        ];
+        var meses = [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Octubre",
+          "Noviembre",
+          "Diciembre",
+        ];
+        document.getElementById("invoice-date").textContent =
+          now.getDate() + " " + meses[now.getMonth()] + " " + now.getFullYear();
+        document.getElementById("invoice-nro").textContent =
+          "#GYM-" + String(invoiceCounter).padStart(3, "0");
+        closeModals();
+        document.getElementById("modal-invoice").classList.remove("hidden");
+      }
+      function confirmCashPayment() {
+        mostrarFactura("Efectivo");
+        cancelSale();
+      }
+      function confirmCardPayment() {
+        mostrarFactura("Tarjeta");
+        cancelSale();
+      }
+      function confirmQrPayment() {
+        mostrarFactura("QR");
+        cancelSale();
+      }
+      function closeModals() {
+        document.getElementById("modal-cash").classList.add("hidden");
+        document.getElementById("modal-card").classList.add("hidden");
+        document.getElementById("modal-qr").classList.add("hidden");
+        document.getElementById("modal-invoice").classList.add("hidden");
+      }
+      function formatCardNumber(input) {
+        let v = input.value.replace(/\D/g, "").substring(0, 16);
+        v = v.replace(/(.{4})/g, "$1 ").trim();
         input.value = v;
-    }
-    function formatExpiry(input) {
-        let v = input.value.replace(/\D/g, '').substring(0, 4);
-        if (v.length > 2) v = v.substring(0, 2) + '/' + v.substring(2);
+      }
+      function formatExpiry(input) {
+        let v = input.value.replace(/\D/g, "").substring(0, 4);
+        if (v.length > 2) v = v.substring(0, 2) + "/" + v.substring(2);
         input.value = v;
-    }
+      }
 
-    function toggleNotifications() {
-        document.getElementById('notification-dropdown').classList.toggle('hidden');
-    }
+      function toggleNotifications() {
+        document
+          .getElementById("notification-dropdown")
+          .classList.toggle("hidden");
+      }
 
-    window.addEventListener('click', function(e) {
-        const dropdown = document.getElementById('notification-dropdown');
-        const bell = document.getElementById('notification-bell');
-        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.classList.add('hidden');
+      window.addEventListener("click", function (e) {
+        const dropdown = document.getElementById("notification-dropdown");
+        const bell = document.getElementById("notification-bell");
+        if (
+          dropdown &&
+          !dropdown.classList.contains("hidden") &&
+          !bell.contains(e.target) &&
+          !dropdown.contains(e.target)
+        ) {
+          dropdown.classList.add("hidden");
         }
-    });
+      });
 
-    document.getElementById('sidebar-toggle').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('sidebar-visible');
-        document.getElementById('sidebar-backdrop').classList.toggle('show');
-    });
+      document
+        .getElementById("sidebar-toggle")
+        .addEventListener("click", () => {
+          document
+            .getElementById("sidebar")
+            .classList.toggle("sidebar-visible");
+          document.getElementById("sidebar-backdrop").classList.toggle("show");
+        });
 
-    document.getElementById('sidebar-close').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.remove('sidebar-visible');
-        document.getElementById('sidebar-backdrop').classList.remove('show');
-    });
+      document.getElementById("sidebar-close").addEventListener("click", () => {
+        document.getElementById("sidebar").classList.remove("sidebar-visible");
+        document.getElementById("sidebar-backdrop").classList.remove("show");
+      });
 
-    document.getElementById('sidebar-backdrop').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.remove('sidebar-visible');
-        document.getElementById('sidebar-backdrop').classList.remove('show');
-    });
+      document
+        .getElementById("sidebar-backdrop")
+        .addEventListener("click", () => {
+          document
+            .getElementById("sidebar")
+            .classList.remove("sidebar-visible");
+          document.getElementById("sidebar-backdrop").classList.remove("show");
+        });
 
-    const customers = [
-        { name: "Juan P\u00e9rez", dni: "12.345.678" }, { name: "Mar\u00eda Garc\u00eda", dni: "23.456.789" },
-        { name: "Carlos Rodr\u00edguez", dni: "34.567.890" }, { name: "Ana Mart\u00ednez", dni: "45.678.901" },
-        { name: "Diego L\u00f3pez", dni: "56.789.012" }, { name: "Elena G\u00f3mez", dni: "67.890.123" },
-        { name: "Fernando Ruiz", dni: "78.901.234" }, { name: "Gabriela D\u00edaz", dni: "89.012.345" },
-        { name: "Hugo S\u00e1nchez", dni: "90.123.456" }, { name: "Isabel Castro", dni: "01.234.567" },
-        { name: "Javier Morales", dni: "11.222.333" }, { name: "Karla Herrera", dni: "22.333.444" },
-        { name: "Luis Ortega", dni: "33.444.555" }, { name: "M\u00f3nica Flores", dni: "44.555.666" },
-        { name: "Nicol\u00e1s Jim\u00e9nez", dni: "55.666.777" }, { name: "Olga Torres", dni: "66.777.888" },
-        { name: "Pablo Romero", dni: "77.888.999" }, { name: "Quirino Pineda", dni: "88.999.000" },
-        { name: "Rosa Vargas", dni: "99.000.111" }, { name: "Sergio Silva", dni: "10.111.222" },
-        { name: "Teresa Rojas", dni: "21.222.333" }, { name: "Uriel Mendoza", dni: "32.333.444" },
-        { name: "Ver\u00f3nica Fuentes", dni: "43.444.555" }, { name: "Walter N\u00fa\u00f1ez", dni: "54.555.666" },
-        { name: "Ximena Paredes", dni: "65.666.777" }, { name: "Yahir Espinoza", dni: "76.777.888" },
-        { name: "Zulema Quiroga", dni: "87.888.999" }, { name: "Mateo Blanco", dni: "98.999.000" },
-        { name: "Sofia Luna", dni: "09.000.111" }, { name: "Lucas Mar\u00edn", dni: "12.111.222" }
-    ];
+      const customers = [
+        { name: "Juan P\u00e9rez", dni: "12.345.678" },
+        { name: "Mar\u00eda Garc\u00eda", dni: "23.456.789" },
+        { name: "Carlos Rodr\u00edguez", dni: "34.567.890" },
+        { name: "Ana Mart\u00ednez", dni: "45.678.901" },
+        { name: "Diego L\u00f3pez", dni: "56.789.012" },
+        { name: "Elena G\u00f3mez", dni: "67.890.123" },
+        { name: "Fernando Ruiz", dni: "78.901.234" },
+        { name: "Gabriela D\u00edaz", dni: "89.012.345" },
+        { name: "Hugo S\u00e1nchez", dni: "90.123.456" },
+        { name: "Isabel Castro", dni: "01.234.567" },
+        { name: "Javier Morales", dni: "11.222.333" },
+        { name: "Karla Herrera", dni: "22.333.444" },
+        { name: "Luis Ortega", dni: "33.444.555" },
+        { name: "M\u00f3nica Flores", dni: "44.555.666" },
+        { name: "Nicol\u00e1s Jim\u00e9nez", dni: "55.666.777" },
+        { name: "Olga Torres", dni: "66.777.888" },
+        { name: "Pablo Romero", dni: "77.888.999" },
+        { name: "Quirino Pineda", dni: "88.999.000" },
+        { name: "Rosa Vargas", dni: "99.000.111" },
+        { name: "Sergio Silva", dni: "10.111.222" },
+        { name: "Teresa Rojas", dni: "21.222.333" },
+        { name: "Uriel Mendoza", dni: "32.333.444" },
+        { name: "Ver\u00f3nica Fuentes", dni: "43.444.555" },
+        { name: "Walter N\u00fa\u00f1ez", dni: "54.555.666" },
+        { name: "Ximena Paredes", dni: "65.666.777" },
+        { name: "Yahir Espinoza", dni: "76.777.888" },
+        { name: "Zulema Quiroga", dni: "87.888.999" },
+        { name: "Mateo Blanco", dni: "98.999.000" },
+        { name: "Sofia Luna", dni: "09.000.111" },
+        { name: "Lucas Mar\u00edn", dni: "12.111.222" },
+      ];
 
-    function searchCustomers(term) {
-        const resultsDiv = document.getElementById('customer-results');
-        if (!term) { resultsDiv.classList.add('hidden'); return; }
-        const filtered = customers.filter(c => c.name.toLowerCase().includes(term.toLowerCase()) || c.dni.includes(term));
-        resultsDiv.innerHTML = filtered.map(c =>
-            `<div class="p-3 hover:bg-surface-container-low cursor-pointer border-b border-outline-variant/20 last:border-0" onclick="selectCustomer('${c.name}', '${c.dni}')">
+      function searchCustomers(term) {
+        const resultsDiv = document.getElementById("customer-results");
+        if (!term) {
+          resultsDiv.classList.add("hidden");
+          return;
+        }
+        const filtered = customers.filter(
+          (c) =>
+            c.name.toLowerCase().includes(term.toLowerCase()) ||
+            c.dni.includes(term),
+        );
+        resultsDiv.innerHTML = filtered
+          .map(
+            (c) =>
+              `<div class="p-3 hover:bg-surface-container-low cursor-pointer border-b border-outline-variant/20 last:border-0" onclick="selectCustomer('${c.name}', '${c.dni}')">
                 <div class="text-sm font-bold text-on-surface">${c.name}</div>
                 <div class="text-[10px] text-on-surface-variant font-medium">DNI: ${c.dni}</div>
-            </div>`
-        ).join('');
-        resultsDiv.classList.remove('hidden');
-    }
+            </div>`,
+          )
+          .join("");
+        resultsDiv.classList.remove("hidden");
+      }
 
-    function selectCustomer(name, dni) {
-        document.getElementById('customer-search').value = `${name} - ${dni}`;
-        document.getElementById('customer-results').classList.add('hidden');
-        const toggle = document.getElementById('anon-toggle');
-        const indicator = document.getElementById('anon-indicator');
-        toggle.classList.remove('bg-primary/10', 'border-primary');
-        toggle.classList.add('bg-surface-container-low', 'border-outline-variant/40');
-        indicator.classList.remove('bg-primary');
-        indicator.classList.add('bg-on-surface-variant/40');
-    }
+      function selectCustomer(name, dni) {
+        document.getElementById("customer-search").value = `${name} - ${dni}`;
+        document.getElementById("customer-results").classList.add("hidden");
+      }
 
-    function setAnonymous() {
-        document.getElementById('customer-search').value = '';
-        const toggle = document.getElementById('anon-toggle');
-        const indicator = document.getElementById('anon-indicator');
-        toggle.classList.add('bg-primary/10', 'border-primary');
-        toggle.classList.remove('bg-surface-container-low', 'border-outline-variant/40');
-        indicator.classList.add('bg-primary');
-        indicator.classList.remove('bg-on-surface-variant/40');
-    }
+      function toggleCustomerResults(show) {
+        if (!show)
+          setTimeout(
+            () =>
+              document
+                .getElementById("customer-results")
+                .classList.add("hidden"),
+            200,
+          );
+      }
 
-    function toggleCustomerResults(show) {
-        if (!show) setTimeout(() => document.getElementById('customer-results').classList.add('hidden'), 200);
-    }
-
-    window.onload = init;
-</script>
-
-</body>
+      window.onload = init;
+    </script>
+  </body>
 </html>
