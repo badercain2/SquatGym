@@ -283,6 +283,12 @@ h1,h2,h3,h4,.headline{
   }
 }
 
+.toast-enter { animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 .table-card{
   flex:1;
   min-height:0;
@@ -518,7 +524,7 @@ h1,h2,h3,h4,.headline{
         <span class="material-symbols-outlined text-[28px]">menu</span>
       </button>
 
-      <a class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity" href="../dashboard-secretaria.html">
+      <a class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity" href="../dashboard-encargado.html">
         Squat Gym
       </a>
     </div>
@@ -632,7 +638,7 @@ h1,h2,h3,h4,.headline{
 
       <nav class="flex flex-col h-full gap-2">
 
-        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-secretaria.html">
+        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-encargado.html">
           <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>
           <span class="font-lexend tracking-tight">Inicio</span>
         </a>
@@ -643,17 +649,17 @@ h1,h2,h3,h4,.headline{
             Gesti&oacute;n de Clases
           </div>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Catalogo-de-clases-secretaria.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Catalogo-de-clases-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
             <span class="font-medium text-sm">Cat&aacute;logo de Clases</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Cronograma-semanal-secretaria.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Cronograma-semanal-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
             <span class="font-medium text-sm">Cronograma</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Consultar-alumno-secretaria.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-clases/Consultar-alumno-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
             <span class="font-medium text-sm">Consultar Alumno</span>
           </a>
@@ -666,17 +672,17 @@ h1,h2,h3,h4,.headline{
             Gesti&oacute;n de Kiosko
           </div>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Registrar-venta.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Historial-de-ventas.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">point_of_sale</span>
-            <span class="font-medium text-sm">Registrar Venta</span>
+            <span class="font-medium text-sm">Historial de Ventas</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Control-de-inventario.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Control-de-inventario-encargado.html">
             <span class="material-symbols-outlined text-primary transition-colors" style="font-variation-settings:'FILL' 1;">inventory_2</span>
             <span class="font-medium text-sm">Control de Inventario</span>
           </a>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Cupones.html">
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Cupones-encargado.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
             <span class="font-medium text-sm">Cupones</span>
           </a>
@@ -710,20 +716,10 @@ h1,h2,h3,h4,.headline{
         </div>
 
         <div class="flex items-center gap-3 shrink-0">
-          <div class="relative group" tabindex="0">
-            <button class="flex items-center gap-1.5 bg-surface-container-lowest text-on-surface text-xs font-semibold pl-3 pr-2 py-1.5 rounded-xl border border-outline-variant/40 hover:bg-surface-container-low focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer whitespace-nowrap" id="sede-btn-inventario" type="button">
-              <span class="material-symbols-outlined text-primary text-sm">location_on</span>
-              <span id="sede-label-inventario">Todas las sedes</span>
-              <span class="material-symbols-outlined text-on-surface-variant text-lg">expand_more</span>
-            </button>
-            <div class="hidden absolute left-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-zinc-100 py-2 z-50 group-focus-within:block" id="sede-dropdown-inventario" style="min-width:calc(100% + 30px)">
-              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('todas',this)">Todas las sedes</button>
-              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('zona-norte',this)">Zona Norte</button>
-              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('zona-sur',this)">Zona Sur</button>
-              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('zona-este',this)">Zona Este</button>
-              <button class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap" type="button" onclick="seleccionarSedeInventario('zona-oeste',this)">Zona Oeste</button>
-            </div>
-          </div>
+          <button class="flex items-center gap-2 bg-error/10 text-error px-4 py-2 rounded-xl font-black text-xs uppercase tracking-widest headline hover:bg-error hover:text-white transition-all shadow-md active:scale-95 border border-error/20" onclick="openReposicionModal()" id="btn-reposicion">
+            <span class="material-symbols-outlined text-lg">shopping_cart_checkout</span>
+            Generar Pedido (<span id="low-stock-count">5</span>)
+          </button>
           <button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-xl font-black text-xs uppercase tracking-widest headline hover:bg-primary-dim transition-all shadow-md active:scale-95 shrink-0" onclick="openAddProductModal()">
             <span class="material-symbols-outlined text-lg">add_circle</span>
             A&ntilde;adir Producto
@@ -738,18 +734,15 @@ h1,h2,h3,h4,.headline{
         <div class="shrink-0 px-6 py-4 border-b border-primary/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-surface-container-lowest/80">
           <h2 class="text-base font-black tracking-tight text-on-surface headline">Inventario de Productos</h2>
           <div class="flex flex-wrap items-center gap-3">
-            <div class="relative group" tabindex="0">
-              <button class="flex items-center gap-2 bg-surface-container-lowest text-on-surface text-sm pl-4 pr-3 py-2 rounded-lg border border-outline-variant/40 hover:bg-surface-container-low focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer w-full whitespace-nowrap" id="type-btn" type="button">
-                <span id="type-label">Todos los Tipos</span>
-                <span class="material-symbols-outlined text-on-surface-variant text-xl">expand_more</span>
-              </button>
-              <div class="hidden absolute left-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-zinc-100 py-2 z-50 group-focus-within:block" id="type-dropdown" style="min-width:calc(100% + 40px)">
-                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('',this)">Todos los Tipos</button>
-                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('suplementos',this)">Suplementos</button>
-                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('bebidas',this)">Bebidas</button>
-                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('accesorios',this)">Accesorios</button>
-                <button class="w-full text-left px-4 py-3 text-sm hover:bg-primary hover:text-white transition-colors" type="button" onclick="seleccionarTipo('comida',this)">Comida</button>
-              </div>
+            <div class="relative flex items-center">
+              <select class="appearance-none bg-surface-container-lowest border border-outline-variant/40 rounded-lg py-2 pl-3 pr-8 text-xs font-bold headline text-on-surface hover:border-primary/30 focus:outline-none focus:border-primary/40 transition-all cursor-pointer" id="typeFilter">
+                <option value="">Todos los Tipos</option>
+                <option value="suplementos">Suplementos</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="accesorios">Accesorios</option>
+                <option value="comida">Comida</option>
+              </select>
+              <span class="material-symbols-outlined absolute right-2 text-primary/60 text-base pointer-events-none">arrow_drop_down</span>
             </div>
             <div class="relative flex items-center group">
               <span class="material-symbols-outlined absolute left-3 text-slate-400 text-base group-focus-within:text-primary transition-colors">search</span>
@@ -800,13 +793,69 @@ h1,h2,h3,h4,.headline{
       </p>
     </div>
     <div class="flex items-center gap-6">
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Ayuda-secretaria.html">Ayuda</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Privacidad-secretaria.html">Privacidad</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Contacto-secretaria.html">Contacto</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Ayuda-encargado.html">Ayuda</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Privacidad-encargado.html">Privacidad</a>
+      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="../general-secretaria/Contacto-encargado.html">Contacto</a>
     </div>
   </div>
 </footer>
 
+</div>
+
+<!-- Reposición Modal -->
+<div class="fixed inset-0 z-[110] items-center justify-center hidden" id="reposicionModal">
+<div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeReposicionModal()"></div>
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-2xl w-full mx-4 relative z-10 max-h-[90vh] overflow-y-auto">
+<div class="p-6 border-b border-outline-variant/20 flex justify-between items-center">
+<h3 class="text-2xl font-bold font-headline text-on-surface">Pedido de Reposici&oacute;n</h3>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors" onclick="closeReposicionModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6">
+<p class="text-sm text-on-surface-variant mb-4">Seleccion&aacute; un proveedor para ver los productos que pod&eacute;s solicitar:</p>
+<div class="flex flex-col gap-3 mb-4">
+<label class="text-xs font-black uppercase tracking-widest text-primary/60">Proveedores</label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="proveedoresContainer">
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Sancor" onclick="toggleProveedor(this)" type="button">Sancor</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Arcor" onclick="toggleProveedor(this)" type="button">Arcor</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Mastellone" onclick="toggleProveedor(this)" type="button">Mastellone</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Coca-Cola" onclick="toggleProveedor(this)" type="button">Coca-Cola</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="PepsiCo" onclick="toggleProveedor(this)" type="button">PepsiCo</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Molinos Río de la Plata" onclick="toggleProveedor(this)" type="button">Molinos R&iacute;o Plata</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Danone" onclick="toggleProveedor(this)" type="button">Danone</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Unilever" onclick="toggleProveedor(this)" type="button">Unilever</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Nestlé" onclick="toggleProveedor(this)" type="button">Nestl&eacute;</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Quaker" onclick="toggleProveedor(this)" type="button">Quaker</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="Bagley" onclick="toggleProveedor(this)" type="button">Bagley</button>
+<button class="proveedor-chip px-3 py-2 rounded-xl border-2 border-primary/10 text-xs font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-proveedor="La Serenísima" onclick="toggleProveedor(this)" type="button">La Seren&iacute;sima</button>
+</div>
+</div>
+
+<div class="hidden flex flex-col gap-3 mb-4" id="productosProveedorSection">
+<label class="text-xs font-black uppercase tracking-widest text-primary/60">Productos a Solicitar <span class="text-on-surface-variant font-normal normal-case" id="productosProveedorInfo"></span></label>
+<div class="flex flex-col gap-2 max-h-52 overflow-y-auto custom-scrollbar pr-1" id="productosProveedorList"></div>
+</div>
+
+<div class="flex flex-col gap-3">
+<label class="text-xs font-black uppercase tracking-widest text-primary/60">Nota del pedido</label>
+<textarea class="bg-surface-container-low border border-primary/10 rounded-xl py-3 px-4 text-sm font-bold focus:outline-none focus:border-primary/40 transition-all w-full resize-none" id="reposicionNota" placeholder="Ej: Urgente - reponer antes del viernes" rows="2"></textarea>
+</div>
+</div>
+<div class="px-6 py-4 bg-surface-container-low rounded-b-2xl flex justify-end gap-3 border-t border-outline-variant/20">
+<button class="px-6 py-3 rounded-xl font-bold text-sm text-on-surface hover:bg-surface-variant transition-colors" onclick="closeReposicionModal()">Cancelar</button>
+<button class="px-6 py-3 rounded-xl font-black text-sm bg-primary text-white hover:bg-primary-dim transition-colors shadow-md shadow-primary/20 active:scale-95" onclick="confirmReposicion()">Confirmar Pedido</button>
+</div>
+</div>
+</div>
+
+<!-- Toast -->
+<div class="fixed bottom-6 right-6 z-[120] bg-[#004d40] text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 hidden transition-all duration-300" id="toastNotification">
+<span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span>
+<div class="flex flex-col">
+<span class="font-bold text-sm" id="toastTitle">Operaci&oacute;n Exitosa</span>
+<span class="text-[10px] opacity-80" id="toastMsg"></span>
+</div>
 </div>
 
 <!-- Delete Confirmation Modal -->
@@ -863,7 +912,7 @@ h1,h2,h3,h4,.headline{
 <div class="grid grid-cols-2 gap-2" id="productTypeSelectors">
 <button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Bebidas" onclick="selectType(this)" type="button">Bebidas</button>
 <button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Suplementos" onclick="selectType(this)" type="button">Suplementos</button>
-<button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Comida" onclick="selectType(this)" type="button">Comida</button>
+<button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Snacks" onclick="selectType(this)" type="button">Snacks</button>
 <button class="type-chip py-3 px-4 rounded-xl border-2 border-primary/10 text-sm font-bold headline hover:border-primary/40 transition-all bg-surface-container-low text-on-surface" data-value="Accesorios" onclick="selectType(this)" type="button">Accesorios</button>
 </div>
 <input id="newProductType" type="hidden" value="">
@@ -1024,24 +1073,13 @@ h1,h2,h3,h4,.headline{
         document.getElementById('totalDisplay').innerText = filteredProducts.length;
     }
 
-    var currentTypeFilter = '';
-
-    function seleccionarTipo(val, btn) {
-        var labels = {'':'Todos los Tipos',suplementos:'Suplementos',bebidas:'Bebidas',accesorios:'Accesorios',comida:'Comida'};
-        document.getElementById('type-label').textContent = labels[val] || val;
-        btn.closest('.group').querySelector('[id$="-dropdown"]').classList.add('hidden');
-        document.activeElement.blur();
-        currentTypeFilter = val;
-        currentPage = 1;
-        filterAndRender();
-    }
-
     function filterAndRender() {
         const term = document.getElementById('productSearch').value.toLowerCase();
+        const typeTerm = document.getElementById('typeFilter').value.toLowerCase();
         filteredProducts = products.filter(p => {
             const name = p.name.toLowerCase();
             const type = p.cat.toLowerCase();
-            return name.startsWith(term) && (currentTypeFilter === "" || type === currentTypeFilter);
+            return name.startsWith(term) && (typeTerm === "" || type === typeTerm);
         });
         const maxPage = Math.max(1, Math.ceil(filteredProducts.length / itemsPerPage));
         if (currentPage > maxPage) currentPage = maxPage;
@@ -1049,6 +1087,7 @@ h1,h2,h3,h4,.headline{
     }
 
     document.getElementById('productSearch').addEventListener('input', () => { currentPage = 1; filterAndRender(); });
+    document.getElementById('typeFilter').addEventListener('change', () => { currentPage = 1; filterAndRender(); });
 
     // Delete Modal
     let productToDeleteId = null;
@@ -1068,7 +1107,7 @@ h1,h2,h3,h4,.headline{
     document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
         if (productToDeleteId !== null) {
             const index = products.findIndex(p => p.id === productToDeleteId);
-            if (index > -1) { products.splice(index, 1); filterAndRender(); }
+            if (index > -1) { const name = products[index].name; products.splice(index, 1); filterAndRender(); updateLowStockCount(); showToast('Producto Eliminado', name + ' fue removido del inventario'); }
             closeDeleteModal();
         }
     });
@@ -1141,10 +1180,11 @@ h1,h2,h3,h4,.headline{
             if (editingProductId) {
                 const prod = products.find(p => p.id === editingProductId);
                 if (prod) { prod.name = name; prod.cat = type; prod.price = price; prod.stock = stock; prod.status = stock <= 5 ? "Stock Cr\u00edtico" : "Disponible"; prod.img = img; }
+                filterAndRender(); updateLowStockCount(); showToast('Producto Modificado', name + ' actualizado correctamente');
             } else {
                 products.unshift({ id: Date.now(), name, cat: type, price, stock, status: stock <= 5 ? "Stock Cr\u00edtico" : "Disponible", img });
+                filterAndRender(); updateLowStockCount(); showToast('Producto Agregado', name + ' a&ntilde;adido al inventario');
             }
-            filterAndRender();
             closeAddProductModal();
         } else {
             alert('Complete todos los campos correctamente');
@@ -1210,14 +1250,185 @@ h1,h2,h3,h4,.headline{
         document.getElementById('addProductModal').classList.add('flex');
     }
 
-    function seleccionarSedeInventario(val, btn) {
-        var labels = {todas:'Todas las sedes','zona-norte':'Zona Norte','zona-sur':'Zona Sur','zona-este':'Zona Este','zona-oeste':'Zona Oeste'};
-        document.getElementById('sede-label-inventario').textContent = labels[val] || val;
-        btn.closest('.group').querySelector('[id$="-dropdown-inventario"]').classList.add('hidden');
-        document.activeElement.blur();
+    document.addEventListener('DOMContentLoaded', () => { renderTable(); updateLowStockCount(); });
+
+    // Reposición
+    const supplierProductMap = {
+        'Sancor': ['Protein Shake'],
+        'Arcor': ['Barra Energ\u00e9tica', 'Vitamin Complex'],
+        'Mastellone': ['Protein Shake'],
+        'Coca-Cola': ['Bebida Isot\u00f3nica'],
+        'PepsiCo': ['Bebida Isot\u00f3nica'],
+        'Molinos R\u00edo de la Plata': ['Barra Energ\u00e9tica', 'Creatina Monohidrato', 'Aminoacidos BCAA'],
+        'Danone': ['Protein Shake', 'Vitamin Complex'],
+        'Unilever': ['Toalla Microfibra', 'Guantes de Gimnasio', 'Mu\u00f1equeras'],
+        'Nestl\u00e9': ['Barra Energ\u00e9tica', 'Vitamin Complex', 'Pre-Workout Blast'],
+        'Quaker': ['Barra Energ\u00e9tica'],
+        'Bagley': ['Barra Energ\u00e9tica'],
+        'La Seren\u00edsima': ['Protein Shake', 'Pre-Workout Blast'],
+    };
+
+    function getSelectedProveedores() {
+        const selected = [];
+        document.querySelectorAll('.proveedor-chip').forEach(c => {
+            if (c.classList.contains('bg-primary')) {
+                selected.push(c.getAttribute('data-proveedor'));
+            }
+        });
+        return selected;
     }
 
-    document.addEventListener('DOMContentLoaded', renderTable);
+    function toggleProveedor(btn) {
+        btn.classList.toggle('bg-primary');
+        btn.classList.toggle('text-white');
+        btn.classList.toggle('border-primary');
+        btn.classList.toggle('bg-surface-container-low');
+        btn.classList.toggle('text-on-surface');
+        btn.classList.toggle('border-primary/10');
+        updateProductosProveedor();
+    }
+
+    function resetProveedores() {
+        document.querySelectorAll('.proveedor-chip').forEach(c => {
+            c.classList.remove('bg-primary', 'text-white', 'border-primary');
+            c.classList.add('bg-surface-container-low', 'text-on-surface', 'border-primary/10');
+        });
+        const list = document.getElementById('productosProveedorList');
+        list.innerHTML = '';
+        document.getElementById('productosProveedorSection').classList.add('hidden');
+    }
+
+    function updateProductosProveedor() {
+        const selected = getSelectedProveedores();
+        const section = document.getElementById('productosProveedorSection');
+        const list = document.getElementById('productosProveedorList');
+        const info = document.getElementById('productosProveedorInfo');
+
+        if (selected.length === 0) {
+            section.classList.add('hidden');
+            return;
+        }
+
+        // Collect all product names from selected suppliers
+        const productNames = new Set();
+        selected.forEach(prov => {
+            if (supplierProductMap[prov]) {
+                supplierProductMap[prov].forEach(p => productNames.add(p));
+            }
+        });
+
+        // Find which of those products exist in inventory, show ALL (not just low stock)
+        const availableProducts = products.filter(p => productNames.has(p.name));
+
+        if (availableProducts.length === 0) {
+            section.classList.add('hidden');
+            return;
+        }
+
+        section.classList.remove('hidden');
+        info.innerText = '(' + availableProducts.length + ' productos disponibles)';
+
+        // Group products by supplier for display
+        list.innerHTML = '';
+        selected.forEach(prov => {
+            if (!supplierProductMap[prov]) return;
+            const provProducts = availableProducts.filter(p => supplierProductMap[prov].includes(p.name));
+            if (provProducts.length === 0) return;
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex flex-col gap-1.5';
+            wrapper.innerHTML = '<div class="text-[10px] font-black text-primary uppercase tracking-widest mt-1">' + prov + '</div>';
+
+            provProducts.forEach(p => {
+                const isLowStock = p.stock <= 5;
+                const row = document.createElement('div');
+                row.className = 'flex items-center justify-between p-2.5 rounded-xl border ' + (isLowStock ? 'border-error/20 bg-error/5' : 'border-primary/10 bg-surface-container-low');
+                row.innerHTML = `
+                    <div class="flex items-center gap-3 min-w-0 flex-1">
+                        <div class="w-9 h-9 rounded-lg bg-primary/5 overflow-hidden border border-primary/10 shrink-0">
+                            <img alt="${p.name}" class="w-full h-full object-cover" src="${p.img || ''}"/>
+                        </div>
+                        <div class="min-w-0">
+                            <p class="font-bold text-xs text-on-surface headline truncate">${p.name}</p>
+                            <p class="text-[9px] text-on-surface-variant">Stock: <span class="${isLowStock ? 'text-error font-bold' : ''}">${p.stock}</span> | ${p.cat}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0 ml-2">
+                        <label class="text-[9px] font-bold text-on-surface-variant">Cant:</label>
+                        <input type="number" min="0" value="${isLowStock ? Math.max(10, 20 - p.stock) : 0}" class="reposicion-cant w-16 text-center py-1.5 rounded-lg border border-primary/20 text-xs font-bold headline focus:outline-none focus:border-primary bg-white" data-product-id="${p.id}">
+                    </div>
+                `;
+                wrapper.appendChild(row);
+            });
+
+            list.appendChild(wrapper);
+        });
+    }
+
+    function openReposicionModal() {
+        resetProveedores();
+        document.getElementById('reposicionNota').value = '';
+        document.getElementById('reposicionModal').classList.remove('hidden');
+        document.getElementById('reposicionModal').classList.add('flex');
+    }
+
+    function closeReposicionModal() {
+        document.getElementById('reposicionModal').classList.remove('flex');
+        document.getElementById('reposicionModal').classList.add('hidden');
+    }
+
+    function confirmReposicion() {
+        const selected = getSelectedProveedores();
+        const nota = document.getElementById('reposicionNota').value.trim();
+        closeReposicionModal();
+
+        if (selected.length === 0) {
+            showToast('Pedido Cancelado', 'Debe seleccionar al menos un proveedor');
+            return;
+        }
+
+        // Get quantities from inputs
+        const orderItems = [];
+        document.querySelectorAll('.reposicion-cant').forEach(input => {
+            const qty = parseInt(input.value) || 0;
+            if (qty > 0) {
+                const prod = products.find(p => p.id === parseInt(input.getAttribute('data-product-id')));
+                if (prod) orderItems.push({ name: prod.name, qty });
+            }
+        });
+
+        if (orderItems.length === 0) {
+            showToast('Pedido Cancelado', 'Debe indicar cantidad para al menos un producto');
+            return;
+        }
+
+        let msg = 'Proveedores: ' + selected.join(', ');
+        msg += ' | ' + orderItems.length + ' producto(s)';
+        const totalItems = orderItems.reduce((sum, item) => sum + item.qty, 0);
+        msg += ' (' + totalItems + ' unidades)';
+        if (nota) msg += ' | Nota: ' + nota;
+
+        showToast('Pedido de Reposici\u00f3n Generado', msg);
+        resetProveedores();
+        document.getElementById('reposicionNota').value = '';
+    }
+
+    function showToast(title, msg) {
+        const toast = document.getElementById('toastNotification');
+        document.getElementById('toastTitle').innerText = title;
+        document.getElementById('toastMsg').innerText = msg;
+        toast.classList.remove('hidden');
+        toast.classList.add('toast-enter');
+        setTimeout(() => {
+            toast.classList.add('opacity-0');
+            setTimeout(() => { toast.classList.add('hidden'); toast.classList.remove('opacity-0', 'toast-enter'); }, 300);
+        }, 3000);
+    }
+
+    function updateLowStockCount() {
+        const count = products.filter(p => p.stock <= 5).length;
+        document.getElementById('low-stock-count').innerText = count;
+    }
 </script>
 
 </body>
