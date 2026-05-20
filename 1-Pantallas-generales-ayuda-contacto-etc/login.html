@@ -515,6 +515,12 @@
         } else if (usuario === "profesor" && password === "12345678") {
           window.location.href = "../profesor/dashboard-profesor.html";
           return false;
+        } else if (usuario === "encargado" && password === "12345678") {
+          window.location.href = "../Encargado/dashboard-encargado.html";
+          return false;
+        } else if (usuario === "administrador" && password === "12345678") {
+          window.location.href = "../Administrador/dashboard-administrador.html";
+          return false;
         } else {
           // Si las credenciales son incorrectas, mostramos el div rojo
           errorDiv.classList.remove("hidden");
