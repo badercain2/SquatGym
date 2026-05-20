@@ -824,6 +824,83 @@ h1,h2,h3,h4,.headline{
 </div>
 </div>
 
+<!-- Credit Card Payment Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4" id="modal-card">
+<div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-outline-variant/30 flex flex-col">
+<div class="bg-primary-dim p-6 text-white shrink-0 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-2xl">credit_card</span>
+<h2 class="font-headline font-bold text-lg uppercase tracking-wider">Pago con Tarjeta</h2>
+</div>
+<button class="hover:bg-white/10 rounded-full p-1 transition-colors" onclick="closeModals()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-6 flex flex-col gap-5">
+<div class="flex flex-col items-center gap-1">
+<p class="text-xs font-black text-on-surface-variant/60 uppercase tracking-[0.2em]">Monto a Pagar</p>
+<p class="text-3xl font-black text-primary tracking-tighter" id="modal-total-card">$27.60</p>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">N&uacute;mero de Tarjeta</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="card-number" placeholder="1234 5678 9012 3456" type="text" maxlength="19" oninput="formatCardNumber(this)">
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">Vencimiento</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="card-expiry" placeholder="MM/AA" type="text" maxlength="5" oninput="formatExpiry(this)">
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">CVV</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="card-cvv" placeholder="123" type="text" maxlength="4">
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">Titular</label>
+<input class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="card-holder" placeholder="Nombre del titular" type="text">
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[10px] font-black text-on-surface-variant/60 uppercase tracking-widest ml-1">Cuotas</label>
+<select class="w-full bg-surface-container-low border border-outline-variant/40 rounded-xl py-3 px-4 text-base font-semibold text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all appearance-none cursor-pointer" id="card-installments">
+<option value="1">1 cuota sin inter&eacute;s</option>
+<option value="3">3 cuotas</option>
+<option value="6">6 cuotas</option>
+<option value="12">12 cuotas</option>
+</select>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg text-sm" onclick="confirmCardPayment()">CONFIRMAR PAGO</button>
+</div>
+</div>
+</div>
+
+<!-- QR Payment Modal -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4" id="modal-qr">
+<div class="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden border border-outline-variant/30 flex flex-col">
+<div class="bg-primary-dim p-6 text-white shrink-0 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-2xl">qr_code_2</span>
+<h2 class="font-headline font-bold text-lg uppercase tracking-wider">Pago QR</h2>
+</div>
+<button class="hover:bg-white/10 rounded-full p-1 transition-colors" onclick="closeModals()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-8 flex flex-col items-center gap-6">
+<div class="flex flex-col items-center gap-1">
+<p class="text-xs font-black text-on-surface-variant/60 uppercase tracking-[0.2em]">Monto a Pagar</p>
+<p class="text-3xl font-black text-primary tracking-tighter" id="modal-total-qr">$27.60</p>
+</div>
+<div class="w-48 h-48 bg-surface-container-low rounded-2xl flex items-center justify-center border-2 border-dashed border-outline-variant/40">
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SquatGym-POS&bgcolor=f8fafa&color=1a1c1d&margin=10" alt="Código QR" class="w-44 h-44 rounded-xl shadow-sm border border-outline-variant/20">
+</div>
+<p class="text-xs text-on-surface-variant text-center font-medium">Escane&aacute; el c&oacute;digo QR con tu aplicaci&oacute;n bancaria para realizar el pago</p>
+<button class="w-full bg-primary text-white font-bold py-3.5 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-lg text-sm" onclick="confirmQrPayment()">YA PAGU&Eacute;</button>
+</div>
+</div>
+</div>
+
 <script>
     let cart = {};
     let appliedCoupons = [];
@@ -1052,8 +1129,17 @@ h1,h2,h3,h4,.headline{
         const totalVal = parseFloat(total.replace('$', ''));
         if (totalVal <= 0) { alert('El carrito est\u00e1 vac\u00edo'); return; }
         if (!selectedPayment) { alert('Seleccione un m\u00e9todo de pago'); return; }
-        document.getElementById('modal-total-cash').innerText = total;
-        document.getElementById('modal-cash').classList.remove('hidden');
+        const method = selectedPayment.querySelector('span:last-child').innerText.trim();
+        if (method === 'Efectivo') {
+            document.getElementById('modal-total-cash').innerText = total;
+            document.getElementById('modal-cash').classList.remove('hidden');
+        } else if (method === 'Tarjeta') {
+            document.getElementById('modal-total-card').innerText = total;
+            document.getElementById('modal-card').classList.remove('hidden');
+        } else if (method === 'QR') {
+            document.getElementById('modal-total-qr').innerText = total;
+            document.getElementById('modal-qr').classList.remove('hidden');
+        }
     }
 
     function calculateChangeDirect() {
@@ -1070,7 +1156,23 @@ h1,h2,h3,h4,.headline{
     }
 
     function confirmCashPayment() { alert('Pago registrado con \u00e9xito'); closeModals(); cancelSale(); }
-    function closeModals() { document.getElementById('modal-cash').classList.add('hidden'); }
+    function confirmCardPayment() { alert('Pago con tarjeta registrado con \u00e9xito'); closeModals(); cancelSale(); }
+    function confirmQrPayment() { alert('Pago QR registrado con \u00e9xito'); closeModals(); cancelSale(); }
+    function closeModals() {
+        document.getElementById('modal-cash').classList.add('hidden');
+        document.getElementById('modal-card').classList.add('hidden');
+        document.getElementById('modal-qr').classList.add('hidden');
+    }
+    function formatCardNumber(input) {
+        let v = input.value.replace(/\D/g, '').substring(0, 16);
+        v = v.replace(/(.{4})/g, '$1 ').trim();
+        input.value = v;
+    }
+    function formatExpiry(input) {
+        let v = input.value.replace(/\D/g, '').substring(0, 4);
+        if (v.length > 2) v = v.substring(0, 2) + '/' + v.substring(2);
+        input.value = v;
+    }
 
     function toggleNotifications() {
         document.getElementById('notification-dropdown').classList.toggle('hidden');
