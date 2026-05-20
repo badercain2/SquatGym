@@ -226,8 +226,8 @@ select {
     <div class="sidebar-inner custom-scrollbar">
       <div class="flex items-center justify-between mb-6 px-2">
         <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">admin_panel_settings</span>
-          <span class="font-black text-on-surface headline tracking-tight">Admin</span>
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">fitness_center</span>
+          <span class="font-black text-on-surface headline tracking-tight">Men&uacute;</span>
         </div>
         <button class="w-8 h-8 rounded-full hover:bg-slate-100 transition flex items-center justify-center text-slate-400 hover:text-on-surface" id="sidebar-close">
           <span class="material-symbols-outlined text-lg">close</span>
@@ -235,28 +235,57 @@ select {
       </div>
 
       <nav class="flex flex-col h-full gap-2">
-        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="#">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">dashboard</span>
-          <span class="font-lexend tracking-tight">Panel Principal</span>
+        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-encargado.html">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>
+          <span class="font-lexend tracking-tight">Inicio</span>
         </a>
 
         <div class="flex flex-col gap-1 mt-2">
           <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
-            Gestión Central
+            Gesti&oacute;n de Clases
           </div>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group active" href="#">
-            <span class="material-symbols-outlined text-primary transition-colors" style="font-variation-settings:'FILL' 1;">edit_calendar</span>
-            <span class="font-medium text-sm">Actualizar Cronograma</span>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-de-clases-encargado.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
+            <span class="font-medium text-sm">Cat&aacute;logo de Clases</span>
           </a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">group</span>
-            <span class="font-medium text-sm">Gestión de Socios</span>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface bg-primary/10 text-primary font-semibold transition-all group active" href="Cronograma-semanal-encargado.html">
+            <span class="material-symbols-outlined text-primary transition-colors" style="font-variation-settings:'FILL' 1;">calendar_view_week</span>
+            <span class="font-medium text-sm">Cronograma</span>
           </a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">badge</span>
-            <span class="font-medium text-sm">Personal e Instructores</span>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Consultar-alumno-encargado.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
+            <span class="font-medium text-sm">Consultar Alumno</span>
           </a>
         </div>
+
+        <div class="flex flex-col gap-1 mt-4">
+          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+            Gesti&oacute;n de Kiosko
+          </div>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Historial-de-ventas.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">point_of_sale</span>
+            <span class="font-medium text-sm">Historial de Ventas</span>
+          </a>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Control-de-inventario-encargado.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span>
+            <span class="font-medium text-sm">Control de Inventario</span>
+          </a>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../gestion-kiosco/Cupones-encargado.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
+            <span class="font-medium text-sm">Cupones</span>
+          </a>
+        </div>
+
+        <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="../1-Pantallas-generales-ayuda-contacto-etc/login.html">
+          <span class="material-symbols-outlined text-error">logout</span>
+          <span class="font-lexend font-medium text-sm">Cerrar Sesi&oacute;n</span>
+        </a>
       </nav>
     </div>
   </aside>
