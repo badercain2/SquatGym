@@ -295,7 +295,7 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
             </div>
           </div>
           <div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
-            <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;">
+            <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;" onclick="location.href='../../Encargado/Notificaciones-encargado/Gestion-de-notificaciones-encargado.html'">
               <span>Ver todas</span>
               <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </button>
@@ -395,7 +395,7 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
               <tr>
                 <th class="px-6 py-3 text-[10px] font-black uppercase tracking-widest text-primary font-headline border-b-2 border-primary/10">Orden</th>
                 <th class="px-6 py-3 text-[10px] font-black uppercase tracking-widest text-primary font-headline border-b-2 border-primary/10">Ejercicio</th>
-                <th class="px-6 py-3 text-[10px] font-black uppercase tracking-widest text-primary font-headline border-b-2 border-primary/10">Duración (Min)</th>
+                <th class="px-6 py-3 text-[10px] font-black uppercase tracking-widest text-primary font-headline border-b-2 border-primary/10 text-center">Duración (Min)</th>
                 <th class="px-6 py-3 text-[10px] font-black uppercase tracking-widest text-primary font-headline border-b-2 border-primary/10 text-center">Series</th>
                 <th class="px-6 py-3 text-[10px] font-black uppercase tracking-widest text-primary font-headline border-b-2 text-center border-primary/10">Intensidad</th>
               </tr>
@@ -403,9 +403,8 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
             <tbody class="divide-y-2 divide-primary/10" id="exercise-body"></tbody>
           </table>
         </div>
-        <div class="shrink-0 px-6 py-3 border-t-2 border-primary/10 flex items-center justify-between bg-white/60">
+        <div class="shrink-0 px-6 py-3 border-t-2 border-primary/10 flex items-center bg-white/60">
           <p class="text-[10px] font-black uppercase tracking-widest text-slate-400" id="pagination-info">Mostrando <span class="text-primary font-bold">1-15</span> de 15 ejercicios</p>
-          <div class="flex items-center gap-1" id="pagination-numbers"></div>
         </div>
       </div>
 
@@ -485,20 +484,13 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         { id: 15, name: 'Jumping Jacks', duration: 10, series: 3, intensity: 'Baja' }
     ];
 
-    let currentPage = 1;
-    const itemsPerPage = 15;
-
     function renderTable() {
         const tbody = document.getElementById('exercise-body');
         if(!tbody) return;
         tbody.innerHTML = '';
 
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedItems = exercises.slice(start, end);
-
-        paginatedItems.forEach((ex, index) => {
-            const globalIndex = start + index + 1;
+        exercises.forEach((ex, index) => {
+            const globalIndex = index + 1;
             let intensityBadge = '';
             if (ex.intensity === 'Alta') intensityBadge = '<span class="text-[9px] font-black uppercase tracking-wider text-red-500">Alta</span>';
             else if (ex.intensity === 'Media') intensityBadge = '<span class="text-[9px] font-black uppercase tracking-wider text-orange-500">Media</span>';
@@ -509,7 +501,7 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
             row.innerHTML = `
                 <td class="px-6 py-3 headline font-bold text-primary text-base">${globalIndex.toString().padStart(2, '0')}</td>
                 <td class="px-6 py-3"><div class="flex flex-col"><span class="font-bold text-sm text-on-surface headline">${ex.name}</span></div></td>
-                <td class="px-6 py-3"><div class="flex items-center gap-1"><span class="font-black text-sm text-on-surface headline w-5 text-right">${ex.duration}</span><span class="text-[9px] font-bold text-slate-400 uppercase">min</span></div></td>
+                <td class="px-6 py-3"><div class="flex items-center gap-1"><span class="font-black text-sm text-on-surface headline text-center w-full">${ex.duration}</span></div></td>
                 <td class="px-6 py-3 text-center"><div class="font-black text-base text-on-surface headline">${ex.series}</div></td>
                 <td class="px-6 py-3 text-center">${intensityBadge}</td>
             `;
@@ -531,27 +523,9 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
     }
 
     function updatePaginationUI() {
-        const totalPages = Math.ceil(exercises.length / itemsPerPage);
-        const container = document.getElementById('pagination-numbers');
-        if(container) {
-            container.innerHTML = '';
-            for (let i = 1; i <= totalPages; i++) {
-                const btn = document.createElement('button');
-                btn.textContent = i;
-                btn.className = `w-8 h-8 flex items-center justify-center rounded-xl font-black text-xs headline transition-all ${
-                    currentPage === i ? 'bg-primary text-white shadow-lg shadow-primary/20' : 'border border-primary/10 text-slate-600 hover:border-primary hover:text-primary'
-                }`;
-                btn.onclick = () => setPage(i);
-                container.appendChild(btn);
-            }
-        }
-        const start = exercises.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0;
-        const end = Math.min(start + itemsPerPage - 1, exercises.length);
         const info = document.getElementById('pagination-info');
-        if(info) info.innerHTML = `Mostrando <span class="text-primary font-bold">${start}-${end}</span> de ${exercises.length} ejercicios`;
+        if(info) info.innerHTML = `Mostrando <span class="text-primary font-bold">1-${exercises.length}</span> de ${exercises.length} ejercicios`;
     }
-
-    function setPage(p) { currentPage = p; renderTable(); }
 
     renderTable();
 </script>

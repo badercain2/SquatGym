@@ -810,65 +810,81 @@
                   >
                 </div>
                 <div
+                  id="header-day-col-0"
                   class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10"
                 >
                   <span
+                    id="header-day-name-0"
                     class="text-[10px] uppercase tracking-widest text-outline"
                     >LUN</span
                   >
-                  <span class="font-headline font-bold">25</span>
+                  <span id="header-day-num-0" class="font-headline font-bold">25</span>
                 </div>
                 <div
+                  id="header-day-col-1"
                   class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10"
                 >
                   <span
+                    id="header-day-name-1"
                     class="text-[10px] uppercase tracking-widest text-outline"
                     >MAR</span
                   >
-                  <span class="font-headline font-bold">26</span>
+                  <span id="header-day-num-1" class="font-headline font-bold">26</span>
                 </div>
                 <div
-                  class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10 bg-primary/5"
-                >
-                  <span
-                    class="text-[10px] uppercase tracking-widest text-outline text-primary font-bold"
-                    >MIÉ</span
-                  >
-                  <span class="font-headline font-bold text-primary">27</span>
-                </div>
-                <div
+                  id="header-day-col-2"
                   class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10"
                 >
                   <span
+                    id="header-day-name-2"
+                    class="text-[10px] uppercase tracking-widest text-outline"
+                    >MIÉ</span
+                  >
+                  <span id="header-day-num-2" class="font-headline font-bold text-primary">27</span>
+                </div>
+                <div
+                  id="header-day-col-3"
+                  class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10"
+                >
+                  <span
+                    id="header-day-name-3"
                     class="text-[10px] uppercase tracking-widest text-outline"
                     >JUE</span
                   >
-                  <span class="font-headline font-bold">28</span>
+                  <span id="header-day-num-3" class="font-headline font-bold">28</span>
                 </div>
                 <div
+                  id="header-day-col-4"
                   class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10"
                 >
                   <span
+                    id="header-day-name-4"
                     class="text-[10px] uppercase tracking-widest text-outline"
                     >VIE</span
                   >
-                  <span class="font-headline font-bold">29</span>
+                  <span id="header-day-num-4" class="font-headline font-bold">29</span>
                 </div>
                 <div
+                  id="header-day-col-5"
                   class="h-16 flex flex-col items-center justify-center border-r border-outline-variant/10"
                 >
                   <span
+                    id="header-day-name-5"
                     class="text-[10px] uppercase tracking-widest text-outline"
                     >SÁB</span
                   >
-                  <span class="font-headline font-bold">30</span>
+                  <span id="header-day-num-5" class="font-headline font-bold">30</span>
                 </div>
-                <div class="h-16 flex flex-col items-center justify-center">
+                <div
+                  id="header-day-col-6"
+                  class="h-16 flex flex-col items-center justify-center"
+                >
                   <span
+                    id="header-day-name-6"
                     class="text-[10px] uppercase tracking-widest text-outline"
                     >DOM</span
                   >
-                  <span class="font-headline font-bold">31</span>
+                  <span id="header-day-num-6" class="font-headline font-bold">31</span>
                 </div>
               </div>
               <!-- Time Slots & Content - Scrollable -->
@@ -1509,6 +1525,41 @@
           return new Date(year, month + 1, 0).getDate();
         }
 
+        function getMonday(date) {
+          var d = new Date(date);
+          var day = d.getDay();
+          var diff = d.getDate() - day + (day === 0 ? -6 : 1);
+          d.setDate(diff);
+          return d;
+        }
+
+        function updateWeekHeader() {
+          var monday = getMonday(selectedDate);
+          var dayNames = ['LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB', 'DOM'];
+          var today = new Date(2026, 4, 27);
+          var isTodayWeek = selectedDate.toDateString() === today.toDateString();
+          for (var i = 0; i < 7; i++) {
+            var col = document.getElementById('header-day-col-' + i);
+            var nameEl = document.getElementById('header-day-name-' + i);
+            var numEl = document.getElementById('header-day-num-' + i);
+            if (!col || !nameEl || !numEl) continue;
+            var d = new Date(monday);
+            d.setDate(monday.getDate() + i);
+            nameEl.textContent = dayNames[i];
+            numEl.textContent = d.getDate();
+            col.classList.remove('bg-primary/5');
+            nameEl.classList.remove('text-primary', 'font-bold');
+            numEl.classList.remove('text-primary');
+            nameEl.classList.add('text-outline');
+            if (d.toDateString() === selectedDate.toDateString()) {
+              col.classList.add('bg-primary/5');
+              nameEl.classList.add('text-primary', 'font-bold');
+              nameEl.classList.remove('text-outline');
+              numEl.classList.add('text-primary');
+            }
+          }
+        }
+
         function updateUI() {
           const day = selectedDate.getDate();
           const monthName = months[selectedDate.getMonth()].toUpperCase();
@@ -1516,6 +1567,7 @@
           fullDateDisplay.textContent = `${day} DE ${monthName}, ${year}`;
           calendarMonthYear.textContent = `${months[viewDate.getMonth()]} ${viewDate.getFullYear()}`;
           updateCalendarDays();
+          updateWeekHeader();
         }
 
         function updateCalendarDays() {
