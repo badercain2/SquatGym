@@ -1,127 +1,202 @@
-<!DOCTYPE html><html class="light" lang="es"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Squat Gym - Profesor Dashboard</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<script id="tailwind-config">
-    tailwind.config = {
+<!doctype html>
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Squat Gym - Profesor Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
         darkMode: "class",
         theme: {
-            extend: {
-                "colors": {
-                    "inverse-surface": "#0b0f0f",
-                    "outline-variant": "#abadae",
-                    "on-tertiary": "#e8f4ff",
-                    "secondary-fixed-dim": "#00e3e4",
-                    "secondary-dim": "#00595a",
-                    "background": "#f8fafa",
-                    "surface": "#f8fafa",
-                    "surface-container": "#e5e9e9",
-                    "inverse-on-surface": "#9b9d9e",
-                    "on-tertiary-container": "#00344b",
-                    "on-primary-fixed": "#00423c",
-                    "on-surface": "#1a1c1d",
-                    "surface-container-highest": "#d9dede",
-                    "tertiary-fixed-dim": "#00aeef",
-                    "tertiary-fixed": "#27bcff",
-                    "surface-bright": "#f8fafa",
-                    "on-error-container": "#570008",
-                    "primary-container": "#56f1e0",
-                    "primary-fixed": "#56f1e0",
-                    "on-primary-fixed-variant": "#006159",
-                    "secondary": "#006667",
-                    "on-secondary-fixed-variant": "#006061",
-                    "surface-container-lowest": "#ffffff",
-                    "surface-variant": "#d9dede",
-                    "tertiary": "#006289",
-                    "primary": "#00675f",
-                    "on-tertiary-fixed-variant": "#003e58",
-                    "tertiary-container": "#27bcff",
-                    "on-secondary-container": "#005656",
-                    "on-secondary-fixed": "#004142",
-                    "error-container": "#fb5151",
-                    "on-primary": "#ffffff",
-                    "surface-container-high": "#dfe3e3",
-                    "on-tertiary-fixed": "#001a28",
-                    "secondary-fixed": "#22f2f3",
-                    "tertiary-dim": "#005578",
-                    "on-background": "#1a1c1d",
-                    "surface-container-low": "#f1f4f4",
-                    "error-dim": "#9f0519",
-                    "on-primary-container": "#00201d",
-                    "surface-dim": "#d0d5d6",
-                    "surface-tint": "#00675f",
-                    "inverse-primary": "#56f1e0",
-                    "error": "#b31b25",
-                    "secondary-container": "#d0f8f8",
-                    "on-surface-variant": "#444748",
-                    "outline": "#747778",
-                    "on-error": "#ffffff",
-                    "primary-fixed-dim": "#43e2d2",
-                    "primary-dim": "#005a52",
-                    "on-secondary": "#ffffff"
-                },
-                "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "1rem",
-                    "2xl": "1.5rem",
-                    "full": "9999px"
-                },
-                "fontFamily": {
-                    "headline": ["Lexend"],
-                    "body": ["Manrope"],
-                    "label": ["Manrope"]
-                }
+          extend: {
+            colors: {
+              "inverse-surface": "#0b0f0f",
+              "outline-variant": "#abadae",
+              "on-tertiary": "#e8f4ff",
+              "secondary-fixed-dim": "#00e3e4",
+              "secondary-dim": "#00595a",
+              background: "#f8fafa",
+              surface: "#f8fafa",
+              "surface-container": "#e5e9e9",
+              "inverse-on-surface": "#9b9d9e",
+              "on-tertiary-container": "#00344b",
+              "on-primary-fixed": "#00423c",
+              "on-surface": "#1a1c1d",
+              "surface-container-highest": "#d9dede",
+              "tertiary-fixed-dim": "#00aeef",
+              "tertiary-fixed": "#27bcff",
+              "surface-bright": "#f8fafa",
+              "on-error-container": "#570008",
+              "primary-container": "#56f1e0",
+              "primary-fixed": "#56f1e0",
+              "on-primary-fixed-variant": "#006159",
+              secondary: "#006667",
+              "on-secondary-fixed-variant": "#006061",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#d9dede",
+              tertiary: "#006289",
+              primary: "#00675f",
+              "on-tertiary-fixed-variant": "#003e58",
+              "tertiary-container": "#27bcff",
+              "on-secondary-container": "#005656",
+              "on-secondary-fixed": "#004142",
+              "error-container": "#fb5151",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#dfe3e3",
+              "on-tertiary-fixed": "#001a28",
+              "secondary-fixed": "#22f2f3",
+              "tertiary-dim": "#005578",
+              "on-background": "#1a1c1d",
+              "surface-container-low": "#f1f4f4",
+              "error-dim": "#9f0519",
+              "on-primary-container": "#00201d",
+              "surface-dim": "#d0d5d6",
+              "surface-tint": "#00675f",
+              "inverse-primary": "#56f1e0",
+              error: "#b31b25",
+              "secondary-container": "#d0f8f8",
+              "on-surface-variant": "#444748",
+              outline: "#747778",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#43e2d2",
+              "primary-dim": "#005a52",
+              "on-secondary": "#ffffff",
             },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "1rem",
+              "2xl": "1.5rem",
+              full: "9999px",
+            },
+            fontFamily: {
+              headline: ["Lexend"],
+              body: ["Manrope"],
+              label: ["Manrope"],
+            },
+          },
         },
-    }
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
+      };
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
         let classData = [
-            { id: 4, name: "Body Pump", inscritos: 21, capacidad: 30, dias: "Lun, Mié, Vie", turnos: "3 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfqZY1mt4K1uqG6nDwsW81eFflsNYjhSivQusMa5Cxb9utoommuKmiHslEB97Ol2mx93X41Zbs-De4M1rA0TKhvopOuaxk6q6leDfOReY-LFUB5Lsn2MkO706X40efymTFqzhwRnHdCeYvZMUZaBlcELOC0INvYF6qrma2Z2SufYH_edUchM7FHz8qphUKulP1zDijKwJ-TIe--DsnzsNYyXSp5o7_3cv3ggol6hiHvV7JxhfUm2oGdj1bGJUEpYABI4J2EjpQnMPu" },
-            { id: 6, name: "Boxeo", inscritos: 18, capacidad: 35, dias: "Mar, Jue", turnos: "2 turnos", img: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" },
-            { id: 2, name: "Cardio", inscritos: 22, capacidad: 40, dias: "Lun a Vie", turnos: "4 turnos", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&auto=format&fit=crop&q=80" },
-            { id: 1, name: "Crossfit Pro", inscritos: 18, capacidad: 30, dias: "Sáb, Dom", turnos: "1 turno", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7-ci3deHTF4r36w5yBzJwyAIniJzbk8wYBl7gIFPFwnkdwbcY2op-ERJk_DzJbVCmd2_8ALOj4un3SdTaabuToI8eKswGG1wq1wpEyb9BuXy2u1l90XZJWYylDKZNv4HtFyxFkiroKmauM4lGdxc0cVhm4Gah3hjqf7RQMaovfkiI7gmnZy3ArY3aKzY1RX-S-UNs553e4lBoQFhJ_86zqPHuUkn0oZA9OYOgBQCwdTu2-K_Q5LxsOdhU4vfOlShGWBQfYBeLaBiF" },
-            { id: 7, name: "Functional Training", inscritos: 15, capacidad: 35, dias: "Lun, Mié", turnos: "2 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCk23j36pcBnP7acxjsNrJ0fQbVU2k--WBRPhyPVXLVboypsoKWZf9W-Tw5astXiyuva24hCCMtwowsVsOEjARYg5_QmEDPKLsJMhVafDehzOBfvSrirbNGsj8PxEvTGThvwiLMF-sJeSffla0dIfVrse9Y0caaVGHLXpvoSqz-ZPu3EfGMRxnPJbHbXvOxE9CEsWzzz00r7cxgkXGY3lG-vO9ksxLE_D03tYAn9yUchvCS5qWEjv2azcqErx6ZoMmuTyjljR96tsk" },
-            { id: 5, name: "Pilates", inscritos: 12, capacidad: 32, dias: "Mar, Jue", turnos: "3 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDb5xvSNGNLLKjyCw2glLJSwHpJFo5yhToJob3zFIyRuHpy1U_NViDZyC-4HFuiNDhhr8VUHDOVZluvpzEGRBkrZIAprovz9FX33lAoEOE-raCQcF-9pS_aHI_9cWfJy4TfZ8FAOsK0qSmA9IbomoOUwu79K4N0-kMZMJqRVki8CNZwXkBsIthRMLqRHF-98veZF-l6-I20lorAFtndEjg4RSJjwdzqMLTUaqUS4R8kSdb9JTj_10y3JBnYqd2d9asCy-aS2fEJ2YI" },
-            { id: 8, name: "Spinning", inscritos: 25, capacidad: 35, dias: "Lun a Vie", turnos: "5 turnos", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDwqoUN5zxBmza3mjKHpS9Rk6RNwVDtkQEY9fzypwiEOmauJcIHUv9al5SRxJeA0V5hMQOvUNMsd1b0vxR_Ylm7oJ4IQaNGCRIwFISo34Vm6hnJ9VlvV6huO0aOm9JqB909iFWyd-IPydrJYdlephJkmVVg5D8LGMncNRueYRRnzjEJNMcfu66Oj1LFpwbwHYaxeCVO-x2t_iMnheB0XvPx20-jdxfSOGnkUtPHYjV-F1eNCPr0kVMyW6m4uAF91OQ84Cp-KJguKFs" },
-            { id: 3, name: "Zumba Gold", inscritos: 20, capacidad: 40, dias: "Sáb, Dom", turnos: "1 turno", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQGnQN9J1qhrGxbCeRHLgLw1eWkpKVpkpC29oe3GR9J7uuleNjccdAx8ScL9IJro5Kd5d6rvQWQpgxjZ-c3ah70B8D0PxRp5Kqg3p8l3IrVLgFdgDGIBfVQ0czTfHxEW1XuttP0f6iQgWLqbmJAf0RdM4JkQGpMeAuMu-bQ6GGny3UGtvxEuNxTVNMOmcC_1cr4A2Pprykr_Gwms4tkeEFlPrpW2ny9fEtleGiQ8QLaDEoy0_LK93kP0ZT8gaF6UEZrYeq0lputds" }
+          {
+            id: 4,
+            name: "Body Pump",
+            inscritos: 21,
+            capacidad: 30,
+            dias: "Lun, Mié, Vie",
+            turnos: "3 turnos",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAfqZY1mt4K1uqG6nDwsW81eFflsNYjhSivQusMa5Cxb9utoommuKmiHslEB97Ol2mx93X41Zbs-De4M1rA0TKhvopOuaxk6q6leDfOReY-LFUB5Lsn2MkO706X40efymTFqzhwRnHdCeYvZMUZaBlcELOC0INvYF6qrma2Z2SufYH_edUchM7FHz8qphUKulP1zDijKwJ-TIe--DsnzsNYyXSp5o7_3cv3ggol6hiHvV7JxhfUm2oGdj1bGJUEpYABI4J2EjpQnMPu",
+          },
+          {
+            id: 6,
+            name: "Boxeo",
+            inscritos: 18,
+            capacidad: 35,
+            dias: "Mar, Jue",
+            turnos: "2 turnos",
+            img: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+          },
+          {
+            id: 2,
+            name: "Cardio",
+            inscritos: 22,
+            capacidad: 40,
+            dias: "Lun a Vie",
+            turnos: "4 turnos",
+            img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&auto=format&fit=crop&q=80",
+          },
+          {
+            id: 1,
+            name: "Crossfit Pro",
+            inscritos: 18,
+            capacidad: 30,
+            dias: "Sáb, Dom",
+            turnos: "1 turno",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7-ci3deHTF4r36w5yBzJwyAIniJzbk8wYBl7gIFPFwnkdwbcY2op-ERJk_DzJbVCmd2_8ALOj4un3SdTaabuToI8eKswGG1wq1wpEyb9BuXy2u1l90XZJWYylDKZNv4HtFyxFkiroKmauM4lGdxc0cVhm4Gah3hjqf7RQMaovfkiI7gmnZy3ArY3aKzY1RX-S-UNs553e4lBoQFhJ_86zqPHuUkn0oZA9OYOgBQCwdTu2-K_Q5LxsOdhU4vfOlShGWBQfYBeLaBiF",
+          },
+          {
+            id: 7,
+            name: "Functional Training",
+            inscritos: 15,
+            capacidad: 35,
+            dias: "Lun, Mié",
+            turnos: "2 turnos",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCk23j36pcBnP7acxjsNrJ0fQbVU2k--WBRPhyPVXLVboypsoKWZf9W-Tw5astXiyuva24hCCMtwowsVsOEjARYg5_QmEDPKLsJMhVafDehzOBfvSrirbNGsj8PxEvTGThvwiLMF-sJeSffla0dIfVrse9Y0caaVGHLXpvoSqz-ZPu3EfGMRxnPJbHbXvOxE9CEsWzzz00r7cxgkXGY3lG-vO9ksxLE_D03tYAn9yUchvCS5qWEjv2azcqErx6ZoMmuTyjljR96tsk",
+          },
+          {
+            id: 5,
+            name: "Pilates",
+            inscritos: 12,
+            capacidad: 32,
+            dias: "Mar, Jue",
+            turnos: "3 turnos",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDb5xvSNGNLLKjyCw2glLJSwHpJFo5yhToJob3zFIyRuHpy1U_NViDZyC-4HFuiNDhhr8VUHDOVZluvpzEGRBkrZIAprovz9FX33lAoEOE-raCQcF-9pS_aHI_9cWfJy4TfZ8FAOsK0qSmA9IbomoOUwu79K4N0-kMZMJqRVki8CNZwXkBsIthRMLqRHF-98veZF-l6-I20lorAFtndEjg4RSJjwdzqMLTUaqUS4R8kSdb9JTj_10y3JBnYqd2d9asCy-aS2fEJ2YI",
+          },
+          {
+            id: 8,
+            name: "Spinning",
+            inscritos: 25,
+            capacidad: 35,
+            dias: "Lun a Vie",
+            turnos: "5 turnos",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDwqoUN5zxBmza3mjKHpS9Rk6RNwVDtkQEY9fzypwiEOmauJcIHUv9al5SRxJeA0V5hMQOvUNMsd1b0vxR_Ylm7oJ4IQaNGCRIwFISo34Vm6hnJ9VlvV6huO0aOm9JqB909iFWyd-IPydrJYdlephJkmVVg5D8LGMncNRueYRRnzjEJNMcfu66Oj1LFpwbwHYaxeCVO-x2t_iMnheB0XvPx20-jdxfSOGnkUtPHYjV-F1eNCPr0kVMyW6m4uAF91OQ84Cp-KJguKFs",
+          },
+          {
+            id: 3,
+            name: "Zumba Gold",
+            inscritos: 20,
+            capacidad: 40,
+            dias: "Sáb, Dom",
+            turnos: "1 turno",
+            img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBQGnQN9J1qhrGxbCeRHLgLw1eWkpKVpkpC29oe3GR9J7uuleNjccdAx8ScL9IJro5Kd5d6rvQWQpgxjZ-c3ah70B8D0PxRp5Kqg3p8l3IrVLgFdgDGIBfVQ0czTfHxEW1XuttP0f6iQgWLqbmJAf0RdM4JkQGpMeAuMu-bQ6GGny3UGtvxEuNxTVNMOmcC_1cr4A2Pprykr_Gwms4tkeEFlPrpW2ny9fEtleGiQ8QLaDEoy0_LK93kP0ZT8gaF6UEZrYeq0lputds",
+          },
         ];
 
-            classData.sort((a, b) => a.name.localeCompare(b.name));
+        classData.sort((a, b) => a.name.localeCompare(b.name));
 
-            const grid = document.getElementById('class-grid');
-            const searchInput = document.getElementById('class-search');
-            const pageButtons = document.querySelectorAll('.pagination-btn');
-            const prevBtn = document.querySelector('#prev-page');
-            const nextBtn = document.querySelector('#next-page');
-            const resultsText = document.querySelector('.results-summary');
-            
-            let currentPage = 1;
-            const itemsPerPage = 4;
-            let filteredData = [...classData];
+        const grid = document.getElementById("class-grid");
+        const searchInput = document.getElementById("class-search");
+        const pageButtons = document.querySelectorAll(".pagination-btn");
+        const prevBtn = document.querySelector("#prev-page");
+        const nextBtn = document.querySelector("#next-page");
+        const resultsText = document.querySelector(".results-summary");
 
-            const renderClasses = (page) => {
-                grid.innerHTML = '';
-                const start = (page - 1) * itemsPerPage;
-                const end = start + itemsPerPage;
-                const pageItems = filteredData.slice(start, end);
+        let currentPage = 1;
+        const itemsPerPage = 4;
+        let filteredData = [...classData];
 
-                pageItems.forEach(cls => {
-                    const card = document.createElement('div');
-                    // Mejorado: Transición suave y bordes minimalistas limpios
-                    card.className = "bg-white rounded-2xl overflow-hidden border border-slate-100 flex flex-col card-premium hover:-translate-y-1 transition-all duration-300";
-                    card.setAttribute('data-class-name', cls.name);
+        const renderClasses = (page) => {
+          grid.innerHTML = "";
+          const start = (page - 1) * itemsPerPage;
+          const end = start + itemsPerPage;
+          const pageItems = filteredData.slice(start, end);
 
-                    // Calculamos el porcentaje de ocupación
-                    const porcentajeOcupacion = Math.round((cls.inscritos / cls.capacidad) * 100);
+          pageItems.forEach((cls) => {
+            const card = document.createElement("div");
+            // Mejorado: Transición suave y bordes minimalistas limpios
+            card.className =
+              "bg-white rounded-2xl overflow-hidden border border-slate-100 flex flex-col card-premium hover:-translate-y-1 transition-all duration-300";
+            card.setAttribute("data-class-name", cls.name);
 
-                    // Modificación de plantilla: Reestructuración de espacios, badge integrado en imagen y botón secundario legible.
-                    card.innerHTML = `
+            // Calculamos el porcentaje de ocupación
+            const porcentajeOcupacion = Math.round(
+              (cls.inscritos / cls.capacidad) * 100,
+            );
+
+            // Modificación de plantilla: Reestructuración de espacios, badge integrado en imagen y botón secundario legible.
+            card.innerHTML = `
                         <div class="h-32 relative overflow-hidden shrink-0">
                             <img alt="${cls.name}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 brightness-[0.95]" src="${cls.img}"/>
                         </div>
@@ -168,919 +243,1101 @@
                             </div>
                         </div>
                     `;
-                    grid.appendChild(card);
-                });
+            grid.appendChild(card);
+          });
 
-                const totalItems = filteredData.length;
-                const displayEnd = Math.min(end, totalItems);
-                resultsText.innerHTML = `Mostrando <span class="text-primary">${totalItems > 0 ? start + 1 : 0}-${displayEnd}</span> de ${totalItems} clases`;
-                updatePaginationUI();
-            };
+          const totalItems = filteredData.length;
+          const displayEnd = Math.min(end, totalItems);
+          resultsText.innerHTML = `Mostrando <span class="text-primary">${totalItems > 0 ? start + 1 : 0}-${displayEnd}</span> de ${totalItems} clases`;
+          updatePaginationUI();
+        };
 
-            const updatePaginationUI = () => {
-                const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-                
-                pageButtons.forEach(btn => {
-                    const pageVal = parseInt(btn.dataset.page);
-                    if (!isNaN(pageVal)) {
-                        if (pageVal > totalPages) {
-                            btn.classList.add('hidden');
-                        } else {
-                            btn.classList.remove('hidden');
-                            if (pageVal === currentPage) {
-                                btn.className = 'pagination-btn w-8 h-8 flex items-center justify-center rounded-lg font-bold text-xs headline shadow-md cursor-pointer bg-primary text-white active';
-                            } else {
-                                btn.className = 'pagination-btn w-8 h-8 flex items-center justify-center rounded-lg font-bold text-xs headline shadow-md cursor-pointer border border-slate-200 text-slate-600 hover:bg-slate-100';
-                            }
-                        }
-                    }
-                });
+        const updatePaginationUI = () => {
+          const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
-                prevBtn.disabled = currentPage === 1;
-                prevBtn.className = `w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 transition-all shadow-sm cursor-pointer ${currentPage === 1 ? 'text-slate-300 cursor-not-allowed' : 'text-primary hover:bg-primary hover:text-white'}`;
-                
-                nextBtn.disabled = currentPage >= totalPages;
-                nextBtn.className = `w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 transition-all shadow-sm cursor-pointer ${currentPage >= totalPages ? 'text-slate-300 cursor-not-allowed' : 'text-primary hover:bg-primary hover:text-white'}`;
-            };
-
-            searchInput.addEventListener('input', (e) => {
-                const term = e.target.value.toLowerCase().trim();
-                filteredData = classData.filter(cls => cls.name.toLowerCase().includes(term));
-                currentPage = 1;
-                renderClasses(1);
-            });
-
-            pageButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const pageVal = parseInt(btn.dataset.page);
-                    if (!isNaN(pageVal)) {
-                        currentPage = pageVal;
-                        renderClasses(currentPage);
-                    }
-                });
-            });
-
-            prevBtn.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    renderClasses(currentPage);
+          pageButtons.forEach((btn) => {
+            const pageVal = parseInt(btn.dataset.page);
+            if (!isNaN(pageVal)) {
+              if (pageVal > totalPages) {
+                btn.classList.add("hidden");
+              } else {
+                btn.classList.remove("hidden");
+                if (pageVal === currentPage) {
+                  btn.className =
+                    "pagination-btn w-8 h-8 flex items-center justify-center rounded-lg font-bold text-xs headline shadow-md cursor-pointer bg-primary text-white active";
+                } else {
+                  btn.className =
+                    "pagination-btn w-8 h-8 flex items-center justify-center rounded-lg font-bold text-xs headline shadow-md cursor-pointer border border-slate-200 text-slate-600 hover:bg-slate-100";
                 }
-            });
+              }
+            }
+          });
 
-            nextBtn.addEventListener('click', () => {
-                const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    renderClasses(currentPage);
-                }
-            });
+          prevBtn.disabled = currentPage === 1;
+          prevBtn.className = `w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 transition-all shadow-sm cursor-pointer ${currentPage === 1 ? "text-slate-300 cursor-not-allowed" : "text-primary hover:bg-primary hover:text-white"}`;
 
-            renderClasses(currentPage);
+          nextBtn.disabled = currentPage >= totalPages;
+          nextBtn.className = `w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 transition-all shadow-sm cursor-pointer ${currentPage >= totalPages ? "text-slate-300 cursor-not-allowed" : "text-primary hover:bg-primary hover:text-white"}`;
+        };
+
+        searchInput.addEventListener("input", (e) => {
+          const term = e.target.value.toLowerCase().trim();
+          filteredData = classData.filter((cls) =>
+            cls.name.toLowerCase().includes(term),
+          );
+          currentPage = 1;
+          renderClasses(1);
         });
+
+        pageButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const pageVal = parseInt(btn.dataset.page);
+            if (!isNaN(pageVal)) {
+              currentPage = pageVal;
+              renderClasses(currentPage);
+            }
+          });
+        });
+
+        prevBtn.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage--;
+            renderClasses(currentPage);
+          }
+        });
+
+        nextBtn.addEventListener("click", () => {
+          const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+          if (currentPage < totalPages) {
+            currentPage++;
+            renderClasses(currentPage);
+          }
+        });
+
+        renderClasses(currentPage);
+      });
     </script>
-<style>
-:root{
-  --sidebar-width: 280px;
-  --header-height: 64px;
-  --footer-height: 70px;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html,
-body{
-  width:100%;
-  height:100%;
-  overflow:hidden;
-}
-
-body{
-  margin:0;
-  font-family:'Manrope',sans-serif;
-  background:#f8fafa;
-  color:#1a1c1d;
-}
-
-h1,h2,h3,h4,.headline{
-  font-family:'Lexend',sans-serif;
-}
-
-.material-symbols-outlined{
-  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
-}
-
-.bg-mesh{
-  background-color:#f8fafa;
-  background-image:
-    radial-gradient(at 0% 0%, hsla(174,100%,95%,1) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(180,100%,96%,1) 0, transparent 50%);
-}
-
-.card-premium{
-  box-shadow:
-    0 10px 30px -5px rgba(0,0,0,.03),
-    0 4px 12px -4px rgba(0,0,0,.01);
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-}
-
-.layout-shell{
-  width:100%;
-  max-width:1920px;
-  height:100vh;
-  margin:0 auto;
-  display:grid;
-  grid-template-rows:var(--header-height) 1fr var(--footer-height);
-  overflow:hidden;
-}
-
-.header{
-  height:var(--header-height);
-  background:#005a52;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  z-index:50;
-}
-
-.main-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  min-height:0;
-  overflow:hidden;
-  position:relative;
-}
-
-.sidebar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:var(--sidebar-width);
-  height:100vh;
-  background:#ffffff;
-  border-right:1px solid rgba(171,173,174,.3);
-  overflow:hidden;
-  transition:all .3s cubic-bezier(.4,0,.2,1);
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-  z-index:80;
-  transform:translateX(-100%);
-  visibility:hidden;
-  opacity:0;
-}
-
-.sidebar-visible{
-  transform:translateX(0);
-  visibility:visible;
-  opacity:1;
-}
-
-.sidebar-backdrop{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.3);
-  backdrop-filter:blur(4px);
-  z-index:70;
-  opacity:0;
-  visibility:hidden;
-  transition:all .3s ease;
-}
-
-.sidebar-backdrop.show{
-  opacity:1;
-  visibility:visible;
-}
-
-.sidebar-inner{
-  width:var(--sidebar-width);
-  height:100%;
-  overflow-y:auto;
-  padding:24px 16px 16px;
-}
-
-.main-content{
-  min-width:0;
-  min-height:0;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  padding:20px 28px;
-  gap:12px;
-}
-
-.content-wrapper{
-  display:flex;
-  flex-direction:column;
-  min-height:0;
-  flex:1;
-}
-
-.top-section{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:16px;
-  margin-bottom:12px;
-}
-
-.page-title{
-  font-size:clamp(1.4rem,2.5vw,2.2rem);
-  line-height:.95;
-  font-weight:900;
-  letter-spacing:-.05em;
-}
-
-.search-box{
-  width:340px;
-  min-width:340px;
-}
-
-.table-card{
-  flex:1;
-  min-height:0;
-  display:flex;
-  flex-direction:column;
-  background:rgba(255,255,255,.72);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.6);
-  border-radius:24px;
-  overflow:hidden;
-}
-
-.table-scroll{
-  flex:1;
-  overflow:auto;
-}
-
-.footer{
-  background:#00675f;
-  border-top:1px solid rgba(255,255,255,.08);
-}
-
-.custom-scrollbar::-webkit-scrollbar{
-  width:8px;
-  height:8px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb{
-  background:#d9dede;
-  border-radius:999px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover{
-  background:#c5caca;
-}
-
-.nav-link.active{
-  background:#00675f !important;
-  color:#fff !important;
-}
-
-.nav-link.active .material-symbols-outlined{
-  color:#fff !important;
-}
-
-#notification-dropdown{
-  animation:slideInDown .2s ease-out;
-}
-
-#notification-dropdown.hidden{
-  display:none;
-}
-
-@keyframes slideInDown{
-  from{
-    opacity:0;
-    transform:translateY(-10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.dash-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px -10px rgba(0, 103, 95, 0.15);
-}
-
-.pagination-btn.active {
-    background-color: #00675f !important;
-    color: white !important;
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media (max-width:1600px){
-  .main-content{
-    padding:28px;
-  }
-
-  .search-box{
-    width:300px;
-    min-width:300px;
-  }
-}
-
-@media (max-width:1366px){
-  :root{
-    --sidebar-width:250px;
-  }
-
-  .main-content{
-    padding:22px;
-  }
-
-  .page-title{
-    font-size:2.8rem;
-  }
-
-  .search-box{
-    width:280px;
-    min-width:280px;
-  }
-}
-
-@media (max-width: 1024px) {
-  :root {
-    --sidebar-width: 220px;
-  }
-
-  .main-content {
-    padding: 18px;
-    gap: 18px;
-  }
-
-  .page-title {
-    font-size: 2.2rem;
-  }
-
-  .search-box {
-    width: 240px;
-    min-width: 240px;
-  }
-
-  header .headline {
-    font-size: 1.6rem;
-  }
-
-  header .px-8 {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .footer .px-12 {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .dash-next-class {
-    flex-wrap: wrap !important;
-    gap: 12px !important;
-    padding: 16px 20px !important;
-  }
-
-  .dash-next-class .border-r-2 {
-    padding-right: 12px !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .layout-shell {
-    grid-template-rows: var(--header-height) 1fr var(--footer-height);
-    overflow-y: auto;
-  }
-
-  .main-grid {
-    display: flex;
-    flex-direction: column;
-    overflow: visible;
-    min-height: auto;
-  }
-
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(171,173,174,.3);
-    box-shadow: none;
-    overflow: visible;
-  }
-
-  .sidebar-collapsed {
-    display: none;
-  }
-
-  .sidebar-inner {
-    width: 100%;
-    padding: 10px 14px;
-    overflow: visible;
-  }
-
-  .sidebar-inner nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 4px;
-    height: auto;
-  }
-
-  .sidebar-inner nav a {
-    padding: 5px 8px;
-    font-size: 10px;
-    border-radius: 6px !important;
-    white-space: nowrap;
-  }
-
-  .sidebar-inner nav .mt-auto {
-    margin-top: 0 !important;
-    margin-left: auto;
-  }
-
-  .sidebar-inner nav .mt-2 {
-    margin-top: 0 !important;
-    flex-wrap: wrap;
-    display: flex;
-    gap: 4px;
-  }
-
-  .sidebar-inner nav .mt-2 > div:first-child {
-    display: none;
-  }
-
-  .main-content {
-    padding: 14px;
-    gap: 12px;
-    overflow: visible;
-  }
-
-  .content-wrapper {
-    overflow: visible;
-  }
-
-  .top-section {
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-  }
-
-  .page-title {
-    font-size: 1.6rem;
-    line-height: 1;
-  }
-
-  .search-box {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .search-box input {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 13px;
-  }
-
-  header .headline {
-    font-size: 1.2rem;
-  }
-
-  header .gap-4 {
-    gap: 6px;
-  }
-
-  header .px-8 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  header .w-11.h-11 {
-    width: 36px;
-    height: 36px;
-  }
-
-  header .text-\[28px\] {
-    font-size: 20px !important;
-  }
-
-  .footer .h-full {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    padding: 10px 16px !important;
-  }
-
-  .footer .gap-8 {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .footer .text-lg {
-    font-size: 14px;
-  }
-
-  #notification-dropdown {
-    width: 260px;
-    right: -40px;
-  }
-
-  .dash-next-class {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 10px !important;
-    padding: 14px 16px !important;
-  }
-
-  .dash-next-class .border-r-2 {
-    border-right: none !important;
-    padding-right: 0 !important;
-    padding-bottom: 8px;
-    border-bottom: 2px solid rgba(171,173,174,.2);
-    width: 100%;
-    flex-direction: row !important;
-    justify-content: flex-start;
-    gap: 12px;
-  }
-
-  .dash-next-class > div:last-child {
-    width: 100%;
-  }
-
-  .dash-next-class button {
-    width: 100% !important;
-    margin-left: 0 !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .main-content {
-    padding: 10px;
-    gap: 8px;
-  }
-
-  .page-title {
-    font-size: 1.3rem;
-  }
-
-  header .headline {
-    font-size: 1.1rem;
-  }
-
-  header .w-11.h-11 {
-    width: 32px;
-    height: 32px;
-  }
-
-  header .text-\[28px\] {
-    font-size: 18px !important;
-  }
-
-  header .px-8 {
-    padding-left: 6px;
-    padding-right: 6px;
-  }
-
-  #notification-dropdown {
-    width: 220px;
-    right: -10px;
-  }
-}
-
-@media (max-width: 360px) {
-  .page-title {
-    font-size: 1.1rem;
-  }
-
-  .footer .text-\[9px\] {
-    font-size: 7px !important;
-  }
-}
-</style>
-</head>
-<body class="bg-mesh antialiased selection:bg-primary-container selection:text-on-primary-container">
-
-<div class="layout-shell">
-
-<header class="header shrink-0">
-  <div class="h-full max-w-[1880px] mx-auto px-8 flex items-center justify-between">
-
-    <div class="flex items-center gap-4">
-      <button class="w-11 h-11 rounded-full hover:bg-white/10 transition flex items-center justify-center text-white shrink-0" id="sidebar-toggle">
-        <span class="material-symbols-outlined text-[28px]">menu</span>
-      </button>
-
-      <div class="text-white font-black tracking-tighter text-3xl headline">
-        Squat Gym
-      </div>
-    </div>
-
-    <div class="flex items-center gap-4 text-white">
-
-      <div class="relative">
-        <button class="relative flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" id="notification-bell" onclick="toggleNotifications()">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">notifications</span>
-
-          <span class="absolute -top-1 -right-1 w-5 h-5 bg-error text-[10px] font-bold flex items-center justify-center rounded-full border border-white shadow-sm">
-            4
-          </span>
-        </button>
-
-        <div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
-
-          <div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
-            <h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
-            <span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+    <style>
+      :root {
+        --sidebar-width: 280px;
+        --header-height: 64px;
+        --footer-height: 70px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", sans-serif;
+        background: #f8fafa;
+        color: #1a1c1d;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .headline {
+        font-family: "Lexend", sans-serif;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      .bg-mesh {
+        background-color: #f8fafa;
+        background-image:
+          radial-gradient(at 0% 0%, hsla(174, 100%, 95%, 1) 0, transparent 50%),
+          radial-gradient(
+            at 100% 0%,
+            hsla(180, 100%, 96%, 1) 0,
+            transparent 50%
+          );
+      }
+
+      .card-premium {
+        box-shadow:
+          0 10px 30px -5px rgba(0, 0, 0, 0.03),
+          0 4px 12px -4px rgba(0, 0, 0, 0.01);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .layout-shell {
+        width: 100%;
+        max-width: 1920px;
+        height: 100vh;
+        margin: 0 auto;
+        display: grid;
+        grid-template-rows: var(--header-height) 1fr var(--footer-height);
+        overflow: hidden;
+      }
+
+      .header {
+        height: var(--header-height);
+        background: #005a52;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        z-index: 50;
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: var(--sidebar-width);
+        height: 100vh;
+        background: #ffffff;
+        border-right: 1px solid rgba(171, 173, 174, 0.3);
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        z-index: 80;
+        transform: translateX(-100%);
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .sidebar-visible {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(4px);
+        z-index: 70;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .sidebar-backdrop.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .sidebar-inner {
+        width: var(--sidebar-width);
+        height: 100%;
+        overflow-y: auto;
+        padding: 24px 16px 16px;
+      }
+
+      .main-content {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 28px;
+        gap: 12px;
+      }
+
+      .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        flex: 1;
+      }
+
+      .top-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 12px;
+      }
+
+      .page-title {
+        font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+        line-height: 0.95;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+      }
+
+      .search-box {
+        width: 340px;
+        min-width: 340px;
+      }
+
+      .table-card {
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 24px;
+        overflow: hidden;
+      }
+
+      .table-scroll {
+        flex: 1;
+        overflow: auto;
+      }
+
+      .footer {
+        background: #00675f;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #d9dede;
+        border-radius: 999px;
+      }
+
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #c5caca;
+      }
+
+      .nav-link.active {
+        background: #00675f !important;
+        color: #fff !important;
+      }
+
+      .nav-link.active .material-symbols-outlined {
+        color: #fff !important;
+      }
+
+      #notification-dropdown {
+        animation: slideInDown 0.2s ease-out;
+      }
+
+      #notification-dropdown.hidden {
+        display: none;
+      }
+
+      @keyframes slideInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .dash-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px -10px rgba(0, 103, 95, 0.15);
+      }
+
+      .pagination-btn.active {
+        background-color: #00675f !important;
+        color: white !important;
+      }
+
+      /* ===== RESPONSIVE ===== */
+
+      @media (max-width: 1600px) {
+        .main-content {
+          padding: 28px;
+        }
+
+        .search-box {
+          width: 300px;
+          min-width: 300px;
+        }
+      }
+
+      @media (max-width: 1366px) {
+        :root {
+          --sidebar-width: 250px;
+        }
+
+        .main-content {
+          padding: 22px;
+        }
+
+        .page-title {
+          font-size: 2.8rem;
+        }
+
+        .search-box {
+          width: 280px;
+          min-width: 280px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        :root {
+          --sidebar-width: 220px;
+        }
+
+        .main-content {
+          padding: 18px;
+          gap: 18px;
+        }
+
+        .page-title {
+          font-size: 2.2rem;
+        }
+
+        .search-box {
+          width: 240px;
+          min-width: 240px;
+        }
+
+        header .headline {
+          font-size: 1.6rem;
+        }
+
+        header .px-8 {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .footer .px-12 {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+
+        .dash-next-class {
+          flex-wrap: wrap !important;
+          gap: 12px !important;
+          padding: 16px 20px !important;
+        }
+
+        .dash-next-class .border-r-2 {
+          padding-right: 12px !important;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .layout-shell {
+          grid-template-rows: var(--header-height) 1fr var(--footer-height);
+          overflow-y: auto;
+        }
+
+        .main-grid {
+          display: flex;
+          flex-direction: column;
+          overflow: visible;
+          min-height: auto;
+        }
+
+        .sidebar {
+          width: 100%;
+          border-right: none;
+          border-bottom: 1px solid rgba(171, 173, 174, 0.3);
+          box-shadow: none;
+          overflow: visible;
+        }
+
+        .sidebar-collapsed {
+          display: none;
+        }
+
+        .sidebar-inner {
+          width: 100%;
+          padding: 10px 14px;
+          overflow: visible;
+        }
+
+        .sidebar-inner nav {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 4px;
+          height: auto;
+        }
+
+        .sidebar-inner nav a {
+          padding: 5px 8px;
+          font-size: 10px;
+          border-radius: 6px !important;
+          white-space: nowrap;
+        }
+
+        .sidebar-inner nav .mt-auto {
+          margin-top: 0 !important;
+          margin-left: auto;
+        }
+
+        .sidebar-inner nav .mt-2 {
+          margin-top: 0 !important;
+          flex-wrap: wrap;
+          display: flex;
+          gap: 4px;
+        }
+
+        .sidebar-inner nav .mt-2 > div:first-child {
+          display: none;
+        }
+
+        .main-content {
+          padding: 14px;
+          gap: 12px;
+          overflow: visible;
+        }
+
+        .content-wrapper {
+          overflow: visible;
+        }
+
+        .top-section {
+          flex-direction: column;
+          gap: 10px;
+          align-items: flex-start;
+        }
+
+        .page-title {
+          font-size: 1.6rem;
+          line-height: 1;
+        }
+
+        .search-box {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .search-box input {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          font-size: 13px;
+        }
+
+        header .headline {
+          font-size: 1.2rem;
+        }
+
+        header .gap-4 {
+          gap: 6px;
+        }
+
+        header .px-8 {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        header .w-11.h-11 {
+          width: 36px;
+          height: 36px;
+        }
+
+        header .text-\[28px\] {
+          font-size: 20px !important;
+        }
+
+        .footer .h-full {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 6px;
+          padding: 10px 16px !important;
+        }
+
+        .footer .gap-8 {
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .footer .text-lg {
+          font-size: 14px;
+        }
+
+        #notification-dropdown {
+          width: 260px;
+          right: -40px;
+        }
+
+        .dash-next-class {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 10px !important;
+          padding: 14px 16px !important;
+        }
+
+        .dash-next-class .border-r-2 {
+          border-right: none !important;
+          padding-right: 0 !important;
+          padding-bottom: 8px;
+          border-bottom: 2px solid rgba(171, 173, 174, 0.2);
+          width: 100%;
+          flex-direction: row !important;
+          justify-content: flex-start;
+          gap: 12px;
+        }
+
+        .dash-next-class > div:last-child {
+          width: 100%;
+        }
+
+        .dash-next-class button {
+          width: 100% !important;
+          margin-left: 0 !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main-content {
+          padding: 10px;
+          gap: 8px;
+        }
+
+        .page-title {
+          font-size: 1.3rem;
+        }
+
+        header .headline {
+          font-size: 1.1rem;
+        }
+
+        header .w-11.h-11 {
+          width: 32px;
+          height: 32px;
+        }
+
+        header .text-\[28px\] {
+          font-size: 18px !important;
+        }
+
+        header .px-8 {
+          padding-left: 6px;
+          padding-right: 6px;
+        }
+
+        #notification-dropdown {
+          width: 220px;
+          right: -10px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        .page-title {
+          font-size: 1.1rem;
+        }
+
+        .footer .text-\[9px\] {
+          font-size: 7px !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-mesh antialiased selection:bg-primary-container selection:text-on-primary-container"
+  >
+    <div class="layout-shell">
+      <header class="header shrink-0">
+        <div
+          class="h-full max-w-[1880px] mx-auto px-8 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-4">
+            <button
+              class="w-11 h-11 rounded-full hover:bg-white/10 transition flex items-center justify-center text-white shrink-0"
+              id="sidebar-toggle"
+            >
+              <span class="material-symbols-outlined text-[28px]">menu</span>
+            </button>
+
+            <div
+              class="text-white font-black tracking-tighter text-3xl headline"
+            >
+              Squat Gym
+            </div>
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center gap-4 text-white">
+            <div class="relative">
+              <button
+                class="relative flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
+                id="notification-bell"
+                onclick="toggleNotifications()"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >notifications</span
+                >
 
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
-                  <span class="material-symbols-outlined text-sm">inventory_2</span>
+                <span
+                  class="absolute -top-1 -right-1 w-5 h-5 bg-error text-[10px] font-bold flex items-center justify-center rounded-full border border-white shadow-sm"
+                >
+                  4
+                </span>
+              </button>
+
+              <div
+                class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]"
+                id="notification-dropdown"
+              >
+                <div
+                  class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low"
+                >
+                  <h3 class="font-headline font-bold text-on-surface text-sm">
+                    Notificaciones
+                  </h3>
+                  <span
+                    class="text-[10px] font-bold text-primary uppercase tracking-wider"
+                    >4 Nuevas</span
+                  >
                 </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Stock bajo: Proteína Whey</p>
-                  <p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
+
+                <div class="flex flex-col">
+                  <div
+                    class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"
+                  >
+                    <div class="flex gap-3">
+                      <div
+                        class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >inventory_2</span
+                        >
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-xs font-bold text-on-surface">
+                          Stock bajo: Proteína Whey
+                        </p>
+                        <p class="text-[10px] text-on-surface-variant">
+                          Quedan menos de 5 unidades
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"
+                  >
+                    <div class="flex gap-3">
+                      <div
+                        class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >event_busy</span
+                        >
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-xs font-bold text-on-surface">
+                          Clase cancelada: Crossfit
+                        </p>
+                        <p class="text-[10px] text-on-surface-variant">
+                          Instructor no disponible hoy
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10"
+                  >
+                    <div class="flex gap-3">
+                      <div
+                        class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >person_add</span
+                        >
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-xs font-bold text-on-surface">
+                          Nuevo socio: Juan Pérez
+                        </p>
+                        <p class="text-[10px] text-on-surface-variant">
+                          Suscripción Plan Premium
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer"
+                  >
+                    <div class="flex gap-3">
+                      <div
+                        class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0"
+                      >
+                        <span class="material-symbols-outlined text-sm"
+                          >payments</span
+                        >
+                      </div>
+                      <div class="flex-1">
+                        <p class="text-xs font-bold text-on-surface">
+                          Pago pendiente: Factura #4421
+                        </p>
+                        <p class="text-[10px] text-on-surface-variant">
+                          Vencimiento en 2 días
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center"
+                >
+                  <button
+                    class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs"
+                    style="background-color: rgb(0, 103, 95); color: white"
+                  >
+                    <span>Ver todas</span>
+                    <span
+                      class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform"
+                      >arrow_forward</span
+                    >
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <span class="material-symbols-outlined text-sm">event_busy</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
-                  <p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
-                  <span class="material-symbols-outlined text-sm">person_add</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Nuevo socio: Juan Pérez</p>
-                  <p class="text-[10px] text-on-surface-variant">Suscripción Plan Premium</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
-              <div class="flex gap-3">
-                <div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
-                  <span class="material-symbols-outlined text-sm">payments</span>
-                </div>
-                <div class="flex-1">
-                  <p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
-                  <p class="text-[10px] text-on-surface-variant">Vencimiento en 2 días</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
-            <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;">
-              <span>Ver todas</span>
-              <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            <button
+              class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
+              onclick="window.location.href = 'clases/Mi-perfil.html'"
+            >
+              <span
+                class="material-symbols-outlined"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >account_circle</span
+              >
             </button>
           </div>
-
         </div>
-      </div>
+      </header>
 
-      <button class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10" onclick="window.location.href='clases/Mi-perfil.html'">
-        <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">account_circle</span>
-      </button>
+      <div class="main-grid">
+        <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
-    </div>
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-inner custom-scrollbar">
+            <div class="flex items-center justify-between mb-6 px-2">
+              <div class="flex items-center gap-3">
+                <span
+                  class="material-symbols-outlined text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >fitness_center</span
+                >
+                <span class="font-black text-on-surface headline tracking-tight"
+                  >Menú</span
+                >
+              </div>
+              <button
+                class="w-8 h-8 rounded-full hover:bg-slate-100 transition flex items-center justify-center text-slate-400 hover:text-on-surface"
+                id="sidebar-close"
+              >
+                <span class="material-symbols-outlined text-lg">close</span>
+              </button>
+            </div>
 
-  </div>
-</header>
+            <nav class="flex flex-col h-full gap-2">
+              <a
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl active font-medium transition-all"
+                href="#"
+              >
+                <span
+                  class="material-symbols-outlined"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >home</span
+                >
+                <span class="font-lexend tracking-tight">Inicio</span>
+              </a>
 
-<div class="main-grid">
+              <div class="flex flex-col gap-1 mt-2">
+                <div
+                  class="px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
+                >
+                  Gestión de Clases
+                </div>
 
-  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
+                  href="clases/Cronograma-semanal.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
+                    >calendar_view_week</span
+                  >
+                  <span class="font-medium text-sm">Ver Cronograma</span>
+                </a>
 
-  <aside class="sidebar" id="sidebar">
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
+                  href="clases/Catalogo-maestro-de-ejercicios.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
+                    >fitness_center</span
+                  >
+                  <span class="font-medium text-sm">Catálogo Ejercicios</span>
+                </a>
 
-    <div class="sidebar-inner custom-scrollbar">
-      
-      <div class="flex items-center justify-between mb-6 px-2">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">fitness_center</span>
-          <span class="font-black text-on-surface headline tracking-tight">Menú</span>
-        </div>
-        <button class="w-8 h-8 rounded-full hover:bg-slate-100 transition flex items-center justify-center text-slate-400 hover:text-on-surface" id="sidebar-close">
-          <span class="material-symbols-outlined text-lg">close</span>
-        </button>
-      </div>
+                <a
+                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
+                  href="clases/Editor-de-planes.html"
+                >
+                  <span
+                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
+                    >assignment</span
+                  >
+                  <span class="font-medium text-sm">Planificaciones</span>
+                </a>
+              </div>
 
-      <nav class="flex flex-col h-full gap-2">
-
-        <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl active font-medium transition-all" href="#">
-          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>
-          <span class="font-lexend tracking-tight">Inicio</span>
-        </a>
-
-        <div class="flex flex-col gap-1 mt-2">
-
-          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
-            Gestión de Clases
+              <a
+                class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto"
+                href="#"
+              >
+                <span class="material-symbols-outlined text-error">logout</span>
+                <span class="font-lexend font-medium text-sm"
+                  >Cerrar Sesión</span
+                >
+              </a>
+            </nav>
           </div>
+        </aside>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="clases/Catalogo-maestro-de-ejercicios.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
-            <span class="font-medium text-sm">Catálogo de Clases</span>
-          </a>
+        <main class="main-content custom-scrollbar">
+          <div class="content-wrapper">
+            <div class="top-section">
+              <div>
+                <h1 class="page-title text-on-surface headline">
+                  Bienvenido,
+                  <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary"
+                  >
+                    Profesor
+                  </span>
+                </h1>
+              </div>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="clases/Cronograma-semanal.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
-            <span class="font-medium text-sm">Cronograma</span>
-          </a>
+              <div
+                class="bg-white rounded-3xl border border-primary/20 shadow-xl shadow-primary/10 flex items-center gap-6 shrink-0 py-3 px-5 dash-next-class"
+              >
+                <div
+                  class="flex flex-col text-center border-r-2 border-slate-100 pr-4"
+                >
+                  <span
+                    class="text-[8px] font-black text-primary uppercase tracking-widest mb-0.5"
+                    >Próximo</span
+                  >
+                  <div class="flex items-end gap-1">
+                    <span
+                      class="text-2xl font-black text-primary leading-none headline"
+                      >10:30</span
+                    >
+                    <span class="text-[10px] font-bold text-slate-500 mb-0.5"
+                      >AM</span
+                    >
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <p
+                    class="font-headline text-lg font-black text-on-surface leading-tight mb-0.5"
+                  >
+                    HIIT Advanced
+                  </p>
+                  <p
+                    class="text-xs text-on-surface-variant font-bold flex items-center gap-2"
+                  >
+                    <span
+                      class="material-symbols-outlined text-primary text-base"
+                      >group</span
+                    >
+                    22 Inscritos
+                  </p>
+                </div>
+                <button
+                  class="ml-2 flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-primary text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-primary-dim hover:shadow-xl hover:shadow-primary/20 active:scale-[0.97]"
+                  title="Registrar Asistencia"
+                  onclick="
+                    window.location.href = 'clases/registro-de-asistencia.html'
+                  "
+                >
+                  <span class="material-symbols-outlined text-sm"
+                    >how_to_reg</span
+                  >
+                  <span>Registrar Asistencia</span>
+                </button>
+              </div>
+            </div>
 
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="general-profesor/Consultar-alumno.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
-            <span class="font-medium text-sm">Consultar Alumno</span>
-          </a>
+            <div class="table-card card-premium">
+              <div class="flex flex-col h-full p-4 md:p-6 overflow-hidden">
+                <div
+                  class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shrink-0 mb-4"
+                >
+                  <h2
+                    class="text-xl font-bold tracking-tight headline text-on-surface"
+                  >
+                    Clases Asignadas
+                  </h2>
+                  <div class="relative w-full sm:w-64">
+                    <span
+                      class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                      >search</span
+                    >
+                    <input
+                      class="w-full pl-10 pr-4 py-2 bg-slate-100/50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm font-medium"
+                      id="class-search"
+                      placeholder="Buscar clase..."
+                      type="text"
+                    />
+                  </div>
+                </div>
 
-        </div>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 overflow-y-auto flex-grow pb-2 custom-scrollbar"
+                  id="class-grid"
+                ></div>
 
-        <div class="flex flex-col gap-1 mt-4">
-
-          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
-            Gestión de Kiosko
-          </div>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">point_of_sale</span>
-            <span class="font-medium text-sm">Registrar Venta</span>
-          </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span>
-            <span class="font-medium text-sm">Control de Inventario</span>
-          </a>
-
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
-            <span class="font-medium text-sm">Cupones</span>
-          </a>
-
-        </div>
-
-        <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
-          <span class="material-symbols-outlined text-error">logout</span>
-          <span class="font-lexend font-medium text-sm">Cerrar Sesión</span>
-        </a>
-
-      </nav>
-
-    </div>
-
-  </aside>
-
-  <main class="main-content custom-scrollbar">
-
-    <div class="content-wrapper">
-
-      <div class="top-section">
-
-        <div>
-          <h1 class="page-title text-on-surface headline">
-            Bienvenido,
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              Profesor
-            </span>
-          </h1>
-        </div>
-
-        <div class="bg-white rounded-3xl border border-primary/20 shadow-xl shadow-primary/10 flex items-center gap-6 shrink-0 py-3 px-5 dash-next-class">
-          <div class="flex flex-col text-center border-r-2 border-slate-100 pr-4">
-            <span class="text-[8px] font-black text-primary uppercase tracking-widest mb-0.5">Próximo</span>
-            <div class="flex items-end gap-1">
-              <span class="text-2xl font-black text-primary leading-none headline">10:30</span>
-              <span class="text-[10px] font-bold text-slate-500 mb-0.5">AM</span>
+                <div
+                  class="shrink-0 pt-3 mt-auto border-t border-primary/10 flex items-center justify-between"
+                >
+                  <span
+                    class="results-summary text-[9px] font-black text-slate-400 uppercase tracking-widest headline"
+                    >Mostrando <span class="text-primary">1-4</span> de 8
+                    clases</span
+                  >
+                  <div class="flex items-center gap-2" id="pagination-numbers">
+                    <button
+                      class="w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all shadow-sm cursor-pointer"
+                      id="prev-page"
+                    >
+                      <span class="material-symbols-outlined text-sm font-bold"
+                        >chevron_left</span
+                      >
+                    </button>
+                    <button
+                      class="pagination-btn w-8 h-8 flex items-center justify-center rounded-lg font-bold text-xs headline shadow-md cursor-pointer bg-primary text-white active"
+                      data-page="1"
+                    >
+                      1
+                    </button>
+                    <button
+                      class="pagination-btn w-8 h-8 flex items-center justify-center rounded-lg font-bold text-xs headline shadow-md cursor-pointer border border-slate-200 text-slate-600 hover:bg-slate-100"
+                      data-page="2"
+                    >
+                      2
+                    </button>
+                    <button
+                      class="w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all shadow-sm cursor-pointer"
+                      id="next-page"
+                    >
+                      <span class="material-symbols-outlined text-sm font-bold"
+                        >chevron_right</span
+                      >
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </main>
+      </div>
+
+      <footer class="footer shrink-0">
+        <div
+          class="h-full px-8 max-w-[1880px] mx-auto flex items-center justify-between gap-4"
+        >
           <div class="flex flex-col">
-            <p class="font-headline text-lg font-black text-on-surface leading-tight mb-0.5">HIIT Advanced</p>
-            <p class="text-xs text-on-surface-variant font-bold flex items-center gap-2">
-              <span class="material-symbols-outlined text-primary text-base">group</span> 22 Inscritos
+            <div
+              class="text-base font-black text-white font-lexend mb-0.5 headline"
+            >
+              Squat Gym
+            </div>
+            <p
+              class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60"
+            >
+              © 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.
             </p>
           </div>
-          <button class="ml-2 flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-primary text-white font-extrabold text-xs uppercase tracking-wider transition-all duration-300 hover:bg-primary-dim hover:shadow-xl hover:shadow-primary/20 active:scale-[0.97]" title="Registrar Asistencia" onclick="window.location.href='clases/registro-de-asistencia.html'">
-            <span class="material-symbols-outlined text-sm">how_to_reg</span>
-            <span>Registrar Asistencia</span>
-          </button>
-        </div>
-
-      </div>
-
-      <div class="table-card card-premium">
-
-        <div class="flex flex-col h-full p-4 md:p-6 overflow-hidden">
-
-          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shrink-0 mb-4">
-            <h2 class="text-xl font-bold tracking-tight headline text-on-surface">Clases Asignadas</h2>
-            <div class="relative w-full sm:w-64">
-              <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-              <input class="w-full pl-10 pr-4 py-2 bg-slate-100/50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-sm font-medium" id="class-search" placeholder="Buscar clase..." type="text">
-            </div>
+          <div class="flex items-center gap-6">
+            <a
+              class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
+              href="general-profesor/Ayuda-profesor.html"
+              >Ayuda</a
+            >
+            <a
+              class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
+              href="general-profesor/Privacidad-profesor.html"
+              >Privacidad</a
+            >
+            <a
+              class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
+              href="general-profesor/Contacto-profesor.html"
+              >Contacto</a
+            >
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 overflow-y-auto flex-grow pb-2 custom-scrollbar" id="class-grid">
-            </div>
-
-          <div class="shrink-0 pt-3 mt-auto border-t border-primary/10 flex items-center justify-between">
-            <span class="results-summary text-[9px] font-black text-slate-400 uppercase tracking-widest headline">Mostrando <span class="text-primary">1-4</span> de 8 clases</span>
-            <div class="flex items-center gap-2" id="pagination-numbers">
-              <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all shadow-sm cursor-pointer" id="prev-page">
-                <span class="material-symbols-outlined text-sm font-bold">chevron_left</span>
-              </button>
-              <button class="pagination-btn w-8 h-8 flex items-center justify-center rounded-lg font-bold text-xs headline shadow-md cursor-pointer bg-primary text-white active" data-page="1">1</button>
-              <button class="pagination-btn w-8 h-8 flex items-center justify-center rounded-lg font-bold text-xs headline shadow-md cursor-pointer border border-slate-200 text-slate-600 hover:bg-slate-100" data-page="2">2</button>
-              <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all shadow-sm cursor-pointer" id="next-page">
-                <span class="material-symbols-outlined text-sm font-bold">chevron_right</span>
-              </button>
-            </div>
-          </div>
-
         </div>
-
-      </div>
-
+      </footer>
     </div>
 
-  </main>
+    <script>
+      document
+        .getElementById("sidebar-toggle")
+        .addEventListener("click", () => {
+          const sidebar = document.getElementById("sidebar");
+          const backdrop = document.getElementById("sidebar-backdrop");
+          sidebar.classList.toggle("sidebar-visible");
+          backdrop.classList.toggle("show");
+        });
 
-</div>
+      document.getElementById("sidebar-close").addEventListener("click", () => {
+        const sidebar = document.getElementById("sidebar");
+        const backdrop = document.getElementById("sidebar-backdrop");
+        sidebar.classList.remove("sidebar-visible");
+        backdrop.classList.remove("show");
+      });
 
-<footer class="footer shrink-0">
-  <div class="h-full px-8 max-w-[1880px] mx-auto flex items-center justify-between gap-4">
-    <div class="flex flex-col">
-      <div class="text-base font-black text-white font-lexend mb-0.5 headline">
-        Squat Gym
-      </div>
-      <p class="text-white/60 text-[8px] font-bold uppercase tracking-widest opacity-60">
-        © 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.
-      </p>
-    </div>
-    <div class="flex items-center gap-6">
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="general-profesor/Ayuda-profesor.html">Ayuda</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="general-profesor/Privacidad-profesor.html">Privacidad</a>
-      <a class="text-white/80 hover:text-white text-[10px] font-bold transition-colors" href="general-profesor/Contacto-profesor.html">Contacto</a>
-    </div>
-  </div>
-</footer>
+      document
+        .getElementById("sidebar-backdrop")
+        .addEventListener("click", () => {
+          const sidebar = document.getElementById("sidebar");
+          const backdrop = document.getElementById("sidebar-backdrop");
+          sidebar.classList.remove("sidebar-visible");
+          backdrop.classList.remove("show");
+        });
 
-</div>
-
-<script>
-    document.getElementById('sidebar-toggle').addEventListener('click', () => {
-      const sidebar = document.getElementById('sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      sidebar.classList.toggle('sidebar-visible');
-      backdrop.classList.toggle('show');
-    });
-
-    document.getElementById('sidebar-close').addEventListener('click', () => {
-      const sidebar = document.getElementById('sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      sidebar.classList.remove('sidebar-visible');
-      backdrop.classList.remove('show');
-    });
-
-    document.getElementById('sidebar-backdrop').addEventListener('click', () => {
-      const sidebar = document.getElementById('sidebar');
-      const backdrop = document.getElementById('sidebar-backdrop');
-      sidebar.classList.remove('sidebar-visible');
-      backdrop.classList.remove('show');
-    });
-
-    function toggleNotifications() {
-      const dropdown = document.getElementById('notification-dropdown');
-      dropdown.classList.toggle('hidden');
-    }
-
-    window.addEventListener('click', function(e) {
-      const dropdown = document.getElementById('notification-dropdown');
-      const bell = document.getElementById('notification-bell');
-
-      if (
-        dropdown &&
-        !dropdown.classList.contains('hidden') &&
-        !bell.contains(e.target) &&
-        !dropdown.contains(e.target)
-      ) {
-        dropdown.classList.add('hidden');
+      function toggleNotifications() {
+        const dropdown = document.getElementById("notification-dropdown");
+        dropdown.classList.toggle("hidden");
       }
-    });
-</script>
 
-</body>
+      window.addEventListener("click", function (e) {
+        const dropdown = document.getElementById("notification-dropdown");
+        const bell = document.getElementById("notification-bell");
+
+        if (
+          dropdown &&
+          !dropdown.classList.contains("hidden") &&
+          !bell.contains(e.target) &&
+          !dropdown.contains(e.target)
+        ) {
+          dropdown.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
 </html>
