@@ -3,8 +3,8 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Squat Gym - Catálogo Maestro de Ejercicios</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
 tailwind.config = {
     darkMode: "class",
@@ -204,6 +204,18 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
 .nav-link.active .material-symbols-outlined{
   color:#fff !important;
 }
+/* ── Sort icon micro-interactions ── */
+.sort-icon{
+  transition: color .15s ease, transform .2s cubic-bezier(.4,0,.2,1);
+  display:inline-block;
+}
+.sortable-header:hover .sort-icon{
+  color: #005a52;
+  transform: scale(1.25);
+}
+.sortable-header[data-direction] .sort-icon{
+  color: #00675f;
+}
 #notification-dropdown{
   animation:slideInDown .2s ease-out;
 }
@@ -398,17 +410,17 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
           <table class="w-full text-left border-collapse" id="exercise-table">
             <thead class="sticky top-0 bg-white/95 backdrop-blur-md z-10 shadow-sm">
               <tr>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 sortable-header cursor-pointer" data-sort="name">
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 sortable-header cursor-pointer select-none" data-sort="name">
                     <div class="flex items-center gap-1">Nombre <span class="material-symbols-outlined text-[16px] sort-icon">unfold_more</span></div>
                 </th>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 text-center sortable-header cursor-pointer" data-sort="duration">
-                    <div class="flex items-center justify-center gap-1">Duración <span class="material-symbols-outlined text-[16px] sort-icon">unfold_more</span></div>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 text-center sortable-header cursor-pointer select-none" data-sort="duration">
+                    <div class="flex items-center justify-center gap-1">Duración (Min) <span class="material-symbols-outlined text-[16px] sort-icon">unfold_more</span></div>
                 </th>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 text-center sortable-header cursor-pointer" data-sort="series">
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 border-primary/10 text-center sortable-header cursor-pointer select-none" data-sort="series">
                     <div class="flex items-center justify-center gap-1">Series <span class="material-symbols-outlined text-[16px] sort-icon">unfold_more</span></div>
                 </th>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 text-center border-primary/10">Intensidad</th>
-                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 text-center border-primary/10">Acciones</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 text-center border-primary/10 select-none">Intensidad</th>
+                <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-primary-dim font-lexend border-b-2 text-center border-primary/10 select-none">Acciones</th>
               </tr>
             </thead>
             <tbody class="divide-y-2 divide-primary/10" id="table-body"></tbody>
@@ -616,19 +628,82 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         };
 
         function populateTable() {
-            exercises.sort((a, b) => a.name.localeCompare(b.name));
+            exercises.sort((a, b) => a.name.localeCompare(b.name, 'es'));
             filterExercises();
         }
 
+        // ── FILTER: builds filteredExercises, then delegates to applySortAndRender ──
         function filterExercises() {
             const term = searchInput.value.toLowerCase();
-            if (term === '') {
-                filteredExercises = [...exercises];
-            } else {
-                filteredExercises = exercises.filter(ex => ex.name.toLowerCase().includes(term));
-            }
+            filteredExercises = term === ''
+                ? [...exercises]
+                : exercises.filter(ex => ex.name.toLowerCase().includes(term));
             currentPage = 1;
+            applySortAndRender();
+        }
+
+        // ── TRI-STATE SORT ENGINE ──
+        // Applies currentSortColumn/currentSortDirection to filteredExercises, then renders.
+        function applySortAndRender() {
+            if (currentSortColumn) {
+                filteredExercises.sort((a, b) => {
+                    if (currentSortColumn === 'name') {
+                        const comp = a.name.toLowerCase().localeCompare(b.name.toLowerCase(), 'es');
+                        return currentSortDirection === 'asc' ? comp : -comp;
+                    } else {
+                        // 'duration' or 'series' — numeric sort
+                        const valA = a[currentSortColumn];
+                        const valB = b[currentSortColumn];
+                        return currentSortDirection === 'asc' ? valA - valB : valB - valA;
+                    }
+                });
+            }
             renderTable();
+        }
+
+        // ── INIT SORT HEADERS: attaches click listeners for tri-state behavior ──
+        function initSortHeaders() {
+            document.querySelectorAll('.sortable-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const col = header.getAttribute('data-sort');
+                    const icon = header.querySelector('.sort-icon');
+
+                    // Reset all OTHER headers to neutral
+                    document.querySelectorAll('.sortable-header').forEach(h => {
+                        if (h !== header) {
+                            h.querySelector('.sort-icon').textContent = 'unfold_more';
+                            h.removeAttribute('data-direction');
+                        }
+                    });
+
+                    // Advance state: null → asc → desc → null
+                    const current = header.getAttribute('data-direction');
+                    if (!current) {
+                        header.setAttribute('data-direction', 'asc');
+                        icon.textContent = 'arrow_upward';
+                        currentSortColumn = col;
+                        currentSortDirection = 'asc';
+                    } else if (current === 'asc') {
+                        header.setAttribute('data-direction', 'desc');
+                        icon.textContent = 'arrow_downward';
+                        currentSortColumn = col;
+                        currentSortDirection = 'desc';
+                    } else {
+                        // Reset → restore default alphabetical order
+                        header.removeAttribute('data-direction');
+                        icon.textContent = 'unfold_more';
+                        currentSortColumn = null;
+                        currentSortDirection = null;
+                        // Re-sort the source array alphabetically so filteredExercises
+                        // inherits the default order after the next filterExercises call
+                        exercises.sort((a, b) => a.name.localeCompare(b.name, 'es'));
+                    }
+
+                    currentPage = 1;
+                    // Re-filter preserving search term, then sort + render
+                    filterExercises();
+                });
+            });
         }
 
         function renderTable() {
@@ -812,7 +887,9 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         searchInput.addEventListener('focus', () => searchContainer.classList.add('scale-105'));
         searchInput.addEventListener('blur', () => searchContainer.classList.remove('scale-105'));
 
+        // ── Bootstrap ──
         populateTable();
+        initSortHeaders();
     });
 </script>
 
