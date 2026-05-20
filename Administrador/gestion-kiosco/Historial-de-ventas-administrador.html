@@ -466,6 +466,13 @@
         }
       }
 
+      @keyframes slideInRight {
+        from { opacity: 0; transform: translateX(100%); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      .toast-enter { animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
       @media (max-width: 360px) {
         .page-title {
           font-size: 1.1rem;
@@ -806,6 +813,31 @@
               </div>
 
               <div class="flex items-center gap-4 shrink-0">
+                <!-- Botón Exportar con Dropdown -->
+                <div class="relative group outline-none" tabindex="0">
+                  <button class="border border-outline-variant/30 text-on-surface hover:bg-surface-container-low focus:bg-surface-container-low font-bold py-2 px-4 rounded-xl flex items-center gap-2 transition-colors cursor-pointer group shrink-0">
+                    <span class="material-symbols-outlined text-sm">download</span>
+                    Exportar
+                    <span class="material-symbols-outlined text-sm transition-transform group-focus-within:rotate-180">expand_more</span>
+                  </button>
+                  <div class="absolute right-0 mt-2 w-48 bg-surface-container-lowest shadow-xl rounded-xl border border-outline-variant/20 z-[80] overflow-hidden hidden group-focus-within:block transition-all transform origin-top-right">
+                    <div class="flex flex-col py-1">
+                      <button onclick="exportVentas('PDF')" class="w-full text-left px-4 py-2 text-sm font-semibold text-on-surface hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-3">
+                        <span class="material-symbols-outlined text-lg text-error">picture_as_pdf</span>
+                        Como PDF
+                      </button>
+                      <button onclick="exportVentas('Excel')" class="w-full text-left px-4 py-2 text-sm font-semibold text-on-surface hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-3">
+                        <span class="material-symbols-outlined text-lg text-secondary">table_view</span>
+                        Como Excel
+                      </button>
+                      <button onclick="exportVentas('Word')" class="w-full text-left px-4 py-2 text-sm font-semibold text-on-surface hover:bg-primary/10 hover:text-primary transition-colors flex items-center gap-3">
+                        <span class="material-symbols-outlined text-lg text-tertiary">description</span>
+                        Como Word
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="relative">
                   <span
                     class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
@@ -977,6 +1009,14 @@
             </div>
           </div>
         </main>
+      </div>
+
+      <div id="toastNotification" class="fixed bottom-6 right-6 z-[120] bg-[#004d40] text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 hidden">
+        <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span>
+        <div class="flex flex-col">
+          <span class="font-bold text-sm">Operación Exitosa</span>
+          <span class="text-[10px] opacity-80">Procesado correctamente</span>
+        </div>
       </div>
 
       <footer class="footer shrink-0">
@@ -1199,6 +1239,80 @@
       }
 
       renderTable();
+
+      // ---- Scripts de Exportación ----
+      function exportVentas(format) {
+        document.activeElement.blur();
+
+        const toast = document.getElementById('toastNotification');
+        let iconColor = '';
+        let iconName = '';
+
+        if (format === 'PDF') {
+          iconColor = 'text-error';
+          iconName = 'picture_as_pdf';
+        } else if (format === 'Excel') {
+          iconColor = 'text-secondary';
+          iconName = 'table_view';
+        } else if (format === 'Word') {
+          iconColor = 'text-tertiary';
+          iconName = 'description';
+        }
+
+        toast.innerHTML = `
+          <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">downloading</span>
+          <div class="flex flex-col">
+            <span class="font-bold text-sm">Exportando a ${format}...</span>
+            <span class="text-[10px] opacity-80">Generando archivo, por favor espere</span>
+          </div>
+        `;
+
+        showToast();
+
+        setTimeout(() => {
+          toast.innerHTML = `
+            <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm ${iconColor}">${iconName}</span>
+            <div class="flex flex-col">
+              <span class="font-bold text-sm">¡Exportación Exitosa!</span>
+              <span class="text-[10px] opacity-80">El archivo .${format.toLowerCase()} se ha descargado</span>
+            </div>
+          `;
+
+          toast.classList.remove('opacity-0', 'transition-opacity', 'duration-300');
+          toast.classList.add('toast-enter');
+
+          setTimeout(() => {
+            toast.classList.remove('toast-enter');
+            toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+            setTimeout(() => {
+              toast.classList.add('hidden');
+              toast.classList.remove('opacity-0', 'transition-opacity', 'duration-300');
+              toast.innerHTML = `
+                <span class="material-symbols-outlined bg-white/20 p-1 rounded-full text-sm">check</span>
+                <div class="flex flex-col">
+                  <span class="font-bold text-sm">Operación Exitosa</span>
+                  <span class="text-[10px] opacity-80">Procesado correctamente</span>
+                </div>
+              `;
+            }, 300);
+          }, 3500);
+        }, 1500);
+      }
+
+      function showToast() {
+        const toast = document.getElementById('toastNotification');
+        toast.classList.remove('hidden');
+        toast.classList.add('toast-enter');
+
+        setTimeout(() => {
+          toast.classList.remove('toast-enter');
+          toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+          setTimeout(() => {
+            toast.classList.add('hidden');
+            toast.classList.remove('opacity-0', 'transition-opacity', 'duration-300');
+          }, 300);
+        }, 3000);
+      }
     </script>
   </body>
 </html>
