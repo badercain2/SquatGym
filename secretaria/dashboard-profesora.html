@@ -1,0 +1,694 @@
+<!DOCTYPE html><html class="light" lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Secretary Dashboard - Squat Gym</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800;900&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#e5e9e9",
+                        "surface": "#f5f7f7",
+                        "on-primary-container": "#00574f",
+                        "on-surface-variant": "#595c5c",
+                        "on-error": "#ffefee",
+                        "tertiary-fixed": "#27bcff",
+                        "outline-variant": "#abadae",
+                        "surface-bright": "#f5f7f7",
+                        "on-primary": "#bffff5",
+                        "secondary-fixed": "#22f2f3",
+                        "secondary": "#006667",
+                        "on-tertiary-fixed-variant": "#003e58",
+                        "on-secondary": "#bbffff",
+                        "surface-dim": "#d0d5d6",
+                        "on-secondary-fixed": "#004142",
+                        "error-container": "#fb5151",
+                        "error": "#b31b25",
+                        "inverse-on-surface": "#9b9d9e",
+                        "on-secondary-container": "#005656",
+                        "tertiary-fixed-dim": "#00aeef",
+                        "surface-container-low": "#eef1f1",
+                        "primary-dim": "#005a52",
+                        "on-tertiary-container": "#00344b",
+                        "on-primary-fixed": "#00423c",
+                        "on-tertiary-fixed": "#001a28",
+                        "surface-variant": "#d9dede",
+                        "primary-container": "#56f1e0",
+                        "surface-tint": "#00675f",
+                        "primary": "#00675f",
+                        "tertiary-container": "#27bcff",
+                        "on-secondary-fixed-variant": "#006061",
+                        "secondary-fixed-dim": "#00e3e4",
+                        "on-surface": "#2c2f30",
+                        "on-background": "#2c2f30",
+                        "background": "#f5f7f7",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#747778",
+                        "secondary-dim": "#00595a",
+                        "inverse-surface": "#0b0f0f",
+                        "on-error-container": "#570008",
+                        "surface-container-high": "#dfe3e3",
+                        "secondary-container": "#22f2f3",
+                        "inverse-primary": "#56f1e0",
+                        "error-dim": "#9f0519",
+                        "primary-fixed": "#56f1e0",
+                        "on-tertiary": "#e8f4ff",
+                        "surface-container-highest": "#d9dede",
+                        "primary-fixed-dim": "#43e2d2",
+                        "tertiary-dim": "#005578",
+                        "on-primary-fixed-variant": "#006159",
+                        "tertiary": "#006289"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Lexend"],
+                        "display": ["Lexend"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    "fontSize": {}
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        h1, h2, h3, h4, h5, h6, .font-headline, .font-display, .font-lexend {
+            font-family: 'Lexend', sans-serif;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.surface-variant');
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline-variant');
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-mesh {
+            background-color: #f8fafa;
+            background-image: radial-gradient(at 0% 0%, hsla(174, 100%, 95%, 1) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, hsla(180, 100%, 96%, 1) 0, transparent 50%);
+        }
+        @media (min-height: 1014px) and (min-width: 1280px) {
+            body {
+                height: 1014px;
+                overflow: hidden;
+            }
+        }
+    
+        .card-interactive {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-interactive:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 24px -10px rgba(0, 103, 95, 0.15);
+            border-color: theme('colors.primary/30');
+        }
+        .btn-interactive:active {
+            transform: scale(0.95);
+            opacity: 0.8;
+        }
+    </style>
+<style>
+    .sidebar-collapsed {
+        transform: translateX(-100%);
+        pointer-events: none;
+        opacity: 0;
+    }
+    .nav-link.active {
+        background-color: #00675f !important;
+        color: white !important;
+        transition: none !important;
+    }
+    .nav-link.active .material-symbols-outlined {
+        color: white !important;
+    }
+    #notification-dropdown.hidden {
+        display: none;
+    }
+    #notification-dropdown {
+        animation: slideInDown 0.2s ease-out;
+    }
+    @keyframes slideInDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+<style>
+    #task-modal.flex, #edit-task-modal.flex, #delete-confirm-modal.flex { animation: fadeIn 0.2s ease-out; } 
+    #task-modal > div:last-child, #edit-task-modal > div:last-child, #delete-confirm-modal > div:last-child { animation: scaleUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); } 
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } 
+    @keyframes scaleUp { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+</style>
+</head>
+<body class="bg-mesh text-on-surface h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-hidden w-full relative">
+<!-- Header Component -->
+<header class="shrink-0 w-full z-50 border-b border-outline-variant/30 h-20" style="background-color: #005a52;"><div class="max-w-[1240px] mx-auto w-full h-full flex justify-between items-center px-8">
+<div class="flex items-center">
+<button class="mr-4 text-white hover:bg-white/10 p-2 rounded-full transition-colors flex items-center justify-center shrink-0" id="sidebar-toggle">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<div class="font-black tracking-tighter font-lexend text-white text-3xl">Squat Gym</div>
+</div>
+<div class="flex items-center gap-4 text-white">
+<div class="relative">
+<button class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all group hover:bg-white/10 text-white" id="notification-bell" onclick="toggleNotifications()">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">notifications</span>
+<span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-error text-[11px] text-white font-bold flex items-center justify-center rounded-full border border-white shadow-sm w-4 h-4 text-[9px]" style="top: -2px; right: -2px;">4</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+</div>
+<div class="flex flex-col">
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Stock bajo: Proteína Whey</p>
+<p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-sm">event_busy</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
+<p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Nuevo socio: Juan Pérez</p>
+<p class="text-[10px] text-on-surface-variant">Suscripción Plan Premium</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
+<p class="text-[10px] text-on-surface-variant">Vencimiento en 2 días</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
+<button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;">
+<span class="">Ver todas</span>
+<span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full transition-all hover:bg-white/10 text-white" onclick="location.href='general-secretaria/Mi-perfil-secretaria.html'">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">account_circle</span>
+</button>
+</div>
+</div></header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col pt-6 pb-4 sidebar-collapsed fixed top-20 left-0 bottom-20 z-[40] shadow-2xl transition-all duration-300 ease-in-out" id="sidebar">
+<nav class="flex-1 flex flex-col gap-2 px-4 overflow-y-auto w-64">
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl active font-medium transition-all" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">home</span>
+<span class="nav-text font-lexend tracking-tight">Inicio</span>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Clases</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="gestion-clases/Catalogo-de-clases-secretaria.html" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: &quot;FILL&quot; 0;">calendar_month</span>
+<span class="nav-text font-medium text-sm">Catálogo de Clases</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="gestion-clases/Cronograma-semanal-secretaria.html" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: &quot;FILL&quot; 0;">calendar_view_week</span>
+<span class="nav-text font-medium text-sm">Cronograma</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="gestion-clases/Consultar-alumno-secretaria.html" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: &quot;FILL&quot; 0;">person</span>
+<span class="nav-text font-medium text-sm">Consultar Alumno</span>
+</a>
+</div>
+<div class="flex flex-col gap-1 mt-4">
+<div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Kiosko</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="gestion-kiosco/Registrar-venta.html" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: &quot;FILL&quot; 0;">point_of_sale</span>
+<span class="nav-text font-medium text-sm">Registrar Venta</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="gestion-kiosco/Control-de-inventario.html" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: &quot;FILL&quot; 0;">inventory_2</span>
+<span class="nav-text font-medium text-sm">Control de Inventario</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="gestion-kiosco/Cupones.html" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: &quot;FILL&quot; 0;">loyalty</span>
+<span class="nav-text font-medium text-sm">Cupones</span>
+</a>
+</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-error transition-colors" style="font-variation-settings: &quot;FILL&quot; 0;">logout</span>
+<span class="nav-text font-lexend font-medium text-sm">Cerrar Sesión</span>
+</a></nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col px-8 py-6 max-w-[1240px] mx-auto w-full overflow-y-auto gap-6 transition-all duration-300">
+<!-- Top Row: Welcome -->
+<div class="flex flex-col gap-6 shrink-0">
+<header class="w-full pt-8">
+<h1 class="text-5xl lg:text-6xl font-black text-on-surface tracking-tighter mb-4 leading-[0.9]">
+            Bienvenido,<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Secretaría</span></h1>
+</header>
+</div>
+<!-- Layout: Grid + Tasks Side Panel -->
+<div class="flex flex-col lg:flex-row gap-6 w-full shrink-0 mt-2">
+<!-- 2x2 Grid (Left) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 shrink-0">
+<!-- Clases de hoy -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_4px_20px_rgba(44,47,48,0.04)] flex flex-col justify-between group hover:border-primary/30 transition-colors cursor-pointer border border-primary/10 relative overflow-hidden card-interactive min-h-[240px]" onclick="location.href='gestion-clases/Catalogo-de-clases-secretaria.html'">
+<div class="absolute bottom-4 right-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-8xl">event</span>
+</div>
+<div class="flex flex-col gap-4 z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">event</span>
+</div>
+<h3 class="font-headline text-base text-on-surface font-semibold">Clases de hoy</h3>
+</div>
+<div class="flex flex-col gap-2 pl-1">
+<div class="flex items-center gap-3">
+<span class="bg-primary/10 text-primary font-bold text-xs px-2 py-0.5 rounded-full w-12 text-center btn-interactive transition-transform cursor-pointer">09:00</span>
+<span class="text-sm font-medium text-on-surface-variant">Boxeo Knockout</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-primary/10 text-primary font-bold text-xs px-2 py-0.5 rounded-full w-12 text-center btn-interactive transition-transform cursor-pointer">10:00</span>
+<span class="text-sm font-medium text-on-surface-variant">Cardio Kick</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-primary/10 text-primary font-bold text-xs px-2 py-0.5 rounded-full w-12 text-center btn-interactive transition-transform cursor-pointer">11:00</span>
+<span class="text-sm font-medium text-on-surface-variant">Crossfit Pro</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-primary/10 text-primary font-bold text-xs px-2 py-0.5 rounded-full w-12 text-center btn-interactive transition-transform cursor-pointer">17:00</span>
+<span class="text-sm font-medium text-on-surface-variant">Funcional Fit</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-bold text-sm z-10 mt-4 btn-interactive transition-transform cursor-pointer">
+<span class="">Ver todas las clases</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Cronograma semanal -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_4px_20px_rgba(44,47,48,0.04)] flex flex-col justify-between group hover:border-primary/30 transition-colors cursor-pointer border border-primary/10 card-interactive min-h-[240px]" onclick="location.href='gestion-clases/Cronograma-semanal-secretaria.html'">
+<div class="flex flex-col gap-4 h-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">calendar_month</span>
+</div>
+<h3 class="font-headline text-base text-on-surface font-semibold">Cronograma semanal</h3>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center">
+<div class="flex items-center justify-between w-full px-4 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm cursor-pointer">chevron_left</span>
+<span class="text-sm font-bold text-on-surface">Mayo 2026</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm cursor-pointer">chevron_right</span>
+</div>
+<div class="grid grid-cols-7 gap-x-2 gap-y-1 text-center w-full px-2">
+<div class="text-[10px] text-on-surface-variant font-semibold">Lun</div>
+<div class="text-[10px] text-on-surface-variant font-semibold">Mar</div>
+<div class="text-[10px] text-on-surface-variant font-semibold">Mié</div>
+<div class="text-[10px] text-on-surface-variant font-semibold">Jue</div>
+<div class="text-[10px] text-on-surface-variant font-semibold">Vie</div>
+<div class="text-[10px] text-on-surface-variant font-semibold">Sáb</div>
+<div class="text-[10px] text-on-surface-variant font-semibold">Dom</div>
+<div class="text-xs font-medium text-on-surface py-1">5</div>
+<div class="text-xs font-medium text-on-surface py-1">6</div>
+<div class="text-xs font-medium text-on-surface py-1">7</div>
+<div class="text-xs font-medium text-on-surface py-1">8</div>
+<div class="text-xs font-medium text-on-surface py-1">9</div>
+<div class="text-xs font-medium text-on-surface py-1">10</div>
+<div class="text-xs font-medium text-on-surface py-1">11</div>
+<div class="text-xs font-medium text-on-surface py-1">12</div>
+<div class="text-xs font-bold text-white bg-primary rounded-full py-1 w-6 h-6 mx-auto flex items-center justify-center">13</div>
+<div class="text-xs font-medium text-on-surface py-1">14</div>
+<div class="text-xs font-medium text-on-surface py-1">15</div>
+<div class="text-xs font-medium text-on-surface py-1">16</div>
+<div class="text-xs font-medium text-on-surface py-1">17</div>
+<div class="text-xs font-medium text-on-surface py-1">18</div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-bold text-sm z-10 justify-center w-full mt-4 btn-interactive transition-transform cursor-pointer">
+<span class="">Ver cronograma semanal</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Stock bajo -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_4px_20px_rgba(44,47,48,0.04)] flex flex-col justify-between group hover:border-primary/30 transition-colors cursor-pointer border border-primary/10 relative overflow-hidden card-interactive min-h-[240px]" onclick="location.href='gestion-kiosco/Control-de-inventario.html'">
+<div class="absolute bottom-6 right-6 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-8xl">warning</span>
+</div>
+<div class="flex flex-col gap-4 z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+</div>
+<h3 class="font-headline text-base text-on-surface font-semibold">Stock bajo</h3>
+</div>
+<div class="flex flex-col items-center justify-center flex-1 mt-4">
+<p class="font-headline text-6xl font-black text-on-surface">5</p>
+<p class="text-xs font-medium text-on-surface-variant mt-2">productos requieren reposición</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-bold text-sm z-10 mt-auto pt-4 btn-interactive transition-transform cursor-pointer">
+<span class="">Ver productos</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Ventas realizadas -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_4px_20px_rgba(44,47,48,0.04)] flex flex-col justify-between group hover:border-primary/30 transition-colors cursor-pointer border border-primary/10 relative overflow-hidden card-interactive min-h-[240px]" onclick="location.href='gestion-kiosco/Registrar-venta.html'">
+<div class="absolute bottom-4 right-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-8xl">trending_up</span>
+</div>
+<div class="flex flex-col gap-4 z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">attach_money</span>
+</div>
+<h3 class="font-headline text-base text-on-surface font-semibold leading-tight">Ventas realizadas<br>del día</h3>
+</div>
+<div class="flex flex-col items-center justify-center flex-1 mt-2">
+<p class="font-headline text-6xl font-black text-on-surface">28</p>
+<p class="text-xs font-medium text-on-surface-variant mt-2">ventas registradas hoy</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-primary font-bold text-sm z-10 mt-auto pt-4 btn-interactive transition-transform cursor-pointer">
+<span class="">Ver ventas</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Tasks Vertical Panel (Right) -->
+<div class="w-full lg:w-[450px] shrink-0">
+<div class="bg-surface-container-lowest rounded-2xl p-5 shadow-[0_4px_20px_rgba(44,47,48,0.04)] flex flex-col border border-primary/10 h-full min-h-[504px]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2 text-on-surface font-headline font-semibold">
+<span class="material-symbols-outlined text-primary">task_alt</span>
+<h2 class="">Mis tareas del día</h2>
+</div>
+<button class="text-primary hover:text-primary-dim transition-all rounded-full p-1.5 bg-primary/10 hover:bg-primary/20 flex items-center justify-center btn-interactive active:scale-90" onclick="openTaskModal()"><span class="material-symbols-outlined text-[24px] font-bold">add</span></button>
+</div>
+<div class="flex-1 flex flex-col gap-2 overflow-y-auto pr-2 max-h-[420px]" id="task-list"><div class="group flex bg-surface-container-low rounded-lg p-3 hover:bg-surface-container transition-all border border-transparent hover:border-primary/20 relative" id="task-item-1"><div class="flex justify-between items-start w-full gap-4"><label class="flex items-start gap-3 cursor-pointer flex-1 min-w-0"><div class="relative flex items-center justify-center w-5 h-5 mt-0.5 shrink-0"><input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"><span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span></div><span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors break-words">Revisar vencimientos de membresías</span></label><div class="flex flex-row gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2 pt-0.5"><button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="openEditTaskModal('task-item-1')"><span class="material-symbols-outlined text-[16px]">edit</span></button><button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="confirmDeleteTask('task-item-1')"><span class="material-symbols-outlined text-[16px]">delete</span></button></div></div></div><div class="group flex bg-surface-container-low rounded-lg p-3 hover:bg-surface-container transition-all border border-transparent hover:border-primary/20 relative" id="task-item-2"><div class="flex justify-between items-start w-full gap-4"><label class="flex items-start gap-3 cursor-pointer flex-1 min-w-0"><div class="relative flex items-center justify-center w-5 h-5 mt-0.5 shrink-0"><input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"><span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span></div><span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors break-words">Atender consulta de nuevo socio</span></label><div class="flex flex-row gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2 pt-0.5"><button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="openEditTaskModal('task-item-2')"><span class="material-symbols-outlined text-[16px]">edit</span></button><button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="confirmDeleteTask('task-item-2')"><span class="material-symbols-outlined text-[16px]">delete</span></button></div></div></div><div class="group flex bg-surface-container-low rounded-lg p-3 hover:bg-surface-container transition-all border border-transparent hover:border-primary/20 relative" id="task-item-3"><div class="flex justify-between items-start w-full gap-4"><label class="flex items-start gap-3 cursor-pointer flex-1 min-w-0"><div class="relative flex items-center justify-center w-5 h-5 mt-0.5 shrink-0"><input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"><span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span></div><span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors break-words">Controlar stock de cafetería</span></label><div class="flex flex-row gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2 pt-0.5"><button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="openEditTaskModal('task-item-3')"><span class="material-symbols-outlined text-[16px]">edit</span></button><button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="confirmDeleteTask('task-item-3')"><span class="material-symbols-outlined text-[16px]">delete</span></button></div></div></div><div class="group flex bg-surface-container-low rounded-lg p-3 hover:bg-surface-container transition-all border border-transparent hover:border-primary/20 relative" id="task-item-4"><div class="flex justify-between items-start w-full gap-4"><label class="flex items-start gap-3 cursor-pointer flex-1 min-w-0"><div class="relative flex items-center justify-center w-5 h-5 mt-0.5 shrink-0"><input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"><span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span></div><span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors break-words">Coordinar limpieza de vestuarios</span></label><div class="flex flex-row gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2 pt-0.5"><button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="openEditTaskModal('task-item-4')"><span class="material-symbols-outlined text-[16px]">edit</span></button><button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="confirmDeleteTask('task-item-4')"><span class="material-symbols-outlined text-[16px]">delete</span></button></div></div></div><div class="group flex bg-surface-container-low rounded-lg p-3 hover:bg-surface-container transition-all border border-transparent hover:border-primary/20 relative" id="task-item-5"><div class="flex justify-between items-start w-full gap-4"><label class="flex items-start gap-3 cursor-pointer flex-1 min-w-0"><div class="relative flex items-center justify-center w-5 h-5 mt-0.5 shrink-0"><input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"><span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span></div><span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors break-words">Actualizar base de datos de deudores</span></label><div class="flex flex-row gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2 pt-0.5"><button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="openEditTaskModal('task-item-5')"><span class="material-symbols-outlined text-[16px]">edit</span></button><button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="confirmDeleteTask('task-item-5')"><span class="material-symbols-outlined text-[16px]">delete</span></button></div></div></div><div class="group flex bg-surface-container-low rounded-lg p-3 hover:bg-surface-container transition-all border border-transparent hover:border-primary/20 relative" id="task-item-6"><div class="flex justify-between items-start w-full gap-4"><label class="flex items-start gap-3 cursor-pointer flex-1 min-w-0"><div class="relative flex items-center justify-center w-5 h-5 mt-0.5 shrink-0"><input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"><span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span></div><span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors break-words">Preparar reporte de asistencia semanal</span></label><div class="flex flex-row gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2 pt-0.5"><button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="openEditTaskModal('task-item-6')"><span class="material-symbols-outlined text-[16px]">edit</span></button><button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="confirmDeleteTask('task-item-6')"><span class="material-symbols-outlined text-[16px]">delete</span></button></div></div></div><div class="group flex bg-surface-container-low rounded-lg p-3 hover:bg-surface-container transition-all border border-transparent hover:border-primary/20 relative" id="task-item-7"><div class="flex justify-between items-start w-full gap-4"><label class="flex items-start gap-3 cursor-pointer flex-1 min-w-0"><div class="relative flex items-center justify-center w-5 h-5 mt-0.5 shrink-0"><input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox"><span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span></div><span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors break-words">Llamar a proveedor de mantenimiento de equipos</span></label><div class="flex flex-row gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2 pt-0.5"><button class="text-on-surface-variant hover:text-primary transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="openEditTaskModal('task-item-7')"><span class="material-symbols-outlined text-[16px]">edit</span></button><button class="text-on-surface-variant hover:text-error transition-colors p-1 rounded-md hover:bg-white flex items-center justify-center" onclick="confirmDeleteTask('task-item-7')"><span class="material-symbols-outlined text-[16px]">delete</span></button></div></div></div></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer Component -->
+<footer class="shrink-0 bg-white/50 backdrop-blur-sm w-full py-6 border-t border-outline-variant/30 mt-auto" style="background-color: #00675f;">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1240px] mx-auto w-full gap-4"><div class="flex flex-col items-center md:items-start">
+<div class="text-lg font-black text-white font-lexend mb-1">Squat Gym</div>
+<p class="text-white/60 text-[9px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
+</div>
+<div class="flex space-x-8">
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="general-secretaria/Ayuda-secretaria.html">Ayuda</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="general-secretaria/Privacidad-secretaria.html">Privacidad</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="general-secretaria/Contacto-secretaria.html">Contacto</a>
+</div></div>
+</footer>
+<!-- Modals -->
+<!-- Add Task Modal -->
+<div class="fixed inset-0 z-[100] items-center justify-center hidden" id="task-modal">
+<div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeTaskModal()"></div>
+<div class="relative bg-white w-full max-w-md rounded-xl shadow-2xl overflow-hidden transform transition-all p-6 font-lexend">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-2xl">add_task</span>
+<h3 class="text-xl font-bold text-on-surface">Nueva Tarea</h3>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors" onclick="closeTaskModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Descripción de la tarea</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm" id="modal-task-input" placeholder="AAAAAAAAAA" type="text">
+</div>
+</div>
+<div class="flex justify-end gap-3 mt-8">
+<button class="px-5 py-2.5 rounded-lg border border-outline text-on-surface-variant text-sm font-bold hover:bg-surface-container-low transition-all" onclick="closeTaskModal()">Cancelar</button>
+<button class="px-5 py-2.5 rounded-lg bg-[#00675f] text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all" onclick="saveModalTask()">Guardar Tarea</button>
+</div>
+</div>
+</div>
+<!-- Edit Task Modal -->
+<div class="fixed inset-0 z-[100] items-center justify-center hidden" id="edit-task-modal">
+<div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeEditTaskModal()"></div>
+<div class="relative bg-white w-full max-w-md rounded-xl shadow-2xl overflow-hidden transform transition-all p-6 font-lexend">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-2xl">edit_square</span>
+<h3 class="text-xl font-bold text-on-surface">Modificar Tarea</h3>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors" onclick="closeEditTaskModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Descripción de la tarea</label>
+<input class="w-full px-4 py-3 rounded-lg border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm" id="edit-modal-task-input" placeholder="" type="text">
+<input id="edit-target-id" type="hidden" value="task-10">
+</div>
+</div>
+<div class="flex justify-end gap-3 mt-8">
+<button class="px-5 py-2.5 rounded-lg border border-outline text-on-surface-variant text-sm font-bold hover:bg-surface-container-low transition-all" onclick="closeEditTaskModal()">Cancelar</button>
+<button class="px-5 py-2.5 rounded-lg bg-[#00675f] text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all" onclick="updateTask()">Guardar Cambios</button>
+</div>
+</div>
+</div>
+<!-- Delete Confirmation Modal -->
+<div class="fixed inset-0 z-[100] items-center justify-center hidden" id="delete-confirm-modal">
+<div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+<div class="relative bg-white w-full max-w-sm rounded-xl shadow-2xl overflow-hidden transform transition-all p-6 font-lexend text-center">
+<div class="flex flex-col items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-full bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-4xl">delete_forever</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface">¿Estás seguro de que deseas eliminar esta tarea?</h3>
+<p class="text-on-surface-variant text-sm">Esta acción no se puede deshacer.</p>
+</div>
+<input id="delete-target-id" type="hidden" value="">
+<div class="flex flex-col gap-2">
+<button class="w-full px-5 py-3 rounded-lg bg-error text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all" onclick="deleteTask()">Eliminar</button>
+<button class="w-full px-5 py-3 rounded-lg border border-outline text-on-surface-variant text-sm font-bold hover:bg-surface-container-low transition-all" onclick="closeDeleteModal()">Cancelar</button>
+</div>
+</div>
+</div>
+<script>
+    // Global state for deletion
+    let pendingDeleteId = null;
+
+    // Sidebar & Notifications
+    document.getElementById('sidebar-toggle').addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('sidebar-collapsed');
+        const icon = document.querySelector('#sidebar-toggle span');
+        icon.innerText = sidebar.classList.contains('sidebar-collapsed') ? 'menu' : 'menu_open';
+    });
+
+    function setActive(element) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active', 'bg-primary', 'text-white');
+            link.classList.add('text-on-surface');
+            const icon = link.querySelector('.material-symbols-outlined');
+            if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+        });
+        element.classList.add('active', 'bg-primary', 'text-white');
+        element.classList.remove('text-on-surface');
+        const activeIcon = element.querySelector('.material-symbols-outlined');
+        if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+    }
+
+    function toggleNotifications() {
+        const dropdown = document.getElementById('notification-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    window.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('notification-dropdown');
+        const bell = document.getElementById('notification-bell');
+        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+
+    // Helper to generate the task HTML structure
+    function createTaskElementHtml(id, text) {
+        return `
+            <div id="${id}" class="group flex flex-col bg-surface-container-low rounded-lg p-3 hover:bg-surface-container transition-all border border-transparent hover:border-primary/20">
+                <label class="flex items-start gap-3 cursor-pointer w-full">
+                    <div class="relative flex items-center justify-center w-5 h-5 mt-0.5 shrink-0">
+                        <input class="peer appearance-none w-5 h-5 border-2 border-outline-variant rounded bg-white checked:bg-primary checked:border-primary transition-all cursor-pointer" type="checkbox">
+                        <span class="material-symbols-outlined text-white text-[14px] absolute opacity-0 peer-checked:opacity-100 pointer-events-none" style="font-variation-settings: 'FILL' 1;">check</span>
+                    </div>
+                    <span class="task-text font-body text-sm text-on-surface group-hover:text-primary transition-colors flex-1">${text}</span>
+                </label>
+                <div class="flex justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity mt-2">
+                    <button class="text-on-surface-variant hover:text-primary transition-colors p-1.5 rounded-md hover:bg-white flex items-center justify-center" onclick="openEditTaskModal('${id}')">
+                        <span class="material-symbols-outlined text-[16px]" data-icon="edit">edit</span>
+                    </button>
+                    <button class="text-on-surface-variant hover:text-error transition-colors p-1.5 rounded-md hover:bg-white flex items-center justify-center" onclick="confirmDeleteTask('${id}')">
+                        <span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span>
+                    </button>
+                </div>
+            </div>`;
+    }
+
+    // Add Task Logic
+    function openTaskModal() {
+        const modal = document.getElementById('task-modal');
+        const input = document.getElementById('modal-task-input');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        input.value = '';
+        input.focus();
+    }
+
+    function closeTaskModal() {
+        const modal = document.getElementById('task-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    function saveModalTask() {
+        const input = document.getElementById('modal-task-input');
+        const taskText = input.value;
+        if (taskText && taskText.trim() !== '') {
+            const taskList = document.getElementById('task-list');
+            const taskId = 'task-' + Date.now();
+            const taskHtml = createTaskElementHtml(taskId, taskText);
+            // REQUIREMENT 1: Prepend to the top of the list
+            taskList.insertAdjacentHTML('afterbegin', taskHtml);
+            closeTaskModal();
+        }
+    }
+
+    // Edit Task Logic
+    function openEditTaskModal(id) {
+        const modal = document.getElementById('edit-task-modal');
+        const taskElement = document.getElementById(id);
+        const textSpan = taskElement.querySelector('.task-text');
+        const input = document.getElementById('edit-modal-task-input');
+        const hiddenId = document.getElementById('edit-target-id');
+        
+        hiddenId.value = id;
+        input.value = textSpan.innerText;
+        
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        input.focus();
+    }
+
+    function closeEditTaskModal() {
+        const modal = document.getElementById('edit-task-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    function updateTask() {
+        const input = document.getElementById('edit-modal-task-input');
+        const hiddenId = document.getElementById('edit-target-id');
+        const taskText = input.value;
+        const id = hiddenId.value;
+        
+        if (taskText && taskText.trim() !== '') {
+            const taskElement = document.getElementById(id);
+            if (taskElement) {
+                // REQUIREMENT 2 & 3: Move modified task to the top
+                const taskList = document.getElementById('task-list');
+                
+                // Update text first
+                const textSpan = taskElement.querySelector('.task-text');
+                textSpan.innerText = taskText;
+                
+                // Move to top
+                taskList.prepend(taskElement);
+                
+                // Add a small highlight animation
+                taskElement.classList.add('ring-2', 'ring-primary/50');
+                setTimeout(() => taskElement.classList.remove('ring-2', 'ring-primary/50'), 1000);
+            }
+            closeEditTaskModal();
+        }
+    }
+
+    // Delete Task Logic with Modal
+    function confirmDeleteTask(id) {
+        pendingDeleteId = id;
+        const modal = document.getElementById('delete-confirm-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function closeDeleteModal() {
+        const modal = document.getElementById('delete-confirm-modal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        pendingDeleteId = null;
+    }
+
+    function deleteTask() {
+        if (pendingDeleteId) {
+            const taskElement = document.getElementById(pendingDeleteId);
+            if (taskElement) {
+                taskElement.classList.add('opacity-0', 'scale-95', 'transition-all', 'duration-300');
+                setTimeout(() => taskElement.remove(), 300);
+            }
+            closeDeleteModal();
+        }
+    }
+</script>
+
+
+</body></html>

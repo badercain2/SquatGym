@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title content="Squat Gym - Gestión de Cupones - Modal Modificar Cupón Activo">Squat Gym - Gestión de Cupones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "tertiary-container": "#006289",
+                "surface": "#f7faf8",
+                "outline-variant": "#bec9c6",
+                "surface-dim": "#d7dbd9",
+                "error-container": "#ffdad6",
+                "secondary-fixed": "#c6e7ff",
+                "primary": "#004d47",
+                "on-secondary-fixed": "#001e2d",
+                "tertiary-fixed-dim": "#82cfff",
+                "primary-fixed": "#a1f1e6",
+                "on-surface": "#181c1c",
+                "on-primary": "#ffffff",
+                "on-tertiary-fixed": "#001e2d",
+                "surface-variant": "#e0e3e1",
+                "on-background": "#181c1c",
+                "background": "#f7faf8",
+                "on-error": "#ffffff",
+                "surface-mesh-start": "#e6fffd",
+                "success-disponible": "#00675f",
+                "surface-container": "#ebefed",
+                "secondary-container": "#8cd1fe",
+                "on-tertiary-container": "#a5dbff",
+                "error-critical": "#b31b25",
+                "outline": "#6e7977",
+                "inverse-on-surface": "#eef1f0",
+                "error": "#ba1a1a",
+                "surface-container-high": "#e6e9e7",
+                "on-primary-fixed": "#00201d",
+                "primary-container": "#00675f",
+                "on-surface-variant": "#3e4947",
+                "on-tertiary-fixed-variant": "#004c6b",
+                "surface-container-highest": "#e0e3e1",
+                "on-tertiary": "#ffffff",
+                "on-primary-container": "#93e2d8",
+                "inverse-surface": "#2d3130",
+                "tertiary": "#004967",
+                "on-error-container": "#93000a",
+                "on-secondary-container": "#005a7f",
+                "surface-container-lowest": "#ffffff",
+                "secondary": "#09658c",
+                "inverse-primary": "#85d5ca",
+                "secondary-fixed-dim": "#89cefb",
+                "surface-tint": "#086a62",
+                "on-secondary": "#ffffff",
+                "surface-container-low": "#f1f4f2",
+                "on-secondary-fixed-variant": "#004c6b",
+                "surface-bright": "#f7faf8",
+                "primary-fixed-dim": "#85d5ca",
+                "surface-mesh-end": "#f0ffff",
+                "tertiary-fixed": "#c6e7ff",
+                "on-primary-fixed-variant": "#00504a",
+                // Merging needed colors from source to preserve logic if missed
+                "primary-dim": "#005a52",
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "section-gap": "2rem",
+                "cell-padding-x": "2rem",
+                "edge-margin": "2rem",
+                "cell-padding-y": "1.5rem",
+                "container-max": "1240px",
+                "gutter": "1.5rem"
+        },
+        "fontFamily": {
+                "status-tag": [
+                        "Lexend"
+                ],
+                "headline-md": [
+                        "Lexend"
+                ],
+                "label-caps": [
+                        "Lexend"
+                ],
+                "display-lg-mobile": [
+                        "Lexend"
+                ],
+                "display-lg": [
+                        "Lexend"
+                ],
+                "title-sm": [
+                        "Lexend"
+                ],
+                "body-md": [
+                        "Manrope"
+                ],
+                "headline": ["Lexend"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+        },
+        "fontSize": {
+                "status-tag": [
+                        "9px",
+                        {
+                                "lineHeight": "12px",
+                                "letterSpacing": "0.1em",
+                                "fontWeight": "900"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "800"
+                        }
+                ],
+                "label-caps": [
+                        "10px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.15em",
+                                "fontWeight": "900"
+                        }
+                ],
+                "display-lg-mobile": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "900"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.05em",
+                                "fontWeight": "900"
+                        }
+                ],
+                "title-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "500"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #f8fafa;
+            color: #1a1c1d;
+        }
+        h1, h2, h3, h4, .headline {
+            font-family: 'Lexend', sans-serif;
+        }
+        .card-premium {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -4px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bg-mesh {
+            background-color: #f8fafa;
+            background-image: radial-gradient(at 0% 0%, hsla(174, 100%, 95%, 1) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, hsla(180, 100%, 96%, 1) 0, transparent 50%);
+        }
+        @media (min-width: 1280px) and (min-height: 1014px) {
+            body {
+                height: 1014px;
+                overflow: hidden;
+            }
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e9e9;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #d0d5d6;
+        }
+        .sidebar-transition {
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s, border 0.3s;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .sidebar-collapsed {
+            transform: translateX(-100%);
+            pointer-events: none;
+            opacity: 0;
+        }
+        .nav-link.active {
+            background-color: #00675f !important;
+            color: white !important;
+            transition: none !important;
+        }
+        .nav-link.active .material-symbols-outlined {
+            color: white !important;
+        }
+        #notification-dropdown.hidden {
+            display: none;
+        }
+        #notification-dropdown {
+            animation: slideInDown 0.2s ease-out;
+        }
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased bg-mesh h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container overflow-hidden max-w-[1280px] mx-auto w-full relative">
+<header class="shrink-0 w-full z-50 border-b border-outline-variant/30 h-20" style="background-color: #005a52;"><div class="max-w-[1240px] mx-auto w-full h-full flex justify-between items-center px-8">
+<div class="flex items-center">
+<button class="mr-4 text-white hover:bg-white/10 p-2 rounded-full transition-colors flex items-center justify-center shrink-0" id="sidebar-toggle">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<div class="font-black tracking-tighter font-lexend text-white text-3xl">Squat Gym</div>
+</div>
+<div class="flex items-center gap-4 text-white">
+<div class="relative">
+<button class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all group hover:bg-white/10 text-white" id="notification-bell" onclick="toggleNotifications()">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-error text-[11px] text-white font-bold flex items-center justify-center rounded-full border border-white shadow-sm w-4 h-4 text-[9px]" style="top: -2px; right: -2px;">4</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+</div>
+<div class="flex flex-col">
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Stock bajo: Proteína Whey</p>
+<p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-sm">event_busy</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
+<p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Nuevo socio: Juan Pérez</p>
+<p class="text-[10px] text-on-surface-variant">Suscripción Plan Premium</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
+<p class="text-[10px] text-on-surface-variant">Vencimiento en 2 días</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
+<button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: #00675f; color: white;">
+<span class="">Ver todas</span>
+<span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full transition-all hover:bg-white/10 text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</div></header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col pt-6 pb-4 sidebar-collapsed fixed top-20 left-0 bottom-20 z-[40] shadow-2xl transition-all duration-300 ease-in-out" id="sidebar">
+<nav class="flex-1 flex flex-col gap-2 px-4 overflow-y-auto w-64">
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container-low hover:text-primary transition-all font-medium" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="nav-text font-lexend tracking-tight">Inicio</span>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Clases</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">calendar_month</span>
+<span class="nav-text font-medium text-sm">Visualizar Clases</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="nav-text font-medium text-sm">Gestionar Profesores</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">add_box</span>
+<span class="nav-text font-medium text-sm">Crear Clase</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">calendar_view_week</span>
+<span class="nav-text font-medium text-sm">Ver Cronograma</span>
+</a>
+</div>
+<div class="flex flex-col gap-1 mt-4">
+<div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Kiosko</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+<span class="nav-text font-medium text-sm">Visualizar Stock</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">point_of_sale</span>
+<span class="nav-text font-medium text-sm">Registrar Venta</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg active font-medium transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span class="nav-text font-medium text-sm">Agregar Promociones</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">assessment</span>
+<span class="nav-text font-medium text-sm">Solicitar Informes</span>
+</a>
+</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-error transition-colors" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span class="nav-text font-lexend font-medium text-sm">Cerrar Sesión</span>
+</a></nav>
+</aside>
+<main class="flex-grow flex flex-col px-8 w-full overflow-y-auto gap-6 transition-all duration-300 custom-scrollbar pt-6 py-2">
+<div class="shrink-0 mb-10">
+<div class="flex items-center justify-between mb-4">
+<button class="flex items-center gap-2 text-slate-500 hover:text-primary transition-all group">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-xs font-bold uppercase tracking-widest font-headline">VOLVER A GESTIÓN</span>
+</button>
+</div>
+<div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 mt-2">
+<div class="flex flex-col">
+<h1 class="text-5xl font-black tracking-tighter text-on-surface headline">
+                        Gestión de <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container to-secondary">Cupones</span>
+</h1>
+<p class="font-body text-sm font-medium text-slate-500 mt-2">Administra los códigos de descuento y promociones activas.</p>
+</div>
+<div class="flex flex-col items-end gap-6 w-full lg:w-auto mt-4 lg:mt-0">
+<button class="h-10 flex items-center justify-center gap-2 bg-primary text-white hover:bg-primary-container rounded-xl transition-all duration-300 font-bold text-xs uppercase px-6 shadow-md w-full sm:w-auto" onclick="document.getElementById('crear-cupon-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]">add</span>Crear Nuevo Cupón
+</button>
+<div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+<div class="relative group w-full sm:w-auto">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl group-focus-within:text-primary-container transition-colors">search</span>
+<input class="w-full sm:w-64 pl-12 pr-4 py-3.5 bg-white/50 backdrop-blur-sm border-2 border-white/60 rounded-xl font-headline text-sm font-medium text-on-surface placeholder:text-slate-400 focus:border-primary-container/40 focus:ring-0 transition-all outline-none" placeholder="Buscar cupón..." type="text"/>
+</div>
+<div class="relative w-full sm:w-auto">
+<button class="w-full sm:w-auto h-12 flex items-center justify-center gap-2 bg-white/50 backdrop-blur-sm border-2 border-primary/20 text-primary hover:bg-primary/5 rounded-xl transition-all duration-300 font-bold text-xs uppercase px-6">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+        Filtrar por estado
+        <span class="material-symbols-outlined text-[18px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-grow flex flex-col bg-white/70 backdrop-blur-md rounded-2xl border border-white/60 card-premium overflow-hidden">
+<div class="flex-grow overflow-auto custom-scrollbar">
+<table class="w-full text-left border-separate border-spacing-0">
+<thead class="sticky top-0 bg-white/90 backdrop-blur-md z-10">
+<tr>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary-container/60 font-headline border-b border-primary-container/10">Nombre del Cupón</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary-container/60 font-headline border-b border-primary-container/10">DESCUENTO ($)</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary-container/60 font-headline border-b border-primary-container/10">FECHA DE EXPIRACIÓN</th>
+<th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary-container/60 font-headline border-b border-primary-container/10">ESTADO</th><th class="px-8 py-5 text-[10px] font-black uppercase tracking-widest text-primary-container/60 font-headline border-b border-primary-container/10 text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-primary-container/5 bg-white"><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Pase Libre</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$10.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">05/02/2025</td><td class="px-8 py-4"><span class="text-xs font-bold text-success-disponible">ACTIVO</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" onclick="document.getElementById('editar-cupon-modal').classList.remove('hidden')" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Membresía VIP</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$15.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">30/01/2025</td><td class="px-8 py-4"><span class="text-xs font-bold text-success-disponible">ACTIVO</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Fitness Total</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$15.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">25/01/2025</td><td class="px-8 py-4"><span class="text-xs font-bold text-outline">DESACTIVADO</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Entrenamiento Personal</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$20.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">20/01/2025</td><td class="px-8 py-4"><span class="text-xs font-bold text-error">POR EXPIRAR</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Clase de Prueba</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$5.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">15/01/2025</td><td class="px-8 py-4"><span class="text-xs font-bold text-success-disponible">ACTIVO</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Bienvenida Nuevos</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$10.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">10/01/2025</td><td class="px-8 py-4"><span class="text-xs font-bold text-success-disponible">ACTIVO</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Basic Nutrition</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$10.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">05/01/2025</td><td class="px-8 py-4"><span class="text-xs font-bold text-error">POR EXPIRAR</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Accesorio Gratis</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$5.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">20/12/2024</td><td class="px-8 py-4"><span class="text-xs font-bold text-outline">DESACTIVADO</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr><tr class="hover:bg-primary-container/5 transition-colors group/row"><td class="px-8 py-4"><div class="flex items-center gap-4"><span class="font-bold text-on-surface text-sm headline">Abono Mensual</span></div></td><td class="px-8 py-4 text-slate-500 font-bold text-sm">$20.00</td><td class="px-8 py-4 text-slate-500 font-bold text-sm">15/12/2024</td><td class="px-8 py-4"><span class="text-xs font-bold text-success-disponible">ACTIVO</span></td><td class="px-8 py-4 text-right"><div class="flex items-center justify-end gap-2"><button class="p-2 rounded-lg hover:bg-primary/10 text-primary transition-colors border border-primary/20" title="Editar"><span class="material-symbols-outlined text-[20px]">edit</span></button><button class="p-2 rounded-lg hover:bg-primary/10 transition-colors border hover:bg-error/10" style="color: #ba1a1a; border-color: rgba(186, 26, 26, 0.2);" title="Borrar"><span class="material-symbols-outlined text-[20px]">delete</span></button></div></td></tr></tbody>
+</table>
+</div>
+<div class="shrink-0 px-8 py-5 border-t border-primary-container/10 flex items-center justify-between bg-white/40">
+<p class="uppercase tracking-widest text-slate-400 text-sm font-bold" id="pagination-info">Página <span class="text-primary-container">1 de 2</span></p>
+<div class="flex items-center gap-1.5" id="pagination-controls">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 text-slate-400 hover:bg-primary-container/5 transition-all duration-200 cursor-pointer hover:border-primary-container hover:text-primary-container">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-slate-200 text-slate-400 hover:border-primary-container hover:text-primary-container hover:bg-primary-container/5 transition-all duration-200 cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<footer class="shrink-0 bg-white/50 backdrop-blur-sm w-full py-6 border-t border-outline-variant/30 mt-auto" style="background-color: #00675f;">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1280px] mx-auto w-full gap-4"><div class="flex flex-col items-center md:items-start">
+<div class="text-lg font-black text-white font-lexend mb-1 headline">Squat Gym</div>
+<p class="text-white/60 text-[9px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
+</div>
+<div class="flex space-x-8">
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Ayuda</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Privacidad</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Contacto</a>
+</div></div>
+</footer>
+<script>
+    document.getElementById('sidebar-toggle').addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('sidebar-collapsed');
+        const icon = document.querySelector('#sidebar-toggle span');
+        icon.innerText = sidebar.classList.contains('sidebar-collapsed') ? 'menu' : 'menu_open';
+    });
+
+    function setActive(element) {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active', 'bg-primary', 'text-white');
+            link.classList.add('text-on-surface');
+            const icon = link.querySelector('.material-symbols-outlined');
+            if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+        });
+        element.classList.add('active', 'bg-primary', 'text-white');
+        element.classList.remove('text-on-surface');
+        const activeIcon = element.querySelector('.material-symbols-outlined');
+        if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+    }
+
+    function toggleNotifications() {
+        const dropdown = document.getElementById('notification-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    // Close dropdown when clicking outside
+    window.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('notification-dropdown');
+        const bell = document.getElementById('notification-bell');
+        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+</script>
+<div class="hidden fixed inset-0 z-[100] bg-on-background/50 backdrop-blur-sm flex items-center justify-center p-4" id="crear-cupon-modal">
+<div class="bg-surface/80 backdrop-blur-md border-2 border-primary/20 rounded-xl w-full max-w-[500px] shadow-2xl flex flex-col overflow-hidden relative">
+<div class="px-6 py-5 border-b border-outline-variant flex justify-between items-center bg-surface-bright/50">
+<h2 class="font-headline-md text-headline-md text-primary">Crear Nuevo Cupón</h2>
+<button aria-label="Cerrar modal" class="text-on-surface-variant hover:text-error transition-colors rounded-full p-1 hover:bg-surface-variant focus:outline-none focus:ring-2 focus:ring-primary/50" onclick="document.getElementById('crear-cupon-modal').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<form class="flex flex-col">
+<div class="p-6 flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant text-[10px]" for="cupon-nombre">Nombre del Cupón</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_offer">local_offer</span>
+</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface placeholder:text-outline-variant" id="cupon-nombre" name="cupon-nombre" placeholder="Ej: VERANO2026" required="" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant text-[10px]" for="cupon-descuento">Descuento ($)</label>
+<div class="relative">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined text-[20px]" data-icon="attach_money">attach_money</span>
+</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface placeholder:text-outline-variant" id="cupon-descuento" min="0" name="cupon-descuento" onkeydown="return event.keyCode !== 69 &amp;&amp; event.keyCode !== 189 &amp;&amp; event.keyCode !== 109" placeholder="Monto de descuento" required="" step="1" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant text-[10px]">Fecha de Expiración</label>
+<div class="grid grid-cols-3 gap-4">
+<div class="flex flex-col gap-1">
+<label class="text-[12px] text-outline" for="exp-dia">Día</label>
+<input class="w-full px-3 py-2 text-center bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface placeholder:text-outline-variant" id="exp-dia" max="31" min="1" name="exp-dia" onkeydown="return event.keyCode !== 69 &amp;&amp; event.keyCode !== 189 &amp;&amp; event.keyCode !== 109" placeholder="DD" required="" type="number"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[12px] text-outline" for="exp-mes">Mes</label>
+<input class="w-full px-3 py-2 text-center bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface placeholder:text-outline-variant" id="exp-mes" max="12" min="1" name="exp-mes" onkeydown="return event.keyCode !== 69 &amp;&amp; event.keyCode !== 189 &amp;&amp; event.keyCode !== 109" placeholder="MM" required="" type="number"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="text-[12px] text-outline" for="exp-anio">Año</label>
+<input class="w-full px-3 py-2 text-center bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface placeholder:text-outline-variant" id="exp-anio" min="2026" name="exp-anio" onkeydown="return event.keyCode !== 69 &amp;&amp; event.keyCode !== 189 &amp;&amp; event.keyCode !== 109" placeholder="AAAA" required="" type="number" value="2026"/>
+</div>
+</div>
+</div>
+</div>
+<div class="px-6 py-5 border-t border-outline-variant bg-surface-container-low flex justify-end gap-4 items-center">
+<button class="font-title-sm text-title-sm uppercase px-6 py-2.5 rounded-lg border-2 border-error text-error hover:bg-error/5 focus:outline-none focus:ring-4 focus:ring-error/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]" onclick="document.getElementById('crear-cupon-modal').classList.add('hidden')" type="button">
+                    CANCELAR
+                </button>
+<button class="font-title-sm text-title-sm uppercase px-6 py-2.5 rounded-lg bg-primary text-on-primary shadow-sm hover:bg-primary-container hover:text-on-primary-container focus:outline-none focus:ring-4 focus:ring-primary/30 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] border-2 border-transparent" type="submit">
+                    GUARDAR CUPÓN
+                </button>
+</div>
+</form>
+</div>
+</div><div class="hidden fixed inset-0 z-[100] bg-on-background/50 backdrop-blur-sm flex items-center justify-center p-4" id="editar-cupon-modal"><div class="bg-surface/80 backdrop-blur-md border-2 border-primary/20 rounded-xl w-full max-w-[500px] shadow-2xl flex flex-col overflow-hidden relative"><div class="px-6 py-5 border-b border-outline-variant flex justify-between items-center bg-surface-bright/50"><h2 class="font-headline-md text-headline-md text-primary">Modificar Cupón</h2><button aria-label="Cerrar modal" class="text-on-surface-variant hover:text-error transition-colors rounded-full p-1 hover:bg-surface-variant focus:outline-none focus:ring-2 focus:ring-primary/50" onclick="document.getElementById('editar-cupon-modal').classList.add('hidden')" type="button"><span class="material-symbols-outlined">close</span></button></div><form class="flex flex-col"><div class="p-6 flex flex-col gap-6"><div class="flex flex-col gap-2"><label class="font-label-caps text-label-caps uppercase text-on-surface-variant text-[10px]" for="edit-cupon-nombre">Nombre del Cupón</label><div class="relative"><span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline"><span class="material-symbols-outlined text-[20px]">local_offer</span></span><input class="w-full pl-10 pr-4 py-2 bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface placeholder:text-outline-variant" id="edit-cupon-nombre" name="cupon-nombre" required="" type="text" value="Pase Libre"/></div></div><div class="flex flex-col gap-2"><label class="font-label-caps text-label-caps uppercase text-on-surface-variant text-[10px]" for="edit-cupon-descuento">Descuento ($)</label><div class="relative"><span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline"><span class="material-symbols-outlined text-[20px]">attach_money</span></span><input class="w-full pl-10 pr-4 py-2 bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface placeholder:text-outline-variant" id="edit-cupon-descuento" name="cupon-descuento" required="" step="0.01" type="number" value="10.00"/></div></div><div class="flex flex-col gap-2"><label class="font-label-caps text-label-caps uppercase text-on-surface-variant text-[10px]">Fecha de Expiración</label><div class="grid grid-cols-3 gap-4"><div class="flex flex-col gap-1"><label class="text-[12px] text-outline" for="edit-exp-dia">Día</label><input class="w-full px-3 py-2 text-center bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface" id="edit-exp-dia" required="" type="number" value="05"/></div><div class="flex flex-col gap-1"><label class="text-[12px] text-outline" for="edit-exp-mes">Mes</label><input class="w-full px-3 py-2 text-center bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface" id="edit-exp-mes" required="" type="number" value="02"/></div><div class="flex flex-col gap-1"><label class="text-[12px] text-outline" for="edit-exp-anio">Año</label><input class="w-full px-3 py-2 text-center bg-surface-bright border-2 border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface" id="edit-exp-anio" required="" type="number" value="2026"/></div></div></div></div><div class="px-6 py-5 border-t border-outline-variant bg-surface-container-low flex justify-end gap-4 items-center"><button class="font-title-sm text-title-sm uppercase px-6 py-2.5 rounded-lg border-2 border-error text-error hover:bg-error/5 transition-all" onclick="document.getElementById('editar-cupon-modal').classList.add('hidden')" type="button">CANCELAR</button><button class="font-title-sm text-title-sm uppercase px-6 py-2.5 rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all border-2 border-transparent" type="submit">GUARDAR CAMBIOS</button></div></form></div></div></body></html>

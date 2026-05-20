@@ -15,11 +15,11 @@ file:///home/cain/Documents-Compartidos/1-DISE%C3%91O/3%20TPI%202026/6%20PAGINA%
 podes hacer que cuando toco/presiono "ayuda" "privacidad" "contacto" en [pagina] me vaya a la pagina a sus respectivas paginas , osea linkearme
 
 te comparto adonde esta 
-file:///home/cain/Documents-Compartidos/1-DISE%C3%91O/3%20TPI%202026/6%20PAGINA%20SQUADGYM/1-Pantallas-generales-ayuda-contacto-etc/Ayuda.html
+file:///home/cain/Documents-Compartidos/1-DISE%C3%91O/3%20TPI%202026/6%20PAGINA%20SQUADGYM/profesor/general-profesor/Ayuda-profesor.html
 
-file:///home/cain/Documents-Compartidos/1-DISE%C3%91O/3%20TPI%202026/6%20PAGINA%20SQUADGYM/1-Pantallas-generales-ayuda-contacto-etc/Contacto.html
+file:///home/cain/Documents-Compartidos/1-DISE%C3%91O/3%20TPI%202026/6%20PAGINA%20SQUADGYM/profesor/general-profesor/Contacto-profesor.html
 
-file:///home/cain/Documents-Compartidos/1-DISE%C3%91O/3%20TPI%202026/6%20PAGINA%20SQUADGYM/1-Pantallas-generales-ayuda-contacto-etc/Privacidad.html
+file:///home/cain/Documents-Compartidos/1-DISE%C3%91O/3%20TPI%202026/6%20PAGINA%20SQUADGYM/profesor/general-profesor/Privacidad-profesor.html
 
 
 -----------------------------------------------------------------------------------------------------------

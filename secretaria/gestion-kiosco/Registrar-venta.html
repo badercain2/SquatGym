@@ -1,0 +1,997 @@
+<!DOCTYPE html><html lang="en" style=""><head></head><body class="font-body-md text-on-surface-subtle h-screen overflow-hidden flex flex-col relative bg-surface-main">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Squat Gym - POS Kiosko</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800;900&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-subtle": "#abadae",
+                        "on-surface-subtle": "#444748",
+                        "surface-mesh-start": "#f8fafa",
+                        "header-deep-teal": "#005a52",
+                        "accent-gradient": "linear-gradient(90deg, #00675f 0%, #006289 100%)",
+                        "surface-main": "#f8fafa",
+                        "status-error": "#b31b25",
+                        "error": "#b31b25",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f1f4f4",
+                        "primary": "#00675f",
+                        "secondary": "#006667",
+                        "tertiary": "#006289",
+                        "outline-variant": "#abadae",
+                        "on-surface": "#1a1c1d",
+                        "on-surface-variant": "#444748"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max-width": "1240px",
+                        "sidebar-width": "16rem",
+                        "section-gap": "1.5rem",
+                        "header-height": "5rem",
+                        "card-padding": "1.25rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Lexend"],
+                        "label-caps": ["Lexend"],
+                        "title-md": ["Lexend"],
+                        "body-md": ["Manrope"],
+                        "display-xl": ["Lexend"],
+                        "headline": ["Lexend"],
+                        "lexend": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-caps": ["10px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "800" }],
+                        "title-md": ["16px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "display-xl": ["60px", { "lineHeight": "0.9", "letterSpacing": "-0.05em", "fontWeight": "900" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>.grid .group.selected > button:first-child { border-color: #00675f !important; border-width: 2px !important; box-shadow: 0 10px 15px -3px rgba(0, 103, 95, 0.1) !important; transform: translateY(-4px); }
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+#sidebar {
+  transform: translateX(-100%);
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s cubic-bezier(.4,0,.2,1);
+}
+#sidebar.sidebar-visible {
+  transform: translateX(0);
+  visibility: visible;
+  opacity: 1;
+}
+#sidebar-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease;
+}
+#sidebar-backdrop.show {
+  opacity: 1;
+  visibility: visible;
+}
+</style>
+<!-- Header Component -->
+<header class="shrink-0 w-full z-50 border-b border-outline-variant/30 h-16" style="background-color: #005a52;"><div class="max-w-[1880px] mx-auto w-full h-full flex justify-between items-center px-8">
+<div class="flex items-center">
+<button class="mr-4 text-white hover:bg-white/10 p-2 rounded-full transition-colors flex items-center justify-center shrink-0" id="sidebar-toggle">
+<span class="material-symbols-outlined text-[28px]">menu</span>
+</button>
+<div class="font-black tracking-tighter font-lexend text-white text-3xl">Squat Gym</div>
+</div>
+<div class="flex items-center gap-4 text-white">
+<div class="relative">
+<button class="relative flex items-center justify-center w-10 h-10 rounded-full transition-all group hover:bg-white/10 text-white" id="notification-bell" onclick="toggleNotifications()">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">notifications</span>
+<span class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-error text-[11px] text-white font-bold flex items-center justify-center rounded-full border border-white shadow-sm w-4 h-4 text-[9px]" style="top: -2px; right: -2px;">4</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-80 bg-surface-container-lowest rounded-2xl shadow-xl border border-outline-variant/30 overflow-hidden z-[60]" id="notification-dropdown">
+<div class="p-4 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline font-bold text-on-surface text-sm">Notificaciones</h3>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">4 Nuevas</span>
+</div>
+<div class="flex flex-col">
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-error/10 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-sm">inventory_2</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Stock bajo: Proteína Whey</p>
+<p class="text-[10px] text-on-surface-variant">Quedan menos de 5 unidades</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-sm">event_busy</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Clase cancelada: Crossfit</p>
+<p class="text-[10px] text-on-surface-variant">Instructor no disponible hoy</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer border-b border-outline-variant/10">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-sm">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Nuevo socio: Juan Pérez</p>
+<p class="text-[10px] text-on-surface-variant">Suscripción Plan Premium</p>
+</div>
+</div>
+</div>
+<div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-sm">payments</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p>
+<p class="text-[10px] text-on-surface-variant">Vencimiento en 2 días</p>
+</div>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
+<button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;">
+<span class="">Ver todas</span>
+<span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<button class="flex items-center justify-center w-10 h-10 rounded-full transition-all hover:bg-white/10 text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: &quot;FILL&quot; 1;">account_circle</span>
+</button>
+</div>
+</div></header>
+<!-- Overlay Sidebar -->
+<div class="fixed inset-0 bg-black/30 backdrop-blur-sm z-[70]" id="sidebar-backdrop"></div>
+<aside class="w-64 shrink-0 bg-surface-container-lowest border-r border-outline-variant/30 flex flex-col pt-6 pb-4 fixed top-16 left-0 bottom-0 z-[80] shadow-2xl" id="sidebar">
+<nav class="flex-1 flex flex-col gap-2 px-4 overflow-y-auto w-64">
+<a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all text-on-surface" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 0;'>home</span>
+<span class="nav-text font-lexend tracking-tight">Inicio</span>
+</a>
+<div class="flex flex-col gap-1 mt-2">
+<div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Clases</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group text-on-surface" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style='font-variation-settings: "FILL" 0;'>calendar_month</span>
+<span class="nav-text font-medium text-sm">Catálogo de Clases</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group text-on-surface" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style='font-variation-settings: "FILL" 0;'>calendar_view_week</span>
+<span class="nav-text font-medium text-sm">Cronograma</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group text-on-surface" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style='font-variation-settings: "FILL" 0;'>person</span>
+<span class="nav-text font-medium text-sm">Consultar Alumno</span>
+</a>
+</div>
+<div class="flex flex-col gap-1 mt-4">
+<div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Kiosko</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">point_of_sale</span>
+<span class="nav-text font-medium text-sm">Registrar Venta</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group active bg-primary text-white" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-white" style='font-variation-settings: "FILL" 1;'>inventory_2</span>
+<span class="nav-text font-medium text-sm">Control de Inventario</span>
+</a>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg hover:bg-surface-container-low hover:text-primary transition-all group text-on-surface" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">loyalty</span>
+<span class="nav-text font-medium text-sm">Cupones</span>
+</a>
+</div>
+<a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto text-on-surface" href="#" onclick="setActive(this)">
+<span class="material-symbols-outlined text-error transition-colors" style="font-variation-settings: 'FILL' 0;">logout</span>
+<span class="nav-text font-lexend font-medium text-sm">Cerrar Sesión</span>
+</a></nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full mx-auto px-8 flex gap-6 overflow-hidden min-h-0">
+<!-- Left Column: Product Browser -->
+<section class="flex-1 flex flex-col overflow-y-auto pr-2 relative scrollbar-hide pt-4 pb-8 gap-2 mb-4 mt-6">
+<!-- Search & Filters Container -->
+<div class="bg-white rounded-xl shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col gap-3 shrink-0 p-3"><div class="flex flex-col gap-2"><!-- Row 1: Client Selection -->
+<div class="flex items-center gap-4 pb-3 border-b border-outline-subtle/30">
+<span class="text-[10px] font-black text-primary uppercase tracking-widest">CLIENTE:</span>
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-subtle/60 text-lg">person_search</span>
+<input class="w-full bg-surface-main border border-outline-subtle/50 rounded-lg py-2 pl-10 pr-4 text-on-surface focus:ring-2 focus:ring-header-deep-teal/20 focus:border-header-deep-teal outline-none font-body-md text-sm transition-all" id="customer-search" onfocus="toggleCustomerResults(true)" oninput="searchCustomers(this.value)" placeholder="Buscar por DNI o Nombre..." type="text">
+<!-- Customer Search Results Dropdown -->
+<div class="hidden absolute left-0 right-0 mt-1 bg-white border border-outline-subtle/50 rounded-xl shadow-xl z-50 max-h-60 overflow-y-auto scrollbar-hide" id="customer-results">
+<!-- Dynamic Results -->
+</div>
+</div>
+<button class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full border border-primary transition-all group" id="anon-toggle" onclick="setAnonymous()">
+<span class="w-2.5 h-2.5 rounded-full bg-primary border-2 border-white shadow-sm" id="anon-indicator"></span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">Anónimo</span>
+</button>
+</div>
+<!-- Row 2: Product Filters -->
+<div class="flex items-center gap-6 pt-1">
+<div class="relative w-80 shrink-0">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-subtle/60 text-lg">search</span>
+<input class="w-full bg-surface-main border border-outline-subtle/50 rounded-lg py-2 pl-10 pr-4 text-on-surface focus:ring-2 focus:ring-header-deep-teal/20 focus:border-header-deep-teal outline-none font-body-md text-sm transition-all" id="search-input" oninput="filterSearch(this.value)" placeholder="Buscar Producto..." type="text">
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold text-on-surface-subtle/60 uppercase tracking-widest whitespace-nowrap">TIPO:</span>
+<div class="relative">
+<select class="appearance-none bg-surface-main text-on-surface font-title-md text-sm pl-4 pr-10 py-2 rounded-lg border border-outline-subtle/50 focus:ring-2 focus:ring-header-deep-teal/20 focus:border-header-deep-teal outline-none transition-all cursor-pointer w-48" id="category-select" onchange="filterCategory(this.value)">
+<option value="Todas">Todas</option>
+<option value="Bebida">Bebidas</option>
+<option value="Suplemento">Suplementos</option>
+<option value="Comida">Comida</option>
+<option value="Accesorio">Accesorios</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-subtle text-xl">expand_more</span>
+</div>
+</div>
+</div></div></div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 flex-grow content-start mt-6" id="product-grid">
+            <div class="relative group">
+                <button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full" onclick="selectProduct('p1')">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0uguUdjXPK7mlchBREidRSzNfFIDs4lpu_ig8FdGqjn-wl0td9-q_C0XVlF8tfGM2agGSYSIPD5vm7gmgAsMSePuBa-WG0hLQJ_RrB4n48HJjhy6eYwrHBsbIylIaT-N476F4KpamYzzARN3eZUq6AsFhfb6tZ8litgcu7ameOUUES4jQK5t7jC52Wa4xNYo8BTnc4wG4h7rr77AILHMoKk6Ebh1cm_wxr6qALu_6qeVByvm-nwYWuAmoic" alt="Agua Mineral 500ml" class="w-full h-full object-cover">
+                                </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm text-header-deep-teal leading-tight">Agua Mineral 500ml</h3>
+                        <p class="font-body-md text-[11px] mt-1 text-on-surface font-semibold">
+                            Stock: 42
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">Bebida</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base text-header-deep-teal">$1.20</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-p1">3</div>
+                    </div>
+                </button>
+                
+                <button class="absolute -top-2 -right-2 w-6 h-6 bg-header-deep-teal text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('p1')">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+                
+            </div>
+            
+            <div class="relative group ">
+                <button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full" onclick="selectProduct('p2')">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0uirkaYwp5SWHhMwwMsb8D7d08S6dSEpuaxGJQ_VmAi2jha60rnPLFI_ZEJ986gkggF1EQ4ZNf45JJPAHGPaEDWtsvUrZ4x0iUHuwOkKEqXQPcGVOo_PhaTehg2pK4QnsotsAXfezSmtLWuIPqBc_jsZmPe3ImQc_KgCVlnduGsQ3FNaOdWl_qekeCGprdSiQgs4hw4KJQayslW_lTVMlbtePB9G86_dfXATIBvMPoOjIUA2NJ4irtpMW3E" alt="Proteína Whey 30g" class="w-full h-full object-cover">
+                                </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm text-header-deep-teal leading-tight">Proteína Whey 30g</h3>
+                        <p class="font-body-md text-[11px] mt-1 text-on-surface font-semibold">
+                            Stock: 3
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">Suplemento</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base text-header-deep-teal">$3.50</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-p2">0</div>
+                    </div>
+                </button>
+                
+                <button class="absolute -top-2 -right-2 w-6 h-6 bg-header-deep-teal text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('p2')">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+                
+            </div>
+            
+            <div class="relative group ">
+                <button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full" onclick="selectProduct('p3')">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0uik579RV9jydAXqRj7f8cmb-vdj6ltroNZBcjEbhnQn6ntJYC6Cr9y18VCDz7dAUnlDKtw-kCsEf58s5yWFf4ZCL9S3DZqzSCFglOx6i-4aVJaLrqneqNPxxn7pQi75l6mSd8W8re-gI1bRVVrYY-E5fz5sNXOoDImel24IlRO5kqYb58hxmw3jttbBJanexCUnUfnz_6wcJTJtM-bvr8Q5zcIBvrNOKqSzfpf-Rh1iLxkWHPS5hYMYmow" alt="Café Espresso" class="w-full h-full object-cover">
+                                </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm text-header-deep-teal leading-tight">Café Espresso</h3>
+                        <p class="font-body-md text-[11px] mt-1 text-on-surface font-semibold">
+                            Stock: 15
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">Bebida</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base text-header-deep-teal">$2.00</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-p3">0</div>
+                    </div>
+                </button>
+                
+                <button class="absolute -top-2 -right-2 w-6 h-6 bg-header-deep-teal text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('p3')">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+                
+            </div>
+            
+            <div class="relative group ">
+                <button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full" onclick="selectProduct('p4')">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0ujxpTDEAUpuDLmTD6vz8tfRjuBX7HrOvsYBMb17MVXMEIbDMocX8UIbhOSP6B40YOLQfgAQZGY2kjAILTNvmFgDehPxM9WrHb4VwX2Xj4U7xgmvHBb4oKtyavAHTbojA_7cG1VpjyLpyqvTs1XIJk1rrG-t_wa8murzgriHKyufP7p6V9kIJYrN38MDonC4Xq6TiGA2orO9vL821daLPToOBccMGNwtxQYYE1d0sQryMbq0F55UyBCIoGM" alt="Barra Cereal Mix" class="w-full h-full object-cover">
+                                </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm text-header-deep-teal leading-tight">Barra Cereal Mix</h3>
+                        <p class="font-body-md text-[11px] mt-1 text-on-surface font-semibold">
+                            Stock: 28
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">Comida</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base text-header-deep-teal">$1.80</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-p4">0</div>
+                    </div>
+                </button>
+                
+                <button class="absolute -top-2 -right-2 w-6 h-6 bg-header-deep-teal text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('p4')">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+                
+            </div>
+            
+            <div class="relative group">
+                <button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full" onclick="selectProduct('p5')">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0ui67Y2GHMY57y48QRkeU6h49lZiNHZVxHyK10-6njI6cjvqpyCEAh0ThLKuAfYkfTV17cMcKoTeyz27n97I1C-2WusXn3ng5UQ_k4bMLDR4fKexXhWuS_ODiZjJ0bg7EGLkOVqGiFp07aUCdt7vUk16AcM_i4fLfMcnOE8olei0UaqVi-45zpR_B6nTNVb4dUq9zkQwDejmVWeySnorKtApF9VvHfWIIiRc-Y2hG5uEqDo7pwNVgmL-IN0" alt="Toalla Microfibra" class="w-full h-full object-cover">
+                                </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm text-header-deep-teal leading-tight">Toalla Microfibra</h3>
+                        <p class="font-body-md text-[11px] mt-1 text-on-surface font-semibold">
+                            Stock: 10
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">Accesorio</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base text-header-deep-teal">$12.00</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-p5">2</div>
+                    </div>
+                </button>
+                
+                <button class="absolute -top-2 -right-2 w-6 h-6 bg-header-deep-teal text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('p5')">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+                
+            </div>
+            
+            <div class="relative group ">
+                <button class="bg-white rounded-xl p-3 shadow-sm border border-outline-subtle/30 flex flex-col items-center text-center gap-2 w-full h-full opacity-60 grayscale cursor-not-allowed" disabled="">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0ujLfASirOrkuCCLMFfY_ecjTscc92w-J7nmTuXuQtPZ5hC0s04wpkMgtFr0Q-_lOgji6j7Vjs41XsBlFnb5uyljzF6ZJlqv_VYqlR2CXJgQjzgQKNxUkCeLt4Ua1fHvw5kc2P3bx4jqDJ4eKTirUvmr6uby95WETqB3934wS9qKAKUtk6cQ7qPtcL4ydv6dzMd_IAKfLAMtEjr1_4DaxNfrS0a_3ITztndSfEGS2nUPYj-njw4iSsx69g" alt="Bebida Isotónica" class="w-full h-full object-cover">
+                                </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm text-on-surface-subtle leading-tight">Bebida Isotónica</h3>
+                        <p class="font-body-md text-[11px] mt-1 text-status-error font-bold">
+                            Sin Stock
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">Bebida</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base text-on-surface-subtle">$2.50</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-p6">0</div>
+                    </div>
+                </button>
+                
+            </div>
+            
+            <div class="relative group ">
+                <button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full" onclick="selectProduct('p7')">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0ujuDQuTG2GZK9f-pDG-E_--fOSXgjNbF-Tu7h_q6ZVLPT_i7Xx29Kl8ooZNjt1ZUQ9t20rmHY8XsizKJoxMNpiVfeoDPerKrtPai97hMfTH5LtQTf2djH3RcNkEiIvggBzOOZapRmaJ672-0S9sQed-cq8BEjrNPW0hZbr2mshdhdRKgmpkVgUi7Ele1jxxdCZpPhUBXqFxo8HzTzE4-SZJJgWVKi18JzxWkmZjaA9Rq8FizmYvnqxq0Ak" alt="Barra Proteína" class="w-full h-full object-cover">
+                                </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm text-header-deep-teal leading-tight">Barra Proteína</h3>
+                        <p class="font-body-md text-[11px] mt-1 text-on-surface font-semibold">
+                            Stock: 55
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">Comida</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base text-header-deep-teal">$3.00</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-p7">0</div>
+                    </div>
+                </button>
+                
+                <button class="absolute -top-2 -right-2 w-6 h-6 bg-header-deep-teal text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('p7')">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+                
+            </div>
+            
+            <div class="relative group ">
+                <button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full" onclick="selectProduct('p8')">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="https://lh3.googleusercontent.com/aida/ADBb0ujNrXGgY4z5-m8JZZftDwytRoccEr31zHeC1r94Y3sgyUXzbWidxWVZoVeAsynknoVCIg_SYlsLWb6_sgZ6nxp3ugEDqqOR3N0p3z6_u4EDv9Tw6ni1YpR2bys3oWZykkfhw7JRMa1D8z3Aoi4lmoVtsGB6fNe-bBrAkuYUFFtJ3dsCDY2403uGLMgxfC8YdHm8w4gg7gLIeIliaQBCWNfSoqtBWlsmF7EaorTSeMffxvQWDeSmrCo6pEM" alt="Shaker 600ml" class="w-full h-full object-cover">
+                                </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm text-header-deep-teal leading-tight">Shaker 600ml</h3>
+                        <p class="font-body-md text-[11px] mt-1 text-on-surface font-semibold">
+                            Stock: 20
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">Accesorio</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base text-header-deep-teal">$5.00</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-p8">0</div>
+                    </div>
+                </button>
+                
+                <button class="absolute -top-2 -right-2 w-6 h-6 bg-header-deep-teal text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('p8')">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+                
+            </div>
+            </div>
+<div class="flex justify-center items-center gap-2 mt-auto mb-4 pt-4 shrink-0"><button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline-subtle/30 text-on-surface-subtle hover:bg-surface-main transition-colors" onclick="changePage(-1)">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<div class="flex gap-1" id="pagination-container"><button class="w-8 h-8 flex items-center justify-center rounded-lg font-medium text-xs page-btn bg-primary text-white font-bold shadow-sm" onclick="setPage(1)">1</button><button class="w-8 h-8 flex items-center justify-center rounded-lg font-medium text-xs page-btn hover:bg-surface-main text-on-surface-subtle" onclick="setPage(2)">2</button><button class="w-8 h-8 flex items-center justify-center rounded-lg font-medium text-xs page-btn hover:bg-surface-main text-on-surface-subtle" onclick="setPage(3)">3</button><button class="w-8 h-8 flex items-center justify-center rounded-lg font-medium text-xs page-btn hover:bg-surface-main text-on-surface-subtle" onclick="setPage(4)">4</button></div>
+<button class="w-8 h-8 flex items-center justify-center rounded-full border border-outline-subtle/30 text-on-surface-subtle hover:bg-surface-main transition-colors" onclick="changePage(1)">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button></div></section>
+<!-- Right Column: Cart (Carrito Actual) -->
+<aside class="w-[340px] flex-shrink-0 bg-white shadow-lg shadow-[rgba(0,103,95,0.08)] border-outline-subtle/20 flex flex-col overflow-hidden z-10 my-4 rounded-xl border">
+<!-- Cart Header -->
+<div class="p-4 border-b border-outline-subtle/30 bg-white z-10 shrink-0">
+<h2 class="font-headline-lg text-lg text-header-deep-teal mb-2"><div class="flex items-center gap-2"><span class="material-symbols-outlined">shopping_cart</span><span class="">Carrito Actual</span></div></h2>
+</div>
+<!-- Cart Items Scrollable -->
+<div class="flex-grow overflow-y-auto p-4 flex flex-col gap-3 bg-surface-mesh-start" id="cart-items">
+                <div class="flex flex-col items-center justify-center h-full text-on-surface-subtle/40 gap-3 py-12">
+<span class="material-symbols-outlined text-6xl opacity-20">shopping_cart</span>
+<div class="text-center">
+<p class="font-title-md text-sm">El carrito está vacío</p>
+<p class="text-xs">Agregue productos para comenzar</p>
+</div>
+</div></div>
+<!-- Cart Footer (Summary & Actions) -->
+<div class="bg-surface-main p-4 border-t border-outline-subtle/30 flex flex-col gap-3 shrink-0 mt-auto">
+<!-- Totals -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-sm py-1">
+<span class="text-on-surface-subtle font-medium">Subtotal</span>
+<span class="font-title-md text-header-deep-teal" id="cart-subtotal">$0.00</span>
+</div>
+<div class="flex justify-between items-center text-sm py-1">
+<span class="text-[#00675f] font-bold">Descuento</span>
+<span class="text-[#00675f] font-bold" id="cart-discount">$0.00</span>
+</div>
+<div class="flex gap-2 py-2 border-y border-outline-subtle/10 my-2">
+<div class="relative flex-grow">
+<input class="w-full bg-white border border-outline-subtle/50 rounded-lg py-1.5 px-3 text-on-surface-subtle focus:ring-2 focus:ring-header-deep-teal/20 focus:border-header-deep-teal outline-none font-body-md text-xs uppercase transition-colors" id="coupon-input" placeholder="Código de Cupón" type="text">
+</div>
+<button class="bg-header-deep-teal/10 text-header-deep-teal font-title-md text-[10px] px-3 py-1.5 rounded-lg border border-header-deep-teal/20 hover:bg-header-deep-teal/20 transition-colors uppercase tracking-wider font-lexend" onclick="applyCoupon()">APLICAR</button>
+</div>
+<div class="flex flex-wrap gap-1 mb-2" id="applied-coupons"></div>
+<div class="flex justify-between items-end pt-2">
+<span class="font-title-md text-base text-header-deep-teal">Total</span>
+<div class="flex flex-col items-end">
+<span class="font-headline-lg text-2xl text-header-deep-teal tracking-tight" id="cart-total">$0.00</span>
+</div>
+</div>
+</div>
+<!-- Payment Methods -->
+<div class="flex flex-col gap-2 mt-2"><p class="text-[10px] font-bold text-on-surface-subtle/60 uppercase tracking-widest px-1">Método de Pago</p><div class="grid gap-2 grid-cols-3"><button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method" onclick="selectPayment(this)"><span class="material-symbols-outlined text-header-deep-teal">payments</span><span class="font-title-md text-[11px] text-header-deep-teal leading-none">Efectivo</span></button><button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method" onclick="selectPayment(this)"><span class="material-symbols-outlined text-header-deep-teal">credit_card</span><span class="font-title-md text-[11px] text-header-deep-teal leading-none">Tarjeta</span></button><button class="bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 group cursor-pointer relative payment-method" onclick="selectPayment(this)"><span class="material-symbols-outlined text-header-deep-teal">qr_code_2</span><span class="font-title-md text-[11px] text-header-deep-teal leading-none">QR</span></button></div></div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-2 mt-3">
+<button class="w-full bg-primary text-white font-title-md py-2.5 rounded-lg hover:bg-opacity-90 transition-all active:scale-[0.98] shadow-sm" id="btn-finalizar" onclick="processPayment()">Registrar Pago</button>
+<button class="w-full bg-white border border-status-error/30 text-status-error font-title-md py-2.5 rounded-lg hover:bg-status-error/5 transition-colors" onclick="cancelSale()">
+                        Cancelar Venta
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer Component from SCREEN_128 -->
+<footer class="shrink-0 bg-white/50 backdrop-blur-sm w-full py-6 border-t border-outline-variant/30 mt-auto" style="background-color: #00675f;">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-[1240px] mx-auto w-full gap-4"><div class="flex flex-col items-center md:items-start">
+<div class="text-lg font-black text-white font-lexend mb-1">Squat Gym</div>
+<p class="text-white/60 text-[9px] font-bold uppercase tracking-widest opacity-60">© 2026 SQUAT GYM. KINETIC PRECISION MANAGEMENT.</p>
+</div>
+<div class="flex space-x-8">
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Ayuda</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Privacidad</a>
+<a class="text-white/80 hover:text-white text-[11px] font-bold transition-colors" href="#">Contacto</a>
+</div></div>
+</footer>
+<script>
+    let cart = {};
+    let appliedCoupons = [];
+    let discountAmount = 0;
+    let searchTerm = '';
+    
+    // Product Data
+    const allProducts = [
+        { id: 'p1', name: 'Agua Mineral 500ml', price: 1.20, stock: 42, icon: 'water_drop', category: 'Bebida', image: 'https://lh3.googleusercontent.com/aida/ADBb0uguUdjXPK7mlchBREidRSzNfFIDs4lpu_ig8FdGqjn-wl0td9-q_C0XVlF8tfGM2agGSYSIPD5vm7gmgAsMSePuBa-WG0hLQJ_RrB4n48HJjhy6eYwrHBsbIylIaT-N476F4KpamYzzARN3eZUq6AsFhfb6tZ8litgcu7ameOUUES4jQK5t7jC52Wa4xNYo8BTnc4wG4h7rr77AILHMoKk6Ebh1cm_wxr6qALu_6qeVByvm-nwYWuAmoic' },
+        { id: 'p2', name: 'Proteína Whey 30g', price: 3.50, stock: 3, icon: 'science', category: 'Suplemento', image: 'https://lh3.googleusercontent.com/aida/ADBb0uirkaYwp5SWHhMwwMsb8D7d08S6dSEpuaxGJQ_VmAi2jha60rnPLFI_ZEJ986gkggF1EQ4ZNf45JJPAHGPaEDWtsvUrZ4x0iUHuwOkKEqXQPcGVOo_PhaTehg2pK4QnsotsAXfezSmtLWuIPqBc_jsZmPe3ImQc_KgCVlnduGsQ3FNaOdWl_qekeCGprdSiQgs4hw4KJQayslW_lTVMlbtePB9G86_dfXATIBvMPoOjIUA2NJ4irtpMW3E' },
+        { id: 'p3', name: 'Café Espresso', price: 2.00, stock: 15, icon: 'coffee', category: 'Bebida', image: 'https://lh3.googleusercontent.com/aida/ADBb0uik579RV9jydAXqRj7f8cmb-vdj6ltroNZBcjEbhnQn6ntJYC6Cr9y18VCDz7dAUnlDKtw-kCsEf58s5yWFf4ZCL9S3DZqzSCFglOx6i-4aVJaLrqneqNPxxn7pQi75l6mSd8W8re-gI1bRVVrYY-E5fz5sNXOoDImel24IlRO5kqYb58hxmw3jttbBJanexCUnUfnz_6wcJTJtM-bvr8Q5zcIBvrNOKqSzfpf-Rh1iLxkWHPS5hYMYmow' },
+        { id: 'p4', name: 'Barra Cereal Mix', price: 1.80, stock: 28, icon: 'cookie', category: 'Comida', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujxpTDEAUpuDLmTD6vz8tfRjuBX7HrOvsYBMb17MVXMEIbDMocX8UIbhOSP6B40YOLQfgAQZGY2kjAILTNvmFgDehPxM9WrHb4VwX2Xj4U7xgmvHBb4oKtyavAHTbojA_7cG1VpjyLpyqvTs1XIJk1rrG-t_wa8murzgriHKyufP7p6V9kIJYrN38MDonC4Xq6TiGA2orO9vL821daLPToOBccMGNwtxQYYE1d0sQryMbq0F55UyBCIoGM' },
+        { id: 'p5', name: 'Toalla Microfibra', price: 12.00, stock: 10, icon: 'fitness_center', category: 'Accesorio', image: 'https://lh3.googleusercontent.com/aida/ADBb0ui67Y2GHMY57y48QRkeU6h49lZiNHZVxHyK10-6njI6cjvqpyCEAh0ThLKuAfYkfTV17cMcKoTeyz27n97I1C-2WusXn3ng5UQ_k4bMLDR4fKexXhWuS_ODiZjJ0bg7EGLkOVqGiFp07aUCdt7vUk16AcM_i4fLfMcnOE8olei0UaqVi-45zpR_B6nTNVb4dUq9zkQwDejmVWeySnorKtApF9VvHfWIIiRc-Y2hG5uEqDo7pwNVgmL-IN0' },
+        { id: 'p6', name: 'Bebida Isotónica', price: 2.50, stock: 0, icon: 'battery_charging_full', category: 'Bebida', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujLfASirOrkuCCLMFfY_ecjTscc92w-J7nmTuXuQtPZ5hC0s04wpkMgtFr0Q-_lOgji6j7Vjs41XsBlFnb5uyljzF6ZJlqv_VYqlR2CXJgQjzgQKNxUkCeLt4Ua1fHvw5kc2P3bx4jqDJ4eKTirUvmr6uby95WETqB3934wS9qKAKUtk6cQ7qPtcL4ydv6dzMd_IAKfLAMtEjr1_4DaxNfrS0a_3ITztndSfEGS2nUPYj-njw4iSsx69g' },
+        { id: 'p7', name: 'Barra Proteína', price: 3.00, stock: 55, icon: 'nutrition', category: 'Comida', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujuDQuTG2GZK9f-pDG-E_--fOSXgjNbF-Tu7h_q6ZVLPT_i7Xx29Kl8ooZNjt1ZUQ9t20rmHY8XsizKJoxMNpiVfeoDPerKrtPai97hMfTH5LtQTf2djH3RcNkEiIvggBzOOZapRmaJ672-0S9sQed-cq8BEjrNPW0hZbr2mshdhdRKgmpkVgUi7Ele1jxxdCZpPhUBXqFxo8HzTzE4-SZJJgWVKi18JzxWkmZjaA9Rq8FizmYvnqxq0Ak' },
+        { id: 'p8', name: 'Shaker 600ml', price: 5.00, stock: 20, icon: 'blender', category: 'Accesorio', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujNrXGgY4z5-m8JZZftDwytRoccEr31zHeC1r94Y3sgyUXzbWidxWVZoVeAsynknoVCIg_SYlsLWb6_sgZ6nxp3ugEDqqOR3N0p3z6_u4EDv9Tw6ni1YpR2bys3oWZykkfhw7JRMa1D8z3Aoi4lmoVtsGB6fNe-bBrAkuYUFFtJ3dsCDY2403uGLMgxfC8YdHm8w4gg7gLIeIliaQBCWNfSoqtBWlsmF7EaorTSeMffxvQWDeSmrCo6pEM' },
+        { id: 'p9', name: 'Pre-Entreno', price: 15.00, stock: 8, icon: 'bolt', category: 'Suplemento', image: 'https://lh3.googleusercontent.com/aida/ADBb0ugvwV6ckvG1mVOf8RqNncnslbZn5iUn8D-X2fViWgUHBEJoprhSVKNBlxrF8L1XFgQ_O1phkKB9K0XSM2Mk9biLVzmoqR7KKmmhcU_NNLrkPSV2f3d4NozvHwrGsooeLs9U1jBPGBtfvTY-a0-JwDHSlVZTJWPI8fgJmFWe-8AyQcXKaq2wo7AUEvKVcVkre-EjJ6MuttRHthlGU-uyG3394rlOXXQnCo4PSeIojshzoDoEaJweCBEnD5k' },
+        { id: 'p10', name: 'Guantes Gym', price: 8.50, stock: 12, icon: 'back_hand', category: 'Accesorio', image: 'https://lh3.googleusercontent.com/aida/ADBb0ujB3i6NOavr6QxwkHL4huv76XHzg6woUHbYzqz01sXE6SogUuCIxIao1mC6tPrSvFTQGOQVM6ex3F7VfdHnF7UfXE6t_Dg7_pRPjB8VF6M_ltBqno5IpgXNNXnFcP1tKNg17qQoMOvwS6-PpFiPxxwmfuSB5_2-RulZqv2rHWXVpu2mCkZQw-2K9oh0037WZ337oiYghs_j0rqpw9G-0_rWbtHYsOn8fR_0RhLcTDfEWmWegKAV7UCo_w' },
+        { id: 'p11', name: 'Magnesio Líquido', price: 2.50, stock: 30, icon: 'category', category: 'Accesorio', image: 'https://lh3.googleusercontent.com/aida/ADBb0ugzz0PDIrDkXeHcmXdpjx44Bq9UrLEDUn7UatJWd2VmFx4BkMrLorcoWkO4Uhgxtwq8_YXF7X3IN9Wan_WmoZ_Nkm-OsZzyXGhkm1PgGhmAmes0Y1bWV0iHIzPV-5NuAwRtrvOLcIIcrkO5mtEmmwsyzt_Il-YZ7rCadStIaxJ97FEj7Ldda0dHZ6B1GdAR4Lxk4ny_v-VupqitXci73Xg1Ms4tw-LdtNjgm4GrKaxuw8zQ10WyeL8KqAg' },
+        { id: 'p12', name: 'Jugo Naranja', price: 1.50, stock: 15, icon: 'local_drink', category: 'Bebida', image: 'https://lh3.googleusercontent.com/aida/ADBb0ugHLQZcEvLRAbuLuJM0YjUZ6mxay-RGU1oUeYeDi8t2IqEXyCRcVy0KSoBkqkuQYGpi3HftXgseS_MwvW33k7WpWZpdF6A-1Dfi6e8fVDy1fkW0ltftCpAXVgWprq5Dj3OZWbZSiVpTAj-a6S4QP1Rr9m8OOBsgaGT8qoso6cx6dGm3-iZP2ey50tBt9YqFA-x0U_Q5kBrqimJ7CpnUc0oVcDOpz7RasgijDtqRQ-LH9FZ1dhPgbCxdlg' },
+        // Page 2
+        { id: 'p13', name: 'Agua Vitaminada', price: 2.20, stock: 25, icon: 'water_drop', category: 'Bebida' },
+        { id: 'p14', name: 'BCAA 500g', price: 25.00, stock: 5, icon: 'science', category: 'Suplemento' },
+        { id: 'p15', name: 'Té Verde', price: 1.80, stock: 18, icon: 'emoji_food_beverage', category: 'Bebida' },
+        { id: 'p16', name: 'Barra Energética', price: 2.50, stock: 0, icon: 'cookie', category: 'Comida' },
+        { id: 'p17', name: 'Muñequeras', price: 6.00, stock: 14, icon: 'accessibility_new', category: 'Accesorio' },
+        { id: 'p18', name: 'Batido Proteico', price: 4.50, stock: 10, icon: 'blender', category: 'Bebida' },
+        { id: 'p19', name: 'Creatina 300g', price: 18.00, stock: 7, icon: 'bolt', category: 'Suplemento' },
+        { id: 'p20', name: 'Cinturón Gym', price: 22.00, stock: 4, icon: 'accessibility', category: 'Accesorio' },
+        { id: 'p21', name: 'Gatorade 500ml', price: 2.00, stock: 30, icon: 'battery_charging_full', category: 'Bebida' },
+        { id: 'p22', name: 'Mix Frutos Secos', price: 3.50, stock: 40, icon: 'nutrition', category: 'Comida' },
+        { id: 'p23', name: 'Straps Levantamiento', price: 7.50, stock: 16, icon: 'fitness_center', category: 'Accesorio' },
+        { id: 'p24', name: 'Vitamina C', price: 10.00, stock: 0, icon: 'medication', category: 'Suplemento' },
+        // Page 3
+        { id: 'p25', name: 'L-Carnitina', price: 14.00, stock: 12, icon: 'science', category: 'Suplemento' },
+        { id: 'p26', name: 'Agua con Gas', price: 1.50, stock: 20, icon: 'water_drop', category: 'Bebida' },
+        { id: 'p27', name: 'Rodilleras', price: 15.00, stock: 8, icon: 'accessibility', category: 'Accesorio' },
+        { id: 'p28', name: 'Galleta Proteica', price: 2.80, stock: 35, icon: 'cookie', category: 'Comida' },
+    ];
+
+    let currentCategory = 'Todas';
+    let currentPage = 1;
+    const itemsPerPage = 8;
+
+    const validCoupons = {
+        'messi': 10.00,
+        'dibu': 5.00,
+        'promo20': 2.00
+    };
+
+    function init() {
+        renderProducts();
+        updateTotals(0);
+    }
+
+    function filterCategory(category) {
+        currentCategory = category;
+        currentPage = 1;
+        renderProducts();
+    }
+
+    function filterSearch(term) {
+        searchTerm = term;
+        currentPage = 1;
+        renderProducts();
+    }
+
+    function applyCoupon() {
+        const input = document.getElementById('coupon-input');
+        const code = input.value.trim().toLowerCase();
+        
+        if (validCoupons[code] && !appliedCoupons.includes(code)) {
+            appliedCoupons.push(code);
+            discountAmount += validCoupons[code];
+            
+            input.value = '';
+            input.classList.remove('border-status-error', 'focus:border-status-error', 'focus:ring-status-error/20');
+            input.classList.add('border-[#00675f]', 'focus:border-[#00675f]');
+            
+            renderCoupons();
+            recalculateCartTotals();
+        } else {
+            input.classList.add('border-status-error', 'focus:border-status-error', 'focus:ring-status-error/20');
+            input.classList.remove('border-[#00675f]', 'focus:border-[#00675f]');
+        }
+    }
+
+    function removeCoupon(code) {
+        const index = appliedCoupons.indexOf(code);
+        if (index > -1) {
+            appliedCoupons.splice(index, 1);
+            discountAmount -= validCoupons[code];
+            renderCoupons();
+            recalculateCartTotals();
+        }
+    }
+
+    function renderCoupons() {
+        const container = document.getElementById('applied-coupons');
+        container.innerHTML = appliedCoupons.map(code => `
+            <div class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1 uppercase tracking-wider border border-primary/20">
+                ${code} (-$${validCoupons[code].toFixed(2)})
+                <span class="material-symbols-outlined text-[12px] cursor-pointer hover:text-error" onclick="removeCoupon('${code}')">close</span>
+            </div>
+        `).join('');
+    }
+
+    function recalculateCartTotals() {
+        const keys = Object.keys(cart);
+        let subtotal = 0;
+        keys.forEach(id => {
+            const item = cart[id];
+            subtotal += item.price * item.quantity;
+        });
+        updateTotals(subtotal);
+    }
+
+    function cancelSale() {
+        cart = {};
+        appliedCoupons = [];
+        discountAmount = 0;
+        searchTerm = '';
+        currentCategory = 'Todas';
+        currentPage = 1;
+
+        document.getElementById('search-input').value = '';
+        document.getElementById('category-select').value = 'Todas';
+        document.getElementById('coupon-input').value = '';
+        
+        renderCoupons();
+        renderProducts();
+        renderCart();
+    }
+
+
+    function renderProducts() {
+        const grid = document.getElementById('product-grid');
+        const paginationContainer = document.getElementById('pagination-container');
+        
+        // Filter by category and search term
+        let filteredProducts = allProducts;
+        if (currentCategory !== 'Todas') {
+            filteredProducts = filteredProducts.filter(p => p.category === currentCategory);
+        }
+        if (searchTerm) {
+            filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        }
+
+        // Pagination logic
+        const totalPages = Math.ceil(filteredProducts.length / itemsPerPage) || 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+        
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
+
+        // Render Cards
+        grid.innerHTML = paginatedProducts.map(p => {
+            const isOutOfStock = p.stock === 0;
+            const isSelected = cart[p.id] ? 'selected' : '';
+            const cartQty = cart[p.id] ? cart[p.id].quantity : 0;
+            
+            const cardClasses = isOutOfStock 
+                ? "bg-white rounded-xl p-3 shadow-sm border border-outline-subtle/30 flex flex-col items-center text-center gap-2 w-full h-full opacity-60 grayscale cursor-not-allowed" 
+                : "bg-white rounded-xl p-3 shadow-sm shadow-[rgba(0,103,95,0.04)] border border-outline-subtle/30 flex flex-col items-center text-center gap-2 hover:shadow-md hover:border-primary active:scale-95 transition-all duration-200 cursor-pointer w-full h-full";
+
+            let mediaContent = '';
+            // Ensure every card has a consistent 80x80 container
+            if (p.image) {
+                mediaContent = `<div class="w-20 h-20 rounded-lg overflow-hidden mb-1 flex items-center justify-center shrink-0 bg-surface-main">
+                                    <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                                </div>`;
+            } else { 
+                // Uniform empty image block with centering and icon
+                mediaContent = `<div class="w-20 h-20 rounded-lg bg-surface-main flex items-center justify-center mb-1 shrink-0">
+                                    <span class="material-symbols-outlined text-outline-variant text-3xl opacity-30">image</span>
+                                </div>`;
+            }
+
+            return `
+            <div class="relative group ${isSelected}">
+                <button class="${cardClasses}" ${isOutOfStock ? 'disabled' : `onclick="selectProduct('${p.id}')"`}>
+                    ${mediaContent}
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="font-title-md text-sm ${isOutOfStock ? 'text-on-surface-subtle' : 'text-header-deep-teal'} leading-tight">${p.name}</h3>
+                        <p class="font-body-md text-[11px] mt-1 ${isOutOfStock ? 'text-status-error font-bold' : 'text-on-surface font-semibold'}">
+                            ${isOutOfStock ? 'Sin Stock' : `Stock: ${p.stock}`}
+                        </p>
+                        <div class="mt-1.5 text-[8px] font-bold text-primary uppercase tracking-wider bg-primary/10 px-2 py-0.5 rounded inline-block self-center">${p.category}</div>
+                    </div>
+                    <div class="mt-auto flex flex-col items-center pt-2">
+                        <div class="font-title-md text-base ${isOutOfStock ? 'text-on-surface-subtle' : 'text-header-deep-teal'}">$${p.price.toFixed(2)}</div>
+                        <div class="text-[10px] font-bold text-on-surface-subtle/60 bg-surface-main px-2 py-0.5 rounded-full mt-1 leading-none count-badge" id="badge-${p.id}">${cartQty}</div>
+                    </div>
+                </button>
+                ${!isOutOfStock ? `
+                <button class="absolute -top-2 -right-2 w-6 h-6 bg-header-deep-teal text-white rounded-full flex items-center justify-center shadow-lg transition-all opacity-0 group-[.selected]:opacity-100 scale-0 group-[.selected]:scale-100 hover:bg-[#004a44] z-20" onclick="deselectProduct('${p.id}')">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+                ` : ''}
+            </div>
+            `;
+        }).join('');
+
+        // Render Pagination
+        let paginationHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+            paginationHTML += `<button class="w-8 h-8 flex items-center justify-center rounded-lg font-medium text-xs page-btn ${i === currentPage ? 'bg-primary text-white font-bold shadow-sm' : 'hover:bg-surface-main text-on-surface-subtle'}" onclick="setPage(${i})">${i}</button>`;
+        }
+        paginationContainer.innerHTML = paginationHTML;
+    }
+
+    function setPage(page) {
+        currentPage = page;
+        renderProducts();
+    }
+
+    function changePage(dir) {
+        let filteredProducts = allProducts;
+        if (currentCategory !== 'Todas') {
+            filteredProducts = filteredProducts.filter(p => p.category === currentCategory);
+        }
+        if (searchTerm) {
+            filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+        }
+
+        const totalPages = Math.ceil(filteredProducts.length / itemsPerPage) || 1;
+        
+        let nextNum = currentPage + dir;
+        if (nextNum >= 1 && nextNum <= totalPages) {
+            currentPage = nextNum;
+            renderProducts();
+        }
+    }
+
+    function selectProduct(id) {
+        const product = allProducts.find(p => p.id === id);
+        if (product.stock <= 0) return;
+
+        if (!cart[id]) {
+            cart[id] = { ...product, quantity: 1 };
+        } else {
+            if(cart[id].quantity < product.stock) {
+                cart[id].quantity += 1;
+            }
+        }
+        
+        renderProducts(); // Re-render to show selected state and badge
+        renderCart();
+    }
+
+    function deselectProduct(id) {
+        delete cart[id];
+        renderProducts();
+        renderCart();
+    }
+
+    function updateQuantity(id, delta) {
+        if (cart[id]) {
+            const product = allProducts.find(p => p.id === id);
+            cart[id].quantity += delta;
+            
+            if (cart[id].quantity <= 0) {
+                deselectProduct(id);
+                return;
+            }
+            if (cart[id].quantity > product.stock) {
+                cart[id].quantity = product.stock;
+            }
+            
+            renderProducts();
+            renderCart();
+        }
+    }
+
+    function renderCart() {
+        const cartContainer = document.getElementById('cart-items');
+        const keys = Object.keys(cart);
+        
+        if (keys.length === 0) {
+            cartContainer.innerHTML = `<div class="flex flex-col items-center justify-center h-full text-on-surface-subtle/40 gap-3 py-12"><span class="material-symbols-outlined text-6xl opacity-20">shopping_cart</span><div class="text-center"><p class="font-title-md text-sm">El carrito está vacío</p><p class="text-xs">Agregue productos para comenzar</p></div></div>`;
+            updateTotals(0);
+            return;
+        }
+
+        let html = '';
+        let subtotal = 0;
+
+        keys.forEach(id => {
+            const item = cart[id];
+            subtotal += item.price * item.quantity;
+            html += `
+                <div class="bg-white rounded-xl p-3 border border-outline-subtle/30 shadow-sm flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-main flex items-center justify-center text-header-deep-teal overflow-hidden">
+${item.image ? `<img src="${item.image}" class="w-full h-full object-cover">` : `<span class="material-symbols-outlined opacity-30 text-xs">image</span>`}
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-title-md text-xs text-header-deep-teal truncate">${item.name}</p>
+<p class="text-[10px] font-bold text-on-surface-subtle/60">$${item.price.toFixed(2)} c/u</p>
+</div>
+<button class="text-on-surface-subtle/40 hover:text-status-error transition-colors" onclick="deselectProduct('${id}')">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center bg-surface-main rounded-lg border border-outline-subtle/30 overflow-hidden">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-outline-subtle/20 transition-colors" onclick="updateQuantity('${id}', -1)"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="w-8 text-center font-bold text-xs text-on-surface">${item.quantity}</span>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-outline-subtle/20 transition-colors" onclick="updateQuantity('${id}', 1)"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+<div class="font-title-md text-sm text-header-deep-teal">$${(item.price * item.quantity).toFixed(2)}</div>
+</div>
+</div>`;
+        });
+
+        cartContainer.innerHTML = html;
+        updateTotals(subtotal);
+    }
+
+    function updateTotals(subtotal) {
+        const total = Math.max(0, subtotal - discountAmount);
+
+        document.getElementById('cart-subtotal').innerText = `$${subtotal.toFixed(2)}`;
+        document.getElementById('cart-discount').innerText = discountAmount > 0 ? `-$${discountAmount.toFixed(2)}` : `$0.00`;
+        document.getElementById('cart-total').innerText = `$${total.toFixed(2)}`;
+    }
+
+    function selectPayment(btn) {
+        const methods = document.querySelectorAll('.payment-method');
+        methods.forEach(m => {
+            m.classList.remove('border-primary', 'shadow-md');
+            m.classList.add('border-outline-subtle/30');
+        });
+        btn.classList.remove('border-outline-subtle/30');
+        btn.classList.add('border-primary', 'shadow-md');
+    }
+
+    function toggleNotifications() {
+        const dropdown = document.getElementById('notification-dropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    window.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('notification-dropdown');
+        const bell = document.getElementById('notification-bell');
+        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+
+    document.getElementById('sidebar-toggle').addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        sidebar.classList.toggle('sidebar-visible');
+        backdrop.classList.toggle('show');
+    });
+
+    document.getElementById('sidebar-backdrop').addEventListener('click', () => {
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        sidebar.classList.remove('sidebar-visible');
+        backdrop.classList.remove('show');
+    });
+
+    // Initialize the app
+    window.onload = init;
+</script>
+<script>
+    const customers = [
+        { name: "Juan Pérez", dni: "12.345.678" }, { name: "María García", dni: "23.456.789" },
+        { name: "Carlos Rodríguez", dni: "34.567.890" }, { name: "Ana Martínez", dni: "45.678.901" },
+        { name: "Diego López", dni: "56.789.012" }, { name: "Elena Gómez", dni: "67.890.123" },
+        { name: "Fernando Ruiz", dni: "78.901.234" }, { name: "Gabriela Díaz", dni: "89.012.345" },
+        { name: "Hugo Sánchez", dni: "90.123.456" }, { name: "Isabel Castro", dni: "01.234.567" },
+        { name: "Javier Morales", dni: "11.222.333" }, { name: "Karla Herrera", dni: "22.333.444" },
+        { name: "Luis Ortega", dni: "33.444.555" }, { name: "Mónica Flores", dni: "44.555.666" },
+        { name: "Nicolás Jiménez", dni: "55.666.777" }, { name: "Olga Torres", dni: "66.777.888" },
+        { name: "Pablo Romero", dni: "77.888.999" }, { name: "Quirino Pineda", dni: "88.999.000" },
+        { name: "Rosa Vargas", dni: "99.000.111" }, { name: "Sergio Silva", dni: "10.111.222" },
+        { name: "Teresa Rojas", dni: "21.222.333" }, { name: "Uriel Mendoza", dni: "32.333.444" },
+        { name: "Verónica Fuentes", dni: "43.444.555" }, { name: "Walter Núñez", dni: "54.555.666" },
+        { name: "Ximena Paredes", dni: "65.666.777" }, { name: "Yahir Espinoza", dni: "76.777.888" },
+        { name: "Zulema Quiroga", dni: "87.888.999" }, { name: "Mateo Blanco", dni: "98.999.000" },
+        { name: "Sofia Luna", dni: "09.000.111" }, { name: "Lucas Marín", dni: "12.111.222" }
+    ];
+
+    function searchCustomers(term) {
+        const resultsDiv = document.getElementById('customer-results');
+        if (!term) {
+            resultsDiv.classList.add('hidden');
+            return;
+        }
+        const filtered = customers.filter(c => c.name.toLowerCase().includes(term.toLowerCase()) || c.dni.includes(term));
+        resultsDiv.innerHTML = filtered.map(c => `
+            <div class="p-3 hover:bg-surface-main cursor-pointer border-b border-outline-subtle/20 last:border-0" onclick="selectCustomer('${c.name}', '${c.dni}')">
+                <div class="text-sm font-bold text-on-surface">${c.name}</div>
+                <div class="text-[10px] text-on-surface-subtle font-medium">DNI: ${c.dni}</div>
+            </div>
+        `).join('');
+        resultsDiv.classList.remove('hidden');
+    }
+
+    function selectCustomer(name, dni) {
+        const input = document.getElementById('customer-search');
+        const resultsDiv = document.getElementById('customer-results');
+        const toggle = document.getElementById('anon-toggle');
+        const indicator = document.getElementById('anon-indicator');
+        
+        input.value = `${name} - ${dni}`;
+        resultsDiv.classList.add('hidden');
+        
+        toggle.classList.remove('bg-primary/10', 'border-primary');
+        toggle.classList.add('bg-surface-container-low', 'border-outline-subtle/50');
+        indicator.classList.remove('bg-primary');
+        indicator.classList.add('bg-on-surface-variant/40');
+    }
+
+    function setAnonymous() {
+        const input = document.getElementById('customer-search');
+        const toggle = document.getElementById('anon-toggle');
+        const indicator = document.getElementById('anon-indicator');
+        
+        input.value = '';
+        toggle.classList.add('bg-primary/10', 'border-primary');
+        toggle.classList.remove('bg-surface-container-low', 'border-outline-subtle/50');
+        indicator.classList.add('bg-primary');
+        indicator.classList.remove('bg-on-surface-variant/40');
+    }
+
+    function toggleCustomerResults(show) {
+        if (!show) setTimeout(() => document.getElementById('customer-results').classList.add('hidden'), 200);
+    }
+</script>
+<div class="fixed inset-0 z-[100] hidden items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4 animate-in fade-in duration-200" id="modal-cash"><div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-outline-subtle/30 flex flex-col"><div class="bg-header-deep-teal p-6 text-white shrink-0 flex justify-between items-center"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-2xl">payments</span><h2 class="font-headline font-bold text-lg uppercase tracking-wider">Pago en Efectivo</h2></div><button class="hover:bg-white/10 rounded-full p-1 transition-colors" onclick="closeModals()"><span class="material-symbols-outlined">close</span></button></div><div class="p-8 flex flex-col gap-6"><div class="flex flex-col items-center gap-2"><p class="text-xs font-black text-on-surface-subtle/60 uppercase tracking-[0.2em]">Monto a Pagar</p><p class="text-4xl font-black text-header-deep-teal tracking-tighter" id="modal-total-cash">$27.60</p></div><div class="space-y-5"><div class="flex flex-col gap-2"><label class="text-[10px] font-black text-on-surface-subtle/60 uppercase tracking-widest ml-1">Monto Recibido</label><div class="flex gap-2"><div class="relative flex-grow"><span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-on-surface-subtle text-xl">$</span><input class="w-full bg-surface-main border border-outline-subtle/50 rounded-xl py-4 pl-10 pr-4 text-2xl font-black text-on-surface focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all" id="cash-received-input" placeholder="22" step="0.01" type="number" value="2.00"></div><button class="bg-secondary/10 text-secondary font-black text-[10px] px-4 rounded-xl border border-secondary/20 hover:bg-secondary/20 transition-all uppercase tracking-widest font-lexend flex items-center justify-center" id="btn-calcular" onclick="(function() { const totalText = document.getElementById('modal-total-cash').innerText; const total = parseFloat(totalText.replace('$', '').trim()) || 0; const received = parseFloat(document.getElementById('cash-received-input').value) || 0; const change = received - total; document.getElementById('modal-change-amount').innerText = '$' + (change &gt;= 0 ? change.toFixed(2) : '0.00'); })()">Calcular</button></div></div><div class="p-5 bg-primary/5 rounded-2xl border-2 border-primary/10 flex flex-col items-center gap-1 shadow-inner"><span class="text-[10px] font-black text-on-surface-subtle/60 uppercase tracking-widest">Vuelto a Entregar</span><span class="text-3xl font-black text-primary tracking-tight" id="modal-change-amount">$0.00</span></div></div><div class="flex flex-col gap-3 mt-4"><button class="w-full bg-primary text-white font-black py-4 rounded-xl hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all uppercase tracking-widest text-sm" onclick="window.location.href='{{DATA:SCREEN:SCREEN_120}}'">Confirmar Pago</button><button class="w-full text-on-surface-subtle font-bold py-2 hover:text-on-surface transition-colors text-xs uppercase tracking-widest" onclick="closeModals()">Cancelar</button></div></div></div></div><div class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4 animate-in fade-in duration-200" id="modal-card"><div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-outline-subtle/30 flex flex-col"><div class="bg-header-deep-teal p-6 text-white shrink-0 flex justify-between items-center"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-2xl">credit_card</span><h2 class="font-headline font-bold text-lg uppercase tracking-wider">Pago con Tarjeta</h2></div><button class="hover:bg-white/10 rounded-full p-1 transition-colors" onclick="closeModals()"><span class="material-symbols-outlined">close</span></button></div><div class="p-8 flex flex-col gap-6 items-center text-center"><div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-2 animate-pulse"><span class="material-symbols-outlined text-5xl">contactless</span></div><div class="space-y-2"><h3 class="font-headline font-bold text-xl text-on-surface">Esperando lectura</h3><p class="text-sm text-on-surface-subtle">Por favor, acerque o inserte la tarjeta en el terminal de pago.</p></div><div class="w-full py-4 px-6 bg-surface-main rounded-xl border border-outline-subtle/30 flex justify-between items-center"><span class="text-xs font-bold text-on-surface-subtle uppercase tracking-widest">Total:</span><span class="text-2xl font-black text-header-deep-teal tracking-tighter" id="modal-total-card">$27.60</span></div><div class="flex flex-col w-full gap-3 mt-4"><button class="w-full bg-primary text-white font-black py-4 rounded-xl hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all uppercase tracking-widest text-sm" onclick="window.location.href='{{DATA:SCREEN:SCREEN_120}}'">CONFIRMAR PAGO</button><button class="w-full text-on-surface-subtle font-bold py-2 hover:text-on-surface transition-colors text-xs uppercase tracking-widest" onclick="closeModals()">Cancelar</button></div></div></div></div><div class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-on-surface/60 backdrop-blur-sm p-4 animate-in fade-in duration-200" id="modal-qr"><div class="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden border border-outline-subtle/30 flex flex-col"><div class="bg-header-deep-teal p-6 text-white shrink-0 flex justify-between items-center"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-2xl">qr_code_2</span><h2 class="font-headline font-bold text-lg uppercase tracking-wider">Pago Virtual (QR)</h2></div><button class="hover:bg-white/10 rounded-full p-1 transition-colors" onclick="closeModals()"><span class="material-symbols-outlined">close</span></button></div><div class="p-8 flex flex-col gap-6 items-center"><div class="bg-white p-4 rounded-2xl shadow-inner border border-outline-subtle/50 mb-2"><div class="w-48 h-48 bg-surface-main flex items-center justify-center"><span class="material-symbols-outlined text-[100px] text-on-surface/10">qr_code_2</span></div></div><div class="text-center space-y-1"><p class="text-xs font-black text-on-surface-subtle/60 uppercase tracking-[0.2em]">Total a Pagar</p><p class="text-3xl font-black text-header-deep-teal tracking-tighter" id="modal-total-qr">$27.60</p></div><div class="flex items-center gap-2 py-3 px-4 bg-secondary/5 rounded-full border border-secondary/10"><span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span><span class="text-[10px] font-bold text-secondary uppercase tracking-widest">Esperando confirmación...</span></div><div class="flex flex-col w-full gap-3 mt-4"><button class="w-full bg-primary text-white font-black py-4 rounded-xl hover:shadow-lg hover:shadow-primary/20 active:scale-[0.98] transition-all uppercase tracking-widest text-sm" onclick="window.location.href='{{DATA:SCREEN:SCREEN_120}}'">CONFIRMAR PAGO</button><button class="w-full text-on-surface-subtle font-bold py-2 hover:text-on-surface transition-colors text-xs uppercase tracking-widest" onclick="closeModals()">Cancelar</button></div></div></div></div><script>function processPayment() { const totalText = document.getElementById('cart-total').innerText; document.getElementById('modal-total-cash').innerText = totalText; document.getElementById('modal-total-card').innerText = totalText; document.getElementById('modal-total-qr').innerText = totalText; const selectedMethodBtn = document.querySelector('.payment-method.border-primary'); if (!selectedMethodBtn) return; const methodText = selectedMethodBtn.innerText.toLowerCase(); if (methodText.includes('efectivo')) { document.getElementById('modal-cash').classList.remove('hidden'); } else if (methodText.includes('tarjeta')) { document.getElementById('modal-card').classList.remove('hidden'); } else if (methodText.includes('qr')) { document.getElementById('modal-qr').classList.remove('hidden'); } } function closeModals() { document.getElementById('modal-cash').classList.add('hidden'); document.getElementById('modal-card').classList.add('hidden'); document.getElementById('modal-qr').classList.add('hidden'); }</script>
+<script class="">
+    function calculateChange() {
+        const totalText = document.getElementById('modal-total-cash').innerText;
+        const totalValue = parseFloat(totalText.replace('$', '').trim());
+        const receivedInput = document.getElementById('cash-received-input');
+        const receivedValue = parseFloat(receivedInput.value);
+
+        if (!isNaN(receivedValue) && receivedValue >= totalValue) {
+            const change = receivedValue - totalValue;
+            document.getElementById('modal-change-amount').innerText = '$' + change.toFixed(2);
+        } else if (receivedValue < totalValue) {
+            document.getElementById('modal-change-amount').innerText = '$0.00';
+            alert('El monto recibido es menor al total a pagar.');
+        } else {
+            document.getElementById('modal-change-amount').innerText = '$0.00';
+        }
+    }
+
+    document.getElementById('btn-calcular').addEventListener('click', calculateChange);
+</script>
+<script>document.getElementById('btn-calcular').addEventListener('click', function() { const total = 1.80; const received = parseFloat(document.getElementById('cash-received-input').value) || 2.00; const change = received - total; if (change >= 0) { document.getElementById('modal-change-amount').innerText = '$' + change.toFixed(2); } else { document.getElementById('modal-change-amount').innerText = '$0.00'; } });</script>
+<script>
+    (function() {
+        const btnCalcular = document.getElementById('btn-calcular');
+        if (btnCalcular) {
+            btnCalcular.addEventListener('click', function() {
+                const totalText = document.getElementById('modal-total-cash').textContent;
+                const total = parseFloat(totalText.replace('$', '').trim()) || 0;
+                const receivedInput = document.getElementById('cash-received-input');
+                const received = parseFloat(receivedInput.value) || 0;
+                
+                let change = received - total;
+                if (change < 0) change = 0;
+                
+                const changeDisplay = document.getElementById('modal-change-amount');
+                if (changeDisplay) {
+                    changeDisplay.textContent = '$' + change.toFixed(2);
+                }
+            });
+        }
+    })();
+</script>
+
+
+</body></html>

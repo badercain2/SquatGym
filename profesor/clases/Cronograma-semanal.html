@@ -82,7 +82,7 @@ tailwind.config = {
 <style>
 :root{
   --sidebar-width: 280px;
-  --header-height: 80px;
+  --header-height: 64px;
   --footer-height: 70px;
 }
 *{ box-sizing:border-box; }
@@ -335,29 +335,63 @@ select {
         </button>
       </div>
       <nav class="flex flex-col h-full gap-2">
+
         <a class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all" href="../dashboard-profesor.html">
           <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>
           <span class="font-lexend tracking-tight">Inicio</span>
         </a>
+
         <div class="flex flex-col gap-1 mt-2">
-          <div class="px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">Gestión de Clases</div>
+
+          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+            Gestión de Clases
+          </div>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-maestro-de-ejercicios.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_month</span>
+            <span class="font-medium text-sm">Catálogo de Clases</span>
+          </a>
+
           <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Cronograma-semanal.html">
             <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_view_week</span>
-            <span class="font-medium text-sm">Ver Cronograma</span>
+            <span class="font-medium text-sm">Cronograma</span>
           </a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Catalogo-maestro-de-ejercicios.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">fitness_center</span>
-            <span class="font-medium text-sm">Catálogo Ejercicios</span>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="../general-profesor/Consultar-alumno.html">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">person</span>
+            <span class="font-medium text-sm">Consultar Alumno</span>
           </a>
-          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="Editor-de-planes.html">
-            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">assignment</span>
-            <span class="font-medium text-sm">Planificaciones</span>
-          </a>
+
         </div>
+
+        <div class="flex flex-col gap-1 mt-4">
+
+          <div class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1">
+            Gestión de Kiosko
+          </div>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">point_of_sale</span>
+            <span class="font-medium text-sm">Registrar Venta</span>
+          </a>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">inventory_2</span>
+            <span class="font-medium text-sm">Control de Inventario</span>
+          </a>
+
+          <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group" href="#">
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">loyalty</span>
+            <span class="font-medium text-sm">Cupones</span>
+          </a>
+
+        </div>
+
         <a class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto" href="#">
           <span class="material-symbols-outlined text-error">logout</span>
           <span class="font-lexend font-medium text-sm">Cerrar Sesión</span>
         </a>
+
       </nav>
     </div>
   </aside>
