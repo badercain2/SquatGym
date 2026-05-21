@@ -550,7 +550,7 @@
 
             <a
               class="text-white font-black tracking-tighter text-3xl headline no-underline hover:opacity-80 transition-opacity"
-              href="../dashboard-secretaria.html"
+              href="../dashboard-profesor.html"
             >
               Squat Gym
             </a>
@@ -688,7 +688,9 @@
                   <button
                     class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 transition-all text-xs"
                     style="background-color: rgb(0, 103, 95); color: white"
-                    onclick="location.href='Gestion-de-notificaciones.html'"
+                    onclick="
+                      location.href = 'Gestion-de-notificaciones-profesor.html'
+                    "
                   >
                     <span>Ver todas</span>
                     <span
@@ -702,7 +704,7 @@
 
             <button
               class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
-              onclick="window.location.href='../general-secretaria/Mi-perfil-secretaria.html'"
+              onclick="window.location.href = '../clases/Mi-perfil.html'"
             >
               <span
                 class="material-symbols-outlined"
@@ -740,8 +742,8 @@
 
             <nav class="flex flex-col h-full gap-2">
               <a
-                class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all"
-                href="../dashboard-secretaria.html"
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl active font-medium transition-all"
+                href="#"
               >
                 <span
                   class="material-symbols-outlined"
@@ -753,27 +755,14 @@
 
               <div class="flex flex-col gap-1 mt-2">
                 <div
-                  class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
+                  class="px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
                 >
-                  Gesti&oacute;n de Clases
+                  Gestión de Clases
                 </div>
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Catalogo-de-clases-secretaria.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >calendar_month</span
-                  >
-                  <span class="font-medium text-sm"
-                    >Cat&aacute;logo de Clases</span
-                  >
-                </a>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Cronograma-semanal-secretaria.html"
+                  href="../clases/Cronograma-semanal.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -784,64 +773,34 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Consultar-alumno-secretaria.html"
+                  href="../clases/Catalogo-maestro-de-ejercicios.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >person</span
+                    >fitness_center</span
                   >
-                  <span class="font-medium text-sm">Consultar Alumno</span>
-                </a>
-              </div>
-
-              <div class="flex flex-col gap-1 mt-4">
-                <div
-                  class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
-                >
-                  Gesti&oacute;n de Kiosko
-                </div>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Registrar-venta.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >point_of_sale</span
-                  >
-                  <span class="font-medium text-sm">Registrar Venta</span>
+                  <span class="font-medium text-sm">Catálogo Ejercicios</span>
                 </a>
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Control-de-inventario.html"
+                  href="../clases/Editor-de-planes.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >inventory_2</span
+                    >assignment</span
                   >
-                  <span class="font-medium text-sm">Control de Inventario</span>
-                </a>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Cupones.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >loyalty</span
-                  >
-                  <span class="font-medium text-sm">Cupones</span>
+                  <span class="font-medium text-sm">Planificaciones</span>
                 </a>
               </div>
 
               <a
                 class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto"
-                href="../../1-Pantallas-generales-ayuda-contacto-etc/login.html"
+                href="../1-Pantallas-generales-ayuda-contacto-etc/login.html"
               >
                 <span class="material-symbols-outlined text-error">logout</span>
                 <span class="font-lexend font-medium text-sm"
-                  >Cerrar Sesi&oacute;n</span
+                  >Cerrar Sesión</span
                 >
               </a>
             </nav>
@@ -862,57 +821,173 @@
                 </h1>
                 <button
                   class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-all group mt-3"
-                  onclick="location.href='Gestion-de-notificaciones.html'"
+                  onclick="
+                    location.href =
+                      '../dashboard-profesor.html'
+                  "
                 >
-                  <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
-                  <span class="text-[10px] font-bold uppercase tracking-widest font-headline">VOLVER A GESTI&Oacute;N</span>
+                  <span
+                    class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform"
+                    >arrow_back</span
+                  >
+                  <span
+                    class="text-[10px] font-bold uppercase tracking-widest font-headline"
+                    >VOLVER A GESTI&Oacute;N</span
+                  >
                 </button>
               </div>
             </div>
 
-            <div class="flex-1 flex flex-col min-h-0 overflow-auto custom-scrollbar">
+            <div
+              class="flex-1 flex flex-col min-h-0 overflow-auto custom-scrollbar"
+            >
               <div class="max-w-3xl mx-auto w-full">
-                <div class="bg-surface-container-lowest rounded-2xl border border-primary/10 shadow-sm card-premium overflow-hidden">
+                <div
+                  class="bg-surface-container-lowest rounded-2xl border border-primary/10 shadow-sm card-premium overflow-hidden"
+                >
                   <div class="p-8">
                     <form class="space-y-6" id="notification-form">
                       <!-- Notification Type -->
                       <div class="flex flex-col gap-2">
-                        <label class="font-headline text-sm font-bold text-on-surface" for="notification-type">Tipo de Notificaci&oacute;n</label>
-                        <div class="relative group max-w-xs" id="notification-type-container">
-                          <input id="notification-type" name="notification-type" onchange="checkFormValidity()" required type="hidden" value="" />
-                          <button class="w-full border-b border-outline-variant/50 text-on-surface font-headline text-sm py-3 px-0 focus:ring-0 focus:border-primary transition-all cursor-pointer font-bold text-left flex justify-between items-center bg-surface-container-low rounded-xl" onclick="toggleCustomDropdown('notification-type-dropdown')" type="button">
-                            <span class="text-on-surface-variant/70" id="notification-type-display">Seleccionar tipo...</span>
-                            <span class="material-symbols-outlined text-xl text-on-surface-variant/70 transition-transform group-focus-within:rotate-180">unfold_more</span>
+                        <label
+                          class="font-headline text-sm font-bold text-on-surface"
+                          for="notification-type"
+                          >Tipo de Notificaci&oacute;n</label
+                        >
+                        <div
+                          class="relative group max-w-xs"
+                          id="notification-type-container"
+                        >
+                          <input
+                            id="notification-type"
+                            name="notification-type"
+                            onchange="checkFormValidity()"
+                            required
+                            type="hidden"
+                            value=""
+                          />
+                          <button
+                            class="w-full border-b border-outline-variant/50 text-on-surface font-headline text-sm py-3 px-0 focus:ring-0 focus:border-primary transition-all cursor-pointer font-bold text-left flex justify-between items-center bg-surface-container-low rounded-xl"
+                            onclick="
+                              toggleCustomDropdown('notification-type-dropdown')
+                            "
+                            type="button"
+                          >
+                            <span
+                              class="text-on-surface-variant/70"
+                              id="notification-type-display"
+                              >Seleccionar tipo...</span
+                            >
+                            <span
+                              class="material-symbols-outlined text-xl text-on-surface-variant/70 transition-transform group-focus-within:rotate-180"
+                              >unfold_more</span
+                            >
                           </button>
-                          <div class="absolute z-50 w-full mt-1 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-xl overflow-hidden hidden max-h-48 overflow-y-auto" id="notification-type-dropdown">
-                            <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectNotificationType('modificacion_cronograma', 'MODIFICACI&Oacute;N CRONOGRAMA')">MODIFICACI&Oacute;N CRONOGRAMA</div>
-                            <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectNotificationType('reemplazo', 'NOTIFICACI&Oacute;N DE REEMPLAZO')">NOTIFICACI&Oacute;N DE REEMPLAZO</div>
-                            <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectNotificationType('incidente', 'INCIDENTE')">INCIDENTE</div>
-                            <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectNotificationType('stock', 'SOLICITUD DE STOCK')">SOLICITUD DE STOCK</div>
+                          <div
+                            class="absolute z-50 w-full mt-1 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-xl overflow-hidden hidden max-h-48 overflow-y-auto"
+                            id="notification-type-dropdown"
+                          >
+                            <div
+                              class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                              onclick="
+                                selectNotificationType(
+                                  'modificacion_cronograma',
+                                  'MODIFICACI&Oacute;N CRONOGRAMA',
+                                )
+                              "
+                            >
+                              MODIFICACI&Oacute;N CRONOGRAMA
+                            </div>
+                            <div
+                              class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                              onclick="
+                                selectNotificationType(
+                                  'reemplazo',
+                                  'NOTIFICACI&Oacute;N DE REEMPLAZO',
+                                )
+                              "
+                            >
+                              NOTIFICACI&Oacute;N DE REEMPLAZO
+                            </div>
+                            <div
+                              class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                              onclick="
+                                selectNotificationType('incidente', 'INCIDENTE')
+                              "
+                            >
+                              INCIDENTE
+                            </div>
+                            <div
+                              class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                              onclick="
+                                selectNotificationType(
+                                  'stock',
+                                  'SOLICITUD DE STOCK',
+                                )
+                              "
+                            >
+                              SOLICITUD DE STOCK
+                            </div>
                           </div>
                         </div>
                       </div>
 
                       <!-- Priority Level -->
                       <div class="flex flex-col gap-2">
-                        <label class="font-headline text-sm font-bold text-on-surface mb-1">Nivel de Prioridad</label>
+                        <label
+                          class="font-headline text-sm font-bold text-on-surface mb-1"
+                          >Nivel de Prioridad</label
+                        >
                         <div class="grid grid-cols-3 gap-4">
                           <label class="cursor-pointer">
-                            <input class="peer sr-only" name="priority" onchange="checkFormValidity()" type="radio" value="baja" />
-                            <div class="rounded-xl border border-outline-variant/30 bg-surface-container-low py-2 px-3 text-center hover:bg-surface-container transition-colors peer-checked:bg-[#27bcff] peer-checked:border-[#27bcff] peer-checked:text-white text-on-surface-variant">
-                              <span class="font-headline text-[10px] font-black uppercase tracking-widest">Baja</span>
+                            <input
+                              class="peer sr-only"
+                              name="priority"
+                              onchange="checkFormValidity()"
+                              type="radio"
+                              value="baja"
+                            />
+                            <div
+                              class="rounded-xl border border-outline-variant/30 bg-surface-container-low py-2 px-3 text-center hover:bg-surface-container transition-colors peer-checked:bg-[#27bcff] peer-checked:border-[#27bcff] peer-checked:text-white text-on-surface-variant"
+                            >
+                              <span
+                                class="font-headline text-[10px] font-black uppercase tracking-widest"
+                                >Baja</span
+                              >
                             </div>
                           </label>
                           <label class="cursor-pointer">
-                            <input class="peer sr-only" name="priority" onchange="checkFormValidity()" type="radio" value="media" />
-                            <div class="rounded-xl border border-outline-variant/30 bg-surface-container-low py-2 px-3 text-center hover:bg-surface-container transition-colors peer-checked:bg-primary peer-checked:border-primary peer-checked:text-white text-on-surface-variant">
-                              <span class="font-headline text-[10px] font-black uppercase tracking-widest">Media</span>
+                            <input
+                              class="peer sr-only"
+                              name="priority"
+                              onchange="checkFormValidity()"
+                              type="radio"
+                              value="media"
+                            />
+                            <div
+                              class="rounded-xl border border-outline-variant/30 bg-surface-container-low py-2 px-3 text-center hover:bg-surface-container transition-colors peer-checked:bg-primary peer-checked:border-primary peer-checked:text-white text-on-surface-variant"
+                            >
+                              <span
+                                class="font-headline text-[10px] font-black uppercase tracking-widest"
+                                >Media</span
+                              >
                             </div>
                           </label>
                           <label class="cursor-pointer">
-                            <input class="peer sr-only" name="priority" onchange="checkFormValidity()" type="radio" value="critica" />
-                            <div class="rounded-xl border border-outline-variant/30 bg-surface-container-low py-2 px-3 text-center hover:bg-surface-container transition-colors peer-checked:bg-error peer-checked:border-error peer-checked:text-white text-on-surface-variant">
-                              <span class="font-headline text-[10px] font-black uppercase tracking-widest">Cr&iacute;tica</span>
+                            <input
+                              class="peer sr-only"
+                              name="priority"
+                              onchange="checkFormValidity()"
+                              type="radio"
+                              value="critica"
+                            />
+                            <div
+                              class="rounded-xl border border-outline-variant/30 bg-surface-container-low py-2 px-3 text-center hover:bg-surface-container transition-colors peer-checked:bg-error peer-checked:border-error peer-checked:text-white text-on-surface-variant"
+                            >
+                              <span
+                                class="font-headline text-[10px] font-black uppercase tracking-widest"
+                                >Cr&iacute;tica</span
+                              >
                             </div>
                           </label>
                         </div>
@@ -920,77 +995,262 @@
 
                       <!-- Description -->
                       <div class="flex flex-col gap-2">
-                        <label class="font-headline text-sm font-bold text-on-surface" for="description">Descripci&oacute;n Detallada</label>
-                        <textarea class="w-full bg-surface-container-low border-0 text-on-surface font-body text-sm py-3 px-4 rounded-xl focus:ring-2 focus:ring-primary transition-all resize-y" id="description" oninput="checkFormValidity()" placeholder="Escribe el mensaje de la notificaci&oacute;n aqu&iacute;..." required rows="5"></textarea>
+                        <label
+                          class="font-headline text-sm font-bold text-on-surface"
+                          for="description"
+                          >Descripci&oacute;n Detallada</label
+                        >
+                        <textarea
+                          class="w-full bg-surface-container-low border-0 text-on-surface font-body text-sm py-3 px-4 rounded-xl focus:ring-2 focus:ring-primary transition-all resize-y"
+                          id="description"
+                          oninput="checkFormValidity()"
+                          placeholder="Escribe el mensaje de la notificaci&oacute;n aqu&iacute;..."
+                          required
+                          rows="5"
+                        ></textarea>
                       </div>
 
                       <!-- Recipients -->
                       <div class="flex flex-col gap-3">
-                        <label class="font-headline text-sm font-bold text-on-surface mb-1 text-base pb-1 border-b border-outline-variant/10 w-full mb-2">Destinatarios</label>
+                        <label
+                          class="font-headline text-sm font-bold text-on-surface mb-1 text-base pb-1 border-b border-outline-variant/10 w-full mb-2"
+                          >Destinatarios</label
+                        >
                         <div class="flex gap-4 mb-2">
-                          <label class="flex items-center gap-2 cursor-pointer group">
-                            <input class="w-4 h-4 text-primary focus:ring-primary border-outline-variant bg-surface-container-low" name="destinatario-mode" onchange="toggleRecipientMode('rol'); checkFormValidity()" type="radio" value="rol" />
-                            <span class="font-body text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Enviar a todo el rol</span>
+                          <label
+                            class="flex items-center gap-2 cursor-pointer group"
+                          >
+                            <input
+                              class="w-4 h-4 text-primary focus:ring-primary border-outline-variant bg-surface-container-low"
+                              name="destinatario-mode"
+                              onchange="
+                                toggleRecipientMode('rol');
+                                checkFormValidity();
+                              "
+                              type="radio"
+                              value="rol"
+                            />
+                            <span
+                              class="font-body text-sm font-bold text-on-surface group-hover:text-primary transition-colors"
+                              >Enviar a todo el rol</span
+                            >
                           </label>
-                          <label class="flex items-center gap-2 cursor-pointer group">
-                            <input class="w-4 h-4 text-primary focus:ring-primary border-outline-variant bg-surface-container-low" name="destinatario-mode" onchange="toggleRecipientMode('usuario'); checkFormValidity()" type="radio" value="usuario" />
-                            <span class="font-body text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Usuario Espec&iacute;fico</span>
+                          <label
+                            class="flex items-center gap-2 cursor-pointer group"
+                          >
+                            <input
+                              class="w-4 h-4 text-primary focus:ring-primary border-outline-variant bg-surface-container-low"
+                              name="destinatario-mode"
+                              onchange="
+                                toggleRecipientMode('usuario');
+                                checkFormValidity();
+                              "
+                              type="radio"
+                              value="usuario"
+                            />
+                            <span
+                              class="font-body text-sm font-bold text-on-surface group-hover:text-primary transition-colors"
+                              >Usuario Espec&iacute;fico</span
+                            >
                           </label>
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 hidden" id="roles-selector">
-                          <label class="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors">
-                            <input class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest" onchange="checkFormValidity()" type="checkbox" />
-                            <span class="font-body text-sm text-on-surface">Profesores</span>
+                        <div
+                          class="grid grid-cols-1 sm:grid-cols-2 gap-4 hidden"
+                          id="roles-selector"
+                        >
+                          <label
+                            class="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors"
+                          >
+                            <input
+                              class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest"
+                              onchange="checkFormValidity()"
+                              type="checkbox"
+                            />
+                            <span class="font-body text-sm text-on-surface"
+                              >Profesores</span
+                            >
                           </label>
-                          <label class="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors">
-                            <input class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest" onchange="checkFormValidity()" type="checkbox" />
-                            <span class="font-body text-sm text-on-surface">Alumnos</span>
+                          <label
+                            class="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors"
+                          >
+                            <input
+                              class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest"
+                              onchange="checkFormValidity()"
+                              type="checkbox"
+                            />
+                            <span class="font-body text-sm text-on-surface"
+                              >Alumnos</span
+                            >
                           </label>
-                          <label class="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors">
-                            <input class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest" onchange="checkFormValidity()" type="checkbox" />
-                            <span class="font-body text-sm text-on-surface">Encargados</span>
+                          <label
+                            class="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors"
+                          >
+                            <input
+                              class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest"
+                              onchange="checkFormValidity()"
+                              type="checkbox"
+                            />
+                            <span class="font-body text-sm text-on-surface"
+                              >Encargados</span
+                            >
                           </label>
-                          <label class="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors">
-                            <input class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest" onchange="checkFormValidity()" type="checkbox" />
-                            <span class="font-body text-sm text-on-surface">Administradores</span>
+                          <label
+                            class="flex items-center gap-3 cursor-pointer p-3 rounded-xl border border-outline-variant/30 bg-surface-container-low hover:bg-surface-container transition-colors"
+                          >
+                            <input
+                              class="form-checkbox h-5 w-5 text-primary border-outline-variant rounded focus:ring-primary focus:ring-offset-0 bg-surface-container-lowest"
+                              onchange="checkFormValidity()"
+                              type="checkbox"
+                            />
+                            <span class="font-body text-sm text-on-surface"
+                              >Administradores</span
+                            >
                           </label>
                         </div>
 
-                        <div class="flex flex-col gap-4 hidden" id="users-selector">
-                          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
+                        <div
+                          class="flex flex-col gap-4 hidden"
+                          id="users-selector"
+                        >
+                          <div
+                            class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end"
+                          >
                             <div class="flex flex-col gap-2">
-                              <div class="relative group" id="profile-select-container">
-                                <input id="profile-select" name="profile-select" onchange="handleProfileSelect(); checkFormValidity()" type="hidden" value="" />
-                                <button class="w-full border-outline-variant/50 text-on-surface font-headline text-sm py-3 px-4 focus:ring-0 focus:border-primary transition-all cursor-pointer font-bold text-left flex justify-between items-center bg-surface-container-low rounded-xl border-b" onclick="toggleCustomDropdown('profile-select-dropdown')" type="button">
-                                  <span class="text-on-surface-variant/70" id="profile-select-display">Seleccionar Perfil</span>
-                                  <span class="material-symbols-outlined text-xl text-on-surface-variant/70 transition-transform group-focus-within:rotate-180">unfold_more</span>
+                              <div
+                                class="relative group"
+                                id="profile-select-container"
+                              >
+                                <input
+                                  id="profile-select"
+                                  name="profile-select"
+                                  onchange="
+                                    handleProfileSelect();
+                                    checkFormValidity();
+                                  "
+                                  type="hidden"
+                                  value=""
+                                />
+                                <button
+                                  class="w-full border-outline-variant/50 text-on-surface font-headline text-sm py-3 px-4 focus:ring-0 focus:border-primary transition-all cursor-pointer font-bold text-left flex justify-between items-center bg-surface-container-low rounded-xl border-b"
+                                  onclick="
+                                    toggleCustomDropdown(
+                                      'profile-select-dropdown',
+                                    )
+                                  "
+                                  type="button"
+                                >
+                                  <span
+                                    class="text-on-surface-variant/70"
+                                    id="profile-select-display"
+                                    >Seleccionar Perfil</span
+                                  >
+                                  <span
+                                    class="material-symbols-outlined text-xl text-on-surface-variant/70 transition-transform group-focus-within:rotate-180"
+                                    >unfold_more</span
+                                  >
                                 </button>
-                                <div class="absolute z-50 w-full mt-1 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-xl overflow-hidden hidden max-h-48 overflow-y-auto" id="profile-select-dropdown">
-                                  <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectProfile('encargado', 'Encargado')">Encargado</div>
-                                  <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectProfile('secretario', 'Secretario')">Secretario</div>
-                                  <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectProfile('administrador', 'Administrador')">Administrador</div>
-                                  <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectProfile('alumno', 'Alumno')">Alumno</div>
-                                  <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface" onclick="selectProfile('profesor', 'Profesor')">Profesor</div>
+                                <div
+                                  class="absolute z-50 w-full mt-1 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-xl overflow-hidden hidden max-h-48 overflow-y-auto"
+                                  id="profile-select-dropdown"
+                                >
+                                  <div
+                                    class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                                    onclick="
+                                      selectProfile('encargado', 'Encargado')
+                                    "
+                                  >
+                                    Encargado
+                                  </div>
+                                  <div
+                                    class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                                    onclick="
+                                      selectProfile('secretario', 'Secretario')
+                                    "
+                                  >
+                                    Secretario
+                                  </div>
+                                  <div
+                                    class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                                    onclick="
+                                      selectProfile(
+                                        'administrador',
+                                        'Administrador',
+                                      )
+                                    "
+                                  >
+                                    Administrador
+                                  </div>
+                                  <div
+                                    class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                                    onclick="selectProfile('alumno', 'Alumno')"
+                                  >
+                                    Alumno
+                                  </div>
+                                  <div
+                                    class="p-3 hover:bg-surface-container-low cursor-pointer text-sm font-bold text-on-surface"
+                                    onclick="
+                                      selectProfile('profesor', 'Profesor')
+                                    "
+                                  >
+                                    Profesor
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                            <div class="flex flex-col gap-2 hidden" id="user-search-container">
-                              <div class="relative border-2 border-primary rounded-xl px-4 w-full">
-                                <div class="flex flex-wrap gap-2 p-0 focus-within:ring-0 transition-all">
-                                  <input class="w-full bg-transparent border-0 py-3 px-0 text-sm focus:ring-0 placeholder:text-on-surface-variant/60 font-body" id="user-search-input" oninput="showUserDropdown()" placeholder="AC" type="text" />
+                            <div
+                              class="flex flex-col gap-2 hidden"
+                              id="user-search-container"
+                            >
+                              <div
+                                class="relative border-2 border-primary rounded-xl px-4 w-full"
+                              >
+                                <div
+                                  class="flex flex-wrap gap-2 p-0 focus-within:ring-0 transition-all"
+                                >
+                                  <input
+                                    class="w-full bg-transparent border-0 py-3 px-0 text-sm focus:ring-0 placeholder:text-on-surface-variant/60 font-body"
+                                    id="user-search-input"
+                                    oninput="showUserDropdown()"
+                                    placeholder="AC"
+                                    type="text"
+                                  />
                                 </div>
-                                <div class="absolute z-20 w-full left-0 mt-1 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-xl overflow-hidden max-h-48 overflow-y-auto hidden" id="user-dropdown">
-                                  <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm flex items-center gap-3" onclick="selectUser('María García')">
-                                    <div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold text-xs">MG</div>
+                                <div
+                                  class="absolute z-20 w-full left-0 mt-1 bg-surface-container-lowest border border-outline-variant/20 rounded-xl shadow-xl overflow-hidden max-h-48 overflow-y-auto hidden"
+                                  id="user-dropdown"
+                                >
+                                  <div
+                                    class="p-3 hover:bg-surface-container-low cursor-pointer text-sm flex items-center gap-3"
+                                    onclick="selectUser('María García')"
+                                  >
+                                    <div
+                                      class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold text-xs"
+                                    >
+                                      MG
+                                    </div>
                                     <span>María García</span>
                                   </div>
-                                  <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm flex items-center gap-3" onclick="selectUser('Juan Pérez')">
-                                    <div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold text-xs">JP</div>
+                                  <div
+                                    class="p-3 hover:bg-surface-container-low cursor-pointer text-sm flex items-center gap-3"
+                                    onclick="selectUser('Juan Pérez')"
+                                  >
+                                    <div
+                                      class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold text-xs"
+                                    >
+                                      JP
+                                    </div>
                                     <span>Juan Pérez</span>
                                   </div>
-                                  <div class="p-3 hover:bg-surface-container-low cursor-pointer text-sm flex items-center gap-3" onclick="selectUser('Carlos Rodríguez')">
-                                    <div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold text-xs">CR</div>
+                                  <div
+                                    class="p-3 hover:bg-surface-container-low cursor-pointer text-sm flex items-center gap-3"
+                                    onclick="selectUser('Carlos Rodríguez')"
+                                  >
+                                    <div
+                                      class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold text-xs"
+                                    >
+                                      CR
+                                    </div>
                                     <span>Carlos Rodríguez</span>
                                   </div>
                                 </div>
@@ -998,19 +1258,30 @@
                             </div>
                           </div>
                           <div class="flex flex-col gap-2 mt-4">
-                            <h4 class="font-headline text-[10px] font-black text-on-surface-variant uppercase tracking-widest">DESTINATARIO/S</h4>
-                            <div class="flex flex-wrap gap-2 bg-surface-container-low p-4 rounded-xl min-h-[60px]" id="selected-users-container"></div>
+                            <h4
+                              class="font-headline text-[10px] font-black text-on-surface-variant uppercase tracking-widest"
+                            >
+                              DESTINATARIO/S
+                            </h4>
+                            <div
+                              class="flex flex-wrap gap-2 bg-surface-container-low p-4 rounded-xl min-h-[60px]"
+                              id="selected-users-container"
+                            ></div>
                           </div>
                         </div>
                       </div>
 
                       <hr class="border-outline-variant/30 my-6" />
 
-                      <div class="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-2">
+                      <div
+                        class="flex flex-col-reverse sm:flex-row justify-end gap-4 pt-2"
+                      >
                         <button
                           class="font-headline text-sm font-black uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors py-3 px-6 rounded-xl border border-transparent hover:bg-surface-container-low btn-interact"
                           type="button"
-                          onclick="location.href='Gestion-de-notificaciones.html'"
+                          onclick="
+                            location.href = 'Gestion-de-notificaciones.html'
+                          "
                         >
                           Cancelar
                         </button>
@@ -1020,7 +1291,11 @@
                           id="submit-btn"
                           type="submit"
                         >
-                          <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1">send</span>
+                          <span
+                            class="material-symbols-outlined text-[18px]"
+                            style="font-variation-settings: &quot;FILL&quot; 1"
+                            >send</span
+                          >
                           Enviar Notificaci&oacute;n
                         </button>
                       </div>
@@ -1039,7 +1314,7 @@
         >
           <div class="flex flex-col">
             <a
-              href="../dashboard-secretaria.html"
+              href="../dashboard-profesor.html"
               class="text-base font-black text-white font-lexend mb-0.5 headline no-underline"
               >Squat Gym</a
             >
@@ -1052,17 +1327,17 @@
           <div class="flex items-center gap-6">
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Ayuda-secretaria.html"
+              href="../general-profesor/Ayuda-profesor.html"
               >Ayuda</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Privacidad-secretaria.html"
+              href="../general-profesor/Privacidad-profesor.html"
               >Privacidad</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Contacto-secretaria.html"
+              href="../general-profesor/Contacto-profesor.html"
               >Contacto</a
             >
           </div>
@@ -1071,109 +1346,127 @@
     </div>
 
     <script>
-      const sidebarToggleBtn = document.getElementById('sidebar-toggle');
-      const sidebar = document.getElementById('sidebar');
-      const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+      const sidebarToggleBtn = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const sidebarBackdrop = document.getElementById("sidebar-backdrop");
 
       function toggleSidebar() {
-        sidebar.classList.toggle('sidebar-visible');
-        if (sidebarBackdrop) sidebarBackdrop.classList.toggle('show');
+        sidebar.classList.toggle("sidebar-visible");
+        if (sidebarBackdrop) sidebarBackdrop.classList.toggle("show");
       }
 
       if (sidebarToggleBtn) {
-        sidebarToggleBtn.addEventListener('click', toggleSidebar);
+        sidebarToggleBtn.addEventListener("click", toggleSidebar);
       }
 
-      const sidebarCloseBtn = document.getElementById('sidebar-close');
+      const sidebarCloseBtn = document.getElementById("sidebar-close");
       if (sidebarCloseBtn) {
-        sidebarCloseBtn.addEventListener('click', toggleSidebar);
+        sidebarCloseBtn.addEventListener("click", toggleSidebar);
       }
 
       if (sidebarBackdrop) {
-        sidebarBackdrop.addEventListener('click', toggleSidebar);
+        sidebarBackdrop.addEventListener("click", toggleSidebar);
       }
 
       function toggleNotifications() {
-        const dropdown = document.getElementById('notification-dropdown');
-        dropdown.classList.toggle('hidden');
+        const dropdown = document.getElementById("notification-dropdown");
+        dropdown.classList.toggle("hidden");
       }
 
-      window.addEventListener('click', function(e) {
-        const dropdown = document.getElementById('notification-dropdown');
-        const bell = document.getElementById('notification-bell');
-        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
-          dropdown.classList.add('hidden');
+      window.addEventListener("click", function (e) {
+        const dropdown = document.getElementById("notification-dropdown");
+        const bell = document.getElementById("notification-bell");
+        if (
+          dropdown &&
+          !dropdown.classList.contains("hidden") &&
+          !bell.contains(e.target) &&
+          !dropdown.contains(e.target)
+        ) {
+          dropdown.classList.add("hidden");
         }
 
-        if (!e.target.closest('#notification-type-container')) {
-          const typeDropdown = document.getElementById('notification-type-dropdown');
-          if (typeDropdown && !typeDropdown.classList.contains('hidden')) {
-            typeDropdown.classList.add('hidden');
+        if (!e.target.closest("#notification-type-container")) {
+          const typeDropdown = document.getElementById(
+            "notification-type-dropdown",
+          );
+          if (typeDropdown && !typeDropdown.classList.contains("hidden")) {
+            typeDropdown.classList.add("hidden");
           }
         }
-        if (!e.target.closest('#profile-select-container')) {
-          const profileDropdown = document.getElementById('profile-select-dropdown');
-          if (profileDropdown && !profileDropdown.classList.contains('hidden')) {
-            profileDropdown.classList.add('hidden');
+        if (!e.target.closest("#profile-select-container")) {
+          const profileDropdown = document.getElementById(
+            "profile-select-dropdown",
+          );
+          if (
+            profileDropdown &&
+            !profileDropdown.classList.contains("hidden")
+          ) {
+            profileDropdown.classList.add("hidden");
           }
         }
       });
 
       function toggleCustomDropdown(id) {
         const dropdown = document.getElementById(id);
-        dropdown.classList.toggle('hidden');
+        dropdown.classList.toggle("hidden");
       }
 
       function selectNotificationType(value, label) {
-        document.getElementById('notification-type').value = value;
-        const display = document.getElementById('notification-type-display');
+        document.getElementById("notification-type").value = value;
+        const display = document.getElementById("notification-type-display");
         display.textContent = label;
-        display.classList.remove('text-on-surface-variant/70');
-        display.classList.add('text-on-surface');
-        document.getElementById('notification-type-dropdown').classList.add('hidden');
+        display.classList.remove("text-on-surface-variant/70");
+        display.classList.add("text-on-surface");
+        document
+          .getElementById("notification-type-dropdown")
+          .classList.add("hidden");
         checkFormValidity();
       }
 
       function selectProfile(value, label) {
-        document.getElementById('profile-select').value = value;
-        const display = document.getElementById('profile-select-display');
+        document.getElementById("profile-select").value = value;
+        const display = document.getElementById("profile-select-display");
         display.textContent = label;
-        display.classList.remove('text-on-surface-variant/70');
-        display.classList.add('text-on-surface');
-        document.getElementById('profile-select-dropdown').classList.add('hidden');
+        display.classList.remove("text-on-surface-variant/70");
+        display.classList.add("text-on-surface");
+        document
+          .getElementById("profile-select-dropdown")
+          .classList.add("hidden");
         handleProfileSelect();
         checkFormValidity();
       }
 
       function toggleRecipientMode(mode) {
-        const rolesSelector = document.getElementById('roles-selector');
-        const usersSelector = document.getElementById('users-selector');
-        if (mode === 'rol') {
-          rolesSelector.classList.remove('hidden');
-          usersSelector.classList.add('hidden');
+        const rolesSelector = document.getElementById("roles-selector");
+        const usersSelector = document.getElementById("users-selector");
+        if (mode === "rol") {
+          rolesSelector.classList.remove("hidden");
+          usersSelector.classList.add("hidden");
         } else {
-          rolesSelector.classList.add('hidden');
-          usersSelector.classList.remove('hidden');
+          rolesSelector.classList.add("hidden");
+          usersSelector.classList.remove("hidden");
         }
       }
 
       function handleProfileSelect() {
-        const profileSelect = document.getElementById('profile-select');
-        const searchContainer = document.getElementById('user-search-container');
+        const profileSelect = document.getElementById("profile-select");
+        const searchContainer = document.getElementById(
+          "user-search-container",
+        );
         if (profileSelect.value) {
-          searchContainer.classList.remove('hidden');
+          searchContainer.classList.remove("hidden");
         } else {
-          searchContainer.classList.add('hidden');
+          searchContainer.classList.add("hidden");
         }
       }
 
       function showUserDropdown() {
-        const input = document.getElementById('user-search-input');
-        const dropdown = document.getElementById('user-dropdown');
-        if(input.value.length > 0) {
-          dropdown.classList.remove('hidden');
+        const input = document.getElementById("user-search-input");
+        const dropdown = document.getElementById("user-dropdown");
+        if (input.value.length > 0) {
+          dropdown.classList.remove("hidden");
         } else {
-          dropdown.classList.add('hidden');
+          dropdown.classList.add("hidden");
         }
       }
 
@@ -1184,23 +1477,24 @@
           selectedUsers.push(name);
           renderSelectedUsers();
         }
-        document.getElementById('user-search-input').value = '';
-        document.getElementById('user-dropdown').classList.add('hidden');
+        document.getElementById("user-search-input").value = "";
+        document.getElementById("user-dropdown").classList.add("hidden");
         checkFormValidity();
       }
 
       function removeSelectedUser(name) {
-        selectedUsers = selectedUsers.filter(u => u !== name);
+        selectedUsers = selectedUsers.filter((u) => u !== name);
         renderSelectedUsers();
         checkFormValidity();
       }
 
       function renderSelectedUsers() {
-        const container = document.getElementById('selected-users-container');
-        container.innerHTML = '';
-        selectedUsers.forEach(name => {
-          const chip = document.createElement('div');
-          chip.className = 'flex items-center gap-2 bg-primary text-white px-3 py-1.5 rounded-lg text-xs font-bold';
+        const container = document.getElementById("selected-users-container");
+        container.innerHTML = "";
+        selectedUsers.forEach((name) => {
+          const chip = document.createElement("div");
+          chip.className =
+            "flex items-center gap-2 bg-primary text-white px-3 py-1.5 rounded-lg text-xs font-bold";
           chip.innerHTML = `
             <span>${name}</span>
             <button type="button" class="hover:text-white/80 flex items-center justify-center" onclick="removeSelectedUser('${name}')">
@@ -1212,32 +1506,37 @@
       }
 
       function checkFormValidity() {
-        const type = document.getElementById('notification-type').value;
-        const description = document.getElementById('description').value;
-        const mode = document.querySelector('input[name="destinatario-mode"]:checked')?.value;
+        const type = document.getElementById("notification-type").value;
+        const description = document.getElementById("description").value;
+        const mode = document.querySelector(
+          'input[name="destinatario-mode"]:checked',
+        )?.value;
 
         let recipientsValid = false;
-        if (mode === 'rol') {
-          const checkboxes = document.querySelectorAll('#roles-selector input[type="checkbox"]');
-          recipientsValid = Array.from(checkboxes).some(cb => cb.checked);
-        } else if (mode === 'usuario') {
+        if (mode === "rol") {
+          const checkboxes = document.querySelectorAll(
+            '#roles-selector input[type="checkbox"]',
+          );
+          recipientsValid = Array.from(checkboxes).some((cb) => cb.checked);
+        } else if (mode === "usuario") {
           recipientsValid = selectedUsers.length > 0;
         }
 
-        const isValid = type !== "" && description.trim() !== "" && recipientsValid;
+        const isValid =
+          type !== "" && description.trim() !== "" && recipientsValid;
 
-        const submitBtn = document.getElementById('submit-btn');
+        const submitBtn = document.getElementById("submit-btn");
         if (isValid) {
           submitBtn.disabled = false;
-          submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          submitBtn.classList.remove("opacity-50", "cursor-not-allowed");
         } else {
           submitBtn.disabled = true;
-          submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          submitBtn.classList.add("opacity-50", "cursor-not-allowed");
         }
       }
 
-      document.addEventListener('DOMContentLoaded', () => {
-        if(selectedUsers.length > 0) {
+      document.addEventListener("DOMContentLoaded", () => {
+        if (selectedUsers.length > 0) {
           renderSelectedUsers();
         }
         checkFormValidity();

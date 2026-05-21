@@ -331,13 +331,23 @@
       }
 
       @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       @keyframes scaleUp {
-        from { transform: scale(0.95); opacity: 0; }
-        to { transform: scale(1); opacity: 1; }
+        from {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
       }
 
       /* ===== RESPONSIVE ===== */
@@ -563,34 +573,71 @@
   >
     <!-- View Modal -->
     <div class="modal-backdrop" id="view-modal">
-      <div class="bg-surface-container-lowest w-full max-w-lg rounded-xl shadow-2xl border border-outline-variant/30 overflow-hidden">
+      <div
+        class="bg-surface-container-lowest w-full max-w-lg rounded-xl shadow-2xl border border-outline-variant/30 overflow-hidden"
+      >
         <div class="p-8 flex flex-col">
           <div class="flex justify-between items-start mb-6">
             <div>
-              <h2 class="text-2xl font-black text-on-surface tracking-tight font-headline" id="modal-title">Stock Bajo</h2>
-              <p class="text-on-surface-variant text-[10px] font-black uppercase tracking-widest mt-1" id="modal-date">15 MAY 2024 — 10:15 (Hoy)</p>
+              <h2
+                class="text-2xl font-black text-on-surface tracking-tight font-headline"
+                id="modal-title"
+              >
+                Stock Bajo
+              </h2>
+              <p
+                class="text-on-surface-variant text-[10px] font-black uppercase tracking-widest mt-1"
+                id="modal-date"
+              >
+                15 MAY 2024 — 10:15 (Hoy)
+              </p>
             </div>
             <div class="flex items-center gap-2" id="modal-priority-badge">
-              <div class="flex items-center gap-1.5 text-error bg-surface-container-low px-3 py-1.5 rounded-full border border-outline-variant/20">
+              <div
+                class="flex items-center gap-1.5 text-error bg-surface-container-low px-3 py-1.5 rounded-full border border-outline-variant/20"
+              >
                 <span class="material-symbols-outlined text-lg">warning</span>
-                <span class="text-[10px] font-black uppercase tracking-widest headline">Crítica</span>
+                <span
+                  class="text-[10px] font-black uppercase tracking-widest headline"
+                  >Crítica</span
+                >
               </div>
             </div>
           </div>
           <div class="space-y-6">
             <div>
-              <span class="text-[10px] font-black uppercase tracking-widest text-primary/70 block mb-2">Autor / Origen</span>
-              <p class="text-sm font-bold text-on-surface" id="modal-author">SISTEMA</p>
+              <span
+                class="text-[10px] font-black uppercase tracking-widest text-primary/70 block mb-2"
+                >Autor / Origen</span
+              >
+              <p class="text-sm font-bold text-on-surface" id="modal-author">
+                SISTEMA
+              </p>
             </div>
             <div>
-              <span class="text-[10px] font-black uppercase tracking-widest text-primary/70 block mb-2">Mensaje Completo</span>
-              <div class="bg-surface-container-low p-5 rounded-lg border border-outline-variant/20">
-                <p class="text-sm font-medium text-on-surface leading-relaxed" id="modal-desc">Proteína Whey Isolate 2kg: Existencias por debajo del mínimo de stock crítico definido (5 unidades). Favor de realizar pedido de reposición inmediato.</p>
+              <span
+                class="text-[10px] font-black uppercase tracking-widest text-primary/70 block mb-2"
+                >Mensaje Completo</span
+              >
+              <div
+                class="bg-surface-container-low p-5 rounded-lg border border-outline-variant/20"
+              >
+                <p
+                  class="text-sm font-medium text-on-surface leading-relaxed"
+                  id="modal-desc"
+                >
+                  Proteína Whey Isolate 2kg: Existencias por debajo del mínimo
+                  de stock crítico definido (5 unidades). Favor de realizar
+                  pedido de reposición inmediato.
+                </p>
               </div>
             </div>
           </div>
           <div class="mt-10">
-            <button class="w-full px-6 py-4 rounded-lg text-white font-black uppercase tracking-widest text-[11px] headline shadow-lg transition-all bg-primary shadow-primary/20 hover:bg-primary-dim" onclick="closeViewModal()">
+            <button
+              class="w-full px-6 py-4 rounded-lg text-white font-black uppercase tracking-widest text-[11px] headline shadow-lg transition-all bg-primary shadow-primary/20 hover:bg-primary-dim"
+              onclick="closeViewModal()"
+            >
               CERRAR
             </button>
           </div>
@@ -600,20 +647,39 @@
 
     <!-- Delete Confirmation Modal -->
     <div class="modal-backdrop" id="delete-modal">
-      <div class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-2xl border border-outline-variant/30 overflow-hidden">
+      <div
+        class="bg-surface-container-lowest w-full max-w-md rounded-xl shadow-2xl border border-outline-variant/30 overflow-hidden"
+      >
         <div class="p-8 flex flex-col items-center text-center">
-          <div class="w-16 h-16 rounded-full bg-error/10 text-error flex items-center justify-center mb-6">
-            <span class="material-symbols-outlined text-3xl">delete_forever</span>
+          <div
+            class="w-16 h-16 rounded-full bg-error/10 text-error flex items-center justify-center mb-6"
+          >
+            <span class="material-symbols-outlined text-3xl"
+              >delete_forever</span
+            >
           </div>
-          <h2 class="text-2xl font-black text-on-surface tracking-tight font-headline mb-3">¿Eliminar notificación?</h2>
-          <p class="text-on-surface-variant text-sm font-medium leading-relaxed mb-8">
-            Esta acción no se puede deshacer. ¿Estás seguro de que deseas eliminar esta notificación?
+          <h2
+            class="text-2xl font-black text-on-surface tracking-tight font-headline mb-3"
+          >
+            ¿Eliminar notificación?
+          </h2>
+          <p
+            class="text-on-surface-variant text-sm font-medium leading-relaxed mb-8"
+          >
+            Esta acción no se puede deshacer. ¿Estás seguro de que deseas
+            eliminar esta notificación?
           </p>
           <div class="flex gap-3 w-full">
-            <button class="flex-1 px-6 py-3 rounded-lg border border-outline-variant/50 text-on-surface font-black uppercase tracking-widest text-[11px] headline hover:bg-surface-container-low transition-all" onclick="closeDeleteModal()">
+            <button
+              class="flex-1 px-6 py-3 rounded-lg border border-outline-variant/50 text-on-surface font-black uppercase tracking-widest text-[11px] headline hover:bg-surface-container-low transition-all"
+              onclick="closeDeleteModal()"
+            >
               CANCELAR
             </button>
-            <button class="flex-1 px-6 py-3 rounded-lg bg-error text-white font-black uppercase tracking-widest text-[11px] headline shadow-lg shadow-error/20 hover:bg-error-dim transition-all" id="confirm-delete-btn">
+            <button
+              class="flex-1 px-6 py-3 rounded-lg bg-error text-white font-black uppercase tracking-widest text-[11px] headline shadow-lg shadow-error/20 hover:bg-error-dim transition-all"
+              id="confirm-delete-btn"
+            >
               ELIMINAR
             </button>
           </div>
@@ -774,7 +840,9 @@
                   <button
                     class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 transition-all text-xs"
                     style="background-color: rgb(0, 103, 95); color: white"
-                    onclick="location.href='Gestion-de-notificaciones.html'"
+                    onclick="
+                      location.href = 'Gestion-de-notificaciones-profesor.html'
+                    "
                   >
                     <span>Ver todas</span>
                     <span
@@ -788,10 +856,7 @@
 
             <button
               class="flex items-center justify-center w-11 h-11 rounded-full transition-all hover:bg-white/10"
-              onclick="
-                window.location.href =
-                  '../general-secretaria/Mi-perfil-secretaria.html'
-              "
+              onclick="window.location.href = '../clases/Mi-perfil.html'"
             >
               <span
                 class="material-symbols-outlined"
@@ -829,8 +894,8 @@
 
             <nav class="flex flex-col h-full gap-2">
               <a
-                class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all"
-                href="../dashboard-secretaria.html"
+                class="nav-link flex items-center gap-3 px-4 py-3 rounded-xl active font-medium transition-all"
+                href="#"
               >
                 <span
                   class="material-symbols-outlined"
@@ -842,27 +907,14 @@
 
               <div class="flex flex-col gap-1 mt-2">
                 <div
-                  class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
+                  class="px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
                 >
-                  Gesti&oacute;n de Clases
+                  Gestión de Clases
                 </div>
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Catalogo-de-clases-secretaria.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >calendar_month</span
-                  >
-                  <span class="font-medium text-sm"
-                    >Cat&aacute;logo de Clases</span
-                  >
-                </a>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Cronograma-semanal-secretaria.html"
+                  href="../clases/Cronograma-semanal.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
@@ -873,64 +925,34 @@
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-clases/Consultar-alumno-secretaria.html"
+                  href="../clases/Catalogo-maestro-de-ejercicios.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >person</span
+                    >fitness_center</span
                   >
-                  <span class="font-medium text-sm">Consultar Alumno</span>
-                </a>
-              </div>
-
-              <div class="flex flex-col gap-1 mt-4">
-                <div
-                  class="section-header px-4 py-2 text-sm font-black text-primary bg-primary/10 rounded-lg uppercase tracking-wider font-lexend mb-1"
-                >
-                  Gesti&oacute;n de Kiosko
-                </div>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Registrar-venta.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >point_of_sale</span
-                  >
-                  <span class="font-medium text-sm">Registrar Venta</span>
+                  <span class="font-medium text-sm">Catálogo Ejercicios</span>
                 </a>
 
                 <a
                   class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Control-de-inventario.html"
+                  href="../clases/Editor-de-planes.html"
                 >
                   <span
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >inventory_2</span
+                    >assignment</span
                   >
-                  <span class="font-medium text-sm">Control de Inventario</span>
-                </a>
-
-                <a
-                  class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-all group"
-                  href="../gestion-kiosco/Cupones.html"
-                >
-                  <span
-                    class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
-                    >loyalty</span
-                  >
-                  <span class="font-medium text-sm">Cupones</span>
+                  <span class="font-medium text-sm">Planificaciones</span>
                 </a>
               </div>
 
               <a
                 class="nav-link flex items-center gap-3 px-4 py-2.5 rounded-lg text-error hover:bg-error/10 transition-all group mt-auto"
-                href="../../1-Pantallas-generales-ayuda-contacto-etc/login.html"
+                href="../1-Pantallas-generales-ayuda-contacto-etc/login.html"
               >
                 <span class="material-symbols-outlined text-error">logout</span>
                 <span class="font-lexend font-medium text-sm"
-                  >Cerrar Sesi&oacute;n</span
+                  >Cerrar Sesión</span
                 >
               </a>
             </nav>
@@ -941,6 +963,10 @@
           <div class="content-wrapper">
             <div class="top-section">
               <div>
+                <button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-all group mb-3" onclick="location.href='../dashboard-profesor.html'">
+                  <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                  <span class="text-[10px] font-bold uppercase tracking-widest font-headline">VOLVER A GESTI&Oacute;N</span>
+                </button>
                 <h1 class="page-title text-on-surface headline">
                   Gesti&oacute;n de
                   <span
@@ -950,90 +976,226 @@
                   </span>
                 </h1>
               </div>
-              <button
-                class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-black uppercase tracking-widest text-[11px] headline shadow-lg shadow-primary/20 hover:bg-primary-dim transition-all"
-                onclick="location.href='Crear-Notificacion-profesor.html'"
-              >
+              <button class="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-black uppercase tracking-widest text-[11px] headline shadow-lg shadow-primary/20 hover:bg-primary-dim transition-all" onclick="location.href = 'Crear-Notificacion-profesor.html'">
                 <span class="material-symbols-outlined text-lg">add</span>
                 <span>Crear Notificaci&oacute;n</span>
               </button>
             </div>
 
             <div class="flex-1 flex flex-col min-h-0">
-              <div class="flex-1 flex flex-col bg-surface-container-lowest rounded-2xl border border-primary/10 card-premium overflow-hidden">
+              <div
+                class="flex-1 flex flex-col bg-surface-container-lowest rounded-2xl border border-primary/10 card-premium overflow-hidden"
+              >
                 <!-- Filters -->
-                <div class="shrink-0 px-8 py-6 border-b border-outline-variant/30 flex justify-between items-center bg-surface-container-lowest gap-4 flex-wrap">
+                <div
+                  class="shrink-0 px-8 py-6 border-b border-outline-variant/30 flex justify-between items-center bg-surface-container-lowest gap-4 flex-wrap"
+                >
                   <div class="flex items-center gap-4 flex-wrap">
-                    <h2 class="text-xl font-black tracking-tight text-on-surface font-headline">Listado</h2>
+                    <h2
+                      class="text-xl font-black tracking-tight text-on-surface font-headline"
+                    >
+                      Listado
+                    </h2>
                     <div class="flex items-center gap-3">
-                      <span class="text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant">Prioridad:</span>
+                      <span
+                        class="text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant"
+                        >Prioridad:</span
+                      >
                       <div class="relative group">
-                        <button class="flex items-center gap-3 bg-surface-container-lowest border border-outline-variant/50 rounded-lg px-5 py-2.5 text-xs font-black uppercase tracking-widest headline text-primary hover:border-primary hover:bg-primary/5 transition-all" id="status-dropdown-btn">
+                        <button
+                          class="flex items-center gap-3 bg-surface-container-lowest border border-outline-variant/50 rounded-lg px-5 py-2.5 text-xs font-black uppercase tracking-widest headline text-primary hover:border-primary hover:bg-primary/5 transition-all"
+                          id="status-dropdown-btn"
+                        >
                           <span>Todos</span>
-                          <span class="material-symbols-outlined text-lg">expand_more</span>
+                          <span class="material-symbols-outlined text-lg"
+                            >expand_more</span
+                          >
                         </button>
-                        <div class="hidden absolute right-0 mt-2 w-48 bg-surface-container-lowest rounded-lg shadow-xl border border-outline-variant/30 z-50 overflow-hidden group-hover:block" id="status-dropdown-menu">
+                        <div
+                          class="hidden absolute right-0 mt-2 w-48 bg-surface-container-lowest rounded-lg shadow-xl border border-outline-variant/30 z-50 overflow-hidden group-hover:block"
+                          id="status-dropdown-menu"
+                        >
                           <div class="p-2 flex flex-col">
-                            <button class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all" onclick="applyStatusFilter('all')">Todos</button>
-                            <button class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all" onclick="applyStatusFilter('pendiente')">Pendientes</button>
-                            <button class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all" onclick="applyStatusFilter('leido')">Leídos</button>
+                            <button
+                              class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all"
+                              onclick="applyStatusFilter('all')"
+                            >
+                              Todos
+                            </button>
+                            <button
+                              class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all"
+                              onclick="applyStatusFilter('pendiente')"
+                            >
+                              Pendientes
+                            </button>
+                            <button
+                              class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all"
+                              onclick="applyStatusFilter('leido')"
+                            >
+                              Leídos
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="flex items-center gap-3">
-                      <span class="text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant">TIPO AVISO:</span>
+                      <span
+                        class="text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant"
+                        >TIPO AVISO:</span
+                      >
                       <div class="relative group">
-                        <button class="flex items-center gap-3 bg-surface-container-lowest border border-outline-variant/50 rounded-lg px-5 py-2.5 text-xs font-black uppercase tracking-widest headline text-primary hover:border-primary hover:bg-primary/5 transition-all" id="type-dropdown-btn">
+                        <button
+                          class="flex items-center gap-3 bg-surface-container-lowest border border-outline-variant/50 rounded-lg px-5 py-2.5 text-xs font-black uppercase tracking-widest headline text-primary hover:border-primary hover:bg-primary/5 transition-all"
+                          id="type-dropdown-btn"
+                        >
                           <span>TODOS</span>
-                          <span class="material-symbols-outlined text-lg">expand_more</span>
+                          <span class="material-symbols-outlined text-lg"
+                            >expand_more</span
+                          >
                         </button>
-                        <div class="hidden absolute right-0 mt-2 w-48 bg-surface-container-lowest rounded-lg shadow-xl border border-outline-variant/30 z-50 overflow-hidden group-hover:block" id="type-dropdown-menu">
+                        <div
+                          class="hidden absolute right-0 mt-2 w-48 bg-surface-container-lowest rounded-lg shadow-xl border border-outline-variant/30 z-50 overflow-hidden group-hover:block"
+                          id="type-dropdown-menu"
+                        >
                           <div class="p-2 flex flex-col">
-                            <button class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all" onclick="applyTypeFilter('all')">Todos</button>
-                            <button class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all" onclick="applyTypeFilter('stock')">Stock Bajo</button>
-                            <button class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all" onclick="applyTypeFilter('mod')">Modificación</button>
-                            <button class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all" onclick="applyTypeFilter('baja')">Baja Clase</button>
-                            <button class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all" onclick="applyTypeFilter('info')">Informativa</button>
+                            <button
+                              class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all"
+                              onclick="applyTypeFilter('all')"
+                            >
+                              Todos
+                            </button>
+                            <button
+                              class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all"
+                              onclick="applyTypeFilter('stock')"
+                            >
+                              Stock Bajo
+                            </button>
+                            <button
+                              class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all"
+                              onclick="applyTypeFilter('mod')"
+                            >
+                              Modificación
+                            </button>
+                            <button
+                              class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all"
+                              onclick="applyTypeFilter('baja')"
+                            >
+                              Baja Clase
+                            </button>
+                            <button
+                              class="px-4 py-3 text-left hover:bg-surface-container-low rounded-lg text-[10px] font-black uppercase tracking-widest headline text-on-surface-variant hover:text-primary transition-all"
+                              onclick="applyTypeFilter('info')"
+                            >
+                              Informativa
+                            </button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant/30">
-                    <button class="px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all text-on-surface-variant hover:text-primary" id="btn-received" onclick="switchTab('received')">RECIBIDOS</button>
-                    <button class="px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all bg-primary text-white shadow-sm" id="btn-sent" onclick="switchTab('sent')">ENVIADOS</button>
+                  <div
+                    class="flex bg-surface-container-low p-1 rounded-lg border border-outline-variant/30"
+                  >
+                    <button
+                      class="px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all text-on-surface-variant hover:text-primary"
+                      id="btn-received"
+                      onclick="switchTab('received')"
+                    >
+                      RECIBIDOS
+                    </button>
+                    <button
+                      class="px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all bg-primary text-white shadow-sm"
+                      id="btn-sent"
+                      onclick="switchTab('sent')"
+                    >
+                      ENVIADOS
+                    </button>
                   </div>
                 </div>
 
                 <!-- Table -->
                 <div class="flex-1 overflow-auto custom-scrollbar">
                   <table class="w-full text-left border-collapse">
-                    <thead class="bg-surface-container-lowest sticky top-0 z-10">
+                    <thead
+                      class="bg-surface-container-lowest sticky top-0 z-10"
+                    >
                       <tr>
-                        <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b border-outline-variant/30">Fecha / Hora</th>
-                        <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b border-outline-variant/30">Tipo de Aviso</th>
-                        <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b border-outline-variant/30">Descripción del Evento</th>
-                        <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b border-outline-variant/30" id="dynamic-column-header">Destinatario</th>
-                        <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b text-center border-outline-variant/30">Prioridad</th>
-                        <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b text-center border-outline-variant/30">Estado</th>
-                        <th class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b text-center border-outline-variant/30">Acciones</th>
+                        <th
+                          class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b border-outline-variant/30"
+                        >
+                          Fecha / Hora
+                        </th>
+                        <th
+                          class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b border-outline-variant/30"
+                        >
+                          Tipo de Aviso
+                        </th>
+                        <th
+                          class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b border-outline-variant/30"
+                        >
+                          Descripción del Evento
+                        </th>
+                        <th
+                          class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b border-outline-variant/30"
+                          id="dynamic-column-header"
+                        >
+                          Destinatario
+                        </th>
+                        <th
+                          class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b text-center border-outline-variant/30"
+                        >
+                          Prioridad
+                        </th>
+                        <th
+                          class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b text-center border-outline-variant/30"
+                        >
+                          Estado
+                        </th>
+                        <th
+                          class="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-primary/80 font-headline border-b text-center border-outline-variant/30"
+                        >
+                          Acciones
+                        </th>
                       </tr>
                     </thead>
-                    <tbody class="divide-y divide-outline-variant/20" id="notification-tbody"></tbody>
+                    <tbody
+                      class="divide-y divide-outline-variant/20"
+                      id="notification-tbody"
+                    ></tbody>
                   </table>
                 </div>
 
                 <!-- Pagination -->
-                <div class="shrink-0 px-8 py-4 border-t border-outline-variant/30 flex items-center justify-between bg-surface-container-lowest">
-                  <p class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant">MOSTRANDO <span class="text-primary" id="range-display">1-6</span> DE <span id="total-count">8</span> NOTIFICACIONES</p>
+                <div
+                  class="shrink-0 px-8 py-4 border-t border-outline-variant/30 flex items-center justify-between bg-surface-container-lowest"
+                >
+                  <p
+                    class="text-[10px] font-black uppercase tracking-widest text-on-surface-variant"
+                  >
+                    MOSTRANDO
+                    <span class="text-primary" id="range-display">1-6</span> DE
+                    <span id="total-count">8</span> NOTIFICACIONES
+                  </p>
                   <div class="flex items-center gap-4" id="pagination-controls">
-                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant/50 text-on-surface-variant hover:border-primary hover:text-primary transition-all" disabled id="pag-prev" style="opacity: 0.3;">
-                      <span class="material-symbols-outlined text-xl">chevron_left</span>
+                    <button
+                      class="pagination-btn w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant/50 text-on-surface-variant hover:border-primary hover:text-primary transition-all"
+                      disabled
+                      id="pag-prev"
+                      style="opacity: 0.3"
+                    >
+                      <span class="material-symbols-outlined text-xl"
+                        >chevron_left</span
+                      >
                     </button>
                     <div class="flex gap-2" id="page-numbers"></div>
-                    <button class="pagination-btn w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant/50 text-on-surface-variant hover:border-primary hover:text-primary transition-all" id="pag-next" style="opacity: 1;">
-                      <span class="material-symbols-outlined text-xl">chevron_right</span>
+                    <button
+                      class="pagination-btn w-10 h-10 flex items-center justify-center rounded-lg border border-outline-variant/50 text-on-surface-variant hover:border-primary hover:text-primary transition-all"
+                      id="pag-next"
+                      style="opacity: 1"
+                    >
+                      <span class="material-symbols-outlined text-xl"
+                        >chevron_right</span
+                      >
                     </button>
                   </div>
                 </div>
@@ -1049,7 +1211,7 @@
         >
           <div class="flex flex-col">
             <a
-              href="../dashboard-secretaria.html"
+              href="../dashboard-profesor.html"
               class="text-base font-black text-white font-lexend mb-0.5 headline no-underline"
               >Squat Gym</a
             >
@@ -1062,17 +1224,17 @@
           <div class="flex items-center gap-6">
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Ayuda-secretaria.html"
+              href="../general-profesor/Ayuda-profesor.html"
               >Ayuda</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Privacidad-secretaria.html"
+              href="../general-profesor/Privacidad-profesor.html"
               >Privacidad</a
             >
             <a
               class="text-white/80 hover:text-white text-[10px] font-bold transition-colors"
-              href="../general-secretaria/Contacto-secretaria.html"
+              href="../general-profesor/Contacto-profesor.html"
               >Contacto</a
             >
           </div>
@@ -1082,121 +1244,232 @@
 
     <script>
       const TYPES = {
-        stock: { label: 'Stock Bajo', class: 'text-error' },
-        mod: { label: 'Modificación', class: 'text-tertiary-dim' },
-        baja: { label: 'Baja Clase', class: 'text-orange-600' },
-        info: { label: 'Informativa', class: 'text-on-surface' }
+        stock: { label: "Stock Bajo", class: "text-error" },
+        mod: { label: "Modificación", class: "text-tertiary-dim" },
+        baja: { label: "Baja Clase", class: "text-orange-600" },
+        info: { label: "Informativa", class: "text-on-surface" },
       };
 
       const PRIORITIES = {
-        critica: { label: 'Crítica', icon: 'warning', class: 'text-error', fill: 0 },
-        media: { label: 'Media', icon: 'info', class: 'text-tertiary-dim', fill: 0 },
-        info: { label: 'Info', icon: 'circle', class: 'text-outline-variant', fill: 0 }
+        critica: {
+          label: "Crítica",
+          icon: "warning",
+          class: "text-error",
+          fill: 0,
+        },
+        media: {
+          label: "Media",
+          icon: "info",
+          class: "text-tertiary-dim",
+          fill: 0,
+        },
+        info: {
+          label: "Info",
+          icon: "circle",
+          class: "text-outline-variant",
+          fill: 0,
+        },
       };
 
       let NOTIFICATIONS = [
-        { id: 1, date: '15 MAY 2024', time: '10:15', relativeDate: 'Hoy', type: 'stock', desc: "Proteína Whey Isolate 2kg: Existencias por debajo del mínimo de stock crítico definido (5 unidades). Favor de realizar pedido de reposición inmediato.", priority: 'critica', status: 'pendiente', author: 'SISTEMA', recipient: 'Dpto. Compras' },
-        { id: 2, date: '15 MAY 2024', time: '11:16', relativeDate: 'Hoy', type: 'mod', desc: "Cambio de instructor en clase de Crossfit - Nivel Pro. El profesor asignado será Juan Carlos en reemplazo de Martín.", priority: 'media', status: 'leido', author: 'ADMINISTRADOR', recipient: 'Socio #2044' },
-        { id: 3, date: '15 MAY 2024', time: '12:17', relativeDate: 'Hoy', type: 'baja', desc: "Cancelación masiva: Clase Spinning Mañana por avería en poleas de las bicicletas 4, 8 y 12. Se reprogramará para el jueves.", priority: 'critica', status: 'leido', author: 'MANTENIMIENTO', recipient: 'Todos los Socios' },
-        { id: 4, date: '15 MAY 2024', time: '13:18', relativeDate: 'Hoy', type: 'info', desc: "Nuevo protocolo de limpieza implementado en zona de pesas. Uso obligatorio de toalla personal y desinfectante provisto.", priority: 'info', status: 'pendiente', author: 'ADMINISTRADOR', recipient: 'Personal Staff' },
-        { id: 5, date: '14 MAY 2024', time: '09:00', relativeDate: 'Ayer', type: 'stock', desc: "Creatina Monohidrato 500g: Agotado en almacén A.", priority: 'critica', status: 'leido', author: 'SISTEMA', recipient: 'Logística' },
-        { id: 6, date: '14 MAY 2024', time: '10:30', relativeDate: 'Ayer', type: 'mod', desc: "Ajuste de horario en Boxeo: Inicio se retrasa 15 minutos debido a limpieza profunda del tatami.", priority: 'media', status: 'leido', author: 'ADMINISTRADOR', recipient: 'Socios Inscritos' },
-        { id: 7, date: '14 MAY 2024', time: '15:45', relativeDate: 'Ayer', type: 'info', desc: "Mantenimiento preventivo en cintas de correr (Fila 2) completado satisfactoriamente.", priority: 'info', status: 'leido', author: 'MANTENIMIENTO', recipient: 'Coordinador Sala' },
-        { id: 8, date: '14 MAY 2024', time: '17:20', relativeDate: 'Ayer', type: 'baja', desc: "Clase de Zumba suspendida por ausencia del instructor. Se otorgará crédito de clase a los asistentes.", priority: 'critica', status: 'pendiente', author: 'ADMINISTRADOR', recipient: 'Socio #1105' }
+        {
+          id: 1,
+          date: "15 MAY 2024",
+          time: "10:15",
+          relativeDate: "Hoy",
+          type: "stock",
+          desc: "Proteína Whey Isolate 2kg: Existencias por debajo del mínimo de stock crítico definido (5 unidades). Favor de realizar pedido de reposición inmediato.",
+          priority: "critica",
+          status: "pendiente",
+          author: "SISTEMA",
+          recipient: "Dpto. Compras",
+        },
+        {
+          id: 2,
+          date: "15 MAY 2024",
+          time: "11:16",
+          relativeDate: "Hoy",
+          type: "mod",
+          desc: "Cambio de instructor en clase de Crossfit - Nivel Pro. El profesor asignado será Juan Carlos en reemplazo de Martín.",
+          priority: "media",
+          status: "leido",
+          author: "ADMINISTRADOR",
+          recipient: "Socio #2044",
+        },
+        {
+          id: 3,
+          date: "15 MAY 2024",
+          time: "12:17",
+          relativeDate: "Hoy",
+          type: "baja",
+          desc: "Cancelación masiva: Clase Spinning Mañana por avería en poleas de las bicicletas 4, 8 y 12. Se reprogramará para el jueves.",
+          priority: "critica",
+          status: "leido",
+          author: "MANTENIMIENTO",
+          recipient: "Todos los Socios",
+        },
+        {
+          id: 4,
+          date: "15 MAY 2024",
+          time: "13:18",
+          relativeDate: "Hoy",
+          type: "info",
+          desc: "Nuevo protocolo de limpieza implementado en zona de pesas. Uso obligatorio de toalla personal y desinfectante provisto.",
+          priority: "info",
+          status: "pendiente",
+          author: "ADMINISTRADOR",
+          recipient: "Personal Staff",
+        },
+        {
+          id: 5,
+          date: "14 MAY 2024",
+          time: "09:00",
+          relativeDate: "Ayer",
+          type: "stock",
+          desc: "Creatina Monohidrato 500g: Agotado en almacén A.",
+          priority: "critica",
+          status: "leido",
+          author: "SISTEMA",
+          recipient: "Logística",
+        },
+        {
+          id: 6,
+          date: "14 MAY 2024",
+          time: "10:30",
+          relativeDate: "Ayer",
+          type: "mod",
+          desc: "Ajuste de horario en Boxeo: Inicio se retrasa 15 minutos debido a limpieza profunda del tatami.",
+          priority: "media",
+          status: "leido",
+          author: "ADMINISTRADOR",
+          recipient: "Socios Inscritos",
+        },
+        {
+          id: 7,
+          date: "14 MAY 2024",
+          time: "15:45",
+          relativeDate: "Ayer",
+          type: "info",
+          desc: "Mantenimiento preventivo en cintas de correr (Fila 2) completado satisfactoriamente.",
+          priority: "info",
+          status: "leido",
+          author: "MANTENIMIENTO",
+          recipient: "Coordinador Sala",
+        },
+        {
+          id: 8,
+          date: "14 MAY 2024",
+          time: "17:20",
+          relativeDate: "Ayer",
+          type: "baja",
+          desc: "Clase de Zumba suspendida por ausencia del instructor. Se otorgará crédito de clase a los asistentes.",
+          priority: "critica",
+          status: "pendiente",
+          author: "ADMINISTRADOR",
+          recipient: "Socio #1105",
+        },
       ];
 
       let currentPage = 1;
       let itemsPerPage = 6;
-      let currentStatusFilter = 'all';
-      let currentTypeFilter = 'all';
-      let activeTab = 'received';
+      let currentStatusFilter = "all";
+      let currentTypeFilter = "all";
+      let activeTab = "received";
       let filteredNotifications = [...NOTIFICATIONS];
       let pendingDeleteId = null;
 
-      const tbody = document.getElementById('notification-tbody');
-      const rangeDisplay = document.getElementById('range-display');
-      const totalCountDisplay = document.getElementById('total-count');
-      const pageNumbersContainer = document.getElementById('page-numbers');
-      const prevBtn = document.getElementById('pag-prev');
-      const nextBtn = document.getElementById('pag-next');
-      const sidebarToggleBtn = document.getElementById('sidebar-toggle');
-      const sidebar = document.getElementById('sidebar');
-      const dynamicColumnHeader = document.getElementById('dynamic-column-header');
-      const deleteModal = document.getElementById('delete-modal');
-      const viewModal = document.getElementById('view-modal');
-      const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+      const tbody = document.getElementById("notification-tbody");
+      const rangeDisplay = document.getElementById("range-display");
+      const totalCountDisplay = document.getElementById("total-count");
+      const pageNumbersContainer = document.getElementById("page-numbers");
+      const prevBtn = document.getElementById("pag-prev");
+      const nextBtn = document.getElementById("pag-next");
+      const sidebarToggleBtn = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const dynamicColumnHeader = document.getElementById(
+        "dynamic-column-header",
+      );
+      const deleteModal = document.getElementById("delete-modal");
+      const viewModal = document.getElementById("view-modal");
+      const confirmDeleteBtn = document.getElementById("confirm-delete-btn");
 
-      const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+      const sidebarBackdrop = document.getElementById("sidebar-backdrop");
 
       function toggleSidebar() {
-        sidebar.classList.toggle('sidebar-visible');
-        if (sidebarBackdrop) sidebarBackdrop.classList.toggle('show');
+        sidebar.classList.toggle("sidebar-visible");
+        if (sidebarBackdrop) sidebarBackdrop.classList.toggle("show");
       }
 
       if (sidebarToggleBtn) {
-        sidebarToggleBtn.addEventListener('click', toggleSidebar);
+        sidebarToggleBtn.addEventListener("click", toggleSidebar);
       }
 
-      const sidebarCloseBtn = document.getElementById('sidebar-close');
+      const sidebarCloseBtn = document.getElementById("sidebar-close");
       if (sidebarCloseBtn) {
-        sidebarCloseBtn.addEventListener('click', toggleSidebar);
+        sidebarCloseBtn.addEventListener("click", toggleSidebar);
       }
 
       if (sidebarBackdrop) {
-        sidebarBackdrop.addEventListener('click', toggleSidebar);
+        sidebarBackdrop.addEventListener("click", toggleSidebar);
       }
 
-      window.switchTab = function(tab) {
+      window.switchTab = function (tab) {
         activeTab = tab;
-        const btnReceived = document.getElementById('btn-received');
-        const btnSent = document.getElementById('btn-sent');
+        const btnReceived = document.getElementById("btn-received");
+        const btnSent = document.getElementById("btn-sent");
 
-        if (tab === 'received') {
-          btnReceived.className = 'px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all bg-primary text-white shadow-sm';
-          btnSent.className = 'px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all text-on-surface-variant hover:text-primary';
-          dynamicColumnHeader.textContent = 'Autor';
+        if (tab === "received") {
+          btnReceived.className =
+            "px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all bg-primary text-white shadow-sm";
+          btnSent.className =
+            "px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all text-on-surface-variant hover:text-primary";
+          dynamicColumnHeader.textContent = "Autor";
         } else {
-          btnSent.className = 'px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all bg-primary text-white shadow-sm';
-          btnReceived.className = 'px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all text-on-surface-variant hover:text-primary';
-          dynamicColumnHeader.textContent = 'Destinatario';
+          btnSent.className =
+            "px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all bg-primary text-white shadow-sm";
+          btnReceived.className =
+            "px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest headline transition-all text-on-surface-variant hover:text-primary";
+          dynamicColumnHeader.textContent = "Destinatario";
         }
         currentPage = 1;
         applyAllFilters();
       };
 
       function toggleNotifications() {
-        const dropdown = document.getElementById('notification-dropdown');
-        dropdown.classList.toggle('hidden');
+        const dropdown = document.getElementById("notification-dropdown");
+        dropdown.classList.toggle("hidden");
       }
 
       window.openDeleteModal = (id) => {
         pendingDeleteId = id;
-        deleteModal.classList.add('active');
+        deleteModal.classList.add("active");
       };
 
       window.closeDeleteModal = () => {
-        deleteModal.classList.remove('active');
+        deleteModal.classList.remove("active");
         pendingDeleteId = null;
       };
 
       window.openViewModal = (id) => {
-        const item = NOTIFICATIONS.find(n => n.id === id);
+        const item = NOTIFICATIONS.find((n) => n.id === id);
         if (!item) return;
 
-        if (item.status === 'pendiente') {
-          item.status = 'leido';
+        if (item.status === "pendiente") {
+          item.status = "leido";
           applyAllFilters();
         }
 
         const type = TYPES[item.type];
         const prio = PRIORITIES[item.priority];
 
-        document.getElementById('modal-title').textContent = type.label;
-        document.getElementById('modal-date').textContent = `${item.date} — ${item.time} (${item.relativeDate})`;
-        document.getElementById('modal-author').textContent = activeTab === 'received' ? item.author : item.recipient;
-        document.getElementById('modal-desc').textContent = item.desc;
+        document.getElementById("modal-title").textContent = type.label;
+        document.getElementById("modal-date").textContent =
+          `${item.date} — ${item.time} (${item.relativeDate})`;
+        document.getElementById("modal-author").textContent =
+          activeTab === "received" ? item.author : item.recipient;
+        document.getElementById("modal-desc").textContent = item.desc;
 
-        const badge = document.getElementById('modal-priority-badge');
+        const badge = document.getElementById("modal-priority-badge");
         badge.innerHTML = `
           <div class="flex items-center gap-1.5 ${prio.class} bg-surface-container-low px-3 py-1.5 rounded-full border border-outline-variant/20">
             <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' ${prio.fill};">${prio.icon}</span>
@@ -1204,16 +1477,16 @@
           </div>
         `;
 
-        viewModal.classList.add('active');
+        viewModal.classList.add("active");
       };
 
       window.closeViewModal = () => {
-        viewModal.classList.remove('active');
+        viewModal.classList.remove("active");
       };
 
-      confirmDeleteBtn.addEventListener('click', () => {
+      confirmDeleteBtn.addEventListener("click", () => {
         if (pendingDeleteId !== null) {
-          NOTIFICATIONS = NOTIFICATIONS.filter(n => n.id !== pendingDeleteId);
+          NOTIFICATIONS = NOTIFICATIONS.filter((n) => n.id !== pendingDeleteId);
           closeDeleteModal();
           applyAllFilters();
         }
@@ -1224,40 +1497,42 @@
         const end = start + itemsPerPage;
         const pageItems = filteredNotifications.slice(start, end);
 
-        tbody.innerHTML = pageItems.map(item => {
-          const type = TYPES[item.type];
-          const prio = PRIORITIES[item.priority];
-          const dynamicValue = activeTab === 'received' ? item.author : item.recipient;
-          const isRead = item.status === 'leido';
+        tbody.innerHTML = pageItems
+          .map((item) => {
+            const type = TYPES[item.type];
+            const prio = PRIORITIES[item.priority];
+            const dynamicValue =
+              activeTab === "received" ? item.author : item.recipient;
+            const isRead = item.status === "leido";
 
-          return `
-            <tr class="notification-row hover:bg-surface-container-low transition-all group/row cursor-default h-[90px] ${isRead ? 'bg-surface-container-low' : ''}" data-id="${item.id}">
+            return `
+            <tr class="notification-row hover:bg-surface-container-low transition-all group/row cursor-default h-[90px] ${isRead ? "bg-surface-container-low" : ""}" data-id="${item.id}">
               <td class="px-8 py-3">
-                <div class="flex flex-col ${isRead ? 'opacity-60' : ''}">
+                <div class="flex flex-col ${isRead ? "opacity-60" : ""}">
                   <span class="font-bold text-on-surface text-sm headline">${item.relativeDate}, ${item.time}</span>
                   <span class="text-[9px] font-black uppercase tracking-widest text-on-surface-variant font-headline">${item.date}</span>
                 </div>
               </td>
               <td class="px-8 py-3">
-                <span class="${type.class} text-[10px] font-black uppercase tracking-widest headline ${isRead ? 'opacity-50' : ''}">${type.label}</span>
+                <span class="${type.class} text-[10px] font-black uppercase tracking-widest headline ${isRead ? "opacity-50" : ""}">${type.label}</span>
               </td>
               <td class="px-8 py-3">
-                <p class="text-sm font-medium text-on-surface max-w-sm line-clamp-2 ${isRead ? 'text-on-surface-variant' : ''}">${item.desc}</p>
+                <p class="text-sm font-medium text-on-surface max-w-sm line-clamp-2 ${isRead ? "text-on-surface-variant" : ""}">${item.desc}</p>
               </td>
               <td class="px-8 py-3">
-                <span class="text-[11px] font-black uppercase tracking-wider text-on-surface font-headline ${isRead ? 'text-on-surface-variant' : ''}">${dynamicValue}</span>
+                <span class="text-[11px] font-black uppercase tracking-wider text-on-surface font-headline ${isRead ? "text-on-surface-variant" : ""}">${dynamicValue}</span>
               </td>
               <td class="px-8 py-3 text-center">
-                <div class="inline-flex items-center gap-1.5 ${prio.class} ${isRead ? 'opacity-50' : ''}">
+                <div class="inline-flex items-center gap-1.5 ${prio.class} ${isRead ? "opacity-50" : ""}">
                   <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' ${prio.fill};">${prio.icon}</span>
                   <span class="text-[10px] font-black uppercase tracking-widest headline">${prio.label}</span>
                 </div>
               </td>
               <td class="px-8 py-3 text-center">
-                <div class="status-container inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full ${isRead ? 'opacity-60' : ''}">
-                  <span class="status-dot w-2 h-2 rounded-full ${!isRead ? 'bg-primary animate-pulse' : 'bg-outline-variant'}"></span>
-                  <span class="status-text text-[10px] font-black uppercase tracking-widest ${!isRead ? 'text-primary' : 'text-on-surface-variant'} headline">
-                    ${!isRead ? 'Pendiente' : 'Leído'}
+                <div class="status-container inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full ${isRead ? "opacity-60" : ""}">
+                  <span class="status-dot w-2 h-2 rounded-full ${!isRead ? "bg-primary animate-pulse" : "bg-outline-variant"}"></span>
+                  <span class="status-text text-[10px] font-black uppercase tracking-widest ${!isRead ? "text-primary" : "text-on-surface-variant"} headline">
+                    ${!isRead ? "Pendiente" : "Leído"}
                   </span>
                 </div>
               </td>
@@ -1273,21 +1548,29 @@
               </td>
             </tr>
           `;
-        }).join('');
+          })
+          .join("");
 
         const actualEnd = Math.min(end, filteredNotifications.length);
-        if (rangeDisplay) rangeDisplay.textContent = filteredNotifications.length > 0 ? `${start + 1}-${actualEnd}` : '0-0';
-        if (totalCountDisplay) totalCountDisplay.textContent = filteredNotifications.length;
+        if (rangeDisplay)
+          rangeDisplay.textContent =
+            filteredNotifications.length > 0
+              ? `${start + 1}-${actualEnd}`
+              : "0-0";
+        if (totalCountDisplay)
+          totalCountDisplay.textContent = filteredNotifications.length;
 
         renderPagination();
       }
 
       function renderPagination() {
-        const totalPages = Math.ceil(filteredNotifications.length / itemsPerPage);
-        let html = '';
+        const totalPages = Math.ceil(
+          filteredNotifications.length / itemsPerPage,
+        );
+        let html = "";
         for (let i = 1; i <= totalPages; i++) {
           html += `
-            <button class="pagination-page-btn w-10 h-10 flex items-center justify-center rounded-lg font-black text-sm headline transition-all ${currentPage === i ? 'bg-primary text-white shadow-lg shadow-primary/20 ring-4 ring-primary/10' : 'border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary/5'}" onclick="goToPage(${i})">
+            <button class="pagination-page-btn w-10 h-10 flex items-center justify-center rounded-lg font-black text-sm headline transition-all ${currentPage === i ? "bg-primary text-white shadow-lg shadow-primary/20 ring-4 ring-primary/10" : "border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary/5"}" onclick="goToPage(${i})">
               ${i}
             </button>
           `;
@@ -1295,11 +1578,13 @@
         if (pageNumbersContainer) pageNumbersContainer.innerHTML = html;
         if (prevBtn) {
           prevBtn.disabled = currentPage === 1 || totalPages <= 1;
-          prevBtn.style.opacity = (currentPage === 1 || totalPages <= 1) ? '0.3' : '1';
+          prevBtn.style.opacity =
+            currentPage === 1 || totalPages <= 1 ? "0.3" : "1";
         }
         if (nextBtn) {
           nextBtn.disabled = currentPage === totalPages || totalPages <= 1;
-          nextBtn.style.opacity = (currentPage === totalPages || totalPages <= 1) ? '0.3' : '1';
+          nextBtn.style.opacity =
+            currentPage === totalPages || totalPages <= 1 ? "0.3" : "1";
         }
       }
 
@@ -1314,13 +1599,19 @@
       };
 
       function applyAllFilters() {
-        filteredNotifications = NOTIFICATIONS.filter(item => {
-          const matchesStatus = currentStatusFilter === 'all' || item.status === currentStatusFilter;
-          const matchesType = currentTypeFilter === 'all' || item.type === currentTypeFilter;
+        filteredNotifications = NOTIFICATIONS.filter((item) => {
+          const matchesStatus =
+            currentStatusFilter === "all" ||
+            item.status === currentStatusFilter;
+          const matchesType =
+            currentTypeFilter === "all" || item.type === currentTypeFilter;
           return matchesStatus && matchesType;
         });
-        const totalPages = Math.ceil(filteredNotifications.length / itemsPerPage);
-        if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
+        const totalPages = Math.ceil(
+          filteredNotifications.length / itemsPerPage,
+        );
+        if (currentPage > totalPages && totalPages > 0)
+          currentPage = totalPages;
         if (filteredNotifications.length === 0) currentPage = 1;
         renderTable();
       }
@@ -1330,17 +1621,28 @@
         renderTable();
       };
 
-      if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) goToPage(currentPage - 1); });
-      if (nextBtn) nextBtn.addEventListener('click', () => {
-        const totalPages = Math.ceil(filteredNotifications.length / itemsPerPage);
-        if (currentPage < totalPages) goToPage(currentPage + 1);
-      });
+      if (prevBtn)
+        prevBtn.addEventListener("click", () => {
+          if (currentPage > 1) goToPage(currentPage - 1);
+        });
+      if (nextBtn)
+        nextBtn.addEventListener("click", () => {
+          const totalPages = Math.ceil(
+            filteredNotifications.length / itemsPerPage,
+          );
+          if (currentPage < totalPages) goToPage(currentPage + 1);
+        });
 
-      window.addEventListener('click', function(e) {
-        const dropdown = document.getElementById('notification-dropdown');
-        const bell = document.getElementById('notification-bell');
-        if (dropdown && !dropdown.classList.contains('hidden') && !bell.contains(e.target) && !dropdown.contains(e.target)) {
-          dropdown.classList.add('hidden');
+      window.addEventListener("click", function (e) {
+        const dropdown = document.getElementById("notification-dropdown");
+        const bell = document.getElementById("notification-bell");
+        if (
+          dropdown &&
+          !dropdown.classList.contains("hidden") &&
+          !bell.contains(e.target) &&
+          !dropdown.contains(e.target)
+        ) {
+          dropdown.classList.add("hidden");
         }
       });
 
