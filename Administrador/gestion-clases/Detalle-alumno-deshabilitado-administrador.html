@@ -142,7 +142,7 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
             <div class="p-3 hover:bg-surface-container-low transition-colors cursor-pointer"><div class="flex gap-3"><div class="w-8 h-8 rounded-full bg-tertiary/10 flex items-center justify-center text-tertiary shrink-0"><span class="material-symbols-outlined text-sm">payments</span></div><div class="flex-1"><p class="text-xs font-bold text-on-surface">Pago pendiente: Factura #4421</p><p class="text-[10px] text-on-surface-variant">Vencimiento en 2 d&iacute;as</p></div></div></div>
           </div>
           <div class="p-3 bg-surface-container-lowest border-t border-outline-variant/20 flex justify-center">
-            <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;"><span>Ver todas</span><span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span></button>
+            <button class="font-black hover:text-primary-dim transition-colors uppercase tracking-widest flex items-center gap-1 group w-full py-2.5 px-4 rounded-lg shadow-md hover:bg-opacity-90 active:scale-[0.98] transition-all text-xs" style="background-color: rgb(0, 103, 95); color: white;" onclick="location.href='Notificaciones-administrador/Gestion-de-notificaciones-administrador.html'"><span>Ver todas</span><span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform">arrow_forward</span></button>
           </div>
         </div>
       </div>
@@ -297,57 +297,6 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
                     <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Sep 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Zumba</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Tarjeta</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice('15 Sep 2023', 'Cuota Mensual - Zumba', '$5,500', 'Tarjeta')">Ver</button></td></tr>
                     <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Ago 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Boxeo</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Transferencia</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice('15 Ago 2023', 'Cuota Mensual - Boxeo', '$5,500', 'Transferencia')">Ver</button></td></tr>
                     <tr class="hover:bg-primary/5 transition-colors"><td class="px-5 py-3 font-bold text-on-surface text-xs">15 Jul 2023</td><td class="px-5 py-3 text-slate-500 text-xs font-medium">Cuota Mensual - Pilates</td><td class="px-5 py-3 font-black text-on-surface text-xs">$5,500</td><td class="px-5 py-3 text-slate-500 text-center font-bold text-xs">Efectivo</td><td class="px-5 py-3 text-center"><button class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:bg-primary-dim transition-colors uppercase tracking-widest" onclick="openInvoice('15 Jul 2023', 'Cuota Mensual - Pilates', '$5,500', 'Efectivo')">Ver</button></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </article>
-          </div>
-
-          <div class="flex flex-col gap-2">
-            <h2 class="text-[10px] font-black text-primary uppercase tracking-[0.2em] headline flex items-center gap-2 px-1">
-              <span class="material-symbols-outlined text-sm">warning</span> MOTIVO DE DESHABILITACIÓN
-            </h2>
-            <article class="bg-surface-container-lowest rounded-2xl border border-error/20 card-premium p-5">
-              <div class="bg-error/5 border border-error/10 p-4 rounded-xl flex items-start gap-3">
-                <span class="material-symbols-outlined text-error shrink-0 mt-0.5">error</span>
-                <div><p class="text-on-surface text-sm font-bold">Mora superior a 20 días</p><p class="text-on-surface-variant text-xs mt-1">Deuda acumulada: $10.000. El último pago registrado fue el 15/07/2023. Para rehabilitar el acceso se requiere regularizar la deuda pendiente.</p></div>
-              </div>
-            </article>
-          </div>
-
-          <div class="flex flex-col gap-2">
-            <h2 class="text-[10px] font-black text-primary uppercase tracking-[0.2em] headline flex items-center gap-2 px-1">
-              <span class="material-symbols-outlined text-sm">school</span> CLASES INSCRIPTAS
-            </h2>
-            <article class="bg-surface-container-lowest rounded-2xl border border-primary/10 card-premium overflow-hidden">
-              <div class="overflow-x-auto custom-scrollbar">
-                <table class="w-full text-left border-collapse">
-                  <thead><tr><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Clase</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Días</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Horario</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b text-center border-primary/10">Estado</th></tr></thead>
-                  <tbody class="divide-y divide-primary/5 text-sm">
-                    <tr><td class="px-5 py-3 font-bold text-on-surface text-xs">Musculación</td><td class="px-5 py-3 text-slate-500 text-xs">Lun, Mié, Vie</td><td class="px-5 py-3 text-slate-500 text-xs">09:00 - 10:00</td><td class="px-5 py-3 text-center"><span class="bg-error/10 text-error text-[10px] font-bold px-2 py-1 rounded-full">Suspendido</span></td></tr>
-                    <tr><td class="px-5 py-3 font-bold text-on-surface text-xs">HIIT</td><td class="px-5 py-3 text-slate-500 text-xs">Mar, Jue</td><td class="px-5 py-3 text-slate-500 text-xs">16:00 - 17:00</td><td class="px-5 py-3 text-center"><span class="bg-error/10 text-error text-[10px] font-bold px-2 py-1 rounded-full">Suspendido</span></td></tr>
-                  </tbody>
-                </table>
-              </div>
-            </article>
-          </div>
-
-          <div class="flex flex-col gap-2">
-            <h2 class="text-[10px] font-black text-primary uppercase tracking-[0.2em] headline flex items-center gap-2 px-1">
-              <span class="material-symbols-outlined text-sm">checklist</span> HISTORIAL DE ASISTENCIA
-            </h2>
-            <article class="bg-surface-container-lowest rounded-2xl border border-primary/10 card-premium overflow-hidden">
-              <div class="overflow-x-auto overflow-y-auto custom-scrollbar max-h-[200px]">
-                <table class="w-full text-left border-collapse">
-                  <thead class="sticky top-0 bg-surface-container-lowest z-10">
-                    <tr><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Fecha</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b border-primary/10">Clase</th><th class="px-5 py-3 text-[10px] font-black uppercase tracking-widest text-primary/60 headline border-b text-center border-primary/10">Asistencia</th></tr>
-                  </thead>
-                  <tbody class="divide-y divide-primary/5 text-sm">
-                    <tr><td class="px-5 py-3 font-bold text-on-surface text-xs">10/05/2026</td><td class="px-5 py-3 text-slate-500 text-xs">Musculación</td><td class="px-5 py-3 text-center"><span class="text-error font-black text-[10px] inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm">cancel</span> Ausente</span></td></tr>
-                    <tr><td class="px-5 py-3 font-bold text-on-surface text-xs">07/05/2026</td><td class="px-5 py-3 text-slate-500 text-xs">HIIT</td><td class="px-5 py-3 text-center"><span class="text-error font-black text-[10px] inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm">cancel</span> Ausente</span></td></tr>
-                    <tr><td class="px-5 py-3 font-bold text-on-surface text-xs">05/05/2026</td><td class="px-5 py-3 text-slate-500 text-xs">Musculación</td><td class="px-5 py-3 text-center"><span class="text-error font-black text-[10px] inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm">cancel</span> Ausente</span></td></tr>
-                    <tr><td class="px-5 py-3 font-bold text-on-surface text-xs">02/05/2026</td><td class="px-5 py-3 text-slate-500 text-xs">HIIT</td><td class="px-5 py-3 text-center"><span class="text-error font-black text-[10px] inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm">cancel</span> Ausente</span></td></tr>
-                    <tr><td class="px-5 py-3 font-bold text-on-surface text-xs">28/04/2026</td><td class="px-5 py-3 text-slate-500 text-xs">Musculación</td><td class="px-5 py-3 text-center"><span class="text-primary font-black text-[10px] inline-flex items-center gap-1"><span class="material-symbols-outlined text-sm">check_circle</span> Presente</span></td></tr>
                   </tbody>
                 </table>
               </div>
