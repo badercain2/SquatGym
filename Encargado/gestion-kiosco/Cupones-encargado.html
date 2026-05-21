@@ -453,11 +453,42 @@ h1,h2,h3,h4,.headline{ font-family:'Lexend',sans-serif; }
         { id: 3, name: 'Clase de Prueba', discount: 8.50, exp: '15/03/2025', status: 'ACTIVO' },
         { id: 4, name: 'Descuento Verano', discount: 20.00, exp: '01/12/2025', status: 'ACTIVO' },
         { id: 5, name: 'Promo Amigos', discount: 5.00, exp: '10/04/2025', status: 'ACTIVO' },
+        { id: 6, name: 'Black Friday', discount: 50.00, exp: '30/11/2025', status: 'ACTIVO' },
+        { id: 7, name: 'Cumplea\u00f1os Feliz', discount: 12.50, exp: '31/12/2025', status: 'ACTIVO' },
+        { id: 8, name: 'Estudiante', discount: 7.00, exp: '01/03/2025', status: 'ACTIVO' },
+        { id: 9, name: 'Parejas Fit', discount: 18.00, exp: '20/06/2025', status: 'ACTIVO' },
+        { id: 10, name: 'Primera Vez', discount: 25.00, exp: '15/05/2025', status: 'ACTIVO' },
+        { id: 11, name: 'Reincorporaci\u00f3n', discount: 30.00, exp: '01/09/2025', status: 'ACTIVO' },
+        { id: 12, name: 'Plan Anual', discount: 40.00, exp: '01/01/2026', status: 'ACTIVO' },
+        { id: 13, name: 'Grupo 3+', discount: 22.00, exp: '10/07/2025', status: 'ACTIVO' },
+        { id: 14, name: 'Horario Flexible', discount: 9.00, exp: '05/08/2025', status: 'ACTIVO' },
+        { id: 15, name: 'Senior 60+', discount: 35.00, exp: '01/04/2025', status: 'ACTIVO' },
+        { id: 16, name: 'Universitario', discount: 11.00, exp: '15/12/2025', status: 'ACTIVO' },
+        { id: 17, name: 'Madrugador', discount: 6.00, exp: '28/02/2025', status: 'ACTIVO' },
+        { id: 18, name: 'Fin de Semana', discount: 14.00, exp: '20/10/2025', status: 'ACTIVO' },
+        { id: 19, name: 'Pack Nutrici\u00f3n', discount: 16.00, exp: '01/11/2025', status: 'ACTIVO' },
+        { id: 20, name: 'Personal Trainer', discount: 28.00, exp: '25/03/2025', status: 'ACTIVO' },
+        { id: 21, name: 'Empresarial', discount: 33.00, exp: '01/05/2025', status: 'ACTIVO' },
+        { id: 22, name: 'Yoga & Pilates', discount: 13.00, exp: '15/09/2025', status: 'ACTIVO' },
+        { id: 23, name: 'Crossfit Pack', discount: 19.00, exp: '10/01/2026', status: 'ACTIVO' },
+        { id: 24, name: 'Spa Incluido', discount: 45.00, exp: '31/07/2025', status: 'ACTIVO' },
+        { id: 25, name: 'D\u00eda del Ni\u00f1o', discount: 3.50, exp: '20/08/2025', status: 'ACTIVO' },
+        { id: 26, name: 'Navidad Fit', discount: 55.00, exp: '25/12/2025', status: 'ACTIVO' },
+        { id: 27, name: 'Clase Online', discount: 17.00, exp: '01/06/2025', status: 'ACTIVO' },
+        { id: 28, name: 'Recargo Fidelidad', discount: 21.00, exp: '05/04/2025', status: 'ACTIVO' },
+        { id: 29, name: 'Nuevo Ingreso', discount: 23.00, exp: '15/02/2025', status: 'ACTIVO' },
+        { id: 30, name: 'Verano Intenso', discount: 26.00, exp: '01/03/2025', status: 'ACTIVO' },
+        { id: 31, name: 'D\u00eda de la Mujer', discount: 10.00, exp: '08/03/2025', status: 'ACTIVO' },
+        { id: 32, name: 'Sede Norte', discount: 8.00, exp: '01/08/2025', status: 'ACTIVO' },
+        { id: 33, name: 'Sede Sur', discount: 8.00, exp: '01/08/2025', status: 'ACTIVO' },
+        { id: 34, name: 'Funcional Pack', discount: 24.00, exp: '12/06/2025', status: 'ACTIVO' },
+        { id: 35, name: 'Boxeo & MMA', discount: 27.00, exp: '20/11/2025', status: 'ACTIVO' },
+        { id: 36, name: 'Baile Fitness', discount: 15.50, exp: '01/10/2025', status: 'ACTIVO' },
     ];
 
     let filteredCoupons = [...coupons];
     let currentPage = 1;
-    const itemsPerPage = 8;
+    const itemsPerPage = 12;
 
     function renderCoupons() {
         const tbody = document.getElementById('coupon-table-body');
