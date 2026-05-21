@@ -309,16 +309,6 @@
         }
       }
 
-      #sede-select-catalogo::-ms-expand {
-        display: none;
-      }
-      #sede-select-catalogo {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background-image: none;
-      }
-
       /* ===== RESPONSIVE ===== */
 
       @media (max-width: 1600px) {
@@ -811,7 +801,7 @@ href="../dashboard-encargado.html"
                     class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors"
                     >point_of_sale</span
                   >
-                  <span class="font-medium text-sm">Registrar Venta</span>
+                  <span class="font-medium text-sm">Historial de Ventas</span>
                 </a>
 
                 <a
@@ -865,63 +855,7 @@ href="../dashboard-encargado.html"
               </div>
 
               <div class="flex items-center gap-3 shrink-0">
-                <div class="relative group" tabindex="0">
-                  <button
-                    class="flex items-center gap-1.5 bg-surface-container-lowest text-on-surface text-xs font-semibold pl-3 pr-2 py-1.5 rounded-xl border border-outline-variant/40 hover:bg-surface-container-low focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer whitespace-nowrap"
-                    id="sede-btn-catalogo"
-                    type="button"
-                  >
-                    <span class="material-symbols-outlined text-primary text-sm"
-                      >location_on</span
-                    >
-                    <span id="sede-label-catalogo">Todas las sedes</span>
-                    <span
-                      class="material-symbols-outlined text-on-surface-variant text-lg"
-                      >expand_more</span
-                    >
-                  </button>
-                  <div
-                    class="hidden absolute left-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-zinc-100 py-2 z-50 group-focus-within:block"
-                    id="sede-dropdown-catalogo"
-                    style="min-width: calc(100% + 30px)"
-                  >
-                    <button
-                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
-                      type="button"
-                      onclick="seleccionarSedeCatalogo('todas', this)"
-                    >
-                      Todas las sedes
-                    </button>
-                    <button
-                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
-                      type="button"
-                      onclick="seleccionarSedeCatalogo('zona-norte', this)"
-                    >
-                      Zona Norte
-                    </button>
-                    <button
-                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
-                      type="button"
-                      onclick="seleccionarSedeCatalogo('zona-sur', this)"
-                    >
-                      Zona Sur
-                    </button>
-                    <button
-                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
-                      type="button"
-                      onclick="seleccionarSedeCatalogo('zona-este', this)"
-                    >
-                      Zona Este
-                    </button>
-                    <button
-                      class="w-full text-left px-4 py-2.5 text-sm hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
-                      type="button"
-                      onclick="seleccionarSedeCatalogo('zona-oeste', this)"
-                    >
-                      Zona Oeste
-                    </button>
-                  </div>
-                </div>
+
                 <button
                   class="h-10 flex items-center justify-center gap-2 bg-primary text-white hover:bg-primary-dim rounded-xl transition-all duration-300 font-bold text-xs uppercase px-6 shadow-md"
                   onclick="
@@ -3032,23 +2966,6 @@ href="../dashboard-encargado.html"
           if (badge) total += parseInt(badge.textContent) || 0;
         });
         document.getElementById("global-counter3").textContent = total;
-      }
-
-      function seleccionarSedeCatalogo(val, btn) {
-        var labels = {
-          todas: "Todas las sedes",
-          "zona-norte": "Zona Norte",
-          "zona-sur": "Zona Sur",
-          "zona-este": "Zona Este",
-          "zona-oeste": "Zona Oeste",
-        };
-        document.getElementById("sede-label-catalogo").textContent =
-          labels[val] || val;
-        btn
-          .closest(".group")
-          .querySelector('[id$="-dropdown-catalogo"]')
-          .classList.add("hidden");
-        document.activeElement.blur();
       }
 
       function abrirVerTurnos(id) {
