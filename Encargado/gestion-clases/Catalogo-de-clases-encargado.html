@@ -870,7 +870,15 @@ href="../dashboard-encargado.html"
               </div>
             </div>
 
-            <div class="flex justify-end">
+            <div class="flex justify-between items-center gap-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-black uppercase tracking-wider text-on-surface-variant">Sede:</span>
+                <select id="sede-filter" class="text-sm font-medium bg-surface-container-lowest border border-outline-variant/40 rounded-xl px-3 py-2 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
+                  <option value="todas">Todas</option>
+                  <option value="sur">Sur</option>
+                  <option value="norte">Norte</option>
+                </select>
+              </div>
               <div class="relative w-64">
                 <span
                   class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg"
@@ -2650,6 +2658,7 @@ href="../dashboard-encargado.html"
         {
           id: 4,
           name: "Body Pump",
+          sede: "sur",
           inscritos: 21,
           capacidad: 30,
           dias: "Lun, Mié, Vie",
@@ -2661,6 +2670,7 @@ href="../dashboard-encargado.html"
         {
           id: 6,
           name: "Boxeo",
+          sede: "norte",
           inscritos: 18,
           capacidad: 20,
           dias: "Mar, Jue",
@@ -2672,6 +2682,7 @@ href="../dashboard-encargado.html"
         {
           id: 2,
           name: "Cardio",
+          sede: "sur",
           inscritos: 22,
           capacidad: 25,
           dias: "Lun a Vie",
@@ -2683,6 +2694,7 @@ href="../dashboard-encargado.html"
         {
           id: 1,
           name: "Crossfit Pro",
+          sede: "norte",
           inscritos: 18,
           capacidad: 18,
           dias: "Sáb, Dom",
@@ -2694,6 +2706,7 @@ href="../dashboard-encargado.html"
         {
           id: 7,
           name: "Functional Training",
+          sede: "sur",
           inscritos: 15,
           capacidad: 20,
           dias: "Lun, Mié",
@@ -2705,6 +2718,7 @@ href="../dashboard-encargado.html"
         {
           id: 5,
           name: "Pilates",
+          sede: "norte",
           inscritos: 12,
           capacidad: 15,
           dias: "Mar, Jue",
@@ -2716,6 +2730,7 @@ href="../dashboard-encargado.html"
         {
           id: 8,
           name: "Spinning",
+          sede: "sur",
           inscritos: 25,
           capacidad: 25,
           dias: "Lun a Vie",
@@ -2727,6 +2742,7 @@ href="../dashboard-encargado.html"
         {
           id: 3,
           name: "Zumba Gold",
+          sede: "norte",
           inscritos: 20,
           capacidad: 30,
           dias: "Sáb, Dom",
@@ -2741,6 +2757,7 @@ href="../dashboard-encargado.html"
 
       const grid = document.getElementById("class-grid");
       const searchInput = document.getElementById("class-search");
+      const sedeFilter = document.getElementById("sede-filter");
       const pageButtons = document.querySelectorAll(".pagination-btn");
       const prevBtn = document.querySelector("#prev-page");
       const nextBtn = document.querySelector("#next-page");
@@ -2749,6 +2766,18 @@ href="../dashboard-encargado.html"
       let currentPage = 1;
       const itemsPerPage = 4;
       let filteredData = [...classData];
+
+      const applyFilters = () => {
+        const term = searchInput.value.toLowerCase().trim();
+        const sede = sedeFilter.value;
+        filteredData = classData.filter((cls) => {
+          const matchName = cls.name.toLowerCase().includes(term);
+          const matchSede = sede === "todas" || cls.sede === sede;
+          return matchName && matchSede;
+        });
+        currentPage = 1;
+        renderClasses(1);
+      };
 
       const renderClasses = (page) => {
         grid.innerHTML = "";
@@ -2851,14 +2880,8 @@ href="../dashboard-encargado.html"
         nextBtn.className = `w-8 h-8 flex items-center justify-center rounded-lg border border-primary/20 transition-all shadow-sm cursor-pointer ${currentPage >= totalPages ? "text-slate-300 cursor-not-allowed" : "text-primary hover:bg-primary hover:text-white"}`;
       };
 
-      searchInput.addEventListener("input", (e) => {
-        const term = e.target.value.toLowerCase().trim();
-        filteredData = classData.filter((cls) =>
-          cls.name.toLowerCase().includes(term),
-        );
-        currentPage = 1;
-        renderClasses(1);
-      });
+      searchInput.addEventListener("input", applyFilters);
+      sedeFilter.addEventListener("change", applyFilters);
 
       pageButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
