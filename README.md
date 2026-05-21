@@ -11,6 +11,7 @@ index.html
 ```
 
 ## Usuarios de prueba
+todos los usuarios en minusculas
 
 | Rol | Usuario | Contraseña |
 |------|----------|-------------|
